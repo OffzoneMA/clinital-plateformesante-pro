@@ -302,6 +302,7 @@ function Demande() {
                               console.log("ville", x.id_ville);
                               toggleSeachOnClick("city", x.nom_ville);
                             }}
+                            
                           >
                             {x.nom_ville}
                           </span>
@@ -335,6 +336,7 @@ function Demande() {
                               console.log("libelle", x.id_spec);
                               toggleSeachOnClick("spec", x.libelle);
                             }}
+                            
                           >
                             {x.libelle}
                             </span>

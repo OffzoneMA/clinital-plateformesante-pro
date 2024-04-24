@@ -1,44 +1,47 @@
-@import "../../styles/style.scss";
-
-  .result {
-    background-color: #f8f8f8;
-    display: flex;
-
-    opacity: 0;
-    visibility: hidden;
-
-    flex-direction: column;
-    width: 100%;
-    border-radius: 4px;
-    filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
-    position: absolute;
-    top: 60px;
-    right: 0;
-    max-height: 6 * 45px;
-    overflow: auto;
-    transition: all 200ms ease;
-
-    span {
-      width: 100%;
-      line-height: 45px;
-      font-size: 16px;
-      color: $black;
-      padding-left: 16px;
-      position: relative;
-      cursor: pointer;
+@import '../../styles/style.scss';
+.inscription {
+    .result {
+      position: absolute;
+      display: flex;
+      background-color: #f8f8f8;
+      width:100%;
+      right: 0;
+      max-height: 5* 45px;
+      overflow-y: auto;
+      z-index: 2;
+      border-radius: 4px;
+      top: 60px;
       transition: all 200ms ease;
-
-      &:hover {
-        background-color: rgba($black, 0.05);
-      }
-
-      &:after {
-        content: "";
+      flex-direction: column;
+      opacity: 10;
+      z-index: 1000;
+      filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+      
+      span {
         width: 100%;
-        left: 0;
-        position: absolute;
-        border-bottom: 1px solid #eaeaea;
+          line-height: 45px;
+          font-size: 16px;
+          color: $black;
+          padding-left: 16px;
+          position: relative;
+          cursor: pointer;
+          transition: all 200ms ease;
+  
+        &:hover {
+          background-color: rgba($black, 0.05);
+        }
+        &:after {
+          content: "";
+          width: 100%;
+          left: 0;
+          position: absolute;
+          border-bottom: 1px solid #eaeaea;
+        }
       }
-    }
+     
+    
+    
+    
+    
   }
-
+}
