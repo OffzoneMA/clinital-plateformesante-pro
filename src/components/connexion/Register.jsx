@@ -95,7 +95,7 @@ function Register({ comp, setStep, setIsConnected }) {
 {console.log(logintoggle)}
         <form ref={cnx} className={error ? "invalid" : ""}>
           <div>
-            <label htmlFor="email">Adresse e-mail ou Numéro de téléphone</label>
+            <label htmlFor="email">Adresse e-mail</label>
             <input
               type="text"
               name="email"
@@ -128,6 +128,7 @@ function Register({ comp, setStep, setIsConnected }) {
             />
             <img src="../../icons/eye-off.png" alt="" onClick={togglePassw} />
           </div>
+          
           <p>Adresse e-mail ou mot de passe incorrect, veuillez réessayer</p>
           <div className="checkbox">
             <input type="checkbox" id="remembre" />
@@ -143,6 +144,7 @@ function Register({ comp, setStep, setIsConnected }) {
               </>
             )}
           </button>
+
           <div className="btns">
             <button>
               <img

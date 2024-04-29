@@ -3,7 +3,7 @@
     .result {
       position: absolute;
       display: flex;
-      background-color: #f8f8f8;
+      background-color: #ffffff;
       width:100%;
       right: 0;
       max-height: 5* 45px;
@@ -28,14 +28,14 @@
           transition: all 200ms ease;
   
         &:hover {
-          background-color: rgba($black, 0.05);
+          background-color:#ffffff ;
         }
         &:after {
           content: "";
           width: 100%;
           left: 0;
           position: absolute;
-          border-bottom: 1px solid #eaeaea;
+          border-bottom: 1px solid #ffffff;
         }
       }
      

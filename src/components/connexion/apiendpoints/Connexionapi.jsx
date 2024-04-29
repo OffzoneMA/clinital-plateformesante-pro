@@ -12,6 +12,12 @@ confirmAccount(){
 
 gettokenbyuserid(userId) {
    return `auth/confirmationtoken/${userId}`;
-}
+},
+forgotpassword() {
+    return 'auth/forgotpassword';
+},
+createrequest() {
+    return 'demandes/create';
+},
 
 }
