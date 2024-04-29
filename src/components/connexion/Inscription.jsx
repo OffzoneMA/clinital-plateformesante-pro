@@ -8,6 +8,7 @@ import useForm from '../../Hooks/useForm';
 import Validator from '../../Helpers/Validators';
 import { validateEmail, validatePhone, validatePassword } from './rules/validation';
 import { TOKEN } from "../../services/api";
+import Axios from "axios"; 
 
 
 function Inscription() {
@@ -80,10 +81,11 @@ function Inscription() {
       setLoading(false);
       return;
     }
-   // if (isAccepted && isSame) {
+    // if (isAccepted && isSame) {
+    console.log("Les mots de passe",formData)
       ConnexionService.SignUp(formData)
         .then((Response) => {
-          if (Response.status === 200) {
+          if (Response.data.success===true) {
             toast.success("registration has been done Successefully")
             setisRegistred(true); //registration state 
           }
@@ -105,31 +107,20 @@ const handlepasswordconfirm=(e,password)=>{
 }
   
 //Traitement de renvoie d'un nouveau mail sur la demande du patient
-
+const handleRenvoyerClick = async () => {
+        try {
+            // Envoyez une requête au backend pour demander le renvoi du message de confirmation
+            const response = await Axios.post(`${process.env.BASE_URL}auth/resendConfirmation`, {
+                email: formData.email
+            });
+          console.log(response.data.message);
+          toast.success(response.data.message);
+        } catch (error) {
+            console.error('Une erreur s\'est produite:', error);
+           
+        }
+    };
   
-  const handleResendEmail = (token) => {
-    ConnexionService.Accountuser(token)
-      .then((response) => {
- 
-            console.log(token, response);
-            if (response.status === 200) {
-                toast.success("Un nouveau e-mail de confirmation vous a été envoyé avec succès.");
-            } else {
-                toast.error("Une erreur s'est produite lors de l'envoi du nouvel e-mail de confirmation.");
-            }
-        })
-        .catch((error) => {
-            console.error('Erreur lors de l\'envoi du nouveau e-mail de confirmation :', error);
-            toast.error('Une erreur s\'est produite lors de l\'envoi du nouvel e-mail de confirmation.');
-        });
-};
-
-
-
-const handleEmailChange = (event) => {
-  setEmail(event.target.value);
-};
-
 
 
   return (
@@ -137,18 +128,21 @@ const handleEmailChange = (event) => {
       <div className="container" ref={cnx}>
         <div className="linear-border"></div>
 
-       {!isRegisred  ? <> <h1>Nouveau sur Clinital ?</h1>
-
-          <form onSubmit={handleSubmit}>
-
-            <div className="btns">
+        {!isRegisred ? <> <h1>Nouveau sur Clinital ?</h1>
+          
+        <div className="btnsocial">
+           <div className="btns">
               <button>
                 <img src="/images/Facebook.png" alt="connexion avec facebook" />
               </button>
               <button>
                 <img src="/images/Google.png" alt="connexion avec google" />
-              </button>
-            </div>
+            </button>
+          </div>
+        </div>
+          
+
+          <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="telephone">Numéro de téléphone </label>
               <input
@@ -203,7 +197,7 @@ const handleEmailChange = (event) => {
                 onChange={() => setIsAccepted(true)} />
               <label htmlFor="terms">
                 J’accepte les
-                <Link to="/login/succes">
+                <Link to="#">
                   {" "}
                   CGU et la Politique de Confidentialité de Clinital
                 </Link>
@@ -211,7 +205,7 @@ const handleEmailChange = (event) => {
             </div>
             <div className="checkbox">
               <input type="checkbox" id="remember-me"
-                onChange={handleChange} />
+               />
               <label htmlFor="remember-me">Se souvenir de mon identifiant</label>
             </div>
             <button type="submit"  >
@@ -223,7 +217,13 @@ const handleEmailChange = (event) => {
               <Link to="/login">S’identifier</Link>
             </div>
           </form>
-          <img src="../images/insc-img.png" alt="" />
+          <img src="../images/insc-img.png" alt="" style={{width: "370px",
+            height: "536px",
+            top: "520px",
+            left: "900px",
+            gap: "0px",
+            opacity: "0px"
+            }} />
           </>
           :
           <div className="confirmation">
@@ -251,7 +251,8 @@ const handleEmailChange = (event) => {
               </svg>
             </div>
 
-          </div>
+            </div>
+            
           <div className="row">
             <div className="col-md-12 text-center">
               <h1 className="title">Un message a été envoyé avec succès</h1>
@@ -260,7 +261,13 @@ const handleEmailChange = (event) => {
           </div>
           <div className="row" Style={"position: absolute; bottom: 0; width: 100%;"}>
             <div className="col-md-12">
-              <p className="message">E-mail non reçu ? Vérifiez votre fichier spam ou <span onClick={() => handleRenvoyerClick}>Renvoyer</span></p>
+              <p className="message">E-mail non reçu ? Vérifiez votre fichier spam ou <span
+                onClick={handleRenvoyerClick}
+                style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}
+              >
+                Renvoyer
+              </span>
+              </p>
             </div>
           </div>
 
