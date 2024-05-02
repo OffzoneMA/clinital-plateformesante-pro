@@ -1,5 +1,6 @@
 @import '../../styles/style.scss';
 .inscription {
+  
     .result {
       position: absolute;
       display: flex;
@@ -15,7 +16,7 @@
       flex-direction: column;
       opacity: 10;
       z-index: 1000;
-      filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+      filter: drop-shadow(0px 0px 31px rgb(255, 255, 255));
       
       span {
         width: 100%;
@@ -28,20 +29,16 @@
           transition: all 200ms ease;
   
         &:hover {
-          background-color:#ffffff ;
+          background-color: rgba($black, 0.05);
         }
         &:after {
           content: "";
           width: 100%;
           left: 0;
           position: absolute;
-          border-bottom: 1px solid #ffffff;
+          border-bottom: 1px solid #eaeaea;
         }
-      }
-     
-    
-    
-    
+      }   
     
   }
 }

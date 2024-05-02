@@ -24,6 +24,13 @@ export default {
       JSON.stringify(data)
     );
   },
+  async addSpecialite(data) {
+    return await axiosInstance.post(
+      Connexionapi.addSpecialite(),
+      JSON.stringify(data)
+    );
+  },
+
 
   async getConfirmationToken(userId) {
     try {
