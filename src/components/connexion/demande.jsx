@@ -18,6 +18,7 @@ function Demande() {
   const [isRegisred, setisRegistred] = useState(false); //Enregistrement du user
   const [loading, setLoading] = useState(false); //une opération est en cours de chargement.
   const dispatch = useDispatch();
+  const [showInput, setShowInput] = useState(false);
   const [errors, setErrors] = useState({
     phoneError: false,
     emailError: false,
@@ -40,6 +41,9 @@ function Demande() {
     validation: "ENCOURS",
     civilite_med: "Mme",
   });
+  const [specData, setSpecData] = useState({
+    libelle: "",
+  });
   const citySearchContainer = useRef();
   const specSearchContainer = useRef();
 
@@ -51,7 +55,7 @@ function Demande() {
 
   const cnx = useRef();
 
-  useEffect(() => {
+  const loadCitiesAndSpecialities = () => {
     try {
       setLoading(true);
       SearchServices.getAllCities()
@@ -86,6 +90,9 @@ function Demande() {
       toast.error(error.message);
     }
     window.scrollTo(0, 0);
+  };
+  useEffect(() => {
+    loadCitiesAndSpecialities();
   }, []);
 
   // Filter citys
@@ -109,11 +116,23 @@ function Demande() {
       return { ...x, [name]: value };
     });
   };
+
   const toggleSeachOnClick = (name, libelle) => {
     setSearch((y) => {
       return { ...y, [name]: libelle, villeName: "" };
     });
   };
+  const handleSeach = (array, container) => {
+    const context = container.current;
+    const instance = new Mark(context);
+    if (array && city) instance.unmark(array);
+    if (array && city && !loading) instance.mark(array);
+  };
+  useEffect(() => {
+    handleSeach(search.city, citySearchContainer);
+    handleSeach(search.spec, specSearchContainer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search, city]);
   const createRequest = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -156,6 +175,31 @@ function Demande() {
         setLoading(false);
       });
   };
+
+  const addSpecialite = () => {
+    setLoading(true); // Mettre loading à true au début de la requête
+    ConnexionService.addSpecialite(specData)
+      .then((response) => {
+        if (response.data.success) {
+          // Si la requête est réussie, afficher un message de succès
+          toast.success("Spécialité ajoutée avec succès !");
+          loadCitiesAndSpecialities();
+        } else {
+          // Si success est faux, cela signifie que le libellé de la spécialité existe déjà
+          toast.error("La spécialité existe déjà");
+        }
+      })
+      .catch((error) => {
+        // En cas d'erreur, afficher un message d'erreur général
+        toast.error(
+          "Erreur lors de l'ajout de la spécialité : " + error.message
+        );
+      })
+      .finally(() => {
+        setLoading(false); // Mettre loading à false à la fin de la requête, que ce soit un succès ou une erreur
+      });
+  };
+
   return (
     <div className="register inscription">
       <div className="container" ref={cnx}>
@@ -180,9 +224,14 @@ function Demande() {
                   Civilité
                 </label>
                 <div className="addForm">
-                  <label htmlFor="dam" className="input-check-box1">
+                  <label
+                    htmlFor="dam"
+                    className="input-check-box1"
+                    style={{
+                      marginLeft: "5px",
+                    }}
+                  >
                     <input
-                      
                       type="radio"
                       name="Civilité"
                       id="dam"
@@ -195,9 +244,14 @@ function Demande() {
                     <div className="input-doth"></div>
                     <span>Femme</span>
                   </label>
-                  <label htmlFor="Mr" className="input-check-box">
+                  <label
+                    htmlFor="Mr"
+                    className="input-check-box"
+                    style={{
+                      marginLeft: "156px",
+                    }}
+                  >
                     <input
-                      
                       type="radio"
                       name="Civilité"
                       id="Mr"
@@ -207,7 +261,11 @@ function Demande() {
                         setSpecInputFocused(false);
                       }}
                     />
-                    <input type="hidden" name="Civilité" value={formData.civilite_med} />
+                    <input
+                      type="hidden"
+                      name="Civilité"
+                      value={formData.civilite_med}
+                    />
                     <div className="input-doth"></div>
                     <span>Homme</span>
                   </label>
@@ -243,8 +301,11 @@ function Demande() {
                     }}
                   />
                   {errors.prenomError && (
-                <span className="err"><br/>Le prénom est obligatoire</span>
-              )}
+                    <span className="err">
+                      <br />
+                      Le prénom est obligatoire
+                    </span>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="">Nom</label>
@@ -252,7 +313,6 @@ function Demande() {
                     type="text"
                     name=""
                     placeholder="Saisir votre nom"
-                    
                     onChange={(e) => {
                       setFormData({
                         ...formData,
@@ -271,8 +331,11 @@ function Demande() {
                     }}
                   />
                   {errors.nomError && (
-                <span className="err"><br/>Le nom est obligatoire</span>
-              )}
+                    <span className="err">
+                      <br />
+                      Le nom est obligatoire
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="adresse">
@@ -281,7 +344,6 @@ function Demande() {
                   type="tele"
                   id="telephone"
                   placeholder="Saisir votre numéro de téléphone "
-                  
                   value={formData.phonenumber}
                   onChange={(e) => {
                     setFormData({
@@ -302,16 +364,18 @@ function Demande() {
                 />
               </div>
               {errors.phoneError && (
-                <span className="err"> Veuillez saisir un numéro de téléphone valide</span>
+                <span className="err">
+                  {" "}
+                  Veuillez saisir un numéro de téléphone valide
+                </span>
               )}
-          
+
               <div className="adresse">
                 <label htmlFor="email">Adresse e-mail</label>
                 <input
                   type="text"
                   id="email"
                   placeholder="Saisir votre adresse e-mail "
-                  
                   value={formData.mail}
                   onChange={(e) => {
                     setFormData({
@@ -332,22 +396,30 @@ function Demande() {
                 />
               </div>
               {errors.emailError && (
-                <span className="err"> Veuillez saisir une adresse e-mail valide</span>
+                <span className="err">
+                  {" "}
+                  Veuillez saisir une adresse e-mail valide
+                </span>
               )}
-           
+
               <div>
                 <label htmlFor="ville">Ville</label>
                 <input
                   type="text"
                   name="city"
                   placeholder="Choisir votre ville "
-                  value={search.city === " " ? "" : search.city}
+                  value={formData.ville}
                   onChange={(e) => {
                     toggleSeach(e);
                   }}
-                  onFocus={() => {
+                  readOnly
+                  onClick={() => {
                     setCityInputFocused(true);
                     setSpecInputFocused(false);
+                    setSearch({
+                      ...search,
+                      city: " ",
+                    });
                   }} // Set focus state when input is focused
                   style={{
                     paddingRight: "30px",
@@ -371,13 +443,13 @@ function Demande() {
                       type="text"
                       name="city"
                       placeholder="Rechercher une ville"
-                      value={search.city === " " ? "" : search.city}
                       onChange={(e) => {
                         toggleSeach(e);
                       }}
                       style={{
                         marginTop: "10px",
                         paddingRight: "30px",
+                        marginBottom: "5px",
                       }}
                     />
                     <img
@@ -422,17 +494,22 @@ function Demande() {
                 <input
                   type="text"
                   name="spec"
-                  placeholder="Choisir votre spécialité  "
-                  value={search.spec === " " ? "" : search.spec}
-                  onChange={(e) => {
+                  placeholder="Choisir votre spécialité"
+                  value={formData.specialite}
+                  readOnly // Ajout de l'attribut readOnly
+                  onClick={(e) => {
                     toggleSeach(e);
-                  }}
-                  onFocus={() => {
                     setCityInputFocused(false);
                     setSpecInputFocused(true);
+                    setSearch({
+                      ...search,
+                      spec: " ",
+                    });
+                    setShowInput(false);
                   }}
                   style={{
                     paddingRight: "30px",
+                    borderBottom: "1px solid #eaeaea",
                   }}
                 />
                 <img
@@ -453,13 +530,13 @@ function Demande() {
                       type="text"
                       name="spec"
                       placeholder="Rechercher une spécialité  "
-                      value={search.spec === " " ? "" : search.spec}
                       onChange={(e) => {
                         toggleSeach(e);
                       }}
                       style={{
                         marginTop: "10px",
                         paddingRight: "30px",
+                        marginBottom: "5px",
                       }}
                     />
                     <img
@@ -473,6 +550,67 @@ function Demande() {
                         cursor: "pointer",
                       }}
                     />
+                    {showInput ? (
+                      <span>
+                        <input
+                          type="text"
+                          placeholder="Entrez une nouvelle spécialité"
+                          name="spec"
+                          onChange={(e) => {
+                            setSpecData({
+                              ...specData,
+                              libelle: e.target.value,
+                            });
+                            toggleSeach(e);
+                          }}
+                          style={{
+                            marginTop: "10px",
+                            width: "400px",
+                            marginBottom: "10px",
+                            marginLeft: "-15px",
+                          }}
+                        />
+                        {"   "}
+                        <u
+                          style={{
+                            fontSize: "17px",
+                            fontWeight: 600,
+                            lineHeight: "45px",
+                            textAlign: "left",
+                            color: "#6DC0F9",
+                            marginLeft: "5px",
+                          }}
+                          onClick={() => {
+                            toggleSeachOnClick("spec", specData.libelle);
+                            setCityInputFocused(false);
+                            setSpecInputFocused(false);
+                            setFormData({
+                              ...formData,
+                              specialite: specData.libelle,
+                            });
+                            console.log("lib", specData.libelle);
+                            addSpecialite();
+                          }}
+                        >
+                          {"  "}
+                          Ajouter
+                        </u>
+                      </span>
+                    ) : (
+                      <span
+                        style={{
+                          fontSize: "17px",
+                          fontWeight: 600,
+                          lineHeight: "45px",
+                          textAlign: "left",
+                          color: "#6DC0F9",
+                        }}
+                        onClick={() => setShowInput(true)}
+                      >
+                        <strong>+</strong>
+                        <u> Ajouter une spécialité</u>
+                      </span>
+                    )}
 
                     {loading ? (
                       <span className="loading">Loading...</span>
@@ -506,7 +644,6 @@ function Demande() {
                   type="text"
                   id="inpe"
                   placeholder="Saisir votre N° INPE "
-                  
                   onFocus={() => {
                     setCityInputFocused(false);
                     setSpecInputFocused(false);
@@ -560,6 +697,18 @@ function Demande() {
                 height: "562px",
                 top: "503px",
                 left: "970px",
+                gap: "0px",
+                opacity: "0px",
+              }}
+            />
+            <img
+              src="../images/Ellipse.png"
+              alt=""
+              style={{
+                width: "362px",
+                height: "64px",
+                top: "770px",
+                left: "940px",
                 gap: "0px",
                 opacity: "0px",
               }}

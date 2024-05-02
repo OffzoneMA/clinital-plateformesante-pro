@@ -19,5 +19,8 @@ forgotpassword() {
 createrequest() {
     return 'demandes/create';
 },
+addSpecialite() {
+    return 'specialites/ajouter';
+},
 
 }
