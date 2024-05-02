@@ -8,7 +8,7 @@ const SecondLoginForm = ({ cnxSecondForm, error,setError, setUserCredentials,
 
 
   
-  console.log("seconde form",email);
+  console.log("second form",email);
    const handleConnexion = (e) => {
     e.preventDefault();
 

@@ -42,13 +42,13 @@ function ForgotPassword() {
     const isoDate = new Date(formData.birthdate).toISOString();
     const formattedDate = isoDate.split('T')[0];
     const data = {
-      patientEmail: formData.email,
+      proEmail: formData.email,
       dateNaissance: formattedDate
     };
 
 
     try {
-      ConnexionService.ForgotPassword(data)
+      ConnexionService.ForgotPasswordPro(data)
         .then(response => {
           if (response.data.success===true) {
             //toast.success(response.data.message);

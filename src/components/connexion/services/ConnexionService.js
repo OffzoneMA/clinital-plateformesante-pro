@@ -18,6 +18,13 @@ export default {
     );
   },
 
+  async ForgotPasswordPro(data) {
+    return await axiosInstance.post(
+        Connexionapi.forgotpasswordPro(),
+        JSON.stringify(data)
+    );
+  },
+
   async createrequest(data) {
     return await axiosInstance.post(
       Connexionapi.createrequest(),
