@@ -12,6 +12,7 @@ import SearchServices from "../searchBarDoc/SearchServices/SearchServices";
 import { setSpecialite, setVilles } from "../../utils/redux/GlobalSlice";
 import "./Demande.scss";
 import ConnexionService from "./services/ConnexionService";
+import { useTranslation } from "react-i18next";
 
 function Demande() {
   const [isAccepted, setIsAccepted] = useState(false); //les conditions générales
@@ -25,7 +26,7 @@ function Demande() {
     prenomError: false,
     nomError: false,
   });
-
+  const { t, i18n } = useTranslation();
   const [search, setSearch] = useState({
     city: " ",
     spec: " ",
@@ -201,14 +202,13 @@ function Demande() {
   };
 
   return (
-    <div className="register inscription">
+    <div className="register inscription" style={{ direction: localStorage.getItem("language") === "ar" ? "rtl" : "ltr" }}>
       <div className="container" ref={cnx}>
         <div className="linear-border"></div>
-
         {!isRegisred ? (
           <>
             {" "}
-            <h1>Nouveau Praticien sur Clinital ?</h1>
+            <h1>{t("newPractitionerOnClinital")}</h1>
             <form onSubmit={createRequest}>
               <div
                 style={{
@@ -221,7 +221,7 @@ function Demande() {
                     marginLeft: "-8px",
                   }}
                 >
-                  Civilité
+                  {t("civilite")}
                 </label>
                 <div className="addForm">
                   <label
@@ -242,7 +242,7 @@ function Demande() {
                       }}
                     />
                     <div className="input-doth"></div>
-                    <span>Femme</span>
+                    <span> {t("femme")}</span>
                   </label>
                   <label
                     htmlFor="Mr"
@@ -267,7 +267,7 @@ function Demande() {
                       value={formData.civilite_med}
                     />
                     <div className="input-doth"></div>
-                    <span>Homme</span>
+                    <span>{t("homme")}</span>
                   </label>
                 </div>
               </div>
@@ -278,11 +278,11 @@ function Demande() {
                 }}
               >
                 <div>
-                  <label htmlFor="">Prénom</label>
+                  <label htmlFor=""> {t("firstName")}</label>
                   <input
                     type="text"
                     name=""
-                    placeholder="Saisir votre prénom"
+                    placeholder={t("placeholderPrenom")}
                     onChange={(e) => {
                       setFormData({
                         ...formData,
@@ -303,16 +303,16 @@ function Demande() {
                   {errors.prenomError && (
                     <span className="err">
                       <br />
-                      Le prénom est obligatoire
+                      {t("requiredFirstName")}
                     </span>
                   )}
                 </div>
                 <div>
-                  <label htmlFor="">Nom</label>
+                  <label htmlFor="">{t("lastName")}</label>
                   <input
                     type="text"
                     name=""
-                    placeholder="Saisir votre nom"
+                    placeholder=   {t("placeholderNom")}
                     onChange={(e) => {
                       setFormData({
                         ...formData,
@@ -333,17 +333,17 @@ function Demande() {
                   {errors.nomError && (
                     <span className="err">
                       <br />
-                      Le nom est obligatoire
+                      {t("requiredLastName")}
                     </span>
                   )}
                 </div>
               </div>
               <div className="adresse">
-                <label htmlFor="telephone">Numéro de téléphone </label>
+                <label htmlFor="telephone">{t("phoneNumber")} </label>
                 <input
                   type="tele"
                   id="telephone"
-                  placeholder="Saisir votre numéro de téléphone "
+                  placeholder={t("placeholderPhoneNumber")}
                   value={formData.phonenumber}
                   onChange={(e) => {
                     setFormData({
@@ -366,16 +366,16 @@ function Demande() {
               {errors.phoneError && (
                 <span className="err">
                   {" "}
-                  Veuillez saisir un numéro de téléphone valide
+                  {t("invalidPhoneNumber")}
                 </span>
               )}
 
               <div className="adresse">
-                <label htmlFor="email">Adresse e-mail</label>
+                <label htmlFor="email">{t("emailAddress")}</label>
                 <input
                   type="text"
                   id="email"
-                  placeholder="Saisir votre adresse e-mail "
+                  placeholder={t("placeholderEmail")}
                   value={formData.mail}
                   onChange={(e) => {
                     setFormData({
@@ -398,16 +398,16 @@ function Demande() {
               {errors.emailError && (
                 <span className="err">
                   {" "}
-                  Veuillez saisir une adresse e-mail valide
+                  {t("invalidEmail")}
                 </span>
               )}
 
               <div>
-                <label htmlFor="ville">Ville</label>
+                <label htmlFor="ville">{t("city")}</label>
                 <input
                   type="text"
                   name="city"
-                  placeholder="Choisir votre ville "
+                  placeholder={t("chooseCity")}
                   value={formData.ville}
                   onChange={(e) => {
                     toggleSeach(e);
@@ -442,7 +442,7 @@ function Demande() {
                     <input
                       type="text"
                       name="city"
-                      placeholder="Rechercher une ville"
+                      placeholder={t("searchCity")}
                       onChange={(e) => {
                         toggleSeach(e);
                       }}
@@ -464,7 +464,7 @@ function Demande() {
                       }}
                     />
                     {loading ? (
-                      <span className="loading">Loading...</span>
+                      <span className="loading">{t("loading")}</span>
                     ) : (
                       filterSearch(search.city, city, "nom_ville")?.map(
                         (x, index) => (
@@ -490,11 +490,11 @@ function Demande() {
                 )}
               </div>
               <div>
-                <label htmlFor="specialité">Spécialité</label>
+                <label htmlFor="specialité">{t("speciality")}</label>
                 <input
                   type="text"
                   name="spec"
-                  placeholder="Choisir votre spécialité"
+                  placeholder={t("chooseSpeciality")}
                   value={formData.specialite}
                   readOnly // Ajout de l'attribut readOnly
                   onClick={(e) => {
@@ -529,7 +529,7 @@ function Demande() {
                     <input
                       type="text"
                       name="spec"
-                      placeholder="Rechercher une spécialité  "
+                      placeholder={t("searchSpeciality")}
                       onChange={(e) => {
                         toggleSeach(e);
                       }}
@@ -554,7 +554,7 @@ function Demande() {
                       <span>
                         <input
                           type="text"
-                          placeholder="Entrez une nouvelle spécialité"
+                          placeholder={t("enterNewSpeciality")}
                           name="spec"
                           onChange={(e) => {
                             setSpecData({
@@ -593,7 +593,7 @@ function Demande() {
                           }}
                         >
                           {"  "}
-                          Ajouter
+                          {t("add")}
                         </u>
                       </span>
                     ) : (
@@ -608,12 +608,12 @@ function Demande() {
                         onClick={() => setShowInput(true)}
                       >
                         <strong>+</strong>
-                        <u> Ajouter une spécialité</u>
+                        <u> {t("addSpecialityPlaceholder")}</u>
                       </span>
                     )}
 
                     {loading ? (
-                      <span className="loading">Loading...</span>
+                      <span className="loading"> {t("loading")}</span>
                     ) : (
                       filterSearch(search.spec, spec, "libelle")?.map(
                         (x, index) => (
@@ -639,11 +639,11 @@ function Demande() {
                 )}
               </div>
               <div>
-                <label htmlFor="inpe">N° INPE</label>
+                <label htmlFor="inpe">{t("inpeNumber")}</label>
                 <input
                   type="text"
                   id="inpe"
-                  placeholder="Saisir votre N° INPE "
+                  placeholder= {t("placeholderINPENumber")}
                   onFocus={() => {
                     setCityInputFocused(false);
                     setSpecInputFocused(false);
@@ -666,10 +666,7 @@ function Demande() {
                   color: "#8A8F95",
                 }}
               >
-                Conformément à la loi 09-08, vous disposez d’un droit d’accès,
-                de rectification et d’opposition au traitement de vos données
-                personnelles. Ce traitement a été autorisé par la CNDP sous le
-                n° A-S-259/2022.
+               {t("lawInformation")}
               </div>
               <div className="checkbox">
                 <input
@@ -678,14 +675,14 @@ function Demande() {
                   onChange={() => setIsAccepted(true)}
                 />
                 <label htmlFor="terms">
-                  J’accepte les
-                  <Link> CGU</Link> et
-                  <Link> la Politique de Confidentialité</Link> de Clinital
+                {t("termsAndConditions")}
+                  <Link> {t("termsLink")}</Link> {t("and")}
+                  <Link> {t("privacyPolicyLink")}</Link> {t("ofClinital")}
                 </label>
               </div>
 
               <button type="submit">
-                S'inscrire
+              {t("Register")}
                 <img src="../icons/flech-white.svg" alt="se connecter" />
               </button>
             </form>
@@ -769,7 +766,7 @@ function Demande() {
                     textAlign: "center",
                   }}
                 >
-                  Votre demande a été envoyée avec succès
+                 {t("requestSentSuccessfully")}
                 </h1>
                 <p
                   className="message"
@@ -780,9 +777,9 @@ function Demande() {
                     textAlign: "center",
                   }}
                 >
-                  Merci pour votre inscription.
+                  {t("thankYouForRegistration1")}
                   <br />
-                  Notre équipe vous contactera dans les meilleurs délais
+                  {t("thankYouForRegistration2")}
                 </p>
               </div>
             </div>

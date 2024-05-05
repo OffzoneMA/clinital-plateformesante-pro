@@ -4,9 +4,12 @@ import { Log } from "../../App";
 import './Navbar.scss'
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "../../utils/redux/GlobalSlice";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [subMenu, setSubMenu] = useState(false);
+  const [subMenuLang, setSubMenuLang] = useState(false);
+  const { i18n } = useTranslation();
   //const user = useContext(Log);
   const user = useSelector((state)=>(state.global.user))
   const dispatch=useDispatch()
@@ -14,6 +17,12 @@ function Navbar() {
     localStorage.removeItem("user");
     window.location = "/login";
     // window.location.reload();
+  };
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang)
+    console.log("Changer la langue vers :", lang);
+    localStorage.setItem("language", lang);
+    setSubMenuLang(!subMenuLang);
   };
   return (
     <div className="navbar">
@@ -28,7 +37,7 @@ function Navbar() {
         <ul>
           {!user ? (
             <>
-              <button className="large-btn">
+              <button className="large-btn" >
                 Vous êtes professionnel de santé ?
               </button>
             </>
@@ -68,7 +77,40 @@ function Navbar() {
               height="18px"
             />
           </button>
-
+          <button onClick={() =>  setSubMenuLang(!subMenuLang)}>
+            <img
+              src="../../icons/help-circle-outline.svg"
+              alt="help"
+              height="18px"
+            />
+          </button>
+     
+          
+          
+          <div className={`sub-menu1 ${subMenuLang ? "" : "closed"}`}>
+          
+              <div className="item">
+             
+                <div className="moncompte" onClick={() => changeLanguage("fr")}>
+                Français 
+                </div>
+              </div>
+          
+            <hr />
+            <div className="item">
+            
+                <div className="moncompte" onClick={() => changeLanguage("en")}>
+                English 
+                </div>
+              </div>
+              <hr />
+            <div className="item">
+            
+                <div className="moncompte" onClick={() => changeLanguage("ar")}>
+                العربية 
+                </div>
+              </div>
+          </div>
           <Link
             to="/login"
             onClick={(e) => {
