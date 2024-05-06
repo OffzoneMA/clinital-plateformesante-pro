@@ -37,5 +37,6 @@
   "addSpecialityPlaceholder": "Ajouter une spécialité",
   "placeholderINPENumber": "Saisir votre N° INPE",
   "lawInformation": "Conformément à la loi 09-08, vous disposez d’un droit d’accès, de rectification et d’opposition au traitement de vos données personnelles. Ce traitement a été autorisé par la CNDP sous le n° A-S-259/2022.",
-  "Register":" S'inscrire"
+  "Register":" S'inscrire",
+  "acceptTerms": "Veuillez accepter les conditions générales"
 }

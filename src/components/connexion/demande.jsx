@@ -156,7 +156,7 @@ function Demande() {
     }
 
     if (!isAccepted) {
-      toast.error("Veuillez accepter les conditions générales");
+      toast.error(t("acceptTerms"));
       setLoading(false);
       return;
     }
@@ -202,7 +202,12 @@ function Demande() {
   };
 
   return (
-    <div className="register inscription" style={{ direction: localStorage.getItem("language") === "ar" ? "rtl" : "ltr" }}>
+    <div
+      className="register inscription"
+      style={{
+        direction: localStorage.getItem("language") === "ar" ? "rtl" : "ltr",
+      }}
+    >
       <div className="container" ref={cnx}>
         <div className="linear-border"></div>
         {!isRegisred ? (
@@ -312,7 +317,7 @@ function Demande() {
                   <input
                     type="text"
                     name=""
-                    placeholder=   {t("placeholderNom")}
+                    placeholder={t("placeholderNom")}
                     onChange={(e) => {
                       setFormData({
                         ...formData,
@@ -364,10 +369,7 @@ function Demande() {
                 />
               </div>
               {errors.phoneError && (
-                <span className="err">
-                  {" "}
-                  {t("invalidPhoneNumber")}
-                </span>
+                <span className="err"> {t("invalidPhoneNumber")}</span>
               )}
 
               <div className="adresse">
@@ -396,10 +398,7 @@ function Demande() {
                 />
               </div>
               {errors.emailError && (
-                <span className="err">
-                  {" "}
-                  {t("invalidEmail")}
-                </span>
+                <span className="err"> {t("invalidEmail")}</span>
               )}
 
               <div>
@@ -431,7 +430,10 @@ function Demande() {
                   style={{
                     position: "absolute",
                     top: "68%",
-                    right: "10px",
+                    right:
+                      localStorage.getItem("language") === "ar"
+                        ? "460px"
+                        : "10px",
                     transform: "translateY(-50%)",
                     cursor: "pointer",
                   }}
@@ -480,6 +482,12 @@ function Demande() {
                                 ville: x.nom_ville,
                               });
                             }}
+                            style={{
+                              direction:
+                                localStorage.getItem("language") === "ar"
+                                  ? "ltr"
+                                  : "ltr",
+                            }}
                           >
                             {x.nom_ville}
                           </span>
@@ -518,7 +526,10 @@ function Demande() {
                   style={{
                     position: "absolute",
                     top: "68%",
-                    right: "10px",
+                    right:
+                      localStorage.getItem("language") === "ar"
+                        ? "460px"
+                        : "10px",
                     transform: "translateY(-50%)",
                     cursor: "pointer",
                   }}
@@ -578,7 +589,12 @@ function Demande() {
                             lineHeight: "45px",
                             textAlign: "left",
                             color: "#6DC0F9",
-                            marginLeft: "5px",
+                            [localStorage.getItem("language") === "ar"
+                              ? "marginRight"
+                              : "marginLeft"]:
+                              localStorage.getItem("language") === "ar"
+                                ? "25px"
+                                : "5px",
                           }}
                           onClick={() => {
                             toggleSeachOnClick("spec", specData.libelle);
@@ -602,7 +618,10 @@ function Demande() {
                           fontSize: "17px",
                           fontWeight: 600,
                           lineHeight: "45px",
-                          textAlign: "left",
+                          textAlign:
+                            localStorage.getItem("language") === "ar"
+                              ? "right"
+                              : "left",
                           color: "#6DC0F9",
                         }}
                         onClick={() => setShowInput(true)}
@@ -629,6 +648,12 @@ function Demande() {
                                 specialite: x.libelle,
                               });
                             }}
+                            style={{
+                              direction:
+                                localStorage.getItem("language") === "ar"
+                                  ? "ltr"
+                                  : "ltr",
+                            }}
                           >
                             {x.libelle}
                           </span>
@@ -643,7 +668,7 @@ function Demande() {
                 <input
                   type="text"
                   id="inpe"
-                  placeholder= {t("placeholderINPENumber")}
+                  placeholder={t("placeholderINPENumber")}
                   onFocus={() => {
                     setCityInputFocused(false);
                     setSpecInputFocused(false);
@@ -662,11 +687,11 @@ function Demande() {
                   fontSize: "12px",
                   fontWeight: 400,
                   lineHeight: "16.8px",
-                  textAlign: "left",
+                  textAlign: localStorage.getItem("language") === "ar" ? "right" : "left",
                   color: "#8A8F95",
                 }}
               >
-               {t("lawInformation")}
+                {t("lawInformation")}
               </div>
               <div className="checkbox">
                 <input
@@ -674,16 +699,24 @@ function Demande() {
                   id="terms"
                   onChange={() => setIsAccepted(true)}
                 />
-                <label htmlFor="terms">
-                {t("termsAndConditions")}
+                <label htmlFor="terms"
+                    style={{
+                      marginRight: localStorage.getItem("language") === "ar" ? "5px" : "0px",
+                     
+                    }}>
+                  {t("termsAndConditions")}
                   <Link> {t("termsLink")}</Link> {t("and")}
                   <Link> {t("privacyPolicyLink")}</Link> {t("ofClinital")}
                 </label>
               </div>
 
               <button type="submit">
-              {t("Register")}
-                <img src="../icons/flech-white.svg" alt="se connecter" />
+                {t("Register")}
+                {localStorage.getItem("language") === "ar" ? (
+                  <img src="../icons/flech-white-left.svg" alt="se connecter" />
+                ) : (
+                  <img src="../icons/flech-white.svg" alt="se connecter" />
+                )}
               </button>
             </form>
             <img
@@ -766,7 +799,7 @@ function Demande() {
                     textAlign: "center",
                   }}
                 >
-                 {t("requestSentSuccessfully")}
+                  {t("requestSentSuccessfully")}
                 </h1>
                 <p
                   className="message"

@@ -10,7 +10,7 @@
     "city": "المدينة",
     "speciality": "التخصص",
     "inpeNumber": "رقم INPE",
-    "termsAndConditions": "أوافق على ",
+    "termsAndConditions": "  أوافق على",
     "and":"و",
     "termsLink": "الشروط والأحكام",
     "ofClinital":"لـ كلينيتال",
@@ -28,15 +28,16 @@
     "placeholderEmail": "ادخل عنوان بريدك الإلكتروني",
     "invalidEmail": "الرجاء إدخال عنوان بريد إلكتروني صحيح",
     "chooseCity": "اختر مدينتك",
-    "searchCity": "البحث عن مدينة",
+    "searchCity": " البحث عن مدينة",
     "loading": "جار التحميل...",
     "chooseSpeciality": "اختر تخصصك",
-    "searchSpeciality": "البحث عن تخصص",
+    "searchSpeciality": " البحث عن تخصص",
     "enterNewSpeciality": "أدخل تخصصًا جديدًا",
     "add": "إضافة",
     "addSpecialityPlaceholder": "إضافة تخصص",
     "placeholderINPENumber": "أدخل رقم INPE الخاص بك",
     "lawInformation": "وفقًا للقانون 09-08، لديك الحق في الوصول إلى البيانات الشخصية الخاصة بك وتصحيحها والاعتراض على معالجتها. تمت الموافقة على هذه المعالجة من قبل اللجنة الوطنية لمراقبة حماية البيانات الشخصية برقم A-S-259/2022.",
-    "Register":" تسجيل"
+    "Register":" تسجيل",
+    "acceptTerms": "يرجى قبول الشروط والأحكام"
   }
   

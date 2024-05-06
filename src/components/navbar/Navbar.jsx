@@ -79,7 +79,7 @@ function Navbar() {
           </button>
           <button onClick={() =>  setSubMenuLang(!subMenuLang)}>
             <img
-              src="../../icons/help-circle-outline.svg"
+              src="../../icons/language.svg"
               alt="help"
               height="18px"
             />
