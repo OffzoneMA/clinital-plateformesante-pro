@@ -51,7 +51,7 @@ function App() {
         <ErrorBoundary>
           <Routes>
           
-            <Route index path="/" element={<HomePage />} />
+            <Route index path="/" element={<Connexion />} />
             <Route exact path="/login/*" element={<Connexion />} />
             <Route exact path="/result//*" element={<Result />} />
             <Route exact path="/profil/:id" element={<Profil />} />

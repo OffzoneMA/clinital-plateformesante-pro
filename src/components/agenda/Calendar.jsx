@@ -160,11 +160,9 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
   return (
     <div className="agenda-content">
       <div className="nav">
+
         <div>
-          <h2>Mon agenda</h2>
-          <button><Link to='/'>Prendre Un RDV</Link></button>
-        </div>
-        <div>
+          Afficher par:
           <span
             onClick={toggleOption("day")}
             className={option === "day" ? "activeSpan" : ""}
@@ -184,6 +182,14 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
             Mois
           </span>
         </div>
+
+        <div>
+          Filtrer par Médecin:
+          <select>
+            <option value="">Sélectionner un médecin</option>
+          </select>
+        </div>
+
       </div>
       <div className="calendar">
       <div className="calendar-wrapper">
