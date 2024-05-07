@@ -16,6 +16,9 @@ gettokenbyuserid(userId) {
 forgotpassword() {
     return 'auth/forgotpassword';
 },
+forgotpasswordPro() {
+    return 'auth/forgotpasswordPro';
+},
 createrequest() {
     return 'demandes/create';
 },

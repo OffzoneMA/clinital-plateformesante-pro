@@ -69,10 +69,10 @@ function Login({ comp, setStep, setIsConnected }) {
                   type: response.data.type,
               };
        
-              if (data.role === "ROLE_PATIENT") {
+              if (data.role === "ROLE_MEDECIN" || data.role === "ROLE_SECRETAIRE") {
                   dispatch(setUser(data));
                   setError(false);
-                  comp !== "priseRdv" && (window.location = "/");
+                  comp !== "priseRdv" && (window.location = "/agenda");
                   comp === "priseRdv" && setStep(3);
                   comp === "priseRdv" && setIsConnected(user);
                   // comp === "priseRdv" && addRdv(e, user, 'conx');
@@ -82,7 +82,7 @@ function Login({ comp, setStep, setIsConnected }) {
                     return;
                   }
               } else {
-                  toast.error("Ouups! You're not 'patient'");
+                  toast.error("Ouups! Vous n'êtes ni Praticient ni Secretaire");
                   return false;
               }
           }
