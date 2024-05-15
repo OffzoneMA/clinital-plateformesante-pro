@@ -1,0 +1,57 @@
+.menuclinital {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1180px;
+  
+  }
+  
+  .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 2px solid #D9D8D8;
+    cursor: pointer;
+    position: relative;
+  }
+  .circle-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px; /* Ajustez la taille de l'icône selon vos besoins */
+    height: 24px;
+  }
+
+  .circle-text {
+    color: #A9ACB0;
+    width: 120px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 16.8px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    margin-top: 110px;
+    margin-left: 1px; /* Ajustez l'espacement entre le texte et l'icône selon vos besoins */
+  }
+  .line {
+    flex: 1;
+    width: 200px;
+    border-top: 2px solid #D9D8D8;
+  }
+  
+  .selected {
+    border-color: #C989DD; /* Change la couleur de la bordure pour les cercles sélectionnés */
+    background-color: #ffffff;
+  }
+
+  .selected-text {
+    color: #C989DD; /* Change la couleur du texte pour les cercles sélectionnés */
+  }
+
+  
