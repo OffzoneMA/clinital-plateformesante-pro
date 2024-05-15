@@ -38,5 +38,26 @@
   "placeholderINPENumber": "Enter your INPE number",
   "lawInformation": "In accordance with Law 09-08, you have the right to access, rectify, and object to the processing of your personal data. This processing has been authorized by the CNDP under number A-S-259/2022.",
   "Register": " Register",
-  "acceptTerms": "Please accept the terms and conditions"
+  "acceptTerms": "Please accept the terms and conditions",
+  "myCabinet": "My Cabinet",
+  "optimizeCollaboration": "Optimize synergistic collaboration within your medical team to ensure effective and efficient management of your practice.",
+  "joinMyPractice": "Add my Cabinet",
+  "joinPracticeDescription": "Join your practice for enhanced team collaboration and optimal management of your patients' records.",
+  "joinMyPracticeButton": "Join my Cabinet",
+  "cabinetName": "Cabinet Name",
+  "enterCabinetName": "Enter the cabinet name",
+  "cabinetPhoneNumber": "Enter the cabinet phone number",
+  "address": "Address",
+  "enterAddress": "Enter the cabinet address",
+  "postalCode": "Postal Code",
+  "enterPostalCode": "Enter the postal code",
+  "nextStep": "Next Step",
+  "contactAdminMessage": "Please contact the administrator of your cabinet to have yourself added to the team",
+  "joinMyCabinet": "Join My Cabinet",
+  "monCabinet": "My Cabinet",
+  "monDocuments": "My Documents",
+  "choisirUneOffre": "Choose an Offer",
+  "paiement": "Payment",
+  "publierMonProfil": "Publish My Profile"
+
 }

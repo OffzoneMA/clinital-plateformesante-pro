@@ -38,6 +38,26 @@
     "placeholderINPENumber": "أدخل رقم INPE الخاص بك",
     "lawInformation": "وفقًا للقانون 09-08، لديك الحق في الوصول إلى البيانات الشخصية الخاصة بك وتصحيحها والاعتراض على معالجتها. تمت الموافقة على هذه المعالجة من قبل اللجنة الوطنية لمراقبة حماية البيانات الشخصية برقم A-S-259/2022.",
     "Register":" تسجيل",
-    "acceptTerms": "يرجى قبول الشروط والأحكام"
+    "acceptTerms": "يرجى قبول الشروط والأحكام",
+    "myCabinet": "عيادتي",
+    "optimizeCollaboration": "قم بتحسين التعاون التآزري داخل فريقك الطبي لضمان إدارة فعالة لعيادتك.",
+    "joinMyPractice": "إضافة عيادتي",
+    "joinPracticeDescription": "انضم إلى عيادتك لتعزيز التعاون في الفريق وإدارة مريضك بشكل مثالي.",
+    "joinMyPracticeButton": "انضم إلى عيادتي",
+    "cabinetName": "اسم العيادة",
+    "enterCabinetName": "أدخل اسم العيادة",
+    "cabinetPhoneNumber": "أدخل رقم هاتف العيادة",
+    "address": "العنوان",
+    "enterAddress": "أدخل عنوان العيادة",
+    "postalCode": "الرمز البريدي",
+    "enterPostalCode": "أدخل الرمز البريدي",
+    "nextStep": "الخطوة التالية",
+    "contactAdminMessage": "يرجى التواصل مع مسؤول العيادة لإضافتك إلى الفريق",
+    "joinMyCabinet": "انضم إلى عيادتي",
+    "monCabinet": "عيادتي",
+    "monDocuments": "وثائقي",
+    "choisirUneOffre": "اختيار عرض",
+    "paiement": "الدفع",
+    "publierMonProfil": "نشر ملفي الشخصي"
   }
   
