@@ -58,6 +58,23 @@
   "monDocuments": "My Documents",
   "choisirUneOffre": "Choose an Offer",
   "paiement": "Payment",
-  "publierMonProfil": "Publish My Profile"
-
+  "publierMonProfil": "Publish My Profile",
+  "addCabinetDocuments": "Add Cabinet Documents",
+  "addDocumentsInstruction": "For fast and efficient processing, please provide the documents listed in the order mentioned below.",
+  "cooperationAppreciated": "Your cooperation is greatly appreciated and essential to achieving our common goals.",
+  "acceptedFileFormats": "Accepted file formats: PDF, JPG, PNG, DOCX.",
+  "maxFileSize": "Maximum file size: 2 MB.",
+  "documents": "Documents",
+  "attestationPatente": "Certificate of Patent",
+  "attestationICE": "ICE certificate",
+  "attestationRC": "RC certificate (if Legal Entity)",
+  "attestationINPE": "INPE certificate",
+  "copyCIN": "Copy of the ID card of the practitioner responsible for the cabinet",
+  "chooseFile": "Choose File",
+  "browse": "Browse",
+  "send": "Send",
+  "copyCINN":"Copy of the CIN",
+  "documentProcessing":"Document Processing",
+  "inProgress":"In progress",
+  "documentsUnderReview":"Your documents are under review. You will be notified once the verification is complete."
 }

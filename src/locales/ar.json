@@ -58,6 +58,24 @@
     "monDocuments": "وثائقي",
     "choisirUneOffre": "اختيار عرض",
     "paiement": "الدفع",
-    "publierMonProfil": "نشر ملفي الشخصي"
+    "publierMonProfil": "نشر ملفي الشخصي",
+    "addCabinetDocuments": "إضافة وثائق العيادة",
+    "addDocumentsInstruction": "لإجراء معالجة سريعة وفعالة، يرجى تقديم الوثائق المدرجة بالترتيب المذكور أدناه.",
+    "cooperationAppreciated": "نقدر تعاونك الكبير، وهو أمر ضروري لتحقيق أهدافنا المشتركة.",
+    "acceptedFileFormats": "تنسيقات الملفات المقبولة: PDF، JPG، PNG، DOCX.",
+    "maxFileSize": "الحد الأقصى لحجم الملف: 2 ميغابايت.",
+    "documents": "الوثائق",
+    "attestationPatente": "شهادة براءة",
+    "attestationICE": "شهادة ICE",
+    "attestationRC": "شهادة التسجيل التجاري (إذا كان شخصا اعتباريا)",
+    "attestationINPE": "شهادة INPE",
+    "copyCIN": "نسخة من بطاقة التعريف الوطنية للممارس المسؤول عن العيادة",
+    "chooseFile": "اختر ملف",
+    "browse": " تصفح  ",
+    "send": "إرسال",
+    "copyCINN":"نسخة من بطاقة التعريف الوطنية",
+    "documentProcessing":"معالجة الملفات",
+    "inProgress":"جار المعالجة",
+    "documentsUnderReview":"يجري التحقق من ملفاتك. سيتم إخطارك بمجرد الانتهاء من التحقق."
   }
   

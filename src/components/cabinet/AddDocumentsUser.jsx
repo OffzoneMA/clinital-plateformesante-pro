@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import "./AddDocuments.scss";
+import "./AddDocumentsUser.scss";
 import MenuCabinet from "../../components/menuCabinet/MenuCabinet";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-function AddDocuments() {
+function AddDocumentsUser() {
   const [fileNames, setFileNames] = useState({
-    patente: [],
-    ice: [],
-    rc: [],
     inpe: [],
     cin: [],
   });
@@ -53,10 +50,9 @@ function AddDocuments() {
         }}
       >
         <h1> {t("addCabinetDocuments")}</h1>
-        <p  style={{
+        <p style={{
             textAlign:
               localStorage.getItem("language") === "ar" ? "right" : "left",
-              
               marginLeft:
               localStorage.getItem("language") === "ar" ? "310px" : "50px",
               marginRight:
@@ -77,11 +73,11 @@ function AddDocuments() {
                             : "left"]: "50px",}}>{t("documents")}</h2>
         <form className="form">
           {[
-            { label: t("attestationPatente"), id: "patente" },
-            { label: t("attestationICE"), id: "ice" },
-            { label: t("attestationRC"), id: "rc" },
             { label: t("attestationINPE"), id: "inpe" },
-            { label: t("copyCIN"), id: "cin" },
+            {
+              label: t("copyCINN"),
+              id: "cin",
+            },
           ].map(({ label, id }) => (
             <div>
               <div className="form-group" key={id}>
@@ -97,16 +93,11 @@ function AddDocuments() {
                     onChange={handleFileChange}
                     multiple
                   />
-                  <span
-                    className="file-span2"
-                    style={{
-                      [localStorage.getItem("language") === "ar"
-                        ? "marginRight"
-                        : "marginLeft"]: "10px",
-                    }}
-                  >
-                    {t("chooseFile")}
-                  </span>
+                  <span className="file-span2" style={{
+                     [localStorage.getItem("language") === "ar"
+                     ? "marginRight"
+                     : "marginLeft"]: "10px",
+                  }}>{t("chooseFile")}</span>
                 </label>
               </div>
               <div className="form-group">
@@ -152,7 +143,7 @@ function AddDocuments() {
       <div className="butt">
         <button
           className="button"
-          onClick={handleSubmit}
+          onClick={handleSubmit} 
           style={{
             marginLeft:
               localStorage.getItem("language") === "ar" ? "325px" : "810px",
@@ -196,4 +187,4 @@ function AddDocuments() {
   );
 }
 
-export default AddDocuments;
+export default AddDocumentsUser;
