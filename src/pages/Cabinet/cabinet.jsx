@@ -7,6 +7,7 @@ import AddCabinet from "../../components/cabinet/AddCabinet";
 import AddDocuments from "../../components/cabinet/AddDocuments";
 import AddDocumentsUser from "../../components/cabinet/AddDocumentsUser";
 import DocumentProcessing from "../../components/cabinet/DocumentProcessing";
+import ChooseOffer from "../../components/cabinet/ChooseOffer";
 
 function Cabinet() {
   return (
@@ -17,6 +18,7 @@ function Cabinet() {
         <Route exact path="/mydocuments" element={<AddDocuments />} />
         <Route exact path="/userdocuments" element={<AddDocumentsUser />} />
        <Route exact path="/documentprocessing" element={<DocumentProcessing />} />
+       <Route exact path="/chooseOffer" element={<ChooseOffer />} />
       </Routes>
 
     </div>
