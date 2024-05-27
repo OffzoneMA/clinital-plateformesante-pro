@@ -70,6 +70,15 @@ function AddCabinet() {
       const response = await CabinetService.addCabinet(DataCabinet);
       if (response.status === 200) {
         navigate("/cabinet/mydocuments");
+        const responses = await CabinetService.updateDemandeStateByUserId(2);
+        const storedUserJSON = localStorage.getItem('user');
+        const storedUser = JSON.parse(storedUserJSON);
+        storedUser.state = 2; // Mettez ici la nouvelle valeur de state
+        
+        const updatedUserJSON = JSON.stringify(storedUser);
+
+        localStorage.setItem('user', updatedUserJSON);
+        
         toast.success("cabinet est ajouter avec succes");
       } else {
         toast.error("Failed to add cabinet. Please try again.");

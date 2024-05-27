@@ -7,6 +7,10 @@ class CabinetService {
   addCabinet = async (data) => {
     return await axiosInstance.post(Cabinetapi.AddCabinet(), data);
   };
+  async updateDemandeStateByUserId(state) {
+    return await axiosInstance.put( Cabinetapi.updateDemandeStateByUserId(state));
+  };
+
 
   
 }
