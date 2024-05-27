@@ -156,16 +156,33 @@
     padding: 0;
     margin: 0 0 20px 0;
     height: 306px;
+    &.rtl li {
+      flex-direction: row-reverse;
+      text-align: right;
+
+      .icon {
+        margin-left: 10px;
+        margin-right: 0;
+      }
+    }
+
+    &.ltr li {
+      text-align: left;
+
+      .icon {
+        margin-left: 0;
+        margin-right: 10px;
+      }
+    }
   }
   .plan-features li {
-    display: flex;
+   display: flex;
     align-items: center;
     height: 58px;
     font-size: 14.5px;
     margin-bottom: 10px;
     font-weight: 400;
     line-height: 21px;
-    text-align: left;
     color: #303030;
   }
   .plan-featuresp {
@@ -173,6 +190,25 @@
     padding: 0;
     margin: 0 0 20px 0;
     height: 320px;
+    &.rtl li {
+      flex-direction: row-reverse;
+      text-align: right;
+
+      .icon {
+        margin-left: 10px;
+        margin-right: 0;
+      }
+    }
+
+    &.ltr li {
+      flex-direction: row;
+      text-align: left;
+
+      .icon {
+        margin-left: 0;
+        margin-right: 10px;
+      }
+    }
   }
   .plan-featuresp li {
     display: flex;
@@ -182,12 +218,10 @@
     margin-bottom: 10px;
     font-weight: 400;
     line-height: 21px;
-    text-align: left;
     color: #303030;
   }
 
   .icon {
-    margin-right: 10px;
     flex-shrink: 0;
   }
 

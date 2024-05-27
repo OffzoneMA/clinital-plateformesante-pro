@@ -76,5 +76,16 @@
   "copyCINN":"Copie de la CIN",
   "documentProcessing":"Traitement de documents",
   "inProgress":"En cours",
-  "documentsUnderReview":"Vos documents sont en cours de vérification. Vous serez notifié dès que la vérification sera terminée."
+  "documentsUnderReview":"Vos documents sont en cours de vérification. Vous serez notifié dès que la vérification sera terminée.",
+  "choosePlan": "Choisir un plan",
+  "doctor": "Médecin",
+  "onlineAgenda": "Agenda en ligne",
+  "appointmentTool": "Outil de réduction des RDVs non honorés",
+  "coordinationTool": "Outils de coordination des soins",
+  "onlineAppointments": "Prise de RDV en ligne pour vos patients",
+  "interoperability": "Interopérabilité avec votre logiciel médical",
+  "mostPopular": "Le plus populaire",
+  "cabinet": "Cabinet",
+  "healthCenter": "Centre de Santé",
+  "choose": "Choisir"
 }

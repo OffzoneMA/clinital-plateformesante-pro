@@ -76,6 +76,17 @@
     "copyCINN":"نسخة من بطاقة التعريف الوطنية",
     "documentProcessing":"معالجة الملفات",
     "inProgress":"جار المعالجة",
-    "documentsUnderReview":"يجري التحقق من ملفاتك. سيتم إخطارك بمجرد الانتهاء من التحقق."
+    "documentsUnderReview":"يجري التحقق من ملفاتك. سيتم إخطارك بمجرد الانتهاء من التحقق.",
+    "choosePlan": "اختيار عرض",
+    "doctor": "طبيب",
+    "onlineAgenda": "جدول مواعيد على الإنترنت",
+    "appointmentTool": "أداة تقليل المواعيد غير المحترمة",
+    "coordinationTool": "أدوات تنسيق الرعاية",
+    "onlineAppointments": "حجز المواعيد عبر الإنترنت لمرضاك",
+    "interoperability": "التشغيل البيني مع برنامجك الطبي",
+    "mostPopular": "الأكثر شعبية",
+    "cabinet": "عيادة",
+    "healthCenter": "مركز صحي",
+    "choose": "اختيار"
   }
   

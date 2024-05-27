@@ -76,5 +76,16 @@
   "copyCINN":"Copy of the CIN",
   "documentProcessing":"Document Processing",
   "inProgress":"In progress",
-  "documentsUnderReview":"Your documents are under review. You will be notified once the verification is complete."
+  "documentsUnderReview":"Your documents are under review. You will be notified once the verification is complete.",
+  "choosePlan": "Choose Plan",
+  "doctor": "Doctor",
+  "onlineAgenda": "Online Agenda",
+  "appointmentTool": "No-show reduction tool",
+  "coordinationTool": "Care coordination tools",
+  "onlineAppointments": "Online appointment booking for your patients",
+  "interoperability": "Interoperability with your medical software",
+  "mostPopular": "Most Popular",
+  "cabinet": "Cabinet",
+  "healthCenter": "Health Center",
+  "choose": "Choose"
 }

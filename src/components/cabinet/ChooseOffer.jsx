@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import "./ChooseOffer.scss";
 import MenuCabinet from "../menuCabinet/MenuCabinet";
+import { useTranslation } from "react-i18next";
 
 function ChooseOffer() {
     const [selectedPlan, setSelectedPlan] = useState(null);
-
+    const { t } = useTranslation();
     const handlePlanSelect = (plan) => {
       setSelectedPlan(plan);
     };
+    const isArabic = localStorage.getItem("language") === "ar";
   return (
     <div className="chooseOffer">
-      <div className="result-container">
+      <div className="result-container"
+       style={{
+        direction: isArabic ? "rtl" : "ltr",
+      }} >
         <MenuCabinet state="2" />
       </div>
       <div className="container">
         <h1
           style={{
-            [localStorage.getItem("language") === "ar" ? "right" : "left"]:
+            [isArabic? "right" : "left"]:
               "46px",
           }}
         >
-          Choose Plan
+           {t("choosePlan")}
         </h1>
         <div className="plans">
           <div className={`plan ${selectedPlan === "Médecin" ? "selected" : ""}`}>
@@ -28,100 +33,100 @@ function ChooseOffer() {
             {selectedPlan === "Médecin" && (
               <img src="../icons/RegistrationStep.svg" alt="" className="registration-icon" />
             )}
-            <div className="plan-header">Médecin</div>
-            <div className="plan-price">€ 20.000</div>
-            <ul className="plan-features">
+            <div className="plan-header"> {t("doctor")}</div>
+            <div className="plan-price"> 20.000 €</div>
+            <ul className={`plan-features ${isArabic ? "rtl" : "ltr"}`}>
               <li>
                 <img src="../icons/miniagenda.svg" className="icon" alt="" />
-                Agenda en ligne
+                {t("onlineAgenda")}
               </li>
               <li>
                 <img src="../icons/outil.svg" className="icon" alt="" />
-                Outil de réduction des RDVs on honorés
+                {t("appointmentTool")}
               </li>
               <li>
                 {" "}
                 <img src="../icons/coordination.svg" className="icon" alt="" />
-                Outils de coordination des soins
+                {t("coordinationTool")}
               </li>
               <li>
                 {" "}
                 <img src="../icons/rdv.svg" className="icon" alt="" />
-                Prise de RDV en ligne pour vos patients
+                {t("onlineAppointments")}
               </li>
               <li>
                 <img src="../icons/logiciel.svg" className="icon" alt="" />
-                Interopérabilité avec votre logiciel médical
+                {t("interoperability")}
               </li>
             </ul>
-            <button className="choose-button" onClick={() => handlePlanSelect("Médecin")} >Choisir</button>
+            <button className="choose-button" onClick={() => handlePlanSelect("Médecin")} >{t("choose")}</button>
           </div>
           <div  className={`plan most-popular ${selectedPlan === "Cabinet" ? "selected" : ""}`}>
-            <div className="most-popular-banner">Most Popular</div>
+            <div className="most-popular-banner">{t("mostPopular")}</div>
             <img src="../images/clinique.png" className="imagepop" alt="" />
             {selectedPlan === "Cabinet" && (
               <img src="../icons/RegistrationStep.svg" alt="" className="registration-iconp" />
             )}
-            <div className="plan-header">Cabinet</div>
-            <div className="plan-price">€ 20.000</div>
-            <ul className="plan-featuresp">
+            <div className="plan-header">{t("cabinet")}</div>
+            <div className="plan-price"> 20.000 €</div>
+            <ul className={`plan-featuresp ${isArabic ? "rtl" : "ltr"}`}>
               <li>
                 <img src="../icons/miniagenda.svg" className="icon" alt="" />
-                Agenda en ligne
+                {t("onlineAgenda")}
               </li>
               <li>
                 <img src="../icons/outil.svg" className="icon" alt="" />
-                Outil de réduction des RDVs on honorés
+                {t("appointmentTool")}
               </li>
               <li>
                 {" "}
                 <img src="../icons/coordination.svg" className="icon" alt="" />
-                Outils de coordination des soins
+                {t("coordinationTool")}
               </li>
               <li>
                 {" "}
                 <img src="../icons/rdv.svg" className="icon" alt="" />
-                Prise de RDV en ligne pour vos patients
+                {t("onlineAppointments")}
               </li>
               <li>
                 <img src="../icons/logiciel.svg" className="icon" alt="" />
-                Interopérabilité avec votre logiciel médical
+                {t("interoperability")}
               </li>
             </ul>
-            <button className="choose-button"  onClick={() => handlePlanSelect("Cabinet")}>Choisir</button>
+            <button className="choose-button"  onClick={() => handlePlanSelect("Cabinet")}>{t("choose")}</button>
           </div>
           <div className={`plan ${selectedPlan === "Centre de Santé" ? "selected" : ""}`}>
             <img src="../images/Centre.png" className="image" alt="" />
             {selectedPlan === "Centre de Santé" && (
               <img src="../icons/RegistrationStep.svg" alt="" className="registration-icon" />
             )}
-            <div className="plan-header">Centre de Santé</div>
-            <div className="plan-price">€ 20.000</div>
-            <ul className="plan-features">
+            <div className="plan-header">{t("healthCenter")}</div>
+            <div className="plan-price"> 20.000 €</div>
+            <ul className={`plan-features ${isArabic ? "rtl" : "ltr"}`}>
               <li>
                 <img src="../icons/miniagenda.svg" className="icon" alt="" />
-                Agenda en ligne
+                {t("onlineAgenda")}
               </li>
               <li>
                 <img src="../icons/outil.svg" className="icon" alt="" />
-                Outil de réduction des RDVs on honorés
+                {t("appointmentTool")}
               </li>
               <li>
                 {" "}
                 <img src="../icons/coordination.svg" className="icon" alt="" />
-                Outils de coordination des soins
+                {t("coordinationTool")}
               </li>
               <li>
                 {" "}
                 <img src="../icons/rdv.svg" className="icon" alt="" />
-                Prise de RDV en ligne pour vos patients
+                {t("onlineAppointments")}
               </li>
               <li>
                 <img src="../icons/logiciel.svg" className="icon" alt="" />
-                Interopérabilité avec votre logiciel médical
+                {t("interoperability")}
               </li>
             </ul>
-            <button className="choose-button"  onClick={() => handlePlanSelect("Centre de Santé")}>Choisir</button>
+            <button className="choose-button"  onClick={() => handlePlanSelect("Centre de Santé")}>{t("choose")}</button>
           </div>
         </div>
       </div>
@@ -129,11 +134,12 @@ function ChooseOffer() {
         <button
           className="button"
           style={{
+            
             marginLeft:
-              localStorage.getItem("language") === "ar" ? "325px" : "810px",
+            isArabic ? "-910px" : "810px",
           }}
         >
-          {localStorage.getItem("language") === "ar" ? (
+          {isArabic ? (
             <>
               <img
                 src="../../icons/flech-white-left.svg"
@@ -145,11 +151,11 @@ function ChooseOffer() {
                   height: "14px",
                 }}
               />
-             L'étape suivante
+             {t("nextStep")}
             </>
           ) : (
             <>
-            L'étape suivante
+           {t("nextStep")}
               <img
                 src="../../icons/flech-white.svg"
                 alt="send"
