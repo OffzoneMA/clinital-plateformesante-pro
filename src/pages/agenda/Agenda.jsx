@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { getAllRdv, getAllRdvByTooMonth } from "../../action/Rdv";
+import {getAllMedRdv, getAllRdv, getAllRdvByTooMonth} from "../../action/Rdv";
 import { rdvAnnuleFromDoc } from "../../assets/data/data";
 import Calendar from "../../components/agenda/Calendar";
 import MyRdvs from "../../components/agenda/MyRdvs";
@@ -14,30 +14,27 @@ import "./agenda.scss";
 function Agenda() {
   const [agendaIsChanging, setAgendaIsChanging] = useState();
   // const [allRdvs, setAllRdvs] = useState([]);
-  const [rdvs, setRdvs] = useState([]);
+  const [rdvs, setRdvs] = useState([]);//"setRdvs" représente les rdv fetched
 
-  useEffect(() => {
-      const month = localStorage.getItem("month");
-      getAllRdvByTooMonth(setRdvs, month)
-      // getAllRdv(setRdvs)
-      // getAllRdv(setAllRdvs)
+  useEffect(() => {// to get rdvs of the connected doctor
+
+      getAllMedRdv(setRdvs);
+
   }, []);
 
 
   const [filter, setFilter] = useState("");
   
-  const filtredRdvs = [...rdvs, rdvAnnuleFromDoc].filter((rdv) => {
+  const filtredRdvs = [...rdvs].filter((rdv) => {
     const today = new Date().getTime();
     const rdvStart = new Date(rdv.start).getTime();
 
-    if (filter.id) {
-      return rdv.patient.id === filter.id;
+
+    if (filter === "" || filter === "Tout Motif" || filter === "Tout Type") {
+      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
     }
-    if (filter === "") {
-      return today <= rdvStart && rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
-    }
-    if (filter === CONSTANTS.RDV_STATE.TERMINE) {
-      return today > rdvStart && rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
+    if (filter === "Tout Motif") {
+      return rdv.id_motif && rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
     }
     if (filter === CONSTANTS.RDV_STATE.ANNULE) {
       return rdv.statut === CONSTANTS.RDV_STATE.ANNULE || rdv.statut === CONSTANTS.RDV_STATE.ANNULE_DOC;
@@ -51,15 +48,10 @@ function Agenda() {
     <div className="agenda-page">
       <Navbar />
       <div className="agenda">
-        <MyRdvs filter={filter} setFilter={setFilter} rdvs={filtredRdvs} />
+        <MyRdvs filter={filter} setFilter={setFilter}  />
         <Calendar rdvs={filtredRdvs} setAgendaIsChanging={setAgendaIsChanging} />
       </div>
       <MiniFooter />
-
-      <Routes>
-        <Route exact path="/rdv/:id" element={<RdvPopup />} />
-      </Routes>
-
     </div>
   );
 }

@@ -3,8 +3,8 @@ import CONSTANTS from '../../../constant/constant';
 import { ORIGIN, TOKEN, USER_ID } from '../../../services/api'
 import apiRdv from '../apiRdv/apiRdv';
 import { toast } from 'react-toastify';
-const RDV_URL = ORIGIN + '/api/rdv/patient'
-const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/patient'
+
+const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/medecin'
 const SCHEDULS_URL = ORIGIN + '/api/med'
 const MOVE_URL = ORIGIN + '/api/rdv'
 const AUTHORIZATION = { headers: { Authorization: `Bearer ${TOKEN}` } }
@@ -20,13 +20,10 @@ class RdvService {
         }
     }
 
-    async getAllRdvByTooMonth(month) {
-        const URL_1 = RDV_URL + '/rdvbymonth' + `/${USER_ID}` + `/${month - 1}`;
-        const URL_2 = RDV_URL + '/rdvbymonth' + `/${USER_ID}` + `/${month}`;
+    async getAllMedecinRdv() {
         try {
-            const resPrev = await axios.get(URL_1, AUTHORIZATION);
-            const resNext = await axios.get(URL_2, AUTHORIZATION);
-            return {data:[...resPrev.data, ...resNext.data]};
+            const res = await axios.get(GET_RDV_URL, AUTHORIZATION);
+            return res.data;
         } catch (error) {
             throw error;
         }
@@ -34,7 +31,7 @@ class RdvService {
 
     getRdvById(id) {
         if (!id) {
-            toast.error('its requires a valid ID.');
+            toast.error('it requires a valid ID.');
             return;
         }
     

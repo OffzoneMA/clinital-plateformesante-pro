@@ -11,12 +11,12 @@ export const getAllRdv = async (state) => {
     }
 }
 
-export const getAllRdvByTooMonth = async (state, month) => {
+export const getAllMedRdv = async (state) => {
     try {
-        const res = await RdvService.getAllRdvByTooMonth(month)
-        state([...res.data])
+        const data = await RdvService.getAllMedecinRdv();
+        state(data);
     } catch (error) {
-        toast.error(error.message)
+        toast.error("error: "+ error.message);
     }
 }
 

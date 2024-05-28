@@ -129,7 +129,7 @@ function MonthCalendar({ rdvs, onChangeMonth, rdvType }) {
       );
       const allDays = [...daysContainer.querySelectorAll("button")];
 
-      // For each day verify if there is an rdv
+      // For each day verify if there is rdv
       allDays.forEach((day) => {
         // For each rdv verify it's in the good day
         [...day.querySelectorAll('.rdv_month')].forEach(rdv => rdv.remove())

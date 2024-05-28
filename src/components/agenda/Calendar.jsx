@@ -168,7 +168,6 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
           <button onClick={nextOrPrev(-1)}>
             <img src="../../icons/flech-black.svg" alt="" />
           </button>
-          <div className="scrollHidder"></div>
         </div>
         Mai 2024
         <div className="right-btn">
@@ -199,7 +198,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
         </div>
 
         <div className="filterByMedecin">
-          <label htmlFor="medecinFilter">Filterer par Médecin:</label>
+          <label htmlFor="medecinFilter">Filtrer par Médecin:</label>
           {/* New element to toggle dropdown visibility */}
           <div className="toggle-dropdown" onClick={toggleDropdown}>
 
@@ -238,13 +237,11 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               </svg>
             </div>
 
-            <div style={{ display: "flex", cursor: "pointer", marginTop: "10px" }}
-
-            >
+            <div style={{ display: "flex", cursor: "pointer", marginTop: "10px" }}>
               <input className="form-check-input me-3" style={{ border: "1px solid black" }} type="checkbox" />
               <p style={{ fontSize: "14px" }}>Sélectionner tous</p>
-
             </div>
+
             <div style={{maxHeight: "350px", overflowY: "scroll"}}>
               <hr/>
               <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", cursor: "pointer" }}
@@ -253,7 +250,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               >
                 <input className="form-check-input me-3" style={{ border: "1px solid black" }} type="checkbox" />
                 {/* Profile Photo */}
-                <img src="" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
+                <img src="/images/ProfilePicture.png" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
 
                 {/* DoctorData Info */}
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -269,7 +266,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               >
                 <input className="form-check-input me-3" style={{ border: "1px solid black" }} type="checkbox" checked/>
                 {/* Profile Photo */}
-                <img src="" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
+                <img src="/images/ProfilePicture.png" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
 
                 {/* DoctorData Info */}
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -285,7 +282,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               >
                 <input className="form-check-input me-3" style={{ border: "1px solid black" }} type="checkbox" checked/>
                 {/* Profile Photo */}
-                <img src="" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
+                <img src="/images/ProfilePicture.png" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
 
                 {/* DoctorData Info */}
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -301,7 +298,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               >
                 <input className="form-check-input me-3" style={{ border: "1px solid black" }} type="checkbox" checked/>
                 {/* Profile Photo */}
-                <img src="" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
+                <img src="/images/ProfilePicture.png" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
 
                 {/* DoctorData Info */}
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -317,7 +314,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               >
                 <input className="form-check-input me-3" style={{ border: "1px solid black" }} type="checkbox" />
                 {/* Profile Photo */}
-                <img src="" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
+                <img src="/images/ProfilePicture.png" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
 
                 {/* DoctorData Info */}
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -333,7 +330,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               >
                 <input className="form-check-input me-3" style={{ border: "1px solid black" }} type="checkbox" />
                 {/* Profile Photo */}
-                <img src="" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
+                <img src="/images/ProfilePicture.png" alt="" style={{ width: "50px", height: "50px", borderRadius: "10px", marginRight: "10px" }} />
 
                 {/* DoctorData Info */}
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -349,9 +346,8 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
             </div>
           </div>
         </div>
-
-
       </div>
+
       <div className="calendar">
       <div className="calendar-wrapper">
       <div
@@ -409,69 +405,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
     </div>
     </div>
     </div>
-    
-  
-      {/* <div className="calendar">
-        <div className="calendar-wrapper">
-          <div
-            className={`calendar-wrapper-header ${
-              option === "month" ? "calendar-wrapper-header-month" : ""
-            }`}
-          >
-            <div className="left-btn">
-              <button onClick={nextOrPrev(-1)}>
-                <img src="../../icons/flech-black.svg" alt="" />
-              </button>
-              <div className="scrollHidder"></div>
-            </div>
 
-            {option !== "month" ? (
-              <div className="days-container" ref={daysContainer}>
-                <div className="container">
-                  {renderOption().map((week, index) => (
-                    <div
-                      onAnimationEnd={removeAnimation}
-                      className={`week ${
-                        index === 0 ? "prevWeek" : "currentWeek"
-                      }`}
-                      key={index}
-                    >
-                      {week.map((day, index_) => (
-                        <div
-                          className={`day ${
-                            new Date().toString() === day.toString()
-                              ? "today"
-                              : ""
-                          }`}
-                          key={index_}
-                        >
-                          <span>{day.toString().slice(0, 3)}</span>
-                          <strong>
-                            {day.toString().slice(8, 10) +
-                              "/" +
-                              day.toString().slice(4, 7)}
-                          </strong>
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <MonthCalendar
-                setAgendaIsChanging={setAgendaIsChanging}
-                rdvType={rdvType}
-                rdvs={rdvs}
-                onChangeMonth={onChangeMonth}
-              />
-            )}
-            <div className="right-btn">
-              <button onClick={nextOrPrev(1)}>
-                <img src="../../icons/flech-black.svg" alt="" />
-              </button>
-            </div>
-          </div>
-          */}
           {option !== "month" && (
             <div className="calendar-wrapper-content">
             <div className="row w-100 d-flex">
@@ -523,7 +457,6 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
                 </div>
                 </div>
               </div>
-              {rdvs.some( rdv => rdv.statut === CONSTANTS.RDV_STATE.ANNULE_DOC ) && <div className="rdv-annule-doc-label">Rendez-vous annulé</div>}
             </div>
             </div>  
           )}

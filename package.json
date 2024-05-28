@@ -48,7 +48,7 @@
     "building": "react-scripts build",
     "testing": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "webpack serve --mode development --open --hot --port 3000",
+    "start": "webpack serve --mode development --open --hot --port 3001",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "build:dev": "cross-env NODE_ENV=development webpack --mode development",
     "clean": "rimraf ./build",

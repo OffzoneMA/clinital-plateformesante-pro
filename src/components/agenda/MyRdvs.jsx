@@ -5,7 +5,7 @@ import 'react-date-range/dist/theme/default.css';
 import { Calendar } from 'react-date-range';
 import Accordion from "./Accordion";
 
-function MyRdvs({ rdvs, setFilter, filter }) {
+function MyRdvs({ filter, setFilter }) {
 
     return (
         <div className="left-bar">
@@ -42,9 +42,7 @@ function MyRdvs({ rdvs, setFilter, filter }) {
                 <Calendar
                     date={new Date()}
                 />
-
-
-                <Accordion/>
+                <Accordion setFilter={setFilter}/>
            </div>
 
         </div>
