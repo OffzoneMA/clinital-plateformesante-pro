@@ -29,7 +29,7 @@ function MenuCabinet({ state }) {
             ? "../../icons/homeCabinet.svg"
             : "../../icons/checkCabinet.svg"
         }
-        selected={[0, 1, 2].includes(selectedCircle)}
+        selected={[0, 1, 2,3].includes(selectedCircle)}
         style={{
           backgroundColor: selectedCircle === 0 ? "#ffffff" : "#C989DD",
         }}
@@ -50,7 +50,7 @@ function MenuCabinet({ state }) {
             ? "../../icons/checkCabinet.svg"
             : "../../icons/documentCabinet.svg"
         }
-        selected={[1, 2].includes(selectedCircle)}
+        selected={[1, 2,3].includes(selectedCircle)}
         text={t("monDocuments")}
         style={{
           backgroundColor:
@@ -71,13 +71,28 @@ function MenuCabinet({ state }) {
             ? "../../icons/checkCabinet.svg"
             : "../../icons/offreCabinet.svg"
         }
-        selected={selectedCircle === 2}
+        selected={[2,3].includes(selectedCircle)}
         text={t("choisirUneOffre")}
+        style={{
+          backgroundColor:
+            selectedCircle === 0 || selectedCircle === 1|| selectedCircle === 2
+              ? "#ffffff"
+              : "#C989DD",
+        }}
       />
-      <Line />
+      <Line 
+        style={{
+          borderColor: selectedCircle === 0|| selectedCircle === 1|| selectedCircle === 2 ? "#D9D8D8" : "#C989DD",
+        }}/>
       <Circle
-        icon="../../icons/paiementCabinet.svg"
-        selected={selectedCircle === 3}
+             icon={
+              selectedCircle === 3
+                ? "../../icons/paiementCabinettV.svg"
+                : selectedCircle === 4 
+                ? "../../icons/checkCabinet.svg"
+                : "../../icons/paiementCabinet.svg"
+            }
+        selected={[3].includes(selectedCircle)}
         text={t("paiement")}
       />
       <Line />
