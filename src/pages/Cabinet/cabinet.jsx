@@ -8,6 +8,8 @@ import AddDocumentsUser from "../../components/cabinet/AddDocumentsUser";
 import DocumentProcessing from "../../components/cabinet/DocumentProcessing";
 import ChooseOffer from "../../components/cabinet/ChooseOffer";
 import PaymentOptions from "../../components/cabinet/PaymentOptions";
+import PaymentProcessing from "../../components/cabinet/PaymentProcessing";
+
 
 // Function to get stored user
 const getStoredUser = () => {
@@ -71,6 +73,9 @@ function Cabinet() {
           element={<ProtectedRoute component={ChooseOffer} allowedStates={[3]} />}
         />
          <Route exact path="/payment" element={<PaymentOptions />} />
+         
+         <Route exact path="/paymentprocessing" element={<PaymentProcessing />} />
+         
       </Routes>
     </div>
   );

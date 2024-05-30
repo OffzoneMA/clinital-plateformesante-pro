@@ -73,10 +73,10 @@
   "chooseFile": "Choose File",
   "browse": "Browse",
   "send": "Send",
-  "copyCINN":"Copy of the CIN",
-  "documentProcessing":"Document Processing",
-  "inProgress":"In progress",
-  "documentsUnderReview":"Your documents are under review. You will be notified once the verification is complete.",
+  "copyCINN": "Copy of the CIN",
+  "documentProcessing": "Document Processing",
+  "inProgress": "In progress",
+  "documentsUnderReview": "Your documents are under review. You will be notified once the verification is complete.",
   "choosePlan": "Choose Plan",
   "doctor": "Doctor",
   "onlineAgenda": "Online Agenda",
@@ -110,5 +110,7 @@
   "activateAutomaticWithdrawal": "To activate automatic withdrawal, simply contact us by pressing the button below. Our dedicated team will be delighted to guide you through the process and answer any questions you may have.",
   "chooseConvenience": "Choosing automatic withdrawal means choosing a convenient and hassle-free solution for your regular transactions. Simplify your financial management today!",
   "thankYouForTrust": "Thank you for your trust and preference for our platform.",
-  "contactClinitalTeam": "Contact the Clinital Team"
+  "contactClinitalTeam": "Contact the Clinital Team",
+  "requestProcessing": "Request Processing",
+  "demandUnderReview": "Your request to add the cabinet is currently under review by the Clinital administrator. We will notify you as soon as it has been successfully processed."
 }
