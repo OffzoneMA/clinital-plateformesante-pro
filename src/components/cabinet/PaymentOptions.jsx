@@ -6,6 +6,7 @@ import Model, {
   ModelFooter,
   ModelHeader,
 } from "../../components/Models/Model";
+import { Navigate } from "react-router-dom";
 const PaymentOptions = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const isArabic = localStorage.getItem("language") === "ar";
@@ -260,7 +261,7 @@ const PaymentOptions = () => {
           </ModelBody>
           <ModelFooter>
             <div className="autorisation-footer">
-              <button className="btn-Model">Contacter l’équipe Clinital</button>
+              <button className="btn-Model" onClick={()=>  window.location = "/contact"}>Contacter l’équipe Clinital</button>
             </div>
           </ModelFooter>
         </div>

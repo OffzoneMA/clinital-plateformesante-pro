@@ -282,7 +282,11 @@ function Demande() {
                   marginTop: "-8px",
                 }}
               >
-                <div>
+                <div
+                  style={{
+                    width: "100%",
+                  }}
+                >
                   <label htmlFor=""> {t("firstName")}</label>
                   <input
                     type="text"
@@ -687,7 +691,10 @@ function Demande() {
                   fontSize: "12px",
                   fontWeight: 400,
                   lineHeight: "16.8px",
-                  textAlign: localStorage.getItem("language") === "ar" ? "right" : "left",
+                  textAlign:
+                    localStorage.getItem("language") === "ar"
+                      ? "right"
+                      : "left",
                   color: "#8A8F95",
                 }}
               >
@@ -699,11 +706,13 @@ function Demande() {
                   id="terms"
                   onChange={() => setIsAccepted(true)}
                 />
-                <label htmlFor="terms"
-                    style={{
-                      marginRight: localStorage.getItem("language") === "ar" ? "5px" : "0px",
-                     
-                    }}>
+                <label
+                  htmlFor="terms"
+                  style={{
+                    marginRight:
+                      localStorage.getItem("language") === "ar" ? "5px" : "0px",
+                  }}
+                >
                   {t("termsAndConditions")}
                   <Link> {t("termsLink")}</Link> {t("and")}
                   <Link> {t("privacyPolicyLink")}</Link> {t("ofClinital")}

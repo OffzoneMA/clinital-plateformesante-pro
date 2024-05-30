@@ -87,5 +87,8 @@
   "mostPopular": "Le plus populaire",
   "cabinet": "Cabinet",
   "healthCenter": "Centre de Santé",
-  "choose": "Choisir"
+  "choose": "Choisir",
+  "contactUs": "Nous contacter",
+  "enterYourMessage": "Saisir votre message",
+  "yourMessage": "Votre message"
 }
