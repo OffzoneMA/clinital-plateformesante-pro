@@ -6,8 +6,11 @@ import Model, {
   ModelFooter,
   ModelHeader,
 } from "../../components/Models/Model";
-import { Navigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { auto } from "@popperjs/core";
+
 const PaymentOptions = () => {
+  const { t } = useTranslation();
   const [selectedOption, setSelectedOption] = useState(null);
   const isArabic = localStorage.getItem("language") === "ar";
   const [showAutorisation, setShowAutorisation] = useState(false);
@@ -22,13 +25,30 @@ const PaymentOptions = () => {
   };
   return (
     <div className="payment">
-      <div className="result-container">
+      <div
+        className="result-container"
+        style={{
+          direction: isArabic ? "rtl" : "ltr",
+        }}
+      >
         <MenuCabinet state="3" />
       </div>
-      <div className="options">
-        <h1> Payment</h1>
+      <div
+        className="options"
+        style={{
+          direction: isArabic ? "rtl" : "ltr",
+        }}
+      >
+        <h1> {t("paiement")}</h1>
         <div className="payment-options">
-          <h2>Choisir un mode de paiement</h2>
+          <h2
+            style={{
+              textAlign: isArabic ? "right" : "left",
+              [isArabic ? "marginRight" : "marginLeft"]: "10px",
+            }}
+          >
+            {t("paymentMethodTitle")}
+          </h2>
           <div className="payment-options-body">
             <div
               className={`payment-option ${
@@ -38,18 +58,25 @@ const PaymentOptions = () => {
             >
               <span>
                 {" "}
-                <img src="../icons/bankNote.svg" alt="" className="icon" />
-                Versement
+                <img
+                  src="../icons/bankNote.svg"
+                  alt=""
+                  className="icon"
+                  style={{
+                    [isArabic ? "marginLeft" : "marginRight"]: "10px",
+                  }}
+                />
+                {t("bankTransfer")}
               </span>
               {selectedOption === "versement" && (
                 <div className="payment-details">
                   <hr />
                   <p>
-                    <span className="label">Raison sociale </span> :{" "}
-                    <strong> CLINITAL</strong>
+                    <span className="label">{t("companyName")} </span> :{" "}
+                    <strong> {t("CLINITAL")}</strong>
                   </p>
                   <p>
-                    <span className="label">RIB </span> :{" "}
+                    <span className="label">{t("RIB")} </span> :{" "}
                     <strong>
                       {" "}
                       5000 3088 9891 0930 0183 8458{" "}
@@ -57,6 +84,9 @@ const PaymentOptions = () => {
                         src="../icons/copy.svg"
                         alt=""
                         className="copyIcon"
+                        style={{
+                          [isArabic ? "marginRight" : "marginLeft"]: "5px",
+                        }}
                         onClick={() =>
                           handleCopyClick("5000 3088 9891 0930 0183 8458")
                         }
@@ -64,13 +94,16 @@ const PaymentOptions = () => {
                     </strong>
                   </p>
                   <p>
-                    <span className="label">Code Swift </span> :{" "}
+                    <span className="label">{t("swiftCode")} </span> :{" "}
                     <strong>
                       {" "}
                       5000 3088{" "}
                       <img
                         src="../icons/copy.svg"
                         alt=""
+                        style={{
+                          [isArabic ? "marginRight" : "marginLeft"]: "5px",
+                        }}
                         className="copyIcon"
                         onClick={() => handleCopyClick("5000 3088")}
                       />
@@ -87,22 +120,23 @@ const PaymentOptions = () => {
             >
               <span>
                 {" "}
-                <img src="../icons/creditCard.svg" alt="" className="icon" />
-                Carte bancaire
+                <img
+                  src="../icons/creditCard.svg"
+                  alt=""
+                  className="icon"
+                  style={{
+                    [isArabic ? "marginLeft" : "marginRight"]: "10px",
+                  }}
+                />
+                {t("creditCard")}
               </span>
               {selectedOption === "carte" && (
                 <div className="payment-details">
                   <hr />
-                  <p className="paragraphe">Cher partenaire,</p>
-                  <p className="paragraphe">
-                    Nous vous informons que vous serez redirigé(e) vers une page
-                    extérieure sécurisée, afin de procéder au règlement de votre
-                    abonnement.
-                  </p>
-                  <p className="paragraphe">
-                    Nous vous remercions pour votre collaboration.
-                  </p>
-                  <button>Payer</button>
+                  <p className="paragraphe"> {t("dearPartner")}</p>
+                  <p className="paragraphe">{t("redirectMessage")}</p>
+                  <p className="paragraphe">{t("thankYouCollaboration")}</p>
+                  <button>{t("payNow")}</button>
                 </div>
               )}
             </div>
@@ -114,18 +148,25 @@ const PaymentOptions = () => {
             >
               <span>
                 {" "}
-                <img src="../icons/wallet.svg" alt="" className="icon" />
-                Transfert-Mandat cash
+                <img
+                  src="../icons/wallet.svg"
+                  alt=""
+                  className="icon"
+                  style={{
+                    [isArabic ? "marginLeft" : "marginRight"]: "10px",
+                  }}
+                />
+                {t("cashTransfer")}
               </span>
               {selectedOption === "mandat" && (
                 <div className="payment-details">
                   <hr />
                   <p>
-                    <span className="label">Raison sociale </span> :{" "}
-                    <strong> CLINITAL</strong>
+                    <span className="label">{t("companyName")} </span> :{" "}
+                    <strong> {t("CLINITAL")}</strong>
                   </p>
                   <p>
-                    <span className="label">RIB </span> :{" "}
+                    <span className="label">{t("RIB")} </span> :{" "}
                     <strong>
                       {" "}
                       5000 3088 9891 0930 0183 8458{" "}
@@ -133,6 +174,9 @@ const PaymentOptions = () => {
                         src="../icons/copy.svg"
                         alt=""
                         className="copyIcon"
+                        style={{
+                          [isArabic ? "marginRight" : "marginLeft"]: "5px",
+                        }}
                         onClick={() =>
                           handleCopyClick("5000 3088 9891 0930 0183 8458")
                         }
@@ -140,7 +184,7 @@ const PaymentOptions = () => {
                     </strong>
                   </p>
                   <p>
-                    <span className="label">Code Swift </span> :{" "}
+                    <span className="label">{t("swiftCode")} </span> :{" "}
                     <strong>
                       {" "}
                       5000 3088{" "}
@@ -148,6 +192,9 @@ const PaymentOptions = () => {
                         src="../icons/copy.svg"
                         alt=""
                         className="copyIcon"
+                        style={{
+                          [isArabic ? "marginRight" : "marginLeft"]: "5px",
+                        }}
                         onClick={() => handleCopyClick("5000 3088")}
                       />
                     </strong>
@@ -166,8 +213,15 @@ const PaymentOptions = () => {
             >
               <span>
                 {" "}
-                <img src="../icons/bank.svg" alt="" className="icon" />
-                Prélèvement automatique
+                <img
+                  src="../icons/bank.svg"
+                  alt=""
+                  className="icon"
+                  style={{
+                    [isArabic ? "marginLeft" : "marginRight"]: "10px",
+                  }}
+                />
+                {t("automaticWithdrawal")}
               </span>
             </div>
           </div>
@@ -177,7 +231,7 @@ const PaymentOptions = () => {
         <button
           className="button"
           style={{
-            marginLeft: isArabic ? "325px" : "460px",
+            marginLeft: isArabic ? "-510px" : "460px",
           }}
         >
           {isArabic ? (
@@ -192,11 +246,11 @@ const PaymentOptions = () => {
                   height: "14px",
                 }}
               />
-              L'étape suivante
+              {t("nextStep")}
             </>
           ) : (
             <>
-              L'étape suivante
+              {t("nextStep")}
               <img
                 src="../../icons/flech-white.svg"
                 alt="send"
@@ -213,55 +267,79 @@ const PaymentOptions = () => {
       </div>
       <Model show={showAutorisation} setShow={setShowAutorisation}>
         {" "}
-        <div className="container-addProche" style={{width:"636px",height:"614px"}}>
+        <div
+          className="container-addProche"
+          style={{
+            width: "636px",
+            height: auto,
+            direction: isArabic ? "rtl" : "ltr",
+            paddingBottom: "25px",
+          }}
+        >
           <ModelHeader className="model-header">
-            <h3 style={{fontFamily:"Montserrat",
-              fontSize:"14.35px",
-            fontWeight:"600",
-            lineHeight:"16.8px",   
-              marginLeft:"-30px",
-            }}>Optez pour le prélèvement automatique pour une gestion simplifiée !  </h3>
-          <img
-            className="close-black"
-            src="/icons/Icon-close.svg"
-            alt=""
-            style={{marginTop:"15px",
-              width:"16px",
-              height:"16px",
-              marginLeft:"10px"
-            }}
-            onClick={() => {handleOptionClick("");
-            setShowAutorisation(false);}}
-          />
+            <h3
+              style={{
+                fontFamily: "Montserrat",
+                fontSize: "14.35px",
+                fontWeight: "600",
+                lineHeight: "16.8px",
+                marginLeft: "-30px",
+              }}
+            >
+              {t("optForAutomaticWithdrawal")}{" "}
+            </h3>
+            <img
+              className="close-black"
+              src="/icons/Icon-close.svg"
+              alt=""
+              style={{
+                marginTop: "16px",
+                width: "16px",
+                height: "16px",
+                [isArabic ? "left" : "right"]: "15px",
+                [isArabic ? "marginLeft" : "marginRight"]: "30px",
+              }}
+              onClick={() => {
+                handleOptionClick("");
+                setShowAutorisation(false);
+              }}
+            />
           </ModelHeader>
           <ModelBody className="model-body">
             <div>
-              <p className="text">
-                Cher partenaire,<br/><br/>
-                 Nous sommes ravis de vous présenter une option
-                de paiement plus pratique et efficace : le prélèvement
-                automatique ! Optez dès maintenant pour cette méthode de
-                paiement sécurisée et facilitez la gestion de vos transactions.<br/><br/>
-                Le prélèvement automatique vous permettra de régler vos
-                abonnements et paiements récurrents sans avoir à vous soucier de
-                le faire manuellement. Fini les oublis de paiement ou les
-                retards ! Une fois configuré, votre compte sera automatiquement
-                débité selon les échéances convenues.<br/><br/>
-                Pour activer le prélèvement automatique, il vous suffit de prendre contact avec
-                nous en appuyant sur le bouton ci-dessous. Notre équipe dédiée
-                sera enchantée de vous guider à travers le processus et de
-                répondre à toutes vos questions.<br/><br/>
-                Opter pour le prélèvement
-                automatique, c'est choisir une solution pratique et sans tracas
-                pour vos transactions régulières. Simplifiez votre gestion
-                financière dès aujourd'hui !<br/><br/> Nous vous remercions de votre
-                confiance et de votre préférence pour notre plateforme.
+              <p
+                className="text"
+                style={{
+                  textAlign: isArabic ? "right" : "left",
+                }}
+              >
+                {t("dearPartner")}
+                <br />
+                <br />
+                {t("automaticWithdrawalDescription")}
+                <br />
+                <br />
+                {t("benefitsOfAutomaticWithdrawal")}
+                <br />
+                <br />
+                {t("activateAutomaticWithdrawal")}
+                <br />
+                <br />
+                {t("chooseConvenience")}
+                !<br />
+                <br />
+                {t("thankYouForTrust")}
               </p>
             </div>
           </ModelBody>
           <ModelFooter>
             <div className="autorisation-footer">
-              <button className="btn-Model" onClick={()=>  window.location = "/contact"}>Contacter l’équipe Clinital</button>
+              <button
+                className="btn-Model"
+                onClick={() => (window.location = "/contact")}
+              >
+                {t("contactClinitalTeam")}
+              </button>
             </div>
           </ModelFooter>
         </div>

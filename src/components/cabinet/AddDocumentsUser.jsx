@@ -50,14 +50,16 @@ function AddDocumentsUser() {
         }}
       >
         <h1> {t("addCabinetDocuments")}</h1>
-        <p style={{
+        <p
+          style={{
             textAlign:
               localStorage.getItem("language") === "ar" ? "right" : "left",
-              marginLeft:
+            marginLeft:
               localStorage.getItem("language") === "ar" ? "310px" : "50px",
-              marginRight:
+            marginRight:
               localStorage.getItem("language") === "ar" ? "0px" : "80px",
-          }}>
+          }}
+        >
           {t("addDocumentsInstruction")}
           <br />
           {t("cooperationAppreciated")}
@@ -68,9 +70,14 @@ function AddDocumentsUser() {
             <li>{t("maxFileSize")}</li>
           </ul>
         </p>
-        <h2 style={{   [localStorage.getItem("language") === "ar"
-                            ? "right"
-                            : "left"]: "50px",}}>{t("documents")}</h2>
+        <h2
+          style={{
+            [localStorage.getItem("language") === "ar" ? "right" : "left"]:
+              "50px",
+          }}
+        >
+          {t("documents")}
+        </h2>
         <form className="form">
           {[
             { label: t("attestationINPE"), id: "inpe" },
@@ -93,11 +100,16 @@ function AddDocumentsUser() {
                     onChange={handleFileChange}
                     multiple
                   />
-                  <span className="file-span2" style={{
-                     [localStorage.getItem("language") === "ar"
-                     ? "marginRight"
-                     : "marginLeft"]: "10px",
-                  }}>{t("chooseFile")}</span>
+                  <span
+                    className="file-span2"
+                    style={{
+                      [localStorage.getItem("language") === "ar"
+                        ? "marginRight"
+                        : "marginLeft"]: "10px",
+                    }}
+                  >
+                    {t("chooseFile")}
+                  </span>
                 </label>
               </div>
               <div className="form-group">
@@ -127,9 +139,8 @@ function AddDocumentsUser() {
                           style={{
                             marginBottom: "2px",
                             [localStorage.getItem("language") === "ar"
-                            ? "marginLeft"
-                            : "marginRight"]: "10px",
-                         
+                              ? "marginLeft"
+                              : "marginRight"]: "10px",
                           }}
                         />
                       </label>
@@ -143,7 +154,7 @@ function AddDocumentsUser() {
       <div className="butt">
         <button
           className="button"
-          onClick={handleSubmit} 
+          onClick={handleSubmit}
           style={{
             marginLeft:
               localStorage.getItem("language") === "ar" ? "325px" : "810px",
