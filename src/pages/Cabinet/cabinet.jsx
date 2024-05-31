@@ -9,7 +9,7 @@ import DocumentProcessing from "../../components/cabinet/DocumentProcessing";
 import ChooseOffer from "../../components/cabinet/ChooseOffer";
 import PaymentOptions from "../../components/cabinet/PaymentOptions";
 import PaymentProcessing from "../../components/cabinet/PaymentProcessing";
-
+import PublishProfil1 from "../../components/cabinet/PublishProfil1";
 
 // Function to get stored user
 const getStoredUser = () => {
@@ -34,8 +34,8 @@ const ProtectedRoute = ({ component: Component, allowedStates }) => {
         return <Navigate to="/cabinet/mydocuments" />;
       case 3:
         return <Navigate to="/cabinet/chooseOffer" />;
-        case 4:
-          return <Navigate to="/cabinet/payment" />;
+      case 4:
+        return <Navigate to="/cabinet/payment" />;
       default:
         return <Navigate to="/cabinet" />;
     }
@@ -52,38 +52,56 @@ function Cabinet() {
         <Route
           exact
           path="/"
-          element={<ProtectedRoute component={AddCabinet} allowedStates={[1]} />}
+          element={
+            <ProtectedRoute component={AddCabinet} allowedStates={[1]} />
+          }
         />
         <Route
           exact
           path="/mydocuments"
-          element={<ProtectedRoute component={AddDocuments} allowedStates={[2]} />}
+          element={
+            <ProtectedRoute component={AddDocuments} allowedStates={[2]} />
+          }
         />
         <Route
           exact
           path="/userdocuments"
-          element={<ProtectedRoute component={AddDocumentsUser} allowedStates={[2]} />}
+          element={
+            <ProtectedRoute component={AddDocumentsUser} allowedStates={[2]} />
+          }
         />
         <Route
           exact
           path="/documentprocessing"
-          element={<ProtectedRoute component={DocumentProcessing} allowedStates={[2]} />}
+          element={
+            <ProtectedRoute
+              component={DocumentProcessing}
+              allowedStates={[2]}
+            />
+          }
         />
         <Route
           exact
           path="/chooseOffer"
-          element={<ProtectedRoute component={ChooseOffer} allowedStates={[3]} />}
+          element={
+            <ProtectedRoute component={ChooseOffer} allowedStates={[3]} />
+          }
         />
         <Route
           exact
           path="/payment"
-          element={<ProtectedRoute component={PaymentOptions} allowedStates={[4]} />}
+          element={
+            <ProtectedRoute component={PaymentOptions} allowedStates={[4]} />
+          }
         />
         <Route
           exact
           path="/paymentprocessing"
-          element={<ProtectedRoute component={PaymentProcessing} allowedStates={[4]} />}
-        />      
+          element={
+            <ProtectedRoute component={PaymentProcessing} allowedStates={[4]} />
+          }
+        />
+        <Route exact path="/publishProfil1" element={<PublishProfil1 />} />
       </Routes>
     </div>
   );
