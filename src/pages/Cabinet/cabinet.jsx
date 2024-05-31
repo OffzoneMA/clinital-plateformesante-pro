@@ -101,7 +101,7 @@ function Cabinet() {
             <ProtectedRoute component={PaymentProcessing} allowedStates={[4]} />
           }
         />
-        <Route exact path="/publishProfil1" element={<PublishProfil1 />} />
+        <Route exact path="/ConfigureCalendar" element={<PublishProfil1 />} />
       </Routes>
     </div>
   );
