@@ -34,6 +34,8 @@ const ProtectedRoute = ({ component: Component, allowedStates }) => {
         return <Navigate to="/cabinet/mydocuments" />;
       case 3:
         return <Navigate to="/cabinet/chooseOffer" />;
+        case 4:
+          return <Navigate to="/cabinet/payment" />;
       default:
         return <Navigate to="/cabinet" />;
     }
@@ -72,10 +74,16 @@ function Cabinet() {
           path="/chooseOffer"
           element={<ProtectedRoute component={ChooseOffer} allowedStates={[3]} />}
         />
-         <Route exact path="/payment" element={<PaymentOptions />} />
-         
-         <Route exact path="/paymentprocessing" element={<PaymentProcessing />} />
-         
+        <Route
+          exact
+          path="/payment"
+          element={<ProtectedRoute component={PaymentOptions} allowedStates={[4]} />}
+        />
+        <Route
+          exact
+          path="/paymentprocessing"
+          element={<ProtectedRoute component={PaymentProcessing} allowedStates={[4]} />}
+        />      
       </Routes>
     </div>
   );
