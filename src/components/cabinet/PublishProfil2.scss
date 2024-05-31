@@ -1,6 +1,6 @@
 @import "../../styles/style.scss";
 
-.publishProfil {
+.publishProfilP {
   .bg {
     height: 100vh;
     width: 100%;
@@ -31,7 +31,7 @@
     left: 0;
     top: -210px;
   }
-  .container {
+  .containerP {
     padding: 40px 20px 50px;
     max-width: 800px;
     margin: auto;
@@ -50,7 +50,7 @@
     top: 180px;
     gap: 40px;
   }
-  .container .div {
+  .containerP .divP {
     align-items: flex-start;
     align-self: stretch;
     display: flex;
@@ -62,7 +62,7 @@
     width: 100%;
   }
   
-  .container .div-2 {
+  .containerP .div-2P {
     align-items: flex-start;
     align-self: stretch;
     display: flex;
@@ -72,7 +72,7 @@
     width: 100%;
   }
   
-  .container .titre {
+  .containerP .titreP {
     color: #303030;
     font-family: "Montserrat-Bold", Helvetica;
     font-size: 21px;
@@ -84,7 +84,7 @@
     width: fit-content;
   }
   
-  .container .text-wrapper {
+  .containerP .text-wrapperP {
     color: #303030;
     font-family: "Avenir Next LT Pro-Demi", Helvetica;
     font-size: 18px;
@@ -96,7 +96,7 @@
     width: fit-content;
   }
   
-  .container .div-3 {
+  .containerP .div-3P {
     align-items: center;
     display: inline-flex;
     flex: 0 0 auto;
@@ -104,13 +104,13 @@
     position: relative;
   }
   
-  .container .ellipse {
+  .containerP .ellipseP {
     height: 99px;
     position: relative;
     width: 99px;
   }
   
-  .container .div-4 {
+  .containerP .div-4P {
     align-items: flex-start;
     display: inline-flex;
     flex: 0 0 auto;
@@ -119,7 +119,7 @@
     position: relative;
   }
   
-  .container .text-wrapper-2 {
+  .containerP .text-wrapper-2P {
     color: rgba(48, 48, 48, 1);
     font-family: "Montserrat-SemiBold", Helvetica;
     font-size: 20px;
@@ -132,7 +132,7 @@
     width: fit-content;
   }
   
-  .container .text-wrapper-3 {
+  .containerP .text-wrapper-3P {
     color:  rgba(48, 48, 48, 1);
     font-family: "Avenir Next LT Pro-Regular", Helvetica;
     font-size: 18px;
@@ -143,7 +143,7 @@
     width: fit-content;
   }
   
-  .container .line {
+  .containerP .lineP {
     margin-top: -10px;
     align-self: stretch;
     height: 1px;
@@ -155,7 +155,7 @@
 
   }
   
-  .container .div-5 {
+  .containerP .div-5P {
     margin-top: -10px;
     align-items: center;
     display: inline-flex;
@@ -165,13 +165,13 @@
     position: relative;
   }
   
-  .container .img {
+  .containerP .imgP {
     height: 225.32px;
     position: relative;
     width: 253.8px;
   }
   
-  .container .div-6 {
+  .containerP .div-6P {
     margin-top:10px;
     align-items: center;
     display: flex;
@@ -180,13 +180,13 @@
     gap: 25px;
     position: relative;
   }
-  .container .flexcontainer {
+  .containerP .flexcontainerP {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
     gap: 21px;
   }
-  .container .text{
+  .containerP .textP{
     margin-top:-20px;
     align-self: stretch;
     color: #303030;
@@ -198,16 +198,16 @@
     position: relative;
     text-align: center;
   }
-  .container .span {
+  .containerP .spanP {
     font-weight: 600;
   }
-  .container .text-wrapper-4 {
+  .containerP .text-wrapper-4P {
     font-family: "Avenir Next LT Pro-Regular", Helvetica;
     font-size: 16px;
     line-height: 22.4px;
   }
  
-  .container .button {
+  .containerP .buttonP {
     margin-top: -10px;
     align-items: flex-start;
     display: flex;
@@ -217,7 +217,7 @@
     width: 340px;
   }
   
-  .container .button-2 {
+  .containerP .button-2P {
     align-items: center;
     align-self: stretch;
     background-color: #6dc0f9;
@@ -232,7 +232,7 @@
     width: 100%;
   }
   
-  .container .plus-circle {
+  .containerP .plus-circleP {
     height: 14px !important;
     margin-bottom: -3px !important;
     margin-top: -3px !important;
@@ -240,7 +240,7 @@
     width: 14px !important;
   }
   
-  .container .titre-2 {
+  .containerP .titre-2P {
     color: rgba(255, 255, 255, 1);
     font-family:"Avenir Next LT Pro", Helvetica;
     font-size: 14px;

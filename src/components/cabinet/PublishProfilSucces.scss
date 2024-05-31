@@ -1,6 +1,6 @@
 @import "../../styles/style.scss";
 
-.publishProfil {
+.publishProfilS {
   .bg {
     height: 100vh;
     width: 100%;
@@ -31,7 +31,7 @@
     left: 0;
     top: -210px;
   }
-  .container {
+  .containerS {
     align-items: center;
     background-color: #fafafa;
     border: 1.6px solid #c989dd;
@@ -49,7 +49,7 @@
     top: 180px;
     height: 560px;
   }
-  .container .text-wrapper {
+  .containerS .text-wrapperS {
     color: #303030;
     font-family: "Montserrat-Bold", Helvetica;
     font-size: 22px;
@@ -62,19 +62,19 @@
     width: fit-content;
     top: -160px;
   }
-  .container .text-wrapper br {
+  .containerS .text-wrapperS br {
     margin-bottom: 6px; /* Ajustez cette valeur selon vos besoins */
     display: block; /* Nécessaire pour que la marge soit appliquée */
     content: ""; /* Nécessaire pour que la marge soit appliquée */
   }
-  .container .check {
+  .containerS .checkS {
     top: -175px;
     height: 96px;
     position: relative;
     width: 96px;
   }
 
-  .container .group {
+  .containerS .groupS {
     height: 260px;
     left: 252px;
     top: 260px;
@@ -82,13 +82,13 @@
     width: 296px;
   }
 
-  .container .overlap-group {
+  .containerS .overlap-groupS {
     height: 270px;
     top: -10px;
     position: relative;
   }
 
-  .container .funny {
+  .containerS .funnyS {
     height: 249px;
     left: 53px;
     top: 0px;
@@ -96,7 +96,7 @@
     width: 183px;
   }
 
-  .container .button {
+  .containerS .buttonS {
     margin-top: -10px;
     left: 0 !important ;
     top: 228px;
@@ -104,7 +104,7 @@
     width: 296px !important;
   }
 
-  .container .button-2 {
+  .containerS .button-2S {
     align-items: center;
     align-self: stretch;
     background-color: #6dc0f9;
@@ -119,7 +119,7 @@
     width: 100%;
   }
 
-  .container .titre-2 {
+  .containerS .titre-2S {
     color: rgba(255, 255, 255, 1);
     font-family: "Avenir Next LT Pro", Helvetica;
     font-size: 14px;
