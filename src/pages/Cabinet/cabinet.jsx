@@ -10,7 +10,7 @@ import ChooseOffer from "../../components/cabinet/ChooseOffer";
 import PaymentOptions from "../../components/cabinet/PaymentOptions";
 import PaymentProcessing from "../../components/cabinet/PaymentProcessing";
 import PublishProfil1 from "../../components/cabinet/PublishProfil1";
-
+import PublishProfil2 from "../../components/cabinet/PublishProfil2";
 // Function to get stored user
 const getStoredUser = () => {
   const storedUserJSON = localStorage.getItem("user");
@@ -102,6 +102,7 @@ function Cabinet() {
           }
         />
         <Route exact path="/ConfigureCalendar" element={<PublishProfil1 />} />
+        <Route exact path="/publishProfil" element={<PublishProfil2 />} />
       </Routes>
     </div>
   );
