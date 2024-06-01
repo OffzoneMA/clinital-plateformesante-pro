@@ -112,5 +112,18 @@
   "thankYouForTrust": "Thank you for your trust and preference for our platform.",
   "contactClinitalTeam": "Contact the Clinital Team",
   "requestProcessing": "Request Processing",
-  "demandUnderReview": "Your request to add the cabinet is currently under review by the Clinital administrator. We will notify you as soon as it has been successfully processed."
+  "demandUnderReview": "Your request to add the cabinet is currently under review by the Clinital administrator. We will notify you as soon as it has been successfully processed.",
+  "configurerMonAgenda": "1 - Configure my Schedule",
+  "publier_mon_profil": "2 - Publish my Profile",
+  "pour_publier_votre_profil_sur_clinital": "To publish your profile on Clinital",
+  "veuillez_parametrer_votre_agenda": "Please configure your schedule by adding appointment slots.",
+  "ajouter_un_creneau": "Add a slot",
+  "bienvenue_sur_clinital": "Welcome to Clinital!",
+  "en_cliquant_sur_le_bouton": "By clicking the button below, you will make your profile visible",
+  "users":" to all users.",
+  "nous_vous_remercions": "We thank you for joining our medical community.",
+  "publier": "Publish",
+  "votre_profil_a_ete_publie": "Your profile has been published successfully",
+  "felicitations": "Congratulations!",
+  "voir_mon_profil": "View my profile"
 }

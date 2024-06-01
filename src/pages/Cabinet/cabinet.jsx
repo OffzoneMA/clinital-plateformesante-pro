@@ -104,7 +104,6 @@ function Cabinet() {
         />
         <Route exact path="/ConfigureCalendar" element={<PublishProfil1 />} />
         <Route exact path="/publishProfil" element={<PublishProfil2 />} />
-        <Route exact path="/publishProfilSucces" element={<PublishProfilSucces />} />
       </Routes>
     </div>
   );

@@ -112,5 +112,18 @@
   "thankYouForTrust": "شكرا لثقتك وتفضيلك لمنصتنا.",
   "contactClinitalTeam": "الاتصال بفريق كلينيتال",
   "requestProcessing": "معالجة الطلب",
-  "demandUnderReview": "تم استلام طلب إضافة العيادة ويتم حاليا مراجعته من قبل مسؤول كلينيتال. سوف نقوم بإعلامكم بمجرد اكتمال المراجعة بنجاح."
+  "demandUnderReview": "تم استلام طلب إضافة العيادة ويتم حاليا مراجعته من قبل مسؤول كلينيتال. سوف نقوم بإعلامكم بمجرد اكتمال المراجعة بنجاح.",
+  "configurerMonAgenda":"1 - ضبط جدولي",
+  "pour_publier_votre_profil_sur_clinital": "لنشر ملفك الشخصي على كلينيتال",
+  "veuillez_parametrer_votre_agenda": "يرجى تكوين جدولك الزمني بإضافة مواعيد.",
+  "ajouter_un_creneau": "أضف موعدًا",
+  "publier_mon_profil":"2 - انشر ملفي الشخصي",
+  "bienvenue_sur_clinital": "مرحبًا بكم في كلينيتال!",
+  "en_cliquant_sur_le_bouton": "بالنقر على الزر أدناه، ستجعل ملفك الشخصي مرئيًا.",
+  "users":" لجميع المستخدمين",
+  "nous_vous_remercions": "نشكركم على الانضمام إلى مجتمعنا الطبي.",
+  "publier": "نشر",
+  "votre_profil_a_ete_publie": "تم نشر ملفك الشخصي بنجاح",
+  "felicitations": "تهانينا!",
+  "voir_mon_profil": "عرض ملفي الشخصي"
 }
