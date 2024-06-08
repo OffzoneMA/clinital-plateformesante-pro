@@ -31,6 +31,8 @@ const RDV_STATE = {
     TERMINE: 'TERMINE',
     ANNULE: 'ANNULE',
     ANNULE_DOC: 'ANNULE_DOC',
+    ARCHIVED: 'ARCHIVED'
+
 }
 const CONSTANTS = {
     TIME: TIME,

@@ -29,16 +29,35 @@ function Agenda() {
     const today = new Date().getTime();
     const rdvStart = new Date(rdv.start).getTime();
 
-
-    if (filter === "" || filter === "Tout Motif" || filter === "Tout Type") {
-      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
+    if (filter === "") {
+      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE && rdv.statut !== CONSTANTS.RDV_STATE.ARCHIVED;
     }
+    //dans cet etape, pas encore parlé sur rdvs annulés et archivés
     if (filter === "Tout Motif") {
-      return rdv.id_motif && rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
+      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE && rdv.statut !== CONSTANTS.RDV_STATE.ARCHIVED;
     }
-    if (filter === CONSTANTS.RDV_STATE.ANNULE) {
-      return rdv.statut === CONSTANTS.RDV_STATE.ANNULE || rdv.statut === CONSTANTS.RDV_STATE.ANNULE_DOC;
-    } else {
+    if (filter === "Tout Type") {
+      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE && rdv.statut !== CONSTANTS.RDV_STATE.ARCHIVED;
+    }
+    if (filter === "Premiere consultation") {
+      return rdv.motifConsultation.id_motif===1;
+    }
+    if (filter === "Consultation de suivi") {
+      return rdv.motifConsultation.id_motif===2;
+    }
+    if (filter === "Urgence") {
+      return rdv.motifConsultation.id_motif===3;
+    }
+    if (filter === "Cabinet") {
+      return rdv.modeConsultation.id_mode===1;
+    }
+    if (filter === "Video") {
+      return rdv.modeConsultation.id_mode===2;
+    }
+    if (filter === "Domicile") {
+      return rdv.modeConsultation.id_mode===3;
+    }
+    else {
       return true;
     }
   });
@@ -48,7 +67,7 @@ function Agenda() {
     <div className="agenda-page">
       <Navbar />
       <div className="agenda">
-        <MyRdvs filter={filter} setFilter={setFilter}  />
+        <MyRdvs setFilter={setFilter}  />
         <Calendar rdvs={filtredRdvs} setAgendaIsChanging={setAgendaIsChanging} />
       </div>
       <MiniFooter />
