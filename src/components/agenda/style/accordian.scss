@@ -1,0 +1,54 @@
+.RDVAnnul {
+  align-items: center;
+  border: 0.5px solid #F9B9B9;
+  display: flex;
+  gap: 4px;
+  height: 35px;
+  padding: 2px 6px;
+  width: 223px;
+  color: #F48888;
+  cursor: pointer;
+}
+.RDVAnnul:hover {
+  background-color: rgba(254, 241, 241, 0.80);
+}
+
+.RDVAnnul .rectangleAnnul {
+  border-radius: 50px;
+  height: 5px;
+  position: relative;
+  width: 5px;
+  background-color: #F48888;
+}
+
+.RDVArchive {
+  align-items: center;
+  border: 0.5px solid #F9B9B9;
+  display: flex;
+  gap: 4px;
+  height: 35px;
+  padding: 2px 6px;
+  width: 223px;
+  color: #AAAAAA;
+  cursor: pointer;
+}
+.RDVArchive:hover {
+  background-color: rgba(190, 190, 190, 0.20);
+}
+
+.RDVArchive .rectangleArchive {
+  border-radius: 50px;
+  height: 5px;
+  position: relative;
+  width: 5px;
+  background-color: #AAAAAA;
+}
+
+.space {
+  display: flex;
+  width: 223px;
+  height: 8px;
+  padding: 2px 6px;
+  align-items: center;
+  gap: 4px;
+}

@@ -427,7 +427,7 @@
           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }
 
-      .custom-select input[type="search"] {
+        .custom-select input[type="search"] {
 
           padding: 0px;
           width: 294px;
@@ -456,9 +456,6 @@
         .dropdown-content button:hover {
           background-color: #0056b3;
         }
-
-
-
       }
 
       .calendar {
@@ -478,8 +475,6 @@
             justify-content: space-between;
             position: relative;
             z-index: 5;
-
-
 
             .days-container {
               width: 100%;
@@ -575,13 +570,13 @@
             .times-container {
               display: flex;
               flex-direction: column;
-              margin: 0 10px auto 7px;
+              margin: 5px 10px 0 17px;
               position: relative;
 
               .time {
                 line-height: 16px;
                 font-size: 12px;
-                padding: 11px 0;
+                padding: 12px 0px;
               }
             }
 
@@ -598,7 +593,7 @@
               border-radius: 0 0 10px 10px;
               position: relative;
               height: 100%;
-              
+
               .weekDays {
                 display: flex;
                 height: 100%;
@@ -611,7 +606,7 @@
               .day-container {
                 display: flex;
                 flex-direction: column;
-              
+
                 width: calc(100% / 7);
                 border-left: 0.5px solid #e9e9e9;
                 background-color: white;
@@ -620,11 +615,11 @@
                 }
 
                 .day-box {
-                  height: 38px;
-                  display: flex;
+                  min-height: 40px;//change here height but time is not aligned(problem)
+
                   border-bottom: 0.5px solid #e9e9e9;
                   position: relative;
-                
+
 
                   .rdv-item {
                     width: 100%;
@@ -632,7 +627,7 @@
                     color: white;
                     overflow: hidden;
                     border-radius: 4px;
-                    position: absolute;
+                    position: relative;
                     justify-content: space-between;
                     animation: rdvShow 800ms forwards ease;
                     cursor: pointer;
@@ -998,7 +993,7 @@
       font-size: 12px;
       display: none;
     }
-    &:hover { 
+    &:hover {
       .annule-popover {
         display: flex;
       }
@@ -1263,9 +1258,9 @@
         .item-title {
           color: white;
           background: linear-gradient(
-            90deg,
-            rgba(201, 137, 221, 0.9) -8.54%,
-            rgba(133, 202, 250, 0.9) 108.12%
+                          90deg,
+                          rgba(201, 137, 221, 0.9) -8.54%,
+                          rgba(133, 202, 250, 0.9) 108.12%
           );
         }
         button {
@@ -1295,7 +1290,7 @@
           align-self: center;
           background: #ffffff;
           box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.13),
-            inset 0px 2px 0px #ffffff;
+          inset 0px 2px 0px #ffffff;
           padding: 13px 35px;
           border-radius: 6px;
           width: 260px;

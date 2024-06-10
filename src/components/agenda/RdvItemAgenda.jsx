@@ -4,18 +4,27 @@ import { useEffect } from "react";
 import './style/rdvItemAgenda.scss';
 
 function RdvItemAgenda({ rdv, rdvType }) {
-  const [classRdv, setClassRdv] = useState("");
+    const [classRdv, setClassRdv] = useState("");
 
-  useEffect(() => {
-    rdvType(rdv);
+    useEffect(() => {
+        rdvType(rdv);
 
-  }, [rdv, rdvType]);
+        const today = new Date().getTime();
+        const rdvStart = new Date(rdv.start).getTime();
+
+        if (today > rdvStart) {
+            {console.log(today > rdvStart)}
+            setClassRdv("past-rdv");
+        } else {
+            setClassRdv("");
+        }
+    }, [rdv, rdvType]);
 
   return (
       <>
 
           {console.log("rdvs************: ", rdv)}
-          <div className={`RDV`}>
+          <div className={`RDV ${classRdv}`}>
               <div className={`rectangle ${rdv.modeConsultation.mode.toLowerCase()}`} />
               <div className="frame">
                   <div className="text-wrapper">{rdv.start.slice(11, 16)}</div>
