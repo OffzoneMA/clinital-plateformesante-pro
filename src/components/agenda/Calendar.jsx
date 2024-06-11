@@ -355,6 +355,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               className={`calendar-wrapper-header ${
                   option === "month" ? "calendar-wrapper-header-month" : ""
               }`}
+              style={{width: "967px", marginLeft:"88px" }}
           >
             <div className="row w-100">
               <div className="col-12 p-0 d-flex">
@@ -397,10 +398,10 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
           </div>
 
           {option !== "month" && (
-              <div className="calendar-wrapper-content">
-                <div className="row w-100 d-flex">
+              <div className="calendar-wrapper-content" >
+                <div className="row w-100 ">
                   <div className="container p-0 d-flex">
-                    <div className="col-1 p-0">
+                    <div className="col-1 p-0" style={{marginLeft:"20px"}}>
                       <div className="times-container">
                         {CONSTANTS.TIME.map((x, index) => (
                             <span className="time" key={index}>
@@ -409,8 +410,8 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
                         ))}
                       </div>
                     </div>
-                    <div className="col-11 p-0">
-                      <div className="calendar-wrapper-content-main" ref={daysMain}>
+                    <div className="col-11 p-0 flex"style={{marginLeft:"-20px"}}>
+                      <div className="calendar-wrapper-content-main" ref={daysMain} style={{width:"967px"}}>
                         {renderOption().map((week, index) => (
                             <div
                                 key={index}

@@ -504,7 +504,13 @@
                   background: white;
                 }
               }
-
+              .calendar-wrapper-content-main{
+                width: 98%;
+                background: white;
+                display: flex;
+                flex-direction: row;
+                flex: 1;
+              }
               .day {
                 height: 100px;
                 display: flex;
@@ -570,13 +576,13 @@
             .times-container {
               display: flex;
               flex-direction: column;
-              margin: 5px 10px 0 17px;
+              margin: 0 10px auto 7px;
               position: relative;
 
               .time {
                 line-height: 16px;
                 font-size: 12px;
-                padding: 12px 0px;
+                padding: 11px 0px;
               }
             }
 
@@ -615,8 +621,8 @@
                 }
 
                 .day-box {
-                  min-height: 40px;//change here height but time is not aligned(problem)
-
+                  height: 38px;
+                  display: flex;
                   border-bottom: 0.5px solid #e9e9e9;
                   position: relative;
 
@@ -627,7 +633,7 @@
                     color: white;
                     overflow: hidden;
                     border-radius: 4px;
-                    position: relative;
+                    position: absolute;
                     justify-content: space-between;
                     animation: rdvShow 800ms forwards ease;
                     cursor: pointer;
@@ -697,6 +703,9 @@
                   p {
                     font-size: 12px;
                   }
+                }
+                .day-option{
+                  width: 967px;
                 }
               }
             }
