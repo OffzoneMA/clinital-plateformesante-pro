@@ -22,6 +22,7 @@ import ErrorBoundary from "./components/errors/ErrorBoundery";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
+import MedecinNetwork from "./pages/networkMedecin/MedecinNetwork";
 
 export const Log = React.createContext();
 
@@ -56,7 +57,8 @@ function App() {
             <Route exact path="/login/*" element={<Connexion />} />
             <Route exact path="/result//*" element={<Result />} />
             <Route exact path="/cabinet//*" element={<Cabinet />} />
-            <Route exact path="/profil/:id" element={<Profil />} />
+              <Route exact path="/profil/:id" element={<Profil />} />
+               <Route exact path="/mynetwork" element={<MedecinNetwork />} />
             {console.log(isValidToken)}
             {isValidToken &&
               <>
@@ -67,6 +69,8 @@ function App() {
                 <Route exact path="/rdv/:id" element={<RdvPage />} />
                 <Route exact path="/rdv-popup" element={<RdvPopup />} />
                 <Route exact path="/rdvdejapris" element={<RdvDejaPrise />} />
+                
+                
               </>
             }
           </Routes>
