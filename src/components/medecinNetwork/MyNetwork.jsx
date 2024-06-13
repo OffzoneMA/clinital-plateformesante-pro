@@ -1,28 +1,34 @@
 
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
 import { TOKEN } from "../../services/api";
 import Axios from "axios"; 
+import MedNetworksService from "../medecinNetwork/services/medNetworkService";
+import { setSpecialite, setVilles } from "../../utils/redux/GlobalSlice";
+import SearchServices from "../searchBarDoc/SearchServices/SearchServices";
+import { useDispatch } from "react-redux";
+
 
 
 function myNetwork() {
 
   
-   const [isOtherSpecChecked, setisOtherSpecChecked] = useState(false) //les conditions génerales
-   const [loading, setLoading] = useState(false); //une opération est en cours de chargement.
+    const [isOtherSpecChecked, setisOtherSpecChecked] = useState(false) //les conditions génerales
+    const [loading, setLoading] = useState(false); //une opération est en cours de chargement.
     const [isChecked, setIsChecked] = useState(false); 
     
-    const [contacts, setContacts] = useState([
-    { id: 1, nom: 'Mohamed Bouy', email: 'john@example.com', specialite: 'Médecin généraliste' },
-        { id: 2, nom: 'Jane Smith', email: 'jane@example.com', specialite: 'Médecin généraliste' },
-    { id:3, nom: 'Mohamed Bouy', email: 'john@example.com', specialite: 'Médecin généraliste' },
-   { id: 4, nom: 'Jane Smith', email: 'jane@example.com', specialite: 'Médecin généraliste' }
-    // Ajoutez autant de contacts que vous le souhaitez
-]);
-
+    const [contacts, setContacts] = useState([]);
+    const [city,setCity]=useState([{}])
+    const [spec, setSpec] = useState([{}])
+    const dispatch = useDispatch();
+    const [selectedSpecs, setSelectedSpecs] = useState([]); 
+    //Charger les followers
+    useEffect(() => {
+        fetchFollowers();
+    }, []);
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
@@ -33,6 +39,71 @@ function myNetwork() {
         console.log(isChecked)
     };
 
+     const fetchFollowers = async () => {
+        setLoading(true);
+        try {
+            const response = await MedNetworksService.getAllMedNetworks();
+            
+            if (response.status === 200) {
+                if (response.data && response.data.length > 0) {
+                    setContacts(response.data);
+                } else {
+                    toast.info("Aucun contact trouvé.");
+                    setContacts([]);
+                }
+            } else {
+                toast.error("Erreur de chargement des contacts.");
+            }
+        } catch (error) {
+            toast.error("Erreur lors du chargement des contacts.");
+        } finally {
+            setLoading(false);
+        }
+    };
+    const photoUrlBase = `/images/profile_photomed/`;
+    
+    // Fetch citys & speciality
+  useEffect(() => {
+    try {
+      setLoading(true)
+     SearchServices.getAllCities().then((res)=>{
+       //console.log("villes:",res)
+        setCity(res.data)
+        dispatch(setVilles(res.data))
+      }).catch((error)=>{
+        toast.error(error.message)
+      }).finally(()=>{
+        setLoading(false)
+      });
+      
+    } catch (error) {
+      toast.error(error.message)
+    }
+    try{
+
+    SearchServices.getAllSpecialities().then((res)=>{
+     // console.log("Les specialités: ", res)
+        setSpec(res.data)
+        dispatch(setSpecialite(res.data))
+      }).catch((error)=>{
+        toast.error(error.message)
+      }).finally(()=>{
+        setLoading(false)
+      });
+    } catch (error) {
+      toast.error(error.message)
+    }
+    window.scrollTo(0, 0);
+  }, []);
+    //
+    const handleSpecCheckboxChange = (specialiteId) => {
+        // Vérifie si la spécialité est déjà sélectionnée
+        if (selectedSpecs.includes(specialiteId)) {
+            setSelectedSpecs(selectedSpecs.filter(id => id !== specialiteId)); // Décocher la spécialité
+        } else {
+            setSelectedSpecs([...selectedSpecs, specialiteId]); // Cocher la spécialité
+        }
+    };
   return (
     <div className="mynetwork ">
           
@@ -63,7 +134,8 @@ function myNetwork() {
                     </div>
 
                 </div>
-                <div className="scrollable-section">         
+                <div className="scrollable-section"> 
+                            
                     <div className="checkbox-container">
                         <div className="checkbox-wrapper">
                             <input
@@ -77,61 +149,34 @@ function myNetwork() {
                             <label htmlFor="tout" className="checkbox-label"></label>
                         </div>
                         <div className="checkbox-text">Tout</div>
-                </div>
-
-                <div className="checkbox-container">
-                <div className="checkbox-wrapper">
-                    <input
-                        type="checkbox"
-                            id="otherspec"
-                            name="otherspec"
-                            className="checkbox-input"
-                            checked={isOtherSpecChecked}
-                            onChange={handleOtherSpecCheckboxChange}
-                        />
-                        <label htmlFor="otherspec" className="checkbox-label"></label>
+                     </div>
+                {spec.map((specialite) => (
+                    <div className="checkbox-container" key={specialite.id_spec}>
+                    <div className="checkbox-wrapper">
+                        <input
+                            type="checkbox"
+                                id={`spec_${specialite.id_spec}`}
+                                name={`spec_${specialite.id_spec}`}
+                                className="checkbox-input"
+                                checked={isOtherSpecChecked}
+                                onChange={() => handleSpecCheckboxChange(specialite.id_spec)}
+                            />
+                            <label htmlFor="otherspec" className="checkbox-label"></label>
+                        </div>
+                        <div className="checkbox-text">{specialite.libelle}</div>
                     </div>
-                    <div className="checkbox-text">otherspec</div>
-                </div>
-                <div className="checkbox-container">
-                <div className="checkbox-wrapper">
-                    <input
-                        type="checkbox"
-                            id="otherspec"
-                            name="otherspec"
-                            className="checkbox-input"
-                            checked={isOtherSpecChecked}
-                            onChange={handleOtherSpecCheckboxChange}
-                        />
-                        <label htmlFor="otherspec" className="checkbox-label"></label>
-                    </div>
-                    <div className="checkbox-text">otherspec</div>
-                </div>
-                <div className="checkbox-container">
-                <div className="checkbox-wrapper">
-                    <input
-                        type="checkbox"
-                            id="otherspec"
-                            name="otherspec"
-                            className="checkbox-input"
-                            checked={isOtherSpecChecked}
-                            onChange={handleOtherSpecCheckboxChange}
-                        />
-                        <label htmlFor="otherspec" className="checkbox-label"></label>
-                    </div>
-                    <div className="checkbox-text">otherspec</div>
-                </div>
-                
-                              </div> 
+                   ))} 
+                    
+                </div> 
             
              </>
             )}              
         </div>
             
-                <div className="ligne"></div>
+                
                 <div className="menu-section">
                      <div className="menu-item">
-                         <div className="menu-text">Localisation</div>
+                         <div className="menu-text">Villes</div>
                     </div>
                 {contacts.length > 0 && ( 
                     <>     
@@ -147,8 +192,8 @@ function myNetwork() {
 
                 </div>
                      
-    
-                <div className="checkbox-container">
+            <div className="scrollable-section">   
+                    <div className="checkbox-container">
                     <div className="checkbox-wrapper">
                         <input
                             type="checkbox"
@@ -161,22 +206,26 @@ function myNetwork() {
                         <label htmlFor="tout" className="checkbox-label"></label>
                     </div>
                     <div className="checkbox-text">Tout</div>
-                </div>
-                    
-                <div className="checkbox-container">
-                    <div className="checkbox-wrapper">
-                        <input
-                            type="checkbox"
-                                id="otherspec"
-                                name="otherspec"
-                                className="checkbox-input"
-                                checked={isOtherSpecChecked}
-                                onChange={handleOtherSpecCheckboxChange}
-                            />
-                            <label htmlFor="otherspec" className="checkbox-label"></label>
                     </div>
-                    <div className="checkbox-text">Casablanca</div>
-                </div>
+                {city.map((city) => (
+                        <div className="checkbox-container" key={city.id_city}>
+                        <div className="checkbox-wrapper">
+                            <input
+                                type="checkbox"
+                                    id="otherspec"
+                                    name="otherspec"
+                                    className="checkbox-input"
+                                  
+                                    onChange={handleOtherSpecCheckboxChange}
+                                />
+                                <label htmlFor="otherspec" className="checkbox-label"></label>
+                        </div>
+                        <div className="checkbox-text">{city.nom_ville}</div>
+                        </div>
+                ))}
+                      
+                                  
+               </div>
                 </> )}
             
             </div>
@@ -219,12 +268,12 @@ function myNetwork() {
                     {contacts.map(contact => (   
                           <div className="card" key={contact.id}>
                               <div className="image-container">
-                                  <img className="profile-img" src="/images/network/Ellipse 7.svg" alt="Ellipse" />
+                                <img className="profile-img" src={`${photoUrlBase}${contact.photo_med ? contact.photo_med : "/images/profile_photomed/defaultprofil.png"}`} alt="Ellipse" />
                                   <img className="icon-img" src="/images/network/Gastroentérologue.png" alt="Gastroentérologue" />
                               </div>
                               <div className="text-container">
-                                  <div className="name">Dr {contact.nom}</div>
-                                <div className="specialty">{contact.specialite}</div>
+                                <div className="name">Dr {contact.nom_med} {contact.prenom_med}</div>
+                                <div className="specialty">{contact.specialite.libelle}</div>
                               </div>
                           </div>
                          

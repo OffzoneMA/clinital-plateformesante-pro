@@ -58,7 +58,7 @@ function App() {
             <Route exact path="/result//*" element={<Result />} />
             <Route exact path="/cabinet//*" element={<Cabinet />} />
               <Route exact path="/profil/:id" element={<Profil />} />
-               <Route exact path="/mynetwork" element={<MedecinNetwork />} />
+              
             {console.log(isValidToken)}
             {isValidToken &&
               <>
@@ -69,6 +69,7 @@ function App() {
                 <Route exact path="/rdv/:id" element={<RdvPage />} />
                 <Route exact path="/rdv-popup" element={<RdvPopup />} />
                 <Route exact path="/rdvdejapris" element={<RdvDejaPrise />} />
+                 <Route exact path="/mynetwork" element={<MedecinNetwork />} />
                 
                 
               </>

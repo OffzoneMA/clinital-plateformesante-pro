@@ -3,8 +3,9 @@ import { ORIGIN,TOKEN } from './api';
 import { toast } from 'react-toastify';
 // import keyValueStorage from '../utils/storage/keyValueStorage';
 
+ const url=process.env.BASE_URL
 let axiosInstance = axios.create({
-    baseURL: process.env.BASE_URL,
+    baseURL:url,
     responseType: "json",
     headers: {
         'Cache-Control': 'no-cache',
@@ -12,9 +13,13 @@ let axiosInstance = axios.create({
         'Expires': 'Sat, 01 Jan 2000 00:00:00 GMT',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-    },
+  },
+    
     validateStatus: status => (status >= 200 && status < 300) || status === 422,
 });
+
+
+
 // Create a cancellation token source outside the interceptors
 // const cancelTokenSource = axios.CancelToken.source();
 // axiosInstance.CancelToken = axios.CancelToken;
@@ -38,13 +43,13 @@ let axiosInstance = axios.create({
 
 
 const requestHandler = (request) => {
-
     if (TOKEN !== undefined) {
         request.headers.Authorization = `Bearer ${TOKEN}`;
     }
-    console.log(request);
+    //console.log(request);
     return request;
 };
+
 
 
 /*const requestHandler = (request) => {
@@ -63,10 +68,10 @@ const responseHandler = (response) => {
   
   if (response && response.status === 401) {
     // Handle 401 error - remove token and redirect to login
-    toast.error('📡 API | Please login again', 'Session Expired');
+    //toast.error('📡 API | Please login again', 'Session Expired');
     console.log('📡 API | Please login again', 'Session Expired');
     localStorage.removeItem('user'); // Remove token
-    window.location = "/"; // Redirect to login
+    window.location = "/login"; // Redirect to login
   }
     if (response.errors) {
         return Promise.reject(response.message);
@@ -87,40 +92,41 @@ const errorHandler = (error) => {
       switch (error.response.status) {
          case 400:
             if (error.response.data && error.response.data.message) {
-                toast.error(error.response.data.message);
+                //toast.error(error.response.data.message);
                 console.error('Error 400:', error.response.data.message);
             } else {
-                toast.error('Erreur 400: Bad Request');
+                //toast.error('Erreur 400: Bad Request');
                 console.error('Error 400: Bad Request');
             }
             break;
     
         case 401: // authentication error, logout the user
-        toast.error('📡 API | Please login again', 'Session Expired')
-          console.log('📡 API | Please login again', 'Session Expired')
-          localStorage.removeItem('user')
+          toast.error('📡 API | Please login again', 'Session Expired')
+         // console.log('📡 API | Please login again', 'Session Expired')
+         //localStorage.removeItem('user')
+          //window.location = "/"; 
           break
     
         case 403:
-          toast.error('📡 API | Access denied Data Not Found'+error.response.status+" "+error.message)
+          //toast.error('📡 API | Access denied Data Not Found'+error.response.status+" "+error.message)
           console.error(error.response.status, error.message)
           console.log('📡 API | Access denied', 'Data Not Found')
           break
     
         case 404:
-          toast.error('📡 API | Dataset not found Data Not Found '+error.response.status+" "+error.message)
+          //toast.error('📡 API | Dataset not found Data Not Found '+error.response.status+" "+error.message)
           console.error(error.response.status, error.message)
           console.log('📡 API | Dataset not found', 'Data Not Found')
           break
     
         case 422:
-          toast.error('📡 API | Validation error Unprocessable Content '+error.response.status+" "+error.message+" "+error.response.data.detail)
+          //toast.error('📡 API | Validation error Unprocessable Content '+error.response.status+" "+error.message+" "+error.response.data.detail)
           console.error(error.response.status, error.message, error.response.data.detail)
           console.log('📡 API | Validation error', 'Unprocessable Content')
           break
     
         default:
-          toast.error(error.response.status, error.message)
+          //toast.error(error.response.status, error.message)
           console.error(error.response.status, error.message)
       }
       return Promise.reject(error)

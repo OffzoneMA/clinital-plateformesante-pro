@@ -1,18 +1,19 @@
 export default {
-    addMedtoNewtowk() {
+   
+    addMedToNetwork() {
         return `med/addNewNetwork/`;
     },
 
-    getMedNetWork() {
-        return `med/getMedNetWork/${follower_id}`;
+    getMedNetwork(id) {
+        return `med/getMedNetwork/${id}`;
     },
 
-    deleteMedtoNewtowk() { 
-         return `med/deletNetwork/${follower_id}`;
+    deleteMedFromNetwork(id) { 
+        return `med/deleteNetwork/${id}`;
     },
 
-    getAllMedNetWork() {
-        return `med/getAllMedNetWork/`;
+    getAllMedNetworks() {
+        return `med/getAllMedNetWork`;
     }
-   
 }  
+
