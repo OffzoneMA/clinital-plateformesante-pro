@@ -19,6 +19,17 @@ class medNetworksService {
         return await axiosInstance.get(ApimedNetwork.getAllMedNetworks());
     }
 
+    async getMedbyCity(id_ville) {
+        return await axiosInstance.get(ApimedNetwork.getMedbyCity(id_ville));
+    }
+    async getMedbySpec(search) {
+        return await axiosInstance.get(ApimedNetwork.getMedbySpecOrName(search));
+    }
+
+    async  getMedbyNameOrSpecAndCity(search,ville) {
+        return await axiosInstance.get(ApimedNetwork.getMedbySpecOrName(search,ville));
+    }
+
 }
 
 export default new medNetworksService();

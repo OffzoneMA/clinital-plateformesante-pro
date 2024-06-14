@@ -12,7 +12,6 @@ import SearchServices from "../searchBarDoc/SearchServices/SearchServices";
 import { useDispatch } from "react-redux";
 
 
-
 function myNetwork() {
 
   
@@ -25,10 +24,15 @@ function myNetwork() {
     const [spec, setSpec] = useState([{}])
     const dispatch = useDispatch();
     const [selectedSpecs, setSelectedSpecs] = useState([]); 
-    //Charger les followers
-    useEffect(() => {
+    const [selectAll, setSelectAll] = useState(true);
+    const [selectedCities, setSelectedCities] = useState([]);
+    const [selectAllCities, setSelectAllCities] = useState(true);
+    const [selectedCity, setSelectedCity] = useState(null); 
+    //---------------------Charger les followers--------------------------------
+
+    /*useEffect(() => {
         fetchFollowers();
-    }, []);
+    }, []);*/
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
@@ -39,7 +43,54 @@ function myNetwork() {
         console.log(isChecked)
     };
 
-     const fetchFollowers = async () => {
+    //----------------------------------------------------------------
+
+    useEffect(() => {
+        fetchFollowers();
+    }, [selectedSpecs, selectedCities]);
+
+    const fetchFollowers = async () => {
+        setLoading(true);
+        try {
+            await fetchFilteredMedecins();
+        } catch (error) {
+            toast.error("Erreur lors du chargement des médecins.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const fetchFilteredMedecins = async () => {
+        setLoading(true);
+        try {
+            let response;
+            if (selectedCities.length > 0 && selectedSpecs.length > 0) {
+                response = await MedNetworksService.getMedbyNameOrSpecAndCity("", selectedCities, selectedSpecs);
+            } else if (selectedCities.length > 0) {
+                response = await MedNetworksService.getMedbyCity(selectedCities);
+            } else if (selectedSpecs.length > 0) {
+                response = await MedNetworksService.getMedbySpec(selectedSpecs);
+            } else {
+                response = await MedNetworksService.getAllMedNetworks();
+            }
+
+            if (response.status === 200) {
+                if (response.data && response.data.length > 0) {
+                    setContacts(response.data);
+                } else {
+                    toast.info("Aucun médecin trouvé.");
+                    setContacts([]);
+                }
+            } else {
+                toast.error("Erreur de chargement des médecins.");
+            }
+        } catch (error) {
+            toast.error("Erreur lors du chargement des médecins.");
+        } finally {
+            setLoading(false);
+        }
+    };
+     /*const fetchFollowers = async () => {
         setLoading(true);
         try {
             const response = await MedNetworksService.getAllMedNetworks();
@@ -59,7 +110,9 @@ function myNetwork() {
         } finally {
             setLoading(false);
         }
-    };
+     };*/
+    
+    
     const photoUrlBase = `/images/profile_photomed/`;
     
     // Fetch citys & speciality
@@ -95,15 +148,64 @@ function myNetwork() {
     }
     window.scrollTo(0, 0);
   }, []);
-    //
-    const handleSpecCheckboxChange = (specialiteId) => {
-        // Vérifie si la spécialité est déjà sélectionnée
-        if (selectedSpecs.includes(specialiteId)) {
-            setSelectedSpecs(selectedSpecs.filter(id => id !== specialiteId)); // Décocher la spécialité
+    
+    //----------------------------------------------------------------
+
+//------------------------filtre specialities------------------------
+ const handleSpecCheckboxChange = (libelle) => {
+    setSelectedSpecs(prevSelectedSpecs => {
+        // Vérifier si la spécialité est déjà sélectionnée
+        const alreadySelected = prevSelectedSpecs.includes(libelle);
+
+        if (alreadySelected) {
+            // Si déjà sélectionnée, la désélectionner en filtrant les autres spécialités
+            return prevSelectedSpecs.filter(specLibelle => specLibelle !== libelle);
         } else {
-            setSelectedSpecs([...selectedSpecs, specialiteId]); // Cocher la spécialité
+            // Si non sélectionnée, l'ajouter à la liste des spécialités sélectionnées
+            return [...prevSelectedSpecs, libelle];
         }
+    });
+    setSelectAll(false); // Désactiver la sélection de "Tout"
+};
+
+
+
+   /* const handleSelectAllSpecsChange = () => {
+        setSelectedSpecs([]);
+        setSelectAllSpecs(!selectAllSpecs);
+    };*/
+ const handleSelectAllChange = () => {
+        if (selectAll) {
+            setSelectedSpecs([]);
+        } else {
+            setSelectedSpecs([]); 
+        }
+        setSelectAll(!selectAll);
     };
+    //--------------------------------filtre cities--------------------------------
+    const handleCityCheckboxChange = (id_city) => {
+        
+        if (selectedCities.includes(id_city)) {
+            setSelectedCities(prevSelectedCities =>
+                prevSelectedCities.filter(cityId => cityId !== id_city)
+            );
+        } else {
+            setSelectedCities(prevSelectedCities => [...prevSelectedCities, id_city]);
+        }
+      
+    };
+
+    const handleSelectAllCitiesChange = () => {
+        if (!selectAllCities) {
+            setSelectedCities(cities.map(city => city.id_ville));
+            setSelectedCities([]);
+        } else {
+            setSelectedCities([]);
+        }
+        setSelectAllCities(!selectAllCities);
+    };
+
+    
   return (
     <div className="mynetwork ">
           
@@ -143,8 +245,8 @@ function myNetwork() {
                                 id="tout"
                                 name="tout"
                                 className="checkbox-input"
-                                checked={isChecked}
-                                onChange={handleCheckboxChange}
+                                 checked={selectAll}
+                                 onChange={handleSelectAllChange}
                             />
                             <label htmlFor="tout" className="checkbox-label"></label>
                         </div>
@@ -158,10 +260,11 @@ function myNetwork() {
                                 id={`spec_${specialite.id_spec}`}
                                 name={`spec_${specialite.id_spec}`}
                                 className="checkbox-input"
-                                checked={isOtherSpecChecked}
-                                onChange={() => handleSpecCheckboxChange(specialite.id_spec)}
+                                checked={selectedSpecs.includes(specialite.libelle)}
+                                onChange={() => handleSpecCheckboxChange(specialite.libelle)}
+                                disabled={selectAll}
                             />
-                            <label htmlFor="otherspec" className="checkbox-label"></label>
+                            <label htmlFor={`spec_${specialite.id_spec}`}  className="checkbox-label"></label>
                         </div>
                         <div className="checkbox-text">{specialite.libelle}</div>
                     </div>
@@ -197,33 +300,35 @@ function myNetwork() {
                     <div className="checkbox-wrapper">
                         <input
                             type="checkbox"
-                            id="tout"
-                            name="tout"
+                            id="tout_city"
+                            name="tout_city"
                             className="checkbox-input"
-                            checked={isChecked}
-                            onChange={handleCheckboxChange}
+                            checked={selectAllCities}
+                            onChange={handleSelectAllCitiesChange}
+                           
                         />
-                        <label htmlFor="tout" className="checkbox-label"></label>
+                        <label htmlFor="tout_city" className="checkbox-label"></label>
                     </div>
                     <div className="checkbox-text">Tout</div>
                     </div>
                 {city.map((city) => (
-                        <div className="checkbox-container" key={city.id_city}>
+                    <div className="checkbox-container" key={city.id_ville}>
                         <div className="checkbox-wrapper">
                             <input
                                 type="checkbox"
-                                    id="otherspec"
-                                    name="otherspec"
-                                    className="checkbox-input"
-                                  
-                                    onChange={handleOtherSpecCheckboxChange}
-                                />
-                                <label htmlFor="otherspec" className="checkbox-label"></label>
+                                id={`city_${city.id_ville}`}
+                                name={`city_${city.id_ville}`}
+                                className="checkbox-input"
+                                checked={selectedCities.includes(city.id_ville)}
+                                onChange={() => handleCityCheckboxChange(city.id_ville)}
+                                disabled={selectAllCities} // Désactive les cases individuelles si "Tout" est sélectionné
+                            />
+                            <label htmlFor={`city_${city.id_ville}`} className="checkbox-label"></label>
                         </div>
                         <div className="checkbox-text">{city.nom_ville}</div>
-                        </div>
+                    </div>
                 ))}
-                      
+                                    
                                   
                </div>
                 </> )}
