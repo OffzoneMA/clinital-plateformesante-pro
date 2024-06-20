@@ -17,13 +17,13 @@ export default {
     },
 
     getMedbyCity(id_ville){
-        return `med/medByVille?id_ville=${id_ville}`;
+        return `med/medNetByVille?id_ville=${id_ville}`;
     },
     getMedbySpecOrName(search){
-        return `med/medByNameOrSpec?search=${search}`;
+        return `med/medNetByNameOrSpec?search=${search}`;
     },
     getMedbyNameOrSpecAndCity(search,ville){
-        return `med/medByNameOrSpecAndCity?search=${search}&ville=${ville}`;
+        return `med/medNetByNameOrSpecAndVille?search=${search}&ville=${ville}`;
     },
 }  
 

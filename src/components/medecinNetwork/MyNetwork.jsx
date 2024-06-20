@@ -1,6 +1,6 @@
 
 
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
@@ -10,7 +10,7 @@ import MedNetworksService from "../medecinNetwork/services/medNetworkService";
 import { setSpecialite, setVilles } from "../../utils/redux/GlobalSlice";
 import SearchServices from "../searchBarDoc/SearchServices/SearchServices";
 import { useDispatch } from "react-redux";
-
+import Mark from 'mark.js';
 
 function myNetwork() {
 
@@ -18,7 +18,6 @@ function myNetwork() {
     const [isOtherSpecChecked, setisOtherSpecChecked] = useState(false) //les conditions génerales
     const [loading, setLoading] = useState(false); //une opération est en cours de chargement.
     const [isChecked, setIsChecked] = useState(false); 
-    
     const [contacts, setContacts] = useState([]);
     const [city,setCity]=useState([{}])
     const [spec, setSpec] = useState([{}])
@@ -28,23 +27,47 @@ function myNetwork() {
     const [selectedCities, setSelectedCities] = useState([]);
     const [selectAllCities, setSelectAllCities] = useState(true);
     const [selectedCity, setSelectedCity] = useState(null); 
-    //---------------------Charger les followers--------------------------------
+    const [filteredContacts, setFilteredContacts] = useState([]);
 
-    /*useEffect(() => {
-        fetchFollowers();
-    }, []);*/
+    const [searchTerm, setSearchTerm] = useState('');
+    const searchRef = useRef();
 
-    const handleCheckboxChange = (event) => {
-        setIsChecked(event.target.checked);
-        console.log(isChecked)
-    };
-    const handleOtherSpecCheckboxChange= (event) => {
-        setisOtherSpecChecked(event.target.checked);
-        console.log(isChecked)
+    const [searchTermCities, setSearchTermCities] = useState('');
+    const searchRefCities = useRef();
+
+
+
+//---------------------Charger les followers--------------------------------
+/*useEffect(() => {
+    fetchFilteredMedecins();
+}, [selectedCities, selectedSpecs, searchTerm]);*/
+
+
+ useEffect(() => {
+        fetchAllMedecins();
+    }, []);
+const fetchAllMedecins = async () => {
+        setLoading(true);
+        try {
+            const response = await MedNetworksService.getAllMedNetworks();
+            if (response.status === 200) {
+                setContacts(response.data || []);
+            } else {
+                toast.error("Erreur de chargement des médecins.");
+            }
+        } catch (error) {
+            toast.error("Erreur lors du chargement des médecins.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     //----------------------------------------------------------------
 
+
+    //---------------------------followers with filter-------------------------------------
+
+    
     useEffect(() => {
         fetchFollowers();
     }, [selectedSpecs, selectedCities]);
@@ -65,7 +88,9 @@ function myNetwork() {
         try {
             let response;
             if (selectedCities.length > 0 && selectedSpecs.length > 0) {
-                response = await MedNetworksService.getMedbyNameOrSpecAndCity("", selectedCities, selectedSpecs);
+                response = await MedNetworksService.getMedbyNameOrSpecAndCity (selectedSpecs,selectedCities);
+                
+
             } else if (selectedCities.length > 0) {
                 response = await MedNetworksService.getMedbyCity(selectedCities);
             } else if (selectedSpecs.length > 0) {
@@ -76,10 +101,10 @@ function myNetwork() {
 
             if (response.status === 200) {
                 if (response.data && response.data.length > 0) {
-                    setContacts(response.data);
+                    setFilteredContacts(response.data);
                 } else {
                     toast.info("Aucun médecin trouvé.");
-                    setContacts([]);
+                    setFilteredContacts([]);
                 }
             } else {
                 toast.error("Erreur de chargement des médecins.");
@@ -90,28 +115,7 @@ function myNetwork() {
             setLoading(false);
         }
     };
-     /*const fetchFollowers = async () => {
-        setLoading(true);
-        try {
-            const response = await MedNetworksService.getAllMedNetworks();
-            
-            if (response.status === 200) {
-                if (response.data && response.data.length > 0) {
-                    setContacts(response.data);
-                } else {
-                    toast.info("Aucun contact trouvé.");
-                    setContacts([]);
-                }
-            } else {
-                toast.error("Erreur de chargement des contacts.");
-            }
-        } catch (error) {
-            toast.error("Erreur lors du chargement des contacts.");
-        } finally {
-            setLoading(false);
-        }
-     };*/
-    
+  //----------------------------------------------------------------  
     
     const photoUrlBase = `/images/profile_photomed/`;
     
@@ -150,8 +154,33 @@ function myNetwork() {
   }, []);
     
     //----------------------------------------------------------------
+    //-------------------------Search Bar specialité------
 
-//------------------------filtre specialities------------------------
+useEffect(() => {
+        const context = searchRef.current;
+        const instance = new Mark(context);
+
+        if (searchTerm) {
+            instance.unmark({
+                done: () => {
+                    instance.mark(searchTerm);
+                }
+            });
+        } else {
+            instance.unmark();
+        }
+    }, [searchTerm]);
+
+ const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const filteredSpecs = spec.length > 0 ? spec.filter((specialite) =>
+    specialite.libelle && specialite.libelle.toLowerCase().includes(searchTerm.toLowerCase())
+) : [];
+
+    //------------------------filtre specialities------------------------
+    
  const handleSpecCheckboxChange = (libelle) => {
     setSelectedSpecs(prevSelectedSpecs => {
         // Vérifier si la spécialité est déjà sélectionnée
@@ -165,15 +194,9 @@ function myNetwork() {
             return [...prevSelectedSpecs, libelle];
         }
     });
-    setSelectAll(false); // Désactiver la sélection de "Tout"
+    setSelectAll(false); // Désactiver la sélection 
 };
 
-
-
-   /* const handleSelectAllSpecsChange = () => {
-        setSelectedSpecs([]);
-        setSelectAllSpecs(!selectAllSpecs);
-    };*/
  const handleSelectAllChange = () => {
         if (selectAll) {
             setSelectedSpecs([]);
@@ -182,6 +205,34 @@ function myNetwork() {
         }
         setSelectAll(!selectAll);
     };
+    
+    //-----------------------------CITY SEARCH BAR-----------------------------------
+
+    useEffect(() => {
+        const context = searchRefCities.current;
+        const instance = new Mark(context);
+
+        if (searchTermCities) {
+            instance.unmark({
+                done: () => {
+                    instance.mark(searchTermCities);
+                }
+            });
+        } else {
+            instance.unmark();
+        }
+    }, [searchTermCities]);
+
+      const handleSearchCitiesChange = (e) => {
+        setSearchTermCities(e.target.value);
+      };
+  
+    const filteredCities = city && Array.isArray(city)
+    ? city.filter((city) =>
+        city.nom_ville && city.nom_ville.toLowerCase().includes(searchTermCities.toLowerCase())
+    )
+    : [];
+
     //--------------------------------filtre cities--------------------------------
     const handleCityCheckboxChange = (id_city) => {
         
@@ -197,7 +248,7 @@ function myNetwork() {
 
     const handleSelectAllCitiesChange = () => {
         if (!selectAllCities) {
-            setSelectedCities(cities.map(city => city.id_ville));
+            setSelectedCities(city.map(city => city.id_ville));
             setSelectedCities([]);
         } else {
             setSelectedCities([]);
@@ -229,14 +280,16 @@ function myNetwork() {
                         type="text"
                         id="spec"
                         className="input-field"
-                        placeholder="Rechercher un spécialiste"
+                        placeholder="Rechercher une spécialiste"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
                     />
                     <div className="input-icon">
                         <img src="/images/network/search-md.svg" alt="Icone de recherche" className="icon-img" />
                     </div>
 
                 </div>
-                <div className="scrollable-section"> 
+                <div className="scrollable-section" ref={searchRef}> 
                             
                     <div className="checkbox-container">
                         <div className="checkbox-wrapper">
@@ -252,7 +305,7 @@ function myNetwork() {
                         </div>
                         <div className="checkbox-text">Tout</div>
                      </div>
-                {spec.map((specialite) => (
+                {filteredSpecs.map((specialite) => (
                     <div className="checkbox-container" key={specialite.id_spec}>
                     <div className="checkbox-wrapper">
                         <input
@@ -288,6 +341,8 @@ function myNetwork() {
                             type="text"
                             className="input-field"
                             placeholder="Rechercher une ville"
+                            value={searchTermCities}
+                            onChange={handleSearchCitiesChange}
                         />
                         <div className="input-icon">
                         <img src="/images/network/search-md.svg" alt="Icone de recherche" className="icon-img" />
@@ -295,7 +350,7 @@ function myNetwork() {
 
                 </div>
                      
-            <div className="scrollable-section">   
+            <div className="scrollable-section" ref={searchRefCities}>   
                     <div className="checkbox-container">
                     <div className="checkbox-wrapper">
                         <input
@@ -311,7 +366,7 @@ function myNetwork() {
                     </div>
                     <div className="checkbox-text">Tout</div>
                     </div>
-                {city.map((city) => (
+                {filteredCities.map((city) => (
                     <div className="checkbox-container" key={city.id_ville}>
                         <div className="checkbox-wrapper">
                             <input
@@ -331,7 +386,8 @@ function myNetwork() {
                                     
                                   
                </div>
-                </> )}
+                </> 
+            )}
             
             </div>
                       
@@ -360,52 +416,61 @@ function myNetwork() {
                     </form>
                 </div>
             </div>
-        )}
-                
-            
-                
-       
-          {contacts.length > 0 ? (
-          
-              <div className="container">
-                  <div className="inner-container">
-                     <div className="row">
-                    {contacts.map(contact => (   
-                          <div className="card" key={contact.id}>
-                              <div className="image-container">
-                                <img className="profile-img" src={`${photoUrlBase}${contact.photo_med ? contact.photo_med : "/images/profile_photomed/defaultprofil.png"}`} alt="Ellipse" />
-                                  <img className="icon-img" src="/images/network/Gastroentérologue.png" alt="Gastroentérologue" />
-                              </div>
-                              <div className="text-container">
-                                <div className="name">Dr {contact.nom_med} {contact.prenom_med}</div>
-                                <div className="specialty">{contact.specialite.libelle}</div>
-                              </div>
-                          </div>
-                         
-                       ))}
-                      </div>
-                  </div>
-              
-              </div>
-          ) : (
-           <div className="contact-container">
-                  
-                    <div className="contact-image">
-                         <img src="/images/network/Group7859.svg" alt="Contact" />
-                    </div>
-                <div className="contact-details">
-                    <div className="contact-message">Vous n'avez pas encore de contacts</div>
-                    <div  className="add-contact-button">
-                        <div className="button-content">
-                            <div className="button-icon">
-                             <img src="/images/network/plus-circle.svg" alt="Plus Circle Icon" /> 
+              )}
+
+    
+            {contacts.length > 0 ? (
+            <div className="container">
+                <div className="inner-container">
+                    <div className="row">
+                        {filteredContacts.length > 0 ? (
+                            filteredContacts.map(contact => (
+                                <div className="card" key={contact.id}>
+                                    <div className="image-container">
+                                        <img className="profile-img" src={`${photoUrlBase}${contact.photo_med ? contact.photo_med : "/images/profile_photomed/defaultprofil.png"}`} alt="Profil médical" />
+                                        <img className="icon-img" src="/images/network/Gastroentérologue.png" alt="Gastroentérologue" />
+                                    </div>
+                                    <div className="text-container">
+                                        <div className="name">Dr {contact.nom_med} {contact.prenom_med}</div>
+                                        <div className="specialty">{contact.specialite.libelle}</div>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="contact-container">
+                                <div className="contact-image">
+                                    <img src="/images/network/Group7859.svg" alt="Contact" />
+                                </div>
+                                <div className="contact-details">
+                                    <div className="contact-message">Aucun médecin trouvé avec ce filtre.</div>
+                                </div>
                             </div>
-                            <div  className="button-text">Ajouter des contacts</div>
-                        </div>
+                        )}
                     </div>
                 </div>
-              </div>
-          )}
+            </div>
+        ) : (
+            
+                        <div className="contact-container">
+                            <div className="contact-image">
+                                <img src="/images/network/Group7859.svg" alt="Contact" />
+                            </div>
+                            <div className="contact-details">
+                                <div className="contact-message">Vous n'avez pas encore de contacts.</div>
+                                <div className="add-contact-button">
+                                    <div className="button-content">
+                                        <div className="button-icon">
+                                            <img src="/images/network/plus-circle.svg" alt="Plus Circle Icon" />
+                                        </div>
+                                        <div className="button-text">Ajouter des contacts</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+        )}
+
+          
               <div className="vertical-linemenu"></div>
          
         </div>
