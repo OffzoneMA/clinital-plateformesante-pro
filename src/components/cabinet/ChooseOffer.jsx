@@ -2,14 +2,33 @@ import React, { useState } from "react";
 import "./ChooseOffer.scss";
 import MenuCabinet from "../menuCabinet/MenuCabinet";
 import { useTranslation } from "react-i18next";
-
+import { useNavigate } from "react-router-dom";
+import CabinetService from "./Services/CabinetServices";
 function ChooseOffer() {
     const [selectedPlan, setSelectedPlan] = useState(null);
     const { t } = useTranslation();
     const handlePlanSelect = (plan) => {
       setSelectedPlan(plan);
     };
+    const navigate = useNavigate();
     const isArabic = localStorage.getItem("language") === "ar";
+    const passToNext = async () => {
+      try {
+          const responses = await CabinetService.updateDemandeStateByUserId(4);
+          const storedUserJSON = localStorage.getItem('user');
+          const storedUser = JSON.parse(storedUserJSON);
+          storedUser.state = 4 ; // Mettez ici la nouvelle valeur de state
+          const updatedUserJSON = JSON.stringify(storedUser);
+  
+          localStorage.setItem('user', updatedUserJSON);
+          navigate("/cabinet/payment");     
+        
+      } catch (error) {
+   
+      } finally {
+      
+      }
+    };
   return (
     <div className="chooseOffer">
       <div className="result-container"
@@ -133,6 +152,7 @@ function ChooseOffer() {
       <div className="butt">
         <button
           className="button"
+          onClick={passToNext}
           style={{
             
             marginLeft:

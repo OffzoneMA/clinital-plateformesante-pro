@@ -1,17 +1,35 @@
 import React, { useState } from "react";
 import "./DocumentProcessing.scss";
 import MenuCabinet from "../../components/menuCabinet/MenuCabinet";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import CabinetService from "./Services/CabinetServices";
 function DocumentProcessing() {
   const { t } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   const { fileNames } = location.state || {};
   const isImageFile = (fileName) => {
     const imageExtensions = ["jpg", "jpeg", "png", "svg"];
     const fileExtension = fileName.split(".").pop().toLowerCase();
     return imageExtensions.includes(fileExtension);
+  };
+  const passToNext = async () => {
+    try {
+        const responses = await CabinetService.updateDemandeStateByUserId(3);
+        const storedUserJSON = localStorage.getItem('user');
+        const storedUser = JSON.parse(storedUserJSON);
+        storedUser.state = 3; // Mettez ici la nouvelle valeur de state
+        const updatedUserJSON = JSON.stringify(storedUser);
+
+        localStorage.setItem('user', updatedUserJSON);
+        navigate("/cabinet/chooseOffer");     
+      
+    } catch (error) {
+ 
+    } finally {
+    
+    }
   };
   return (
     <div className="documents">
@@ -82,6 +100,7 @@ function DocumentProcessing() {
       <div className="butt">
         <button
           className="button"
+          onClick={passToNext}
           style={{
             marginLeft:
               localStorage.getItem("language") === "ar" ? "325px" : "810px",

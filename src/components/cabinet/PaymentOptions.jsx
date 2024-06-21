@@ -23,6 +23,7 @@ const PaymentOptions = () => {
       .then(() => {})
       .catch((err) => {});
   };
+
   return (
     <div className="payment">
       <div

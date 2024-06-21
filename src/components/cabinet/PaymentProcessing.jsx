@@ -1,12 +1,30 @@
 import React, { useState } from "react";
 import "./PaymentProcessing.scss";
 import MenuCabinet from "../menuCabinet/MenuCabinet";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import CabinetService from "./Services/CabinetServices";
 
 function PaymentProcessing() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const passToNext = async () => {
+    try {
+        const responses = await CabinetService.updateDemandeStateByUserId(5);
+        const storedUserJSON = localStorage.getItem('user');
+        const storedUser = JSON.parse(storedUserJSON);
+        storedUser.state = 5 ; // Mettez ici la nouvelle valeur de state
+        const updatedUserJSON = JSON.stringify(storedUser);
 
+        localStorage.setItem('user', updatedUserJSON);
+        navigate("/cabinet/ConfigureCalendar");     
+      
+    } catch (error) {
+ 
+    } finally {
+    
+    }
+  };
   return (
     <div className="documents">
       <div
@@ -24,7 +42,7 @@ function PaymentProcessing() {
         }}
       >
         <div className="sous-container1">
-          <h1>{t("documentProcessing")}</h1>
+          <h1>{t("requestProcessing")}</h1>
           <span>{t("inProgress")}</span>
         </div>
 
@@ -46,6 +64,7 @@ function PaymentProcessing() {
       <div className="butt">
         <button
           className="button"
+          onClick={passToNext}
           style={{
             marginLeft:
               localStorage.getItem("language") === "ar" ? "325px" : "810px",
