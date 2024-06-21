@@ -30,14 +30,14 @@ function Agenda() {
     const rdvStart = new Date(rdv.start).getTime();
 
     if (filter === "") {
-      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE && rdv.statut !== CONSTANTS.RDV_STATE.ARCHIVED;
+      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
     }
     //dans cet etape, pas encore parlé sur rdvs annulés et archivés
     if (filter === "Tout Motif") {
-      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE && rdv.statut !== CONSTANTS.RDV_STATE.ARCHIVED;
+      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
     }
     if (filter === "Tout Type") {
-      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE && rdv.statut !== CONSTANTS.RDV_STATE.ARCHIVED;
+      return rdv.statut !== CONSTANTS.RDV_STATE.ANNULE;
     }
     if (filter === "Premiere consultation") {
       return rdv.motifConsultation.id_motif===1;
@@ -56,6 +56,9 @@ function Agenda() {
     }
     if (filter === "Domicile") {
       return rdv.modeConsultation.id_mode===3;
+    }
+    if(filter === "RdvAnnulee"){
+      return rdv.statut === CONSTANTS.RDV_STATE.ANNULE
     }
     else {
       return true;

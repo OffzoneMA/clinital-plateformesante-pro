@@ -6,13 +6,17 @@ import './style/rdvItemAgenda.scss';
 function RdvItemAgenda({ rdv, rdvType }) {
     const [classRdv, setClassRdv] = useState("");
 
+
     useEffect(() => {
         rdvType(rdv);
 
         const today = new Date().getTime();
         const rdvStart = new Date(rdv.start).getTime();
 
-        if (today > rdvStart) {
+        if(rdv.statut === "ANNULE"){
+            setClassRdv("annulee-rdv");
+        }
+        else if (today > rdvStart) {
             {console.log(today > rdvStart)}
             setClassRdv("past-rdv");
         } else {

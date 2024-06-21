@@ -14,6 +14,11 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
   const [showDropdown, setShowDropdown] = useState(false); // State to manage dropdown visibility
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
+  const monthNames = [
+    "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+    "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+  ];
+
 
   const toggleOption = (option) => () => setOption(option);
 
@@ -162,20 +167,53 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
     localStorage.setItem("month", weeks[0][6].getMonth() + 1);
   });
 
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  const handlePrevMonth = () => {
+    {console.log("*****month")}
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
+    if (onChangeMonth) onChangeMonth(currentDate.getMonth() - 1);
+  };
+
+  const handleNextMonth = () => {
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
+    if (onChangeMonth) onChangeMonth(currentDate.getMonth() + 1);
+  };
+
   return (
     <div className="agenda-content">
       <div className="nav">
-        <div className="left-btn">
-          <button onClick={nextOrPrev(-1)}>
-            <img src="../../icons/flech-black.svg" alt="" />
-          </button>
-        </div>
-        Mai 2024
-        <div className="right-btn">
-          <button onClick={nextOrPrev(1)}>
-            <img src="../../icons/flech-black.svg" alt="" />
-          </button>
-        </div>
+        {option !== "month" ?
+            (<>
+                <div className="left-btn">
+                  {console.log("before click*****option===month? ", option != "month")}
+                  <button onClick={nextOrPrev(-1)}>
+                    <img src="../../icons/flech-black.svg" alt="Previous" />
+                  </button>
+                  {console.log("after click*****option===month? ", option !== "month")}
+                </div>
+                <span>{monthNames[new Date().getMonth()]} {new Date().getFullYear()}</span>
+                <div className="right-btn">
+                  <button onClick={nextOrPrev(1)}>
+                    <img src="../../icons/flech-black.svg" alt="" />
+                  </button>
+                </div>
+            </>) :
+            (<>
+                <div className="left-btn">
+                  <button onClick={handlePrevMonth}>
+                    <img src="../../icons/flech-black.svg" alt="Previous" />
+                  </button>
+                </div>
+                <span>{monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}</span>
+                <div className="right-btn">
+                  <button onClick={handleNextMonth}>
+                    <img src="../../icons/flech-black.svg" alt="" />
+                  </button>
+                </div>
+            </>)
+        }
+
         <div className="displayBy">
           Afficher par:
           <span
@@ -355,7 +393,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
               className={`calendar-wrapper-header ${
                   option === "month" ? "calendar-wrapper-header-month" : ""
               }`}
-              style={{width: "967px", marginLeft:"88px" }}
+              style={option !== "month" ? { marginLeft: "88px" } : {}}
           >
             <div className="row w-100">
               <div className="col-12 p-0 d-flex">
@@ -387,7 +425,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
                     </div>
                 ) : (
                     <MonthCalendar
-                        setAgendaIsChanging={setAgendaIsChanging}
+                        currentDate={currentDate}
                         rdvType={rdvType}
                         rdvs={rdvs}
                         onChangeMonth={onChangeMonth}
@@ -410,8 +448,8 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
                         ))}
                       </div>
                     </div>
-                    <div className="col-11 p-0 flex"style={{marginLeft:"-20px"}}>
-                      <div className="calendar-wrapper-content-main" ref={daysMain} style={{width:"967px"}}>
+                    <div className="col-11 p-0 flex" style={{marginLeft:"-20px"}}>
+                      <div className="calendar-wrapper-content-main" ref={daysMain} >
                         {renderOption().map((week, index) => (
                             <div
                                 key={index}

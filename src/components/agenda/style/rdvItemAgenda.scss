@@ -8,6 +8,7 @@
   padding: 2px 6px;
   position: relative;
   width: 156px;
+  //flex-shrink: 1;
 
 }
 
@@ -79,4 +80,8 @@
 
 .RDV.past-rdv {
   opacity: 0.5;
+}
+
+.RDV.annulee-rdv {
+  text-decoration: line-through;
 }

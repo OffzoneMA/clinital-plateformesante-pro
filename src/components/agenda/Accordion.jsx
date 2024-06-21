@@ -10,7 +10,7 @@ function Accordian({setFilter}) {
                 <Accordion.Body>
                     <div className="form-check mb-3">
                         <input className="form-check-input me-3" type="checkbox"
-                               onChange={(e) => setFilter(e.target.checked ? "Tout Motif" : "")}
+
                         />
                         <label className="form-check-label">Tout</label>
                     </div>
@@ -78,15 +78,11 @@ function Accordian({setFilter}) {
             <Accordion.Item eventKey="3">
                 <Accordion.Header >Autres rendez-vous</Accordion.Header>
                 <Accordion.Body>
-                    <div className={`RDVAnnul`}>
+                    <div className={`RDVAnnul`}
+                         onClick={(e) => setFilter("RdvAnnulee")}
+                    >
                         <div className={`rectangleAnnul`} />
                         RDVs Annulés
-                    </div>
-                    <div className={`space`}>
-                    </div>
-                    <div className={`RDVArchive`}>
-                        <div className={`rectangleArchive`} />
-                        RDVs Archivés
                     </div>
                 </Accordion.Body>
             </Accordion.Item>
