@@ -107,6 +107,7 @@
         right: 15px;
         top: 65px;
         padding: 20px;
+        margin-right: -10px;
         z-index: 999;
         transition: all 200ms ease;
         filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
@@ -146,7 +147,36 @@
         .moncompte {
           color: $blue;
         }
+        .sub-menu1 {
+          cursor: default;
+          position: absolute;
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 245px;
+          border-radius: 10px;
+          right: 15px;
+          top: 65px;
+          padding: 20px;
+          z-index: 999;
+          transition: all 200ms ease;
+          filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+    
+          .item {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
   
+    
+            h4,
+            .moncompte {
+              margin: 0;
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }}
         hr {
           height: 0;
           left: -20px;
