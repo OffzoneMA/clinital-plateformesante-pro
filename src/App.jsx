@@ -22,6 +22,7 @@ import ErrorBoundary from "./components/errors/ErrorBoundery";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
+import SettingsAgenda from "./pages/SettingsAgenda/SettingsAgenda";
 
 export const Log = React.createContext();
 
@@ -54,6 +55,7 @@ function App() {
           
             <Route index path="/" element={<HomePage />} />
             <Route exact path="/login/*" element={<Connexion />} />
+            <Route exact path="/SettingsAgenda/*" element={<SettingsAgenda />} />
             <Route exact path="/result//*" element={<Result />} />
             <Route exact path="/cabinet//*" element={<Cabinet />} />
             <Route exact path="/profil/:id" element={<Profil />} />

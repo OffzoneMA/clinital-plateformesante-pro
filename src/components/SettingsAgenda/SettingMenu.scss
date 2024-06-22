@@ -1,0 +1,53 @@
+.setting-menu {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    padding: 10px 0px 0px 30px;
+    position: absolute;
+    top: 172px;
+    width: 292px;
+  
+    .div-3 {
+      align-items: flex-start;
+      display: inline-flex;
+      flex: 0 0 auto;
+      flex-direction: column;
+      position: relative;
+  
+      .main {
+        align-items: center;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-color: #aaaaaa33;
+        display: flex;
+        flex: 0 0 auto;
+        gap: 10px;
+        padding: 14px 0px;
+        position: relative;
+        width: 262px;
+  
+        .icon-instance-node {
+          height: 18px;
+          position: relative;
+          width: 18px;
+        }
+  
+        .text-wrapper-7 {
+          color: #303030;
+          flex: 1;
+          font-family: "Avenir Next LT Pro-Demi", Helvetica;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: -0.14px;
+          line-height: normal;
+          position: relative;
+        }
+      }
+  
+      .menu-list-instance {
+        flex: 0 0 auto !important;
+      }
+    }
+  }
+  
