@@ -14,6 +14,7 @@ import Connexion from "./pages/connection/Connexion";
 import MonCompte from "./pages/monCompte/MonCompte";
 import Agenda from "./pages/agenda/Agenda";
 import RdvPopup from "./components/RdvPopup";
+
 // import AgendaWorkDays_ from "./components/result/AgendaWorkDays_";
 import RdvDejaPrise from "./components/RdvDejaPrise";
 import { verifyAuth } from "./action/Auth";
@@ -23,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
 import MedecinNetwork from "./pages/networkMedecin/MedecinNetwork";
+import MedFollower from "./components/medecinNetwork/MedFollower"
 
 export const Log = React.createContext();
 
@@ -69,7 +71,8 @@ function App() {
                 <Route exact path="/rdv/:id" element={<RdvPage />} />
                 <Route exact path="/rdv-popup" element={<RdvPopup />} />
                 <Route exact path="/rdvdejapris" element={<RdvDejaPrise />} />
-                 <Route exact path="/mynetwork" element={<MedecinNetwork />} />
+                <Route exact path="/mynetwork//*" element={<MedecinNetwork />} />
+              
                 
                 
               </>

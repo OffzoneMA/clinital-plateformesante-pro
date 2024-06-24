@@ -4,8 +4,8 @@ export default {
         return `med/addNewNetwork/`;
     },
 
-    getMedNetwork(id) {
-        return `med/getMedNetwork/${id}`;
+    getMedNetwork(follower_id) {
+        return `med/getMedNetWork/${follower_id}`;
     },
 
     deleteMedFromNetwork(id) { 

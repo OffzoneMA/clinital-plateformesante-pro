@@ -1,10 +1,20 @@
 import axiosInstance from "../../../services/Axios";
 import ApimedNetwork from "../apiMedNetwork/ApimedNetwork";
 
+import { ORIGIN, TOKEN, USER_ID } from '../../../services/api';
+const AUTHORIZATION = { headers: { Authorization: `Bearer ${TOKEN}` } }
 class medNetworksService {
 
- async getMedNetWork(id){
-        return await axiosInstance.get(ApimedNetwork.getMedNetWork(id));
+        async getMedNetwork(follower_id) {
+            try {
+            console.log(AUTHORIZATION)
+            const response = await axiosInstance.get(ApimedNetwork.getMedNetwork(follower_id),
+             AUTHORIZATION
+            );
+            return response.data;
+        } catch (error) {
+            throw new Error(`Erreur lors de la récupération des détails du médecin ici: ${error.message}`);
+        }
     }
     
      async addMedToNetwork(data) {
