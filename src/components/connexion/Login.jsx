@@ -72,7 +72,7 @@ function Login({ comp, setStep, setIsConnected }) {
               if (data.role === "ROLE_MEDECIN" || data.role === "ROLE_SECRETAIRE") {
                   dispatch(setUser(data));
                   setError(false);
-                  comp !== "priseRdv" && (window.location = "/agenda");
+                  comp !== "priseRdv" && (window.location = "/acceuil");
                   comp === "priseRdv" && setStep(3);
                   comp === "priseRdv" && setIsConnected(user);
                   // comp === "priseRdv" && addRdv(e, user, 'conx');

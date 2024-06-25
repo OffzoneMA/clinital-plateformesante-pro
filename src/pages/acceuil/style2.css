@@ -1,0 +1,1590 @@
+.dashboard {
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.dashboard .div-2 {
+    background-color: #fafafa;
+    height: 1211px;
+    overflow: hidden;
+    position: relative;
+    width: 1440px;
+}
+
+.dashboard .container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    padding: 8px 46px 8px 47px;
+    position: absolute;
+    top: 73px;
+    width: 1440px;
+}
+
+.dashboard .heading {
+    align-items: flex-start;
+    align-self: stretch;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #aaaaaa4c;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    padding: 16px 0px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .mon-agenda {
+    color: #303030;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .mini-footer {
+    height: 23px;
+    left: 0;
+    position: absolute;
+    top: 1188px;
+    width: 1442px;
+}
+
+.dashboard .overlap-group-2 {
+    background-color: #ffffff;
+    height: 23px;
+    position: relative;
+    width: 1440px;
+}
+
+.dashboard .frame-5 {
+    align-items: flex-start;
+    display: inline-flex;
+    gap: 5px;
+    left: 819px;
+    position: absolute;
+    top: 6px;
+}
+
+.dashboard .text-wrapper-4 {
+    color: #000000;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .text-wrapper-5 {
+    color: #000000;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .p {
+    color: var(--grey);
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 10px;
+    font-weight: 400;
+    height: 12px;
+    left: 49px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 6px;
+    white-space: nowrap;
+}
+
+.dashboard .header-PRO-instance {
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+}
+
+.dashboard .design-component-instance-node {
+    background-color: #cd7be7 !important;
+}
+
+.dashboard .overlap {
+    border-radius: 10px;
+    height: 855px;
+    left: 972px;
+    position: absolute;
+    top: 307px;
+    width: 422px;
+}
+
+.dashboard .frame-6 {
+    align-items: flex-start;
+    background-color: #ffffff;
+    border: 1.4px solid;
+    border-color: transparent;
+    border-image: linear-gradient(to bottom, rgb(109, 192, 249), rgb(201, 137, 221)) 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 855px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 422px;
+}
+
+.dashboard .div-wrapper {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    padding: 24px 28px 20px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .text-wrapper-6 {
+    color: #303030;
+    flex: 1;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+}
+
+.dashboard .calendar-april {
+    align-items: flex-start;
+    align-self: stretch;
+    background-color: #ffffff;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-7 {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    padding: 10px 20px 0px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-8 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 13px;
+    padding: 4px 10px;
+    position: relative;
+}
+
+.dashboard .text-wrapper-7 {
+    color: #000000;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .chevron-down {
+    height: 21px !important;
+    position: relative !important;
+    width: 21px !important;
+}
+
+.dashboard .frame-9 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 24px;
+    position: relative;
+}
+
+.dashboard .icon-instance-node {
+    height: 32px !important;
+    position: relative !important;
+    width: 32px !important;
+}
+
+.dashboard .frame-10 {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-11 {
+    align-items: flex-start;
+    align-self: stretch;
+    background-color: #ffffff;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .dating-week-label-instance {
+    height: 22.34px !important;
+    width: 37.23px !important;
+}
+
+.dashboard .dating-week-label-2 {
+    color: var(--gray-600) !important;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica !important;
+    font-size: 14px !important;
+    height: 22px !important;
+    width: 37px !important;
+}
+
+.dashboard .week {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .design-component-instance-node-2 {
+    height: 37.23px !important;
+    width: 37.23px !important;
+}
+
+.dashboard .design-component-instance-node-3 {
+    font-size: 16px !important;
+    height: 37px !important;
+    width: 37px !important;
+}
+
+.dashboard .dating-day-in-month-instance {
+    border-radius: 124.11px !important;
+    height: 37.23px !important;
+    width: 37.23px !important;
+}
+
+.dashboard .dating-day-in-month-2 {
+    color: #262d33 !important;
+    font-size: 17.4px !important;
+    height: 37px !important;
+    width: 37px !important;
+}
+
+.dashboard .dating-day-in-month-3 {
+    background-color: #ffffff !important;
+    height: 37.23px !important;
+    width: 37.23px !important;
+}
+
+.dashboard .dating-day-in-month-4 {
+    border: 1.24px solid !important;
+    border-color: var(--primaryblue) !important;
+    border-radius: 124.11px !important;
+    height: 37.23px !important;
+    width: 37.23px !important;
+}
+
+.dashboard .dating-day-in-month-5 {
+    color: #6dc0f9 !important;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica !important;
+    font-size: 16px !important;
+    height: 37px !important;
+    width: 37px !important;
+}
+
+.dashboard .rectangle {
+    background-color: #6dc0f9;
+    border-radius: 10px;
+    height: 5px;
+    left: 74px;
+    position: absolute;
+    top: 29px;
+    width: 5px;
+}
+
+.dashboard .rectangle-2 {
+    background-color: #6dc0f9;
+    border-radius: 10px;
+    height: 5px;
+    left: 132px;
+    position: absolute;
+    top: 29px;
+    width: 5px;
+}
+
+.dashboard .rectangle-3 {
+    background-color: #6dc0f9;
+    border-radius: 10px;
+    height: 5px;
+    left: 189px;
+    position: absolute;
+    top: 29px;
+    width: 5px;
+}
+
+.dashboard .rectangle-4 {
+    background-color: #6dc0f9;
+    border-radius: 10px;
+    height: 5px;
+    left: 246px;
+    position: absolute;
+    top: 29px;
+    width: 5px;
+}
+
+.dashboard .rectangle-5 {
+    background-color: #6dc0f9;
+    border-radius: 10px;
+    height: 5px;
+    left: 304px;
+    position: absolute;
+    top: 29px;
+    width: 5px;
+}
+
+.dashboard .RVS {
+    align-items: flex-start;
+    align-self: stretch;
+    border: 1px solid;
+    border-color: #aaaaaa33;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 28px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-12 {
+    align-items: center;
+    align-self: stretch;
+    border-radius: 6px 6px 0px 0px;
+    display: flex;
+    flex: 0 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-13 {
+    align-items: center;
+    background-color: #f2f4f7;
+    border-radius: 6px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 14px;
+    padding: 10px 12px;
+    position: relative;
+}
+
+.dashboard .frame-14 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 6px;
+    position: relative;
+}
+
+.dashboard .text-wrapper-8 {
+    color: #303030;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.13px;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-15 {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 9px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-16 {
+    align-items: center;
+    background-color: var(--purple-2);
+    border-radius: 2000px;
+    display: flex;
+    gap: 10px;
+    height: 30px;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+    width: 30px;
+}
+
+.dashboard .vector-10 {
+    height: 16px;
+    margin-bottom: -9px;
+    margin-left: -8.5px;
+    margin-right: -8.5px;
+    margin-top: -9px;
+    position: relative;
+    width: 15px;
+}
+
+.dashboard .frame-17 {
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+    position: relative;
+}
+
+.dashboard .frame-18 {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .text-wrapper-9 {
+    color: #303030;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .text-wrapper-10 {
+    color: #6c727b;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.13px;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-19 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    position: relative;
+}
+
+.dashboard .text-wrapper-11 {
+    color: #6c727b;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.13px;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .frame-20 {
+    align-items: center;
+    background-color: var(--neutral-100);
+    border-radius: 6px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 14px;
+    padding: 10px 12px;
+    position: relative;
+}
+
+.dashboard .frame-21 {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-22 {
+    align-items: center;
+    background-color: #6dc0f9;
+    border-radius: 2000px;
+    display: flex;
+    gap: 10px;
+    height: 30px;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+    width: 30px;
+}
+
+.dashboard .vector-11 {
+    height: 17.2px;
+    margin-bottom: -9.6px;
+    margin-left: -10.21px;
+    margin-right: -10.22px;
+    margin-top: -9.6px;
+    position: relative;
+    width: 18.43px;
+}
+
+.dashboard .frame-23 {
+    align-items: center;
+    background-color: #fcb768;
+    border-radius: 2000px;
+    display: flex;
+    gap: 10px;
+    height: 30px;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+    width: 30px;
+}
+
+.dashboard .vector-12 {
+    height: 9.77px;
+    margin-bottom: -5.89px;
+    margin-left: -9.1px;
+    margin-right: -9.1px;
+    margin-top: -5.89px;
+    position: relative;
+    width: 16.2px;
+}
+
+.dashboard .rectangle-6 {
+    background-color: #d9d9d980;
+    border-radius: 20px;
+    height: 108px;
+    left: 403px;
+    position: absolute;
+    top: 424px;
+    width: 7px;
+}
+
+.dashboard .frame-24 {
+    align-items: center;
+    background-color: var(--blue-1);
+    border-radius: 39px;
+    display: inline-flex;
+    gap: 10px;
+    justify-content: center;
+    left: 295px;
+    padding: 7px 12px;
+    position: absolute;
+    top: 24px;
+}
+
+.dashboard .text-wrapper-12 {
+    color: var(--purplewhite);
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.14px;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-25 {
+    align-items: flex-start;
+    display: flex;
+    gap: 24px;
+    left: 48px;
+    position: absolute;
+    top: 156px;
+    width: 1345px;
+}
+
+.dashboard .frame-wrapper {
+    align-items: flex-start;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: transparent;
+    border-image: linear-gradient(to bottom, rgb(109, 192, 249), rgb(201, 137, 221)) 1;
+    border-radius: 10px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 16px;
+    padding: 34px 28px;
+    position: relative;
+}
+
+.dashboard .frame-26 {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .img-wrapper {
+    background-color: #dbeffd;
+    border-radius: 29px;
+    height: 58px;
+    position: relative;
+    width: 58px;
+}
+
+.dashboard .maki-doctor {
+    height: 45px;
+    left: 5px;
+    position: absolute;
+    top: 9px;
+    width: 47px;
+}
+
+.dashboard .text-wrapper-13 {
+    color: #303030;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .text-wrapper-14 {
+    color: #303030;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.16px;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .calendar-outline {
+    height: 43px;
+    left: 7px;
+    position: absolute;
+    top: 6px;
+    width: 45px;
+}
+
+.dashboard .fluent-patient-wrapper {
+    background-color: #6dc0f940;
+    border-radius: 29px;
+    height: 58px;
+    position: relative;
+    width: 58px;
+}
+
+.dashboard .fluent-patient {
+    height: 36px;
+    left: 12px;
+    position: absolute;
+    top: 12px;
+    width: 36px;
+}
+
+.dashboard .fluent-people {
+    height: 33px;
+    left: 13px;
+    position: absolute;
+    top: 13px;
+    width: 33px;
+}
+
+.dashboard .group-4 {
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 350px;
+    left: 47px;
+    position: absolute;
+    top: 307px;
+    width: 437px;
+}
+
+.dashboard .frame-27 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    left: 15px;
+    padding: 10px;
+    position: absolute;
+    top: 9px;
+    width: 407px;
+}
+
+.dashboard .text-wrapper-15 {
+    color: #303030;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .text-wrapper-16 {
+    color: #303030;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -0.5px;
+    position: relative;
+    text-align: center;
+    width: fit-content;
+}
+
+.dashboard .chevron-down-instance {
+    height: 18px !important;
+    position: relative !important;
+    width: 18px !important;
+}
+
+.dashboard .line-chart {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 27.53px;
+    left: 1px;
+    position: absolute;
+    top: 72px;
+    width: 435px;
+}
+
+.dashboard .y-axis {
+    align-items: flex-start;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: flex-end;
+    margin-right: -0.27px;
+    position: relative;
+    width: 435px;
+}
+
+.dashboard .y-axis-line {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    gap: 11.01px;
+    height: 30.28px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .number {
+    color: #aaaaaa;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.14px;
+    line-height: 24.8px;
+    position: relative;
+    text-align: right;
+    width: 47px;
+}
+
+.dashboard .divider {
+    flex: 1;
+    flex-grow: 1;
+    height: 1.2px;
+    position: relative;
+}
+
+.dashboard .y-axis-line-2 {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    gap: 11.01px;
+    height: 23.4px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .number-2 {
+    color: #aaaaaa;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.14px;
+    line-height: 24.8px;
+    margin-top: -2.18px;
+    position: relative;
+    text-align: right;
+    width: 47px;
+}
+
+.dashboard .chart-data-wrapper {
+    height: 242px;
+    left: 103px;
+    position: absolute;
+    top: 28px;
+    width: 260px;
+}
+
+.dashboard .chart-data {
+    align-items: flex-end;
+    display: inline-flex;
+    gap: 60px;
+    justify-content: center;
+    position: relative;
+}
+
+.dashboard .frame-28 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    height: 176px;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.dashboard .rectangle-7 {
+    background-color: #bb6bd9;
+    flex: 1;
+    flex-grow: 1;
+    position: relative;
+    width: 40px;
+}
+
+.dashboard .text-wrapper-17 {
+    color: #303030;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.13px;
+    line-height: 24.8px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-29 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    height: 242px;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.dashboard .rectangle-8 {
+    background-color: #fcb768;
+    flex: 1;
+    flex-grow: 1;
+    position: relative;
+    width: 40px;
+}
+
+.dashboard .frame-30 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    height: 153px;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.dashboard .rectangle-9 {
+    background-color: #6dc0f9;
+    flex: 1;
+    flex-grow: 1;
+    position: relative;
+    width: 40px;
+}
+
+.dashboard .group-5 {
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 350px;
+    left: 509px;
+    position: absolute;
+    top: 307px;
+    width: 437px;
+}
+
+.dashboard .group-6 {
+    height: 218px;
+    left: 103px;
+    position: absolute;
+    top: 52px;
+    width: 253px;
+}
+
+.dashboard .frame-31 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    height: 218px;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.dashboard .frame-32 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    height: 180px;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.dashboard .rectangle-10 {
+    background-color: var(--blue);
+    flex: 1;
+    flex-grow: 1;
+    position: relative;
+    width: 40px;
+}
+
+.dashboard .frame-33 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    height: 136px;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.dashboard .frame-34 {
+    align-items: flex-start;
+    display: flex;
+    gap: 25px;
+    height: 480px;
+    left: 46px;
+    position: absolute;
+    top: 682px;
+    width: 899px;
+}
+
+.dashboard .frame-35 {
+    align-items: flex-end;
+    background-color: #ffffff;
+    border: 1.4px solid;
+    border-color: transparent;
+    border-image: linear-gradient(to bottom, rgb(109, 192, 249), rgb(201, 137, 221)) 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 480px;
+    padding: 20px;
+    position: relative;
+    width: 283px;
+}
+
+.dashboard .frame-36 {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-37 {
+    align-items: center;
+    background-color: var(--blue-1);
+    border-radius: 39px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    height: 22px;
+    justify-content: center;
+    padding: 6px 12px;
+    position: relative;
+}
+
+.dashboard .text-wrapper-18 {
+    color: var(--purplewhite);
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.12px;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-38 {
+    align-items: flex-end;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: -1px;
+    position: relative;
+}
+
+.dashboard .card {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-39 {
+    align-items: flex-start;
+    align-self: stretch;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #fcb768b2;
+    border-radius: 10px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-40 {
+    align-items: center;
+    align-self: stretch;
+    background-color: #fcb76914;
+    display: flex;
+    flex: 0 0 auto;
+    padding: 12px 12px 10px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .text-wrapper-19 {
+    color: #303030;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .line-2 {
+    align-self: stretch;
+    height: 1px;
+    object-fit: cover;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-41 {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px 12px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .text-wrapper-20 {
+    color: #6c727b;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .frame-42 {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 24px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .address {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 4px;
+    position: relative;
+}
+
+.dashboard .marker-pin {
+    height: 13px !important;
+    position: relative !important;
+    width: 13px !important;
+}
+
+.dashboard .text-wrapper-21 {
+    color: var(--black);
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.12px;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-43 {
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-44 {
+    align-items: center;
+    background-color: #fcb768;
+    border-radius: 4px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    justify-content: center;
+    padding: 6px 8px;
+    position: relative;
+}
+
+.dashboard .text-wrapper-22 {
+    color: #ffffff;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-45 {
+    align-items: flex-end;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: -1px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-46 {
+    align-items: flex-start;
+    align-self: stretch;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #6dc0f9b2;
+    border-radius: 10px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-47 {
+    align-items: center;
+    align-self: stretch;
+    background-color: #6dc0f914;
+    display: flex;
+    flex: 0 0 auto;
+    padding: 12px 12px 10px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .text-wrapper-23 {
+    color: #6dc0f9;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .text-wrapper-24 {
+    color: #303030;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .frame-48 {
+    align-items: center;
+    background-color: #6dc0f9;
+    border-radius: 4px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    justify-content: center;
+    padding: 6px 8px;
+    position: relative;
+}
+
+.dashboard .text-wrapper-25 {
+    color: #6c727b;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .icon-instance-node-2 {
+    height: 14px !important;
+    position: relative !important;
+    width: 14px !important;
+}
+
+.dashboard .address-2 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 4px;
+    margin-right: -5px;
+    position: relative;
+}
+
+.dashboard .frame-49 {
+    align-items: flex-start;
+    align-self: stretch;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #c989ddb2;
+    border-radius: 10px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-50 {
+    align-items: center;
+    align-self: stretch;
+    background-color: #c989dd14;
+    display: flex;
+    flex: 0 0 auto;
+    padding: 12px 12px 10px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .text-wrapper-26 {
+    color: #c989dd;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.dashboard .frame-51 {
+    align-items: center;
+    background-color: #c989dd;
+    border-radius: 4px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    justify-content: center;
+    padding: 6px 8px;
+    position: relative;
+}
+
+.dashboard .frame-52 {
+    align-items: flex-end;
+    background-color: #ffffff;
+    border: 1.4px solid;
+    border-color: transparent;
+    border-image: linear-gradient(to bottom, rgb(109, 192, 249), rgb(201, 137, 221)) 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 480px;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+    width: 283px;
+}
+
+.dashboard .frame-53 {
+    align-items: center;
+    background-color: var(--blue-1);
+    border-radius: 39px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    justify-content: center;
+    padding: 7px 12px;
+    position: relative;
+}
+
+.dashboard .text-wrapper-27 {
+    color: var(--purplewhite);
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.12px;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-54 {
+    align-items: flex-end;
+    align-self: stretch;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 16px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .frame-55 {
+    align-items: center;
+    align-self: stretch;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: transparent;
+    border-image: linear-gradient(to bottom, rgb(109, 192, 249), rgb(201, 137, 221)) 1;
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    height: 85px;
+    padding: 10px 12px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .gastro-entrologue-wrapper {
+    /* background-image: url(./ellipse-7.png); */
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 60px;
+    position: relative;
+    width: 60px;
+}
+
+.dashboard .gastro-entrologue {
+    height: 36px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 24px;
+    width: 44px;
+}
+
+.dashboard .frame-56 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    position: relative;
+}
+
+.dashboard .text-wrapper-28 {
+    color: #6c727b;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.12px;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .frame-57 {
+    align-items: center;
+    align-self: stretch;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: transparent;
+    border-image: linear-gradient(to bottom, rgb(109, 192, 249), rgb(201, 137, 221)) 1;
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    height: 86px;
+    padding: 10px 12px;
+    position: relative;
+    width: 100%;
+}
+
+.dashboard .gnraliste-wrapper {
+    /* background-image: url(./ellipse-7.svg); */
+    background-size: 100% 100%;
+    height: 60px;
+    position: relative;
+    width: 60px;
+}
+
+.dashboard .gnraliste {
+    height: 37px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 23px;
+    width: 44px;
+}
+
+.dashboard .frame-58 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+}
+
+.dashboard .kinsithrapeute-wrapper {
+    /* background-image: url(./ellipse-7-2.svg); */
+    background-size: 100% 100%;
+    height: 60px;
+    position: relative;
+    width: 60px;
+}
+
+.dashboard .kinsithrapeute {
+    height: 38px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 22px;
+    width: 45px;
+}
+
+.dashboard .text-wrapper-29 {
+    color: var(--gray-400);
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.12px;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.dashboard .group-7 {
+    /* background-image: url(./image.png); */
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 60px;
+    position: relative;
+    width: 60px;
+}
+
+.dashboard .kinsithrapeute-2 {
+    height: 37px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 23px;
+    width: 45px;
+}

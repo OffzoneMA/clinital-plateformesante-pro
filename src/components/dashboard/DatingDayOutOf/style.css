@@ -1,0 +1,21 @@
+.dating-day-out-of {
+  height: 30px;
+  opacity: 0.5;
+  position: relative;
+  width: 30px;
+}
+
+.dating-day-out-of .num {
+  color: #252c33;
+  font-family: "Avenir Next LT Pro-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  height: 30px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  width: 30px;
+}

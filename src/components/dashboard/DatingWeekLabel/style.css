@@ -1,0 +1,20 @@
+.dating-week-label {
+  height: 18px;
+  position: relative;
+  width: 30px;
+}
+
+.dating-week-label .SUN {
+  color: #6d7680;
+  font-family: "Avenir Next LT Pro-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  height: 18px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  width: 30px;
+}

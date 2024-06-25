@@ -1,0 +1,351 @@
+.header-PRO {
+  height: 73px;
+  width: 1440px;
+}
+
+.header-PRO .header {
+  background: linear-gradient(180deg, rgba(201, 137, 221, 0.9) 0%, rgba(132.53, 202.15, 249.97, 0.9) 100%);
+  height: 73px;
+  position: relative;
+}
+
+.header-PRO .vector {
+  height: 32px;
+  left: 48px;
+  position: absolute;
+  top: 20px;
+  width: 120px;
+}
+
+.header-PRO .frame {
+  align-items: center;
+  display: inline-flex;
+  gap: 36px;
+  justify-content: flex-end;
+  left: 973px;
+  position: absolute;
+  top: 14px;
+}
+
+.header-PRO .btn-instance {
+  flex: 0 0 auto !important;
+}
+
+.header-PRO .instance-node {
+  font-family: "Avenir Next LT Pro-Demi", Helvetica !important;
+  font-style: unset !important;
+  font-weight: 400 !important;
+}
+
+.header-PRO .property-1-default {
+  height: 35px !important;
+  position: relative !important;
+  width: 35px !important;
+}
+
+.header-PRO .connecter-instance {
+  color: var(--purplewhite) !important;
+  font-family: "Avenir Next LT Pro-Demi", Helvetica !important;
+  font-style: unset !important;
+  font-weight: 400 !important;
+}
+
+.header-PRO .img {
+  height: 32px;
+  position: relative;
+  width: 120px;
+}
+
+.header-PRO .div {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 22px;
+  position: relative;
+}
+
+.header-PRO .frame-2 {
+  align-items: flex-start;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 18px;
+  position: relative;
+}
+
+.header-PRO .div-wrapper {
+  all: unset;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: var(--white);
+  border-radius: 50px;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 10px;
+  justify-content: center;
+  padding: 12px 23px;
+  position: relative;
+}
+
+.header-PRO .text-wrapper {
+  color: var(--lightp);
+  font-family: "Avenir Next LT Pro-Demi", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  height: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: 155px;
+}
+
+.header-PRO .btn-2 {
+  align-items: center;
+  border: 1px solid;
+  border-color: var(--white);
+  border-radius: 50px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 6px;
+  justify-content: center;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.header-PRO .settings {
+  height: 18px !important;
+  position: relative !important;
+  width: 18px !important;
+}
+
+.header-PRO .param-tres-d-agenda {
+  color: #ffffff;
+  font-family: "Avenir Next LT Pro-Demi", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.14px;
+  line-height: normal;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.header-PRO .line {
+  height: 32px;
+  position: relative;
+  width: 1px;
+}
+
+.header-PRO .frame-3 {
+  align-items: flex-start;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 23px;
+  position: relative;
+}
+
+.header-PRO .frame-4 {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+
+.header-PRO .bytesize-home-wrapper {
+  background-color: #ffffff;
+  border-radius: 14.04px;
+  height: 28.08px;
+  position: relative;
+  width: 28.08px;
+}
+
+.header-PRO .bytesize-home {
+  height: 17px;
+  left: 6px;
+  position: absolute;
+  top: 5px;
+  width: 17px;
+}
+
+.header-PRO .text-wrapper-2 {
+  color: var(--white);
+  font-family: "Avenir Next LT Pro-Demi", Helvetica;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.header-PRO .agenda {
+  height: 28.08px !important;
+  position: relative !important;
+  width: 28.08px !important;
+}
+
+.header-PRO .group {
+  background-image: url(https://c.animaapp.com/NnydzBh0/img/help-1.svg);
+  background-size: 100% 100%;
+  height: 28.08px;
+  position: relative;
+  width: 28.08px;
+}
+
+.header-PRO .person-circle {
+  height: 18px;
+  left: 5px;
+  position: absolute;
+  top: 5px;
+  width: 18px;
+}
+
+.header-PRO .frame-5 {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 23px;
+  position: relative;
+}
+
+.header-PRO .group-2 {
+  height: 42.51px;
+  position: relative;
+  width: 61px;
+}
+
+.header-PRO .overlap-group {
+  height: 28px;
+  left: 14px;
+  position: absolute;
+  top: 0;
+  width: 30px;
+}
+
+.header-PRO .notif-1 {
+  height: 28px !important;
+  left: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 28px !important;
+}
+
+.header-PRO .ellipse {
+  background-color: var(--error);
+  border-radius: 4.41px;
+  height: 9px;
+  left: 21px;
+  position: absolute;
+  top: 1px;
+  width: 9px;
+}
+
+.header-PRO .text-wrapper-3 {
+  color: var(--white);
+  font-family: "Avenir Next LT Pro-Demi", Helvetica;
+  font-size: 10px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 31px;
+  white-space: nowrap;
+}
+
+.header-PRO .group-3 {
+  height: 42.65px;
+  margin-right: -2px;
+  position: relative;
+  width: 29px;
+}
+
+.header-PRO .vector-2 {
+  height: 5px;
+  left: 11px;
+  position: absolute;
+  top: 0;
+  width: 5px;
+}
+
+.header-PRO .vector-3 {
+  height: 5px;
+  left: 19px;
+  position: absolute;
+  top: 0;
+  width: 5px;
+}
+
+.header-PRO .vector-4 {
+  height: 5px;
+  left: 19px;
+  position: absolute;
+  top: 9px;
+  width: 5px;
+}
+
+.header-PRO .vector-5 {
+  height: 5px;
+  left: 2px;
+  position: absolute;
+  top: 0;
+  width: 5px;
+}
+
+.header-PRO .vector-6 {
+  height: 5px;
+  left: 2px;
+  position: absolute;
+  top: 9px;
+  width: 5px;
+}
+
+.header-PRO .vector-7 {
+  height: 5px;
+  left: 11px;
+  position: absolute;
+  top: 9px;
+  width: 5px;
+}
+
+.header-PRO .vector-8 {
+  height: 5px;
+  left: 2px;
+  position: absolute;
+  top: 17px;
+  width: 5px;
+}
+
+.header-PRO .vector-9 {
+  height: 5px;
+  left: 11px;
+  position: absolute;
+  top: 18px;
+  width: 5px;
+}
+
+.header-PRO .vector-10 {
+  height: 5px;
+  left: 19px;
+  position: absolute;
+  top: 17px;
+  width: 5px;
+}
+
+.header-PRO.login-true {
+  align-items: center;
+  background: linear-gradient(180deg, rgba(201, 137, 221, 0.9) 0%, rgba(132.53, 202.15, 249.97, 0.9) 100%);
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 48px;
+  position: relative;
+}
