@@ -35,11 +35,12 @@ function Acceuil () {
        {/* overlap */}
         
         <Dashboard />
-
+      <div className="inline">
         <Chart />
-       <Chart2 />
-
+        <Chart2 />
         <Agenda />
+      </div>
+       
 
         <div className="frame-34">
         <MesPatients />

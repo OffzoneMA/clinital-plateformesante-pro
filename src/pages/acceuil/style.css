@@ -11,7 +11,7 @@
   height: 1208px;
   overflow: hidden;
   position: relative;
-  width: 1440px;
+  width: 100%;
 }
 
 .dashboard .container {
@@ -22,7 +22,7 @@
   padding: 8px 46px 8px 47px;
   position: absolute;
   top: 73px;
-  width: 1440px;
+  width: 100%;
 }
 
 .dashboard .heading {
@@ -63,7 +63,7 @@
   background-color: #ffffff;
   height: 23px;
   position: relative;
-  width: 1440px;
+  width: 100%;
 }
 
 .dashboard .frame-6 {
@@ -126,10 +126,10 @@
 
 .dashboard .overlap {
   height: 855px;
-  left: 825px;
-  position: absolute;
-  top: 307px;
-  width: 360px;
+  /* left: 920px; */
+  position: relative; 
+  /* top: 307px; */
+  width: 30%;
 }
 
 .dashboard .frame-7 {
@@ -146,7 +146,7 @@
   overflow: hidden;
   position: absolute;
   top: 0;
-  width: 422px;
+  width: 100%;
 }
 
 .dashboard .frame-8 {
@@ -362,7 +362,7 @@
   flex: 0 0 auto;
   flex-direction: column;
   gap: 30px;
-  padding: 40px 0px;
+  padding: 10px 0px;
   position: relative;
   width: 100%;
 }
@@ -513,14 +513,14 @@
   width: 5px;
 }
 
-.dashboard .frame-22 {
+/* .dashboard .frame-22 {
   align-items: flex-start;
   display: flex;
   gap: 24px;
   left: 48px;
   position: absolute;
   top: 156px;
-  width: 1200px;
+  width: 94%;
 }
 
 .dashboard .frame-wrapper {
@@ -537,8 +537,53 @@
   gap: 16px;
   padding: 34px 28px;
   position: relative;
+  width: 20%;
+} */
+
+.dashboard .frame-22 {
+  display: flex;
+  flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */
+  gap: 24px;
+  justify-content: center; /* Centre les éléments horizontalement */
+  padding: 20px; /* Ajoute un peu de padding pour l'espace interne */
+  position: relative; /* Permet d'utiliser top/left de manière relative */
+  width: 100%; /* Prend toute la largeur disponible */
+  top: 156px; /* Ajuster en fonction des besoins */
 }
 
+.dashboard .frame-wrapper {
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-image: linear-gradient(to bottom, rgb(109, 192, 249), rgb(201, 137, 221)) 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 34px 28px;
+  width: 48%; /* Par défaut, deux éléments côte à côte */
+  box-sizing: border-box; /* Inclut padding et bordure dans la largeur */
+}
+
+/* Media query pour les écrans moyens */
+@media (max-width: 768px) {
+  .dashboard .frame-wrapper {
+    width: 48%; /* Deux éléments côte à côte */
+    padding: 20px 16px;
+  }
+}
+
+/* Media query pour les petits écrans */
+@media (max-width: 480px) {
+  .dashboard .frame-22 {
+    top: 80px; /* Ajuster en fonction des besoins pour les petits écrans */
+    gap: 12px;
+  }
+
+  .dashboard .frame-wrapper {
+    width: 100%; /* Un seul élément par ligne */
+    padding: 16px 12px;
+  }
+}
 .dashboard .frame-23 {
   align-items: center;
   align-self: stretch;
@@ -649,10 +694,10 @@
   background-color: #ffffff;
   border-radius: 10px;
   height: 350px;
-  left: 47px;
-  position: absolute;
-  top: 307px;
-  width: 437px;
+  /* left: 47px; */
+  position: relative;
+  /* top: 307px; */
+  width: 30%;
 }
 
 .dashboard .overlap-2 {
@@ -963,10 +1008,10 @@
   background-color: #ffffff;
   border-radius: 10px;
   height: 350px;
-  left: 509px;
-  position: absolute;
-  top: 307px;
-  width: 437px;
+  /* left: 509px; */
+  position: relative;
+  /* top: 307px; */
+  width: 30%;
 }
 
 .dashboard .frame-33 {
@@ -1258,7 +1303,7 @@
   width: 5px;
 }
 
-/* .RVS {
+.RVS {
   align-items: flex-start;
   border: 1px solid;
   border-color: #aaaaaa33;
@@ -1267,6 +1312,7 @@
   gap: 8px;
   padding: 16px 28px;
   position: relative;
+  width: 100%;
   }
   .RVS .frame {
   align-items: center;
@@ -1313,7 +1359,8 @@
   flex: 0 0 auto;
   gap: 9px;
   position: relative;
-  width: 100%;
+  width: 50%;
+  height: 20px;
   }
   .RVS .frame-4 {
   align-items: center;
@@ -1344,6 +1391,7 @@
   flex-grow: 1;
   gap: 10px;
   position: relative;
+  height: 10px;
   }
   .RVS .frame-6 {
   align-items: center;
@@ -1366,7 +1414,7 @@
   width: fit-content;
   }
   .RVS .text-wrapper-3 {
-  color: var(--gray-400);
+  color: #6c727b;
   font-family: "Avenir Next LT Pro-Regular", Helvetica;
   font-size: 13px;
   font-weight: 400;
@@ -1376,15 +1424,34 @@
   white-space: nowrap;
   width: fit-content;
   }
-  .RVS .frame-7 {
-  align-items: center;
-  display: inline-flex;
+ 
+/* CSS pour l'élément .frame-7 */
+.RVS .frame-77 {
+  align-items: flex-start;
+  display: flex; /* Changer inline-flex en flex */
   flex: 0 0 auto;
+  grid-gap: 10px;
   gap: 10px;
   position: relative;
-  }
+  width: 100%; /* Prendre toute la largeur du parent */
+  height: auto; /* Ajuster la hauteur en fonction du contenu */
+  flex-direction: column;
+}
+.RVS .frame-71 {
+  display: inline-flex; /* Changer inline-flex en flex */
+  gap: 10px;
+}
+.inline {
+  display: flex;
+  flex-direction: row; /* Par défaut, mais explicité pour la clarté */
+  gap: 5%;
+  top: 250px;
+  position: relative;
+  margin-left: 4%;
+  margin-right: 4%;
+}
   .RVS .text-wrapper-4 {
-  color: var(--gray-400);
+  color: #6c727b;
   font-family: "Avenir Next LT Pro-Regular", Helvetica;
   font-size: 13px;
   font-weight: 400;
@@ -1393,4 +1460,33 @@
   margin-top: -1px;
   position: relative;
   width: fit-content;
+  }
+  .RVS .img {
+    height: 32px;
+    position: relative;
+    width: 32px;
+    }
+
+     /* .RVS .frame-7 {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 10px;
+  position: relative;
   } */
+  /* .RVS .frame-7 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    grid-gap: 10px;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+    height: auto; 
+} */
+/* .RVS {
+  display: flex;
+  flex-direction: column; /* Disposer les éléments enfants verticalement 
+} */
+
+    

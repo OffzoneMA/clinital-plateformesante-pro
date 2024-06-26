@@ -8,14 +8,14 @@ import calendar from '../../assets/icons/calendar-outline.svg';
 import { getStatisticsRdv } from "../../action/Rdv";
 
 function Dashboard () {
-  const [statistic, setStatistic] = useState({});
-  const user = useSelector((state) => state.global.user);
+  // const [statistic, setStatistic] = useState({});
+  // const user = useSelector((state) => state.global.user);
 
-  useEffect(() => {
-    if(user && user.id){
-      getStatisticsRdv(setStatistic, user.id)
-    }
-  }, []);
+  // useEffect(() => {
+  //   if(user && user.id){
+  //     getStatisticsRdv(setStatistic, user.id)
+  //   }
+  // }, []);
 
   return (
         <div className="frame-22">
@@ -29,7 +29,9 @@ function Dashboard () {
                 />
               </div>
               <div className="frame-24">
-                <div className="text-wrapper-13">{statistic.day}</div>
+                <div className="text-wrapper-13">0
+                  {/* {statistic.day} */}
+                  </div>
                 <div className="text-wrapper-14">RDV de la journée</div>
               </div>
             </div>
@@ -44,7 +46,9 @@ function Dashboard () {
                 />
               </div>
               <div className="frame-24">
-                <div className="text-wrapper-13">{statistic.month}</div>
+                <div className="text-wrapper-13">0
+                  {/* {statistic.month} */}
+                  </div>
                 <div className="text-wrapper-14">RDV du mois</div>
               </div>
             </div>
@@ -59,7 +63,9 @@ function Dashboard () {
                 />
               </div>
               <div className="frame-24">
-                <div className="text-wrapper-13">{statistic.patients}</div>
+                <div className="text-wrapper-13">0
+                  {/* {statistic.patients} */}
+                  </div>
                 <div className="text-wrapper-14">Total des Patients</div>
               </div>
             </div>
