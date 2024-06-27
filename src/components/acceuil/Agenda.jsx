@@ -12,6 +12,8 @@ import maki_doctor from '../../assets/icons/maki_doctor-15.svg';
 import fluent_patient from '../../assets/icons/fluent_patient-32-regular.svg';
 import fluent_people from '../../assets/icons/fluent_people-community-20-regular.svg';
 import cabinet from '../../assets/icons/cabinet_icon.svg';
+import domicile from '../../assets/icons/domicile_icon.svg';
+import video from '../../assets/icons/video_icon.svg';
 //import "./style.css";
 import Dashboard from "./Dashboard";
 
@@ -264,56 +266,150 @@ function Agenda () {
         </div>
       </div>
       <div className="frame-15">
+      {/* <div className="box">
+        <div className="rectangle" />
+      </div> */}
+      <div className="scroll-container">
         <div className="RVS">
-          <div className="frame">
-            <div className="div">
-              <div className="frame-2">
-                <div className="text-wrapper">Sam, 14 Avril 2023</div>
-              </div>
-              <div className="frame-2">
-                <div className="text-wrapper">09:00 - 09:30</div>
+            <div className="frame">
+              <div className="div">
+                <div className="frame-2">
+                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
+                </div>
+                <div className="frame-2">
+                  <div className="text-wrapper">09:00 - 09:30</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="frame-71">
-            <img className="img" alt="Frame" src={cabinet} />
-            <div className="frame-77">
-              <div className="frame-71">
-                <div className="text-wrapper-2">Fati Zah ARES  </div>
-                <div className="text-wrapper-3">  Femme - 30 ans</div>
+            <div className="frame-71">
+              <img className="img" alt="Frame" src={cabinet} />
+              <div className="frame-77">
+                <div className="frame-71">
+                  <div className="text-wrapper-2">Fati Zah ARES  </div>
+                  <div className="text-wrapper-3">  Femme - 30 ans</div>
+                </div>
+                <div className="text-wrapper-4">1ère Consultation</div>
               </div>
-              <div className="text-wrapper-4">1ère Consultation</div>
             </div>
-          </div>
-          
-          
-          
+        </div>
+        <div className="RVS">
+            <div className="frame">
+              <div className="div">
+                <div className="frame-2">
+                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
+                </div>
+                <div className="frame-2">
+                  <div className="text-wrapper">09:30 - 10:00</div>
+                </div>
+              </div>
+            </div>
+            <div className="frame-71">
+              <img className="img" alt="Frame" src={domicile} />
+              <div className="frame-77">
+                <div className="frame-71">
+                  <div className="text-wrapper-2">Mohammed Derras  </div>
+                  <div className="text-wrapper-3">  Homme - 40 ans</div>
+                </div>
+                <div className="text-wrapper-4">Consultation de suivi</div>
+              </div>
+            </div>
+        </div>
+        <div className="RVS">
+            <div className="frame">
+              <div className="div">
+                <div className="frame-2">
+                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
+                </div>
+                <div className="frame-2">
+                  <div className="text-wrapper">09:30 - 10:00</div>
+                </div>
+              </div>
+            </div>
+            <div className="frame-71">
+              <img className="img" alt="Frame" src={video} />
+              <div className="frame-77">
+                <div className="frame-71">
+                  <div className="text-wrapper-2">Salah Amrani  </div>
+                  <div className="text-wrapper-3">  Homme - 33 ans</div>
+                </div>
+                <div className="text-wrapper-4">Urgence</div>
+              </div>
+            </div>
+            
+            
+            
+        </div>
+        <div className="RVS">
+            <div className="frame">
+              <div className="div">
+                <div className="frame-2">
+                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
+                </div>
+                <div className="frame-2">
+                  <div className="text-wrapper">09:00 - 09:30</div>
+                </div>
+              </div>
+            </div>
+            <div className="frame-71">
+              <img className="img" alt="Frame" src={cabinet} />
+              <div className="frame-77">
+                <div className="frame-71">
+                  <div className="text-wrapper-2">Fati Zah ARES  </div>
+                  <div className="text-wrapper-3">  Femme - 30 ans</div>
+                </div>
+                <div className="text-wrapper-4">1ère Consultation</div>
+              </div>
+            </div>
+        </div>
+        <div className="RVS">
+            <div className="frame">
+              <div className="div">
+                <div className="frame-2">
+                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
+                </div>
+                <div className="frame-2">
+                  <div className="text-wrapper">09:30 - 10:00</div>
+                </div>
+              </div>
+            </div>
+            <div className="frame-71">
+              <img className="img" alt="Frame" src={domicile} />
+              <div className="frame-77">
+                <div className="frame-71">
+                  <div className="text-wrapper-2">Mohammed Derras  </div>
+                  <div className="text-wrapper-3">  Homme - 40 ans</div>
+                </div>
+                <div className="text-wrapper-4">Consultation de suivi</div>
+              </div>
+            </div>
+        </div>
+        <div className="RVS">
+            <div className="frame">
+              <div className="div">
+                <div className="frame-2">
+                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
+                </div>
+                <div className="frame-2">
+                  <div className="text-wrapper">09:30 - 10:00</div>
+                </div>
+              </div>
+            </div>
+            <div className="frame-71">
+              <img className="img" alt="Frame" src={video} />
+              <div className="frame-77">
+                <div className="frame-71">
+                  <div className="text-wrapper-2">Salah Amrani  </div>
+                  <div className="text-wrapper-3">  Homme - 33 ans</div>
+                </div>
+                <div className="text-wrapper-4">Urgence</div>
+              </div>
+            </div>
+            
+            
+            
+        </div>
       </div>
-      <div className="RVS">
-          <div className="frame">
-            <div className="div">
-              <div className="frame-2">
-                <div className="text-wrapper">Sam, 14 Avril 2023</div>
-              </div>
-              <div className="frame-2">
-                <div className="text-wrapper">09:00 - 09:30</div>
-              </div>
-            </div>
-          </div>
-          <div className="frame-71">
-            <img className="img" alt="Frame" src={cabinet} />
-            <div className="frame-77">
-              <div className="frame-71">
-                <div className="text-wrapper-2">Fati Zah ARES  </div>
-                <div className="text-wrapper-3">  Femme - 30 ans</div>
-              </div>
-              <div className="text-wrapper-4">1ère Consultation</div>
-            </div>
-          </div>
-          
-          
-          
-      </div>
+     
         {/* <img className="frame-16" alt="Frame" src="https://c.animaapp.com/NnydzBh0/img/frame.svg" />
         <div className="frame-17">
           <p className="vous-n-avez-pas">Vous n&#39;avez pas encore de rendez-vous prévu</p>

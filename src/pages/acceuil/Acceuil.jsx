@@ -20,6 +20,7 @@ import Chart2 from "../../components/acceuil/Chart2";
 import MesPatients from "../../components/acceuil/MesPatients";
 import MonEquipe from "../../components/acceuil/MonEquipe";
 import MonReseaux from "../../components/acceuil/MonReseaux";
+import MiniFooter from "../../components/footer/MiniFooter";
 
 function Acceuil () {
   return (
@@ -48,7 +49,9 @@ function Acceuil () {
         <MonReseaux />
         </div>
 
-        <div className="mini-footer">
+        
+      </div>
+    <div className="mini-footer">
           <div className="overlap-group-2">
             <div className="frame-6">
               <div className="text-wrapper-5">Conditions Générales d&#39;Utilisation</div>
@@ -62,7 +65,6 @@ function Acceuil () {
             <p className="p">Copyright © 2021 Clinital, tous droits réservés.</p>
           </div>
         </div>
-      </div>
     </div>
   );
 };
