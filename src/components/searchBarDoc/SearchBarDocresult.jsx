@@ -158,13 +158,13 @@ function SearchBarDoc({ setRandomX, comp }) {
         <input
           type="text"
           name="spec"
-          value={search.spec}
+          value={t(search.spec)}
           onChange={(e) => toggleSeach(e)}
           placeholder={t("searchbardoc")}
           style={{
             paddingRight: localStorage.getItem("language") === "ar" ? "55px" : "10px", 
-            borderRadius: localStorage.getItem("language") === "ar" ? "0px 12px 12px 0px" : "12px 0px 0px 12px",
-            borderTopRightRadius:localStorage.getItem("language") === "ar" ? "12px":"0px", border: '2px rgba(170, 170, 170, 0.20) solid'
+            borderRadius: localStorage.getItem("language") === "ar" ? "0px 50px 50px 0px" : "50px 0px 0px 50px",
+            border:"2px rgba(170, 170, 170, 0.20) solid"
           }}
         />
         <div className="result" ref={specSearchContainer}>
@@ -200,9 +200,9 @@ function SearchBarDoc({ setRandomX, comp }) {
           value={search.city}
           placeholder={t("where")}
           style={{
-            paddingRight: localStorage.getItem("language") === "ar" ? "45px" : "10px",
-           // borderRadius: localStorage.getItem("language") === "ar" ?  "12px 0px 0px 12px":"0px 12px 12px 0px" ,
-           // borderTopRightRadius:localStorage.getItem("language") === "ar" ? "10px":"3px", border: '2px rgba(170, 170, 170, 0.20) solid'
+          paddingRight: localStorage.getItem("language") === "ar" ? "45px" : "10px",
+          borderRadius: localStorage.getItem("language") === "ar" ?  "50px 0px 0px 50px":"0px 50px 50px 0px" ,
+          border: "2px rgba(170, 170, 170, 0.20) solid"
 
           }}
         />
@@ -226,7 +226,7 @@ function SearchBarDoc({ setRandomX, comp }) {
 
       <button onClick={(e) => showResult(e)}
       style={{
-        borderRadius: localStorage.getItem("language")  === "ar" ? "12px 0px 0px 12px" : "0px 12px 12px 0px",
+        //borderRadius: localStorage.getItem("language")  === "ar" ? "12px 0px 0px 12px" : "0px 12px 12px 0px",
         right: localStorage.getItem("language") === "ar" ? "735px" : "10px",
 
       }}

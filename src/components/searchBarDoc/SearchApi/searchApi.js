@@ -3,16 +3,19 @@ export default {
         return `med/medByVille?id_ville=${id_ville}`;
     },
     getMedbySpecOrName(search){
-        return `medByNameOrSpec?search=${search}`;
+        return `med/medByNameOrSpec?search=${search}`;
     },
     getMedbyNameOrSpecAndCity(search,ville){
-        return `medByNameOrSpecAndCity?search=${search}&ville=${ville}`;
+        return `med/medByNameOrSpecAndVille?search=${search}&ville=${ville}`;
     },
-    getAllCities(){
+   getAllCities(){
         return 'ville/allvilles';
     },
     getAllSpec(){
         return 'med/getAllSpec';
-    }
+    },
     
+    medByCabinetName() {
+        return 'med/medByCabinetName';
+    }
 }

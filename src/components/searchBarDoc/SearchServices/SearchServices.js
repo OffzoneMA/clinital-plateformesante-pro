@@ -14,4 +14,8 @@ class SearchServices{
         return await axiosInstance.get(searchApi.getAllSpec());
     }
 
+    async medByCabinetName() {
+        return await axiosInstance.get(searchApi.medByCabinetName());
+    }
+
 } export default new SearchServices();

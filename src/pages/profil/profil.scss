@@ -1,8 +1,17 @@
-
 @import "../../styles/style.scss";
-  
+
 .profil-wrapper {
-  background: #e5e5e5;
+  background: #f7f6f6;
+
+  .all {
+    width: 799px;
+    height: 801px;
+    gap: 0px;
+    opacity: 0.3px;
+
+
+  }
+
 
   .couverture {
     width: 100%;
@@ -22,6 +31,84 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+.buttons-container {
+    display: flex;
+    gap: 20px; // Espace entre les boutons
+    margin-top: 20px; // Espace au-dessus des boutons
+  }
+
+  .button-rdv,
+  .button-add,
+  .button-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-family: "Avenir Next LT Pro";
+    font-size: 20px;
+    font-weight: 100;
+    white-space: nowrap;
+    padding: 13px 23px;
+    cursor: pointer;
+  }
+
+  .button-rdv {
+    background: linear-gradient(95deg, #6DC0F9 0%, #C989DD 100%);
+    color: white;
+    .button-rdv-text{
+display: flex;
+  width: 426px;
+  height: 20px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #FFF;
+    text-align: center;
+    font-family: "Avenir Next LT Pro";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    }
+  }
+
+  .button-remove {
+    border: 1.5px solid #E85555;
+    color: #E85555;
+    background-color: white;
+    
+
+    .button-remove-text{
+      width: 221px;
+    color: var(--Error, #E85555);
+      text-align: center;
+      font-family: "Avenir Next LT Pro";
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 100;
+      line-height: normal;
+    }
+    
+  }
+
+.button-add {
+  border: 1.5px solid #6DC0F9;
+  color: #6DC0F9;
+  background-color: white;
+
+  .button-add-text {
+    width: 221px;
+    color: var(--blue, #6DC0F9);
+    text-align: center;
+    font-family: "Avenir Next LT Pro";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+  }
+
+}
   }
 
   .nomMedcin {
@@ -34,6 +121,8 @@
   }
 
   .specialite {
+    font-family: "Montserrat";
+    text-align: left;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -42,14 +131,17 @@
   }
 
   .photoPro {
-    background-color: #303030;
+    background-color: #ffffff;
+    //background-color: #303030;
     display: flex;
     width: 179px;
     height: 179px;
     border-radius: 50%;
-    bottom: 62%;
+    bottom: 72%;
     position: absolute;
   }
+
+
 
   .skelet {
     border-radius: 50% !important;
@@ -198,6 +290,7 @@
       display: flex;
       justify-content: space-between;
       padding-bottom: 1rem;
+      margin-bottom: 3px;
 
       .disc {
         width: 100%;
@@ -218,12 +311,35 @@
 
       .diplome {
         display: flex;
-        align-items: center;
+        align-items: start;
+        flex-direction: column;
+
+        .Info {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #303030;
+          margin-top: 16px;
+        }
+      }
+
+      .experiences {
+        .Info {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #303030;
+          margin-top: 16px;
+        }
+
       }
     }
   }
 
   .trais {
+
     width: 34px;
     border-top: 0.5px solid #aaaaaa;
     margin-inline: 2.12rem;
@@ -231,6 +347,7 @@
 
   .ms {
     margin-left: 2rem;
+    font-family: "Avenir Next LT Pro";
   }
 
   .me {
@@ -244,6 +361,10 @@
 
   .justif {
     justify-content: space-between;
+  }
+
+  .align-center {
+    align-items: center;
   }
 
   .w-75 {
@@ -354,6 +475,7 @@
       font-size: 14px;
       line-height: 17px;
       color: #303030;
+
     }
 
     .bg {
@@ -408,11 +530,26 @@
       justify-content: space-between;
     }
 
-    .imgMap {
-      height: 100%;
+    .map-container {
+      height: 252px;
+      width: 100%;
+      border-radius: 0px,
+        10px,
+        10px,
+        0px;
+      overflow: hidden;
+      border: 0.5px;
+      font-size: 48pt;
+      font-family: $ave-heavy;
+      margin-left: 120px;
+      margin-top: 0px;
 
-      img {
+      .imgMap {
         height: 100%;
+
+        img {
+          height: 100%;
+        }
       }
     }
 
@@ -423,9 +560,81 @@
       line-height: 17px;
       color: #303030;
     }
+
+
   }
 
   .AdresseInfo {
     margin-left: 2rem;
+
+    .clinicname {
+      font-family: "Avenir Next LT Pro";
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16.8px;
+      text-align: left;
+      color: #9e58ff;
+    }
+
+    .horaireMed {
+      //width: 272px;
+      // height: 178px;
+      //gap: 6px;
+      opacity: 0px;
+      // display: flex; // Utilisation de display: flex pour aligner les éléments enfants horizontalement
+      //flex-direction: column; // Pour afficher les éléments enfants en colonne
+
+      .flex {
+        display: flex;
+        align-items: first baseline; // Pour aligner les éléments en haut
+
+      }
+
+      .horaireMed {
+        font-family: "Avenir Next LT Pro";
+        font-size: 12px;
+        line-height: 16.8px;
+        text-align: left;
+
+        .schedule {
+          display: flex;
+          align-items: center; // Alignement vertical des éléments
+        }
+
+
+        .point {
+          margin: 0 4px; // Espace entre les deux points
+        }
+
+        .flexday {
+          display: flex;
+          align-items: center;
+          width: 150px;
+        }
+
+        .schedule-details {
+          display: inline-block;
+        }
+
+        .ms {
+          margin-left: 6rem;
+          margin-right: 4rem;
+          font-family: "Avenir Next LT Pro";
+        }
+      }
+
+    }
   }
+
+  @media screen and (max-width: 768px) {
+
+
+    .couverture {
+      height: 150px;
+
+    }
+
+
+  }
+
 }

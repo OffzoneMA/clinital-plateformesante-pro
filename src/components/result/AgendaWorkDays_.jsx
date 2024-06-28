@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, Routes, Route, Link } from "react-router-dom";
 import DateObject from "react-date-object";
 import { getScheduls } from "../../action/Rdv";
 import LoginModal from "../Modals/LoginModal";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; 
 import { setLoginToggle } from "../../utils/redux/GlobalSlice";
+import PriseRdv from "./priseRdv/PriseRdv";
+import { useTranslation } from "react-i18next";
 
 function AgendaWorkDays({ docId, component, state }) {
   const dispatch=useDispatch();
@@ -16,7 +18,8 @@ function AgendaWorkDays({ docId, component, state }) {
   const scrBottom = useRef();
   const daysContainer = useRef();
   const agendaContainer = useRef();
-
+  //Translation
+  const { t } = useTranslation();
   // States
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -116,6 +119,48 @@ function AgendaWorkDays({ docId, component, state }) {
     }
     return $week;
   };
+// //Pour comparer les heures pour disable creno past
+// const isPastTime = (time, date) => {
+//   // Convertir la date et l'heure en objet Date
+//   const currentDateTime = new Date(date + "T" + time);
+//   // Obtenir la date et l'heure actuelles
+//   const currentTime = new Date();
+//   // Comparer les dates
+//   if (currentDateTime.getDate() < currentTime.getDate()) {
+//     return true; // Si le créneau horaire est passé
+//   } else if (currentDateTime.getDate() === currentTime.getDate()) {
+//     // Si les dates sont les mêmes, comparer les heures et minutes
+//     const [hours, minutes] = time.split(":").map(Number);
+//     const currentHours = currentTime.getHours();
+//     const currentMinutes = currentTime.getMinutes();
+//     return currentHours > hours || (currentHours === hours && currentMinutes > minutes);
+//   } else {
+//     return false; // Si le créneau horaire est dans le futur
+//   }
+// };
+const isPastTime = (time, date) => {
+  // Convertir la date et l'heure en objet Date
+  const currentDateTime = new Date(date + "T" + time);
+  // Obtenir la date et l'heure actuelles
+  const currentTime = new Date();
+  
+  // Comparer les années, mois et jours
+  if (currentDateTime.getFullYear() < currentTime.getFullYear() ||
+      currentDateTime.getMonth() < currentTime.getMonth() ||
+      currentDateTime.getDate() < currentTime.getDate()) {
+    return true; // Si le créneau horaire est passé
+  } else if (currentDateTime.getDate() === currentTime.getDate()) {
+    // Si les dates sont les mêmes, comparer les heures et minutes
+    const [hours, minutes] = time.split(":").map(Number);
+    const currentHours = currentTime.getHours();
+    const currentMinutes = currentTime.getMinutes();
+    return currentHours > hours || (currentHours === hours && currentMinutes > minutes);
+  } else {
+    return false; // Si le créneau horaire est dans le futur
+  }
+};
+
+
 
   // Weeks to render
   const [weeks, setweeks] = useState([generateWeek(0), generateWeek(1)]);
@@ -223,10 +268,15 @@ function AgendaWorkDays({ docId, component, state }) {
         };
       });
     }
+    if (comp === "rdvDejaPrise")
+  //<Link to= {`prise-rdv/${url_params}&id=${docId}&day=${dayName.toUpperCase()}&start=${star}&end=${end}&availableSlot=${time}`}></Link>
+    navigate(
+      `/prise-rdv/${url_params}&id=${docId}&day=${dayName.toUpperCase()}&start=${star}&end=${end}&availableSlot=${time}`
+    );
   };
 
   return (
-    <>
+    
 
     <div className="agenda-work-days">
       {loading ? (
@@ -294,9 +344,11 @@ function AgendaWorkDays({ docId, component, state }) {
                           day.date === $day.workingDate.slice(0, 10) &&
                           toggleDach($day.availableSlot).map(
                             (slot, $indexSlot) => (
-                              <span
+                              !isPastTime(slot, $day.workingDate.slice(0, 10)) && (
+                                <span
+                                //here dispatch 
                                 onClick={()=>{
-                                  user ? 
+                                  //user ? 
                                   toggleTime(
                                   component,
                                   slot,
@@ -304,13 +356,14 @@ function AgendaWorkDays({ docId, component, state }) {
                                   day.name,
                                   $day.period
                                     ? Number($day.period.slice(3, 5))
-                                    : 0
-                                ):dispatch(setLoginToggle(true))
+                                    : 0)
+                                //):dispatch(setLoginToggle(true));
                            
                                 } }
                                 
                                 index={$indexSlot}
-                                className={
+                                className=
+                                {`${
                                   (slot === "—" || slot ===  'Reserved' || slot.length > 5)
                                     ? "empty"
                                     : slot === availableSlot.time &&
@@ -318,11 +371,14 @@ function AgendaWorkDays({ docId, component, state }) {
                                     $day.workingDate.slice(0, 10)
                                     ? "active-time"
                                     : ""
-                                }
+                                } ${isPastTime(slot, $day.workingDate.slice(0, 10)) ? "disabled" : ""}`}
+                               
                               >
-                              {console.log(user)}
+                              {/*console.log(user)*/}
                                 {slot ===  'Reserved' || slot.length > 5 ? '—' : slot}
                               </span>
+                              )
+                              
                             )
                           )
                       );
@@ -330,45 +386,9 @@ function AgendaWorkDays({ docId, component, state }) {
                   </div>
                 ))
               )}
-              {/* {sortData().map((week, indexWeek) =>
-              week.map((day, indexDay) => (
-                <div key={indexDay} className="day-time">
-                  {toggleDach(day.availableSlot).map((slot, indexSlot) => (
-                    <span
-                      index={indexSlot}
-                      className={slot === "-" ? "empty" : ""}
-                    >
-                      {slot}
-                    </span>
-                  ))}
-                </div>
-              ))
-            )} */}
+             
 
-              {/* {weeks.map((week) => {
-              return week.map((day, index) => (
-                <div key={index} className="day-time">
-                  {maxSlot.map((x, index_) =>
-                    sortData().map((week) =>
-                      week.map((dispoDay, index__) => {
-                        return (
-                          dispoDay.workingDate.slice(0, 10) === day.date &&
-                          toggleDach(dispoDay.availableSlot).map(
-                            (slot, slotIndex) => {
-                              return (
-                                <span key={slotIndex} className={""}>
-                                  {slot}
-                                </span>
-                              );
-                            }
-                          )
-                        );
-                      })
-                    )
-                  )}
-                </div>
-              ));
-            })} */}
+             
             </div>
           </div>
 
@@ -408,25 +428,38 @@ function AgendaWorkDays({ docId, component, state }) {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span>Plus d’horaires</span>
+                <span>{t("Moreschedules") }</span>
             </button>
           </div>
         </div>
       ) : (
         <>
+
           <div className="agenda-next-rdv">
-            <span>Aucune disponibilité en ligne</span>
+                <span>{ t("Noonlineavailability")}</span>
           </div>
-          <img
+                {/*<img
             src="../../images/agendaScreen.png"
             className="testtest"
             alt=""
-          />
+      />*/}
         </>
-      )}
+      )
+
+
+      }
+        
+        {/* <Routes>
+        <Route path="/prise-rdv/" element={<PriseRdv />} />
+      </Routes> */}
     </div>
-    </>
+      
+      
+  
+    
+    
   );
+
 }
 
 export default AgendaWorkDays;

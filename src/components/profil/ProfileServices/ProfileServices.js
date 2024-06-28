@@ -6,4 +6,8 @@ class ProfleServices{
     async getProfileMedecin(id){
         return await axiosInstance.get(ApiProfile.getProfileMed(id));
     }
+
+    async getSchedulsofMed(id) {
+        return await axiosInstance.get(ApiProfile.getSchedulsMed(id));
+    }
 } export default new ProfleServices();

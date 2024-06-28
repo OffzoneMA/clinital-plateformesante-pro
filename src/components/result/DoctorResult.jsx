@@ -2,17 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AgendaWorkDays from "./AgendaWorkDays";
 import AgendaWorkDays_ from "./AgendaWorkDays_";
+import { useTranslation } from "react-i18next";
 function DoctorResult({ item, type }) {
   const url = window.location.search;
+    const { t } = useTranslation();
+ const photoUrl = `/images/profile_photomed/${item.photo_med}`; //l'URL de la photo
   return (
     <>
       {item ? (
         <div className="item">
           <div>
-            <a href={`profil/x`}>
+            <a href={`profil/${item.id}`}>
               <div className="item-info">
                 <div className="item-img">
-                  <img src="../../images/doctor.jpg" alt="" />
+                  { item.photo_med?(
+                    
+                    <img src={photoUrl} alt="" />
+
+                  ):(
+                   <img src="/images/profile_photomed/defaultprofil.png" alt="imagepardéfaut" />
+                  )}
+                 
                 </div>
                 <div className="item-data">
                   <h4>
@@ -22,14 +32,14 @@ function DoctorResult({ item, type }) {
                       " " +
                       item.nom_med.toLowerCase()}
                   </h4>
-                  <p>Médecin {item.specialite.libelle}</p>
+                  <p>{t("Doctor")} {t(item.specialite.libelle)}</p>
                 </div>
                 <div className="rdv-type">
                   <span>
                     <img src="../../icons/domicile.svg" alt="" />
                   </span>
                   <span>
-                    <img src="../../icons/domicile.svg" alt="" />
+                    <img src="../../icons/video.svg" alt="" />
                   </span>
                 </div>
               </div>
@@ -37,12 +47,13 @@ function DoctorResult({ item, type }) {
             <div className="item-agenda">
                 <AgendaWorkDays_
                   consId={1}
-                  docId={item.id}
+                  docId={item.id} 
                   component={"doctorResult"}
-                />
+              />
+              
             </div>
           </div>
-          <div className="item-action">
+          <div className="item-action" >
             <div className="item-adress">
               <img src="../../icons/location-outline.svg" alt="" />
               <p>
@@ -50,7 +61,7 @@ function DoctorResult({ item, type }) {
               </p>
             </div>
             <Link to={`prise-rdv/${url}&id=${item.id}`}>
-              Prendre Rendez-Vous
+             {t("BookanAppointment")}
             </Link>
           </div>
         </div>

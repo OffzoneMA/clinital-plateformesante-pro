@@ -3,10 +3,14 @@ import CONSTANTS from '../../../constant/constant';
 import { ORIGIN, TOKEN, USER_ID } from '../../../services/api'
 import apiRdv from '../apiRdv/apiRdv';
 import { toast } from 'react-toastify';
+
 const RDV_URL = ORIGIN + '/api/rdv/patient'
 const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/patient'
 const SCHEDULS_URL = ORIGIN + '/api/med'
 const MOVE_URL = ORIGIN + '/api/rdv'
+const FROM_CRENO_URL = ORIGIN + '/api/medecinSchedule/fromCreno';
+const GET_MEDECIN_URL = ORIGIN + '/api/med/medById';
+const GET_CABINET_URL = ORIGIN + '/api/cabinet/cabinetById';//1
 const AUTHORIZATION = { headers: { Authorization: `Bearer ${TOKEN}` } }
 
 class RdvService {
@@ -61,6 +65,7 @@ class RdvService {
     async cancelRdv(id) {
         const URL = RDV_URL + '/cancelRdv' + `/${id}`;
         try {
+            
             const response = await axios.post(URL, {} , AUTHORIZATION);
             return response;
         } catch (error) {
@@ -71,7 +76,11 @@ class RdvService {
     async getScheduls(docId, date) {
         const URL = SCHEDULS_URL + '/agenda' + `/${docId}/1/${date}`;
         try {
-            const response = await axios.get(URL, AUTHORIZATION);
+            //console.log(docId, URL)
+            //console.log("TOKEN",AUTHORIZATION)
+            const response = await axios.get(URL);
+          
+           // console.log(docId, response)
             return response;
         } catch (error) {
             throw error;
@@ -98,12 +107,53 @@ class RdvService {
         }
     }
 //========================
-addRdv(rdv) {
-    return axios.post(apiRdv.addrdv(),JSON.stringify(rdv));
+async addRdv(rdv) {
+    return await axios.post(apiRdv.addrdv(),JSON.stringify(rdv));
     }
 async getAgenda(docid,week){
     return await axios.get(apiRdv.getagenda(docid,week));
 }
+
+async getScheduleFromCreno(creno, idmed, day) {
+    const URL = `${FROM_CRENO_URL}?creno=${creno}&idmed=${idmed}&day=${day}`;
+    try {
+        //const response = await axios.get(URL, AUTHORIZATION);
+        const response = await axios.get(URL);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async getMedecinById(id) {
+    const URL = `${GET_MEDECIN_URL}/${id}`;
+    try {
+        const response = await axios.get(URL, AUTHORIZATION);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+async getCabinetById(id) {
+    const URL = `${GET_CABINET_URL}/${id}`;
+    try {
+        const response = await axios.get(URL, AUTHORIZATION);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async deleteRdv(id) {
+    
+    const URL = `${RDV_URL}/delete/${id}`;
+    try {
+      const response = await axios.delete(URL, AUTHORIZATION);
+      return response;
+    } catch (error) {
+      console.error('Une erreur est survenue lors de la suppression du rendez-vous :', error.message);
+    }
+  }
 }
 
 export default new RdvService();

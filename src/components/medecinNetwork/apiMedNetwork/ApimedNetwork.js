@@ -1,7 +1,7 @@
 export default {
    
-    addMedToNetwork() {
-        return `med/addNewNetwork/`;
+    addNewNetwork() {
+        return `med/addNewNetwork`;
     },
 
     getMedNetwork(follower_id) {
@@ -16,6 +16,10 @@ export default {
         return `med/getAllMedNetWork`;
     },
 
+    getcheckIfInNetwork(followerId) {
+        return `med/checkIfInNetwork/${followerId}`;
+    },
+
     getMedbyCity(id_ville){
         return `med/medNetByVille?id_ville=${id_ville}`;
     },
@@ -25,5 +29,6 @@ export default {
     getMedbyNameOrSpecAndCity(search,ville){
         return `med/medNetByNameOrSpecAndVille?search=${search}&ville=${ville}`;
     },
+
 }  
 

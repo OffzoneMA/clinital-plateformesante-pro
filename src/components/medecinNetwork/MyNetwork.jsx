@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import Mark from 'mark.js';
 import MedFollower from "./MedFollower";
 import "./medfollower.scss";
+import { refreshMedicins } from "../../utils/redux/GlobalSlice";
 function myNetwork() {
 
   
@@ -39,6 +40,7 @@ function myNetwork() {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const itemsPerPage = 4; 
+
     
     const [showMedFollowerPopup, setShowMedFollowerPopup] = useState(false);
     const [selectedMedFollowerId, setSelectedMedFollowerId] = useState(null);
@@ -57,7 +59,9 @@ function myNetwork() {
 
  useEffect(() => {
         fetchAllMedecins(page);
-    }, [page]);
+ }, [page]);
+    
+    
 const fetchAllMedecins = async (pageNumber) => {
         setLoading(true);
         try {
@@ -274,19 +278,18 @@ useEffect(() => {
     };
     //----------------------------PAGINATION----------------------------
  
-   
-  const changePage = (increment) => {
+   const changePage = (increment) => {
     setPage(prevPage => Math.max(1, Math.min(totalPages, prevPage + increment)));
-  };
+};
 
-  const generatePageLink = (pageNumber) => {
+const generatePageLink = (pageNumber) => {
     const url = window.location.href;
     if (url.includes("page")) {
-      return url.replace(/(&page=)\d+/, `$1${pageNumber}`);
+        return url.replace(/(&page=)\d+/, `$1${pageNumber}`);
     } else {
-      return `${url}${url.includes("?") ? "&" : "?"}page=${pageNumber}`;
+        return `${url}${url.includes("?") ? "&" : "?"}page=${pageNumber}`;
     }
-  };
+};
 
     //----------------------------------------------------------------
     const truncateText = (text, maxLength) => {
@@ -306,7 +309,7 @@ useEffect(() => {
         <div className="network-container">
                 <div className="network-container-title">
                     <div className="network-header">
-                        <div className="network-title">Mon réseau</div>
+                        <div className="network-title">Mon Réseau</div>
                     </div>
                 </div>
                 
@@ -496,35 +499,32 @@ useEffect(() => {
                                     
                               )}
                               
-                               {totalPages > 1 && (
-                    <div className="page-numbers">
-                        <div className="number-container">
-                            <img
-                                className={page <= 1 ? "disable" : ""}
-                                src="../../icons/flech-white.svg"
-                                alt="Flèche précédente"
-                                onClick={() => changePage(-1)}
-                            />
-                            {Array.from({ length: totalPages }, (_, index) => (
-                                <a
-                                    key={index}
-                                    className={index + 1 === page ? "active" : ""}
-                                    href={generatePageLink(index + 1)}
-                                >
-                                    {index + 1}
-                                </a>
-                            ))}
-                            <div
-                                onClick={() => changePage(1)}
-                                className={page === totalPages ? "disable next" : "next"}
-                            >
-                                <span>Page Suivante</span>
-                                <img src="../../icons/flech-white.svg" alt="Flèche suivante" />
-                            </div>
-                        </div>
-                    </div>
-                              )}
-                            
+                             <div className="page-numbers">
+                                <div className="number-container">
+                                    <img
+                                        className={page <= 1 ? "disable" : ""}
+                                        src="../../icons/flech-white.svg"
+                                        alt="Flèche précédente"
+                                        onClick={() => changePage(-1)}
+                                    />
+                                    {Array.from({ length: totalPages }, (_, index) => (
+                                        <a
+                                            key={index}
+                                            className={index + 1 === page ? "active" : ""}
+                                            href={generatePageLink(index + 1)}
+                                        >
+                                            {index + 1}
+                                        </a>
+                                    ))}
+                                    <div
+                                        onClick={() => changePage(1)}
+                                        className={page === totalPages ? "disable next" : "next"}
+                                    >
+                                        <span>Page Suivante</span>
+                                        <img src="../../icons/flech-white.svg" alt="Flèche suivante" />
+                                    </div>
+                                </div>
+                         </div>
                                             
 
                             </div>
@@ -539,6 +539,7 @@ useEffect(() => {
                             </div>
                             <div className="contact-details">
                                 <div className="contact-message">Vous n'avez pas encore de contacts.</div>
+                            <Link to="/">
                                 <div className="add-contact-button">
                                     <div className="button-content">
                                         <div className="button-icon">
@@ -547,7 +548,7 @@ useEffect(() => {
                                         <div className="button-text">Ajouter des contacts</div>
                                     </div>
                               </div>
-                              
+                            </Link>
                           
 
                           </div>
@@ -564,7 +565,7 @@ useEffect(() => {
 
           
              
-              <Routes>
+    <Routes>
         <Route path="/medecinfollower/" element={<MedFollower />} />
     </Routes> 
          

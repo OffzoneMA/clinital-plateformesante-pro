@@ -26,8 +26,7 @@ function Hero() {
               heroBg === "bg-1.png" ? { color: "#303030" } : { color: "white" }
             }
           >
-            Réservez une consultation physique, vidéo ou à domicile chez un
-            professionnel de santé
+            Prenez rendez-vous pour votre Patient avec un Confrère
           </h1>
           <SearchBarDoc comp='hero' />
         </div>

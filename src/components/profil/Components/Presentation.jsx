@@ -1,12 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Presentation = ({ data }) => {
   const [editpresentation, setEditPresentation] = useState(false);
   const [editlangue, setEditLangue] = useState(false);
   const [editDiplome, setEditDiplome] = useState(false);
   const [editExperiences, setEditExperiences] = useState(false);
+  const { t } = useTranslation();
+  const photoUrl = `/images/profile_photomed/${data.photo_med}`; //l'URL de la photo de profil
+  const photocouvertureUrl = `/images/profile_photomed/${data.photo_couverture_med}`;
 
   const clickEditPresentation = () => {
     setEditPresentation(true);
@@ -41,8 +45,8 @@ const Presentation = ({ data }) => {
       <section className="sectionPresentation">
         <div className="section1">
           <div>
-            <h5 className="titreDeChamp ">
-              <img src="/icons/list.svg" /> Présentation
+            <h5 className="titreDeChamp " style={{marginBottom:"2px"}}>
+              <img src="/icons/list.svg" style={{ marginRight: "5px" }} /> {t("Presentation")}
             </h5>
             <div className="ms">
               {editpresentation ? (
@@ -55,44 +59,32 @@ const Presentation = ({ data }) => {
                   />
                 </div>
               ) : (
-                <p className="  Info ">{data.description_med}</p>
+                <p className="Info">{data.description_med}</p>
               )}
-              <div className="imagHistory">
+          <div className="imagHistory">
+              {data.photo_med && (
                 <img
                   className="me"
-                  src="/images/photoMed.png"
+                  src={photoUrl}
                   alt=""
+                  style={{width: '65px', height: '65px', background: 'linear-gradient(0deg, #C4C4C4 0%, #C4C4C4 100%)', borderRadius: 3}}
                 />
+              )}
+
+              {data.photo_couverture_med && (
                 <img
                   className="me"
-                  src="/images/photoCov.png"
+                  src={photocouvertureUrl}
                   alt=""
+                  style={{width: '65px', height: '65px', background: 'linear-gradient(0deg, #C4C4C4 0%, #C4C4C4 100%)', borderRadius: 3}}
                 />
-                <img
-                  className="me"
-                  src="/images/photoCov2.png"
-                  alt=""
-                />
-                <img
-                  className="me"
-                  src="/images/photoMed.png"
-                  alt=""
-                />
-                <img
-                  className="me"
-                  src="/images/photoCov.png"
-                  alt=""
-                />
-                <img
-                  className="me"
-                  src="/images/photoCov2.png"
-                  alt=""
-                />
-              </div>
+              )}
+            </div>
+
             </div>
           </div>
           <div>
-            {editpresentation ? (
+            {/*{editpresentation ? (
               <button
                 onClick={clickSauvgardePresentation}
                 className="Sauvegarder"
@@ -106,13 +98,13 @@ const Presentation = ({ data }) => {
                 alt="edit"
                 onClick={clickEditPresentation}
               />
-            )}
+            )}*/}
           </div>
         </div>
         <div className="section2 ">
           <div>
-            <h5 className="titreDeChamp ">
-              <img src="/icons/language.svg" /> Langues parlées
+            <h5 className="titreDeChamp" style={{marginBottom:"2px"}}>
+              <img src="/icons/language.svg" style={{marginRight:"5px"}}/> {t("SpokenLanguages")}
             </h5>
             <div className="ms">
               {editlangue ? (
@@ -125,12 +117,21 @@ const Presentation = ({ data }) => {
                   />
                 </div>
               ) : (
-                <p className=" Info ">Anglais et Français</p>
+                  <div>
+                  {data.langues && data.langues.length > 0 ? (
+                    data.langues.map((languesmed,languesmedid) => (
+                      <p key={languesmedid} className="Info">{languesmed.name}</p>
+                    ))
+                  ) : (
+                        <p>{t("Notavailableatthemoment") }</p>
+                  )}
+                 
+                  </div>
               )}
             </div>
           </div>
           <div>
-            {editlangue ? (
+            {/* {editlangue ? (
               <button onClick={clickSauvgardeLangue} className="Sauvegarder">
                 Sauvegarder
               </button>
@@ -141,18 +142,18 @@ const Presentation = ({ data }) => {
                 alt="edit"
                 onClick={clickEditLangue}
               />
-            )}
+            )}*/}
           </div>
         </div>
         <div className="section3">
-          <div className="">
+          <div>
             <h5 className="titreDeChamp ">
-              <img src="/icons/diplomeIcon.svg" />
-              Diplômes nationaux et universitaires
+              <img src="/icons/diplomeIcon.svg" style={{marginRight:"5px"}}/>
+             {t("DiplomasandCertifications")}
             </h5>
-            <div className="">
+            <div >
               {editDiplome ? (
-                <div className="">
+                <div>
                   <input
                     defaultValue="2011"
                     type="text"
@@ -168,19 +169,28 @@ const Presentation = ({ data }) => {
                   />
                 </div>
               ) : (
-                <div className="diplome">
-                  <p className="titreDeChamp ms  ">2011</p>
-                  <span className="trais"></span>
-                  <p className="Info inputBorder">
-                    {/* D.E.S. Médecine générale - Université Paris 7 - Diderot */}
-                    {data.diplome_med}
-                  </p>
+               <div className="diplome">
+                  {data.diplome_med && data.diplome_med.length > 0 ? (
+                    data.diplome_med.map((diplome, indexdiplome) => (
+                     <div className="flex" key={indexdiplome}>
+                        <p className="titreDeChamp ms">{new Date(diplome.date_fin).getFullYear()}</p>
+                        <span className="trais"></span>
+                        <p className="Info inputBorder">
+                          {`${diplome.nom_diplome}`}
+                        </p>
+                     </div>
+                    ))
+                  ) : (
+                        <p>{t("Nodiplomasavailableatthemoment") }</p>
+                  )}
                 </div>
+
+
               )}
             </div>
           </div>
           <div>
-            {editDiplome ? (
+            {/* {editDiplome ? (
               <button onClick={clickSauvgardeDiplome} className="Sauvegarder">
                 Sauvegarder
               </button>
@@ -191,15 +201,15 @@ const Presentation = ({ data }) => {
                 alt="edit"
                 onClick={clickEditDiplome}
               />
-            )}
+            )}*/}
           </div>
         </div>
 
         <div className="section4">
           <div className="">
             <h5 className="titreDeChamp ">
-              <img src="/icons/experience.svg" />
-              Expériences
+              <img src="/icons/experience.svg" style={{marginRight:"5px"}}/>
+              {t("Experiences")}
             </h5>
             {editExperiences ? (
               <div>
@@ -212,7 +222,7 @@ const Presentation = ({ data }) => {
                   />
                   <span className="trais"></span>
                   <input
-                    defaultValue={data.experience_med}
+                   // defaultValue={data.experience_med}
                     type="text"
                     className="inputEdit Info inputBorder"
                     onChange=""
@@ -227,7 +237,7 @@ const Presentation = ({ data }) => {
                   />
                   <span className="trais"></span>
                   <input
-                    defaultValue={data.experience_med}
+                    //defaultValue={data.experience_med}
                     type="text"
                     className="inputEdit Info inputBorder"
                     onChange=""
@@ -235,22 +245,25 @@ const Presentation = ({ data }) => {
                 </div>
               </div>
             ) : (
-              <div>
-                <div className="flex">
-                  <p className="titreDeChamp ms ">Depuis 2015</p>
-                  <span className="trais"></span>
-                  <p className="Info ">{data.experience_med}</p>
-                </div>
-                <div className="flex">
-                  <p className="titreDeChamp ms  ">Depuis 2013</p>
-                  <span className="trais"></span>
-                  <p className="Info">{data.experience_med}</p>
-                </div>
+              <div className="experiences">
+                {data.experience_med && data.experience_med.length > 0 ? (
+                  data.experience_med.map((experience, indexep) => (
+                    <div className="flex" key={indexep}>
+                      <p className="titreDeChamp ms ">{new Date(experience.date_debut).getFullYear()} - {new Date(experience.date_fin).getFullYear()} </p>
+                      <span className="trais"></span>
+                      <p className="Info">{experience.nom_experience}</p>
+                    </div>
+                  ))
+                ) : (
+                      <p>{t("Notavailableatthemoment")}</p>
+                )}
               </div>
+
+           
             )}
           </div>
           <div>
-            {editExperiences ? (
+            {/* {editExperiences ? (
               <button
                 onClick={clickSauvgardeExperience}
                 className="Sauvegarder"
@@ -264,7 +277,7 @@ const Presentation = ({ data }) => {
                 alt="edit"
                 onClick={clickEditExperience}
               />
-            )}
+            )}*/}
           </div>
         </div>
       </section>

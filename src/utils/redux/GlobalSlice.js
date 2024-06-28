@@ -4,8 +4,10 @@ import keyValueStorage from "../storage/keyValueStorage"
     name :"global",
     initialState:{
         user:keyValueStorage.get("user")||null,
+        //rdv: keyValueStorage.get("rdv") !== undefined ? keyValueStorage.get("rdv") : null,
         rdv:keyValueStorage.get("rdv")||null,
         logintoggle:false,
+        priserdvtoggle:true,
         villes:keyValueStorage.get("ville")||null,
         specialite:keyValueStorage.get("specialite")||null,
     },
@@ -23,9 +25,13 @@ import keyValueStorage from "../storage/keyValueStorage"
             state.logintoggle=action.payload;
             console.log(state.logintoggle)
         },
+        setPriseRdvToggle(state,action){
+            console.log("pop up rdv chng")
+            state.priserdvtoggle=action.payload;
+            console.log(state.priserdvtoggle)
+        },
         setLoggedOut(state) {
             keyValueStorage.remove("user");
-      
             //state.isLoggedIn = false;
             state.user = false;
             //state.token = false;
@@ -47,6 +53,7 @@ export const {
     setUser,
     setRdv,
     setLoginToggle,
+    setPriseRdvToggle,
     setSpecialite,
     setVilles,
 }=GlobalSlice.actions;

@@ -26,6 +26,7 @@ export const getRdvById = async (id, state, loading, error) => {
       await RdvService.getRdvById(id)
       .then((res)=>{
         state(res)
+        console.log(res)
       }).catch((error)=>{
         toast.error(error)
       }).finally(()=>{
@@ -84,5 +85,14 @@ export const moveRdv = async (rdvId, date, state) => {
   } catch (error) {
     toast.error(error.message)
     state(false)
+  }
+}
+
+export const getScheduleByCreno = async (creno, idmed, day, state) => {
+  try {
+      const schedule = await RdvService.getScheduleFromCreno(creno, idmed, day);
+      state(schedule.data);
+  } catch (error) {
+      toast.error(error.message);
   }
 }
