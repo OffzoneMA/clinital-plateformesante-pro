@@ -8,8 +8,10 @@ import Model, {
 } from "../../components/Models/Model";
 import { useTranslation } from "react-i18next";
 import { auto } from "@popperjs/core";
+import { useNavigate } from "react-router-dom";
 
 const PaymentOptions = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [selectedOption, setSelectedOption] = useState(null);
   const isArabic = localStorage.getItem("language") === "ar";
@@ -231,6 +233,7 @@ const PaymentOptions = () => {
       <div className="butt">
         <button
           className="button"
+          onClick={()=>navigate("/cabinet/paymentprocessing")}
           style={{
             marginLeft: isArabic ? "-510px" : "460px",
           }}
