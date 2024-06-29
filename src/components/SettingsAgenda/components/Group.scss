@@ -1,12 +1,12 @@
 /* Group styles */
-.group {
+.groupk {
     height: 60px;
     left: 32px;
     position: absolute;
     top: 20px;
     width: 1011px;
   
-    .text-wrapper-4 {
+    .text-wrapper-4k {
       color: var(--black);
       font-family: "Montserrat", Helvetica;
       font-size: 22px;
@@ -18,7 +18,7 @@
       top: 10px;
     }
   
-    .button-instance {
+    .button-instancek {
       display: inline-flex !important;
       left: 810px !important;
       position: absolute !important;
@@ -26,7 +26,7 @@
       width: unset !important;
     }
   
-    .line-2 {
+    .line-2k {
       height: 1px;
       left: 0;
       object-fit: cover;
@@ -37,14 +37,14 @@
   }
   
   /* Button styles */
-  .button {
+  .buttonk {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
     position: relative;
     width: 340px;
   
-    .div {
+    .divk {
       align-items: center;
       align-self: stretch;
       background-color: #6dc0f9;
@@ -58,7 +58,7 @@
       position: relative;
       width: 100%;
   
-      .titre {
+      .titrek {
         color: #ffffff;
         font-family: Avenir Next LT Pro, Helvetica;
         font-size: 14px;
@@ -71,7 +71,7 @@
         width: fit-content;
       }
   
-      .arrow-right {
+      .arrow-rightk {
         height: 18px !important;
         position: relative !important;
         width: 18px !important;
