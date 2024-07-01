@@ -14,9 +14,10 @@ import Mark from 'mark.js';
 import MedFollower from "./MedFollower";
 import "./medfollower.scss";
 import { refreshMedicins } from "../../utils/redux/GlobalSlice";
+import PaginationNetwork from "./PaginationNetwork";
+
 function myNetwork() {
 
-  
     const [isOtherSpecChecked, setisOtherSpecChecked] = useState(false) //les conditions génerales
     const [loading, setLoading] = useState(false); //une opération est en cours de chargement.
     const [isChecked, setIsChecked] = useState(false); 
@@ -34,28 +35,31 @@ function myNetwork() {
     const [searchTerm, setSearchTerm] = useState('');
     const searchRef = useRef();
 
+    const [ searchNameTerm, setSearchNameTerm] = useState('');
+    const searchNameRef = useRef();
+  
+
     const [searchTermCities, setSearchTermCities] = useState('');
     const searchRefCities = useRef();
 
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const itemsPerPage = 4; 
+    const itemsPerPage = 15; 
 
+    
+    
     
     const [showMedFollowerPopup, setShowMedFollowerPopup] = useState(false);
     const [selectedMedFollowerId, setSelectedMedFollowerId] = useState(null);
    
-
+    const photoUrlBase = `/images/profile_photomed/`;
+    
 
 
 
 
 
 //---------------------Charger les followers--------------------------------
-/*useEffect(() => {
-    fetchFilteredMedecins();
-}, [selectedCities, selectedSpecs, searchTerm]);*/
-
 
  useEffect(() => {
         fetchAllMedecins(page);
@@ -66,6 +70,7 @@ const fetchAllMedecins = async (pageNumber) => {
         setLoading(true);
         try {
             const response = await MedNetworksService.getAllMedNetworks(pageNumber, itemsPerPage);
+            
             if (response.status === 200) {
                 setContacts(response.data || []);
                 const estimatedTotalPages = Math.ceil(response.data.length / itemsPerPage);
@@ -88,7 +93,7 @@ const fetchAllMedecins = async (pageNumber) => {
     
     useEffect(() => {
         fetchFollowers();
-    }, [selectedSpecs, selectedCities,searchTerm, searchTermCities]);
+    }, [page,selectedSpecs, selectedCities,searchTerm, searchTermCities]);
 
     const fetchFollowers = async () => {
         setLoading(true);
@@ -105,24 +110,39 @@ const fetchAllMedecins = async (pageNumber) => {
         setLoading(true);
         try {
             let response;
-            if (selectedCities.length > 0 && selectedSpecs.length > 0) {
-                response = await MedNetworksService.getMedbyNameOrSpecAndCity (selectedSpecs,selectedCities);
+            
+            if (selectedCities.length > 0  && (selectedSpecs.length > 0 ||searchNameTerm) ) {
+                response = await MedNetworksService.getMedbyNameOrSpecAndCity ( (searchNameTerm||selectedSpecs),selectedCities);
                 
 
             } else if (selectedCities.length > 0) {
                 response = await MedNetworksService.getMedbyCity(selectedCities);
             } else if (selectedSpecs.length > 0) {
                 response = await MedNetworksService.getMedbySpec(selectedSpecs);
-            } else {
+            }
+            else if (searchNameTerm) {
+            response = await MedNetworksService.getMedbySpec(searchNameTerm);
+        } 
+            else {
                 response = await MedNetworksService.getAllMedNetworks();
             }
 
             if (response.status === 200) {
                 if (response.data && response.data.length > 0) {
-                    setFilteredContacts(response.data);
+                    const filteredData = response.data || [];
+                    
+                    const startIndex = (page - 1) * itemsPerPage;
+                    const slicedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
+
+                    setFilteredContacts(slicedData);
+                    console.log(slicedData);
+                const estimatedTotalPages = Math.ceil(filteredData.length / itemsPerPage);
+                    setTotalPages(estimatedTotalPages);
+                    
                 } else {
                     toast.info("Aucun médecin trouvé.");
                     setFilteredContacts([]);
+                      setTotalPages(1); 
                 }
             } else {
                 toast.error("Erreur de chargement des médecins.");
@@ -138,8 +158,7 @@ const fetchAllMedecins = async (pageNumber) => {
 
     //----------------------------------------------------------------
     
-    const photoUrlBase = `/images/profile_photomed/`;
-    
+  
     // Fetch citys & speciality
   useEffect(() => {
     try {
@@ -264,7 +283,7 @@ useEffect(() => {
         } else {
             setSelectedCities(prevSelectedCities => [...prevSelectedCities, id_city]);
         }
-      
+      setSelectAllCities(false) 
     };
 
     const handleSelectAllCitiesChange = () => {
@@ -277,19 +296,17 @@ useEffect(() => {
         setSelectAllCities(!selectAllCities);
     };
     //----------------------------PAGINATION----------------------------
- 
-   const changePage = (increment) => {
-    setPage(prevPage => Math.max(1, Math.min(totalPages, prevPage + increment)));
-};
+     
+    const changePage = (pageNumber) => {
+        setPage(pageNumber);
+    };
 
-const generatePageLink = (pageNumber) => {
-    const url = window.location.href;
-    if (url.includes("page")) {
-        return url.replace(/(&page=)\d+/, `$1${pageNumber}`);
-    } else {
-        return `${url}${url.includes("?") ? "&" : "?"}page=${pageNumber}`;
-    }
-};
+    const generatePageLink = (pageNumber) => {
+        const baseUrl = window.location.href.split('?')[0];
+        return `${baseUrl}?page=${pageNumber}`;
+    };
+
+    
 
     //----------------------------------------------------------------
     const truncateText = (text, maxLength) => {
@@ -300,6 +317,18 @@ const generatePageLink = (pageNumber) => {
         return text.slice(0, maxLength) + '...';
     };
     //----------------------------------------------------------------
+
+    //----------------------------------------------------------------
+  const handleNameSearchChange = (e) => {
+    setSearchNameTerm(e.target.value);
+  };
+
+  const handleNameSearchSubmit = (e) => {
+    e.preventDefault();
+    fetchFilteredMedecins();
+  };
+
+
 
     return (
       <>
@@ -360,7 +389,7 @@ const generatePageLink = (pageNumber) => {
                                 className="checkbox-input"
                                 checked={selectedSpecs.includes(specialite.libelle)}
                                 onChange={() => handleSpecCheckboxChange(specialite.libelle)}
-                                disabled={selectAll}
+                              //  disabled={selectAll}
                             />
                             <label htmlFor={`spec_${specialite.id_spec}`}  className="checkbox-label"></label>
                         </div>
@@ -421,7 +450,7 @@ const generatePageLink = (pageNumber) => {
                                 className="checkbox-input"
                                 checked={selectedCities.includes(city.id_ville)}
                                 onChange={() => handleCityCheckboxChange(city.id_ville)}
-                                disabled={selectAllCities} // Désactive les cases individuelles si "Tout" est sélectionné
+                                //disabled={selectAllCities} // Désactive les cases individuelles si "Tout" est sélectionné
                             />
                             <label htmlFor={`city_${city.id_ville}`} className="checkbox-label"></label>
                         </div>
@@ -447,15 +476,15 @@ const generatePageLink = (pageNumber) => {
                             <img src="../../icons/search.svg" alt="" />
                             <input
                             type="text"
-                            name="spec"
-                            //value={search.spec}
-                            //onChange={(e) => toggleSeach(e)}
+                            //name="spec"
+                            value={searchNameTerm}
+                            onChange={handleNameSearchChange}
                             placeholder="Rechercher un praticien sur Clinital"
                             />
                         
                         </div>
 
-                        <button >
+                        <button onClick={handleNameSearchSubmit}>
                                 Rechercher
                         <img src="../../icons/flech-white.svg" alt="" /> </button>
                     </form>
@@ -499,33 +528,14 @@ const generatePageLink = (pageNumber) => {
                                     
                               )}
                               
-                             <div className="page-numbers">
-                                <div className="number-container">
-                                    <img
-                                        className={page <= 1 ? "disable" : ""}
-                                        src="../../icons/flech-white.svg"
-                                        alt="Flèche précédente"
-                                        onClick={() => changePage(-1)}
-                                    />
-                                    {Array.from({ length: totalPages }, (_, index) => (
-                                        <a
-                                            key={index}
-                                            className={index + 1 === page ? "active" : ""}
-                                            href={generatePageLink(index + 1)}
-                                        >
-                                            {index + 1}
-                                        </a>
-                                    ))}
-                                    <div
-                                        onClick={() => changePage(1)}
-                                        className={page === totalPages ? "disable next" : "next"}
-                                    >
-                                        <span>Page Suivante</span>
-                                        <img src="../../icons/flech-white.svg" alt="Flèche suivante" />
-                                    </div>
-                                </div>
-                         </div>
-                                            
+                         
+                           <PaginationNetwork
+                            totalPages={totalPages}
+                            currentPage={page}
+                            onPageChange={changePage}  // Assurez-vous que changePage est correctement défini et transmis ici
+                            generatePageLink={generatePageLink}
+                        />
+                                        
 
                             </div>
                         </div>

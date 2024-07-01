@@ -51,10 +51,7 @@ function MedFollower() {
       console.log(response);
       console.log("Médecin supprimé avec succès");
       
-      // Fermer la popup de confirmation après la suppression réussie
-      //setIsConfirmOpen(false);
-      //setIsOpen(false); // Fermer la popup en changeant l'état
-      fetchAllMedecins()
+      
       navigate("/mynetwork", { replace: true });
       window.location.reload();
     }
