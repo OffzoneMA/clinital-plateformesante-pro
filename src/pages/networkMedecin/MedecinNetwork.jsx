@@ -10,14 +10,16 @@ function MedecinNetwork() {
   return (
     <div className="medecinnetwork">
       <Navbar />
-      <Routes>
-        <Route path="/*" element={<MyNetwork />} />
-         
-     
-      </Routes>
-     
+      <div className="content">
+        <Routes>
+          <Route path="/*" element={<MyNetwork />} />
+        </Routes>
+     </div> 
+      
+         <MiniFooter/>
  
     </div>
+   
     
   );
 }

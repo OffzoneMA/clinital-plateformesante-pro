@@ -15,7 +15,8 @@ import MedFollower from "./MedFollower";
 import "./medfollower.scss";
 import { refreshMedicins } from "../../utils/redux/GlobalSlice";
 import PaginationNetwork from "./PaginationNetwork";
-
+import MiniFooter from "../../components/footer/MiniFooter";
+import { bottom } from "@popperjs/core";
 function myNetwork() {
 
     const [isOtherSpecChecked, setisOtherSpecChecked] = useState(false) //les conditions génerales
@@ -32,6 +33,7 @@ function myNetwork() {
     const [selectedCity, setSelectedCity] = useState(null); 
     const [filteredContacts, setFilteredContacts] = useState([]);
 
+     
     const [searchTerm, setSearchTerm] = useState('');
     const searchRef = useRef();
 
@@ -55,7 +57,7 @@ function myNetwork() {
     const photoUrlBase = `/images/profile_photomed/`;
     
 
-
+    const [selectedFilters, setSelectedFilters] = useState([]); 
 
 
 
@@ -110,9 +112,10 @@ const fetchAllMedecins = async (pageNumber) => {
         setLoading(true);
         try {
             let response;
-            
-            if (selectedCities.length > 0  && (selectedSpecs.length > 0 ||searchNameTerm) ) {
-                response = await MedNetworksService.getMedbyNameOrSpecAndCity ( (searchNameTerm||selectedSpecs),selectedCities);
+              console.log("Selected cities:", selectedCities);
+              console.log("Selected specs:", selectedSpecs);
+            if (selectedCities.length > 0  && selectedSpecs.length > 0  ) {
+                response = await MedNetworksService.getMedbyNameOrSpecAndCity ( selectedSpecs,selectedCities);
                 
 
             } else if (selectedCities.length > 0) {
@@ -318,7 +321,7 @@ useEffect(() => {
     };
     //----------------------------------------------------------------
 
-    //----------------------------------------------------------------
+    //-------------------------Search by name---------------------------------------
   const handleNameSearchChange = (e) => {
     setSearchNameTerm(e.target.value);
   };
@@ -331,77 +334,76 @@ useEffect(() => {
 
 
     return (
-      <>
-    <div className="mynetwork ">
-          
       
-        <div className="network-container">
-                <div className="network-container-title">
+        <div className="mynetwork">
+           <div className="network-container-title">
                     <div className="network-header">
                         <div className="network-title">Mon Réseau</div>
                     </div>
                 </div>
+        <div className="network-container">
+             
                 
             <div className="menu-container">
                     <div className="menu-section">
                         <div className="menu-item">
-                            <div className="menu-text">Spécialistes</div>
+                            <div className="menu-text">Spécialistés</div>
                     </div>
-            {contacts.length > 0 && (
-                    <>
-                <div className="input-container">
-                    <input
-                        type="text"
-                        id="spec"
-                        className="input-field"
-                        placeholder="Rechercher une spécialiste"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                    />
-                    <div className="input-icon">
-                        <img src="/images/network/search-md.svg" alt="Icone de recherche" className="icon-img" />
-                    </div>
+                {contacts.length > 0 && (
+                        <>
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            id="spec"
+                            className="input-field"
+                            placeholder="Rechercher une spécialiste"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                        />
+                        <div className="input-icon">
+                            <img src="/images/network/search-md.svg" alt="Icone de recherche" className="icon-img" />
+                        </div>
 
-                </div>
-                <div className="scrollable-section" ref={searchRef}> 
-                            
-                    <div className="checkbox-container">
+                    </div>
+                    <div className="scrollable-section" ref={searchRef}> 
+                                
+                        <div className="checkbox-container">
+                            <div className="checkbox-wrapper">
+                                <input
+                                    type="checkbox"
+                                    id="tout"
+                                    name="tout"
+                                    className="checkbox-input"
+                                    checked={selectAll}
+                                    onChange={handleSelectAllChange}
+                                />
+                                <label htmlFor="tout" className="checkbox-label"></label>
+                            </div>
+                            <div className="checkbox-text">Tout</div>
+                        </div>
+                    {filteredSpecs.map((specialite) => (
+                        <div className="checkbox-container" key={specialite.id_spec}>
                         <div className="checkbox-wrapper">
                             <input
                                 type="checkbox"
-                                id="tout"
-                                name="tout"
-                                className="checkbox-input"
-                                 checked={selectAll}
-                                 onChange={handleSelectAllChange}
-                            />
-                            <label htmlFor="tout" className="checkbox-label"></label>
+                                    id={`spec_${specialite.id_spec}`}
+                                    name={`spec_${specialite.id_spec}`}
+                                    className="checkbox-input"
+                                    checked={selectedSpecs.includes(specialite.libelle)}
+                                    onChange={() => handleSpecCheckboxChange(specialite.libelle)}
+                                //  disabled={selectAll}
+                                />
+                                <label htmlFor={`spec_${specialite.id_spec}`}  className="checkbox-label"></label>
+                            </div>
+                            <div className="checkbox-text">{specialite.libelle}</div>
                         </div>
-                        <div className="checkbox-text">Tout</div>
-                     </div>
-                {filteredSpecs.map((specialite) => (
-                    <div className="checkbox-container" key={specialite.id_spec}>
-                    <div className="checkbox-wrapper">
-                        <input
-                            type="checkbox"
-                                id={`spec_${specialite.id_spec}`}
-                                name={`spec_${specialite.id_spec}`}
-                                className="checkbox-input"
-                                checked={selectedSpecs.includes(specialite.libelle)}
-                                onChange={() => handleSpecCheckboxChange(specialite.libelle)}
-                              //  disabled={selectAll}
-                            />
-                            <label htmlFor={`spec_${specialite.id_spec}`}  className="checkbox-label"></label>
-                        </div>
-                        <div className="checkbox-text">{specialite.libelle}</div>
-                    </div>
-                   ))} 
-                    
-                </div> 
-            
-             </>
-            )}              
-        </div>
+                    ))} 
+                        
+                    </div> 
+                
+                </>
+                )}              
+            </div>
             
                 
                 <div className="menu-section">
@@ -424,7 +426,7 @@ useEffect(() => {
 
                 </div>
                      
-            <div className="scrollable-section" ref={searchRefCities}>   
+            <div className="scrollable-section-ville" ref={searchRefCities}>   
                     <div className="checkbox-container">
                     <div className="checkbox-wrapper">
                         <input
@@ -468,7 +470,7 @@ useEffect(() => {
         </div>
               
         {contacts.length > 0 && (       
-            <div style={{width: 1071, left: 322, top: 172, position: 'absolute', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
+            <div style={{width: 1071, left: 322, top: 192, position: 'absolute', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
                 <div style={{height: 40, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                 
                     <form className="search-section">
@@ -581,11 +583,13 @@ useEffect(() => {
          
           </div>
     
-
+ 
     </div> 
   
-      </>
-  );
+       
+        
+    );
+
 }
 
 export default myNetwork;

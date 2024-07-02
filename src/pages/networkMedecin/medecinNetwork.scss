@@ -1,12 +1,27 @@
 @import '../../styles/style.scss';
 
+
+.medecinnetwork {
+   
+   
+
+    .content {
+        display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+           margin-bottom: 185px;
+        
+    }
+}
 .mynetwork{
 
+    
     .network-container{
 
         width: 100%;
         height: 100%;
-        background: #FAFAFA
+        background: #FAFAFA;
+        
     }
 
         .network-container-title {
@@ -42,12 +57,29 @@
                 }
             }
         }
+
+        .search-bar-content{
+            width: 1071; 
+            left: 322;
+            top: 172;
+            position: 'absolute';
+            justify-Content: 'flex-start';
+             align-Items: 'flex-start';
+              display: 'inline-flex';
+
+        }
+                 .search-bar {
+                     height: 40;
+                     justify-Content: 'flex-start';
+                     align-Items: 'flex-start';
+                     display: 'flex'
+                 }
         
     .menu-container {
     height: 108px;
     padding-left: 30px;
     left: 0;
-    top: 172px;
+    top: 185px;
     position: absolute;
     display: inline-flex;
     flex-direction: column;
@@ -175,7 +207,7 @@
     width: 0.5px;
     height: 767px;
     left: 306px;
-    top: 149px;
+    top: 177px;
     position: absolute;
     border: 0.5px rgba(170, 170, 170, 0.5) solid;
 }
@@ -225,22 +257,28 @@
 }
 
 .scrollable-section {
-   max-height: 200px;
+   max-height: 265px;
     width: 270px;
     overflow-y: auto;
     padding-right: 10px;
     border-bottom: 1px rgba(170, 170, 170, 0.20) solid;
 }
-
+.scrollable-section-ville {
+    max-height: 165px;
+    width: 270px;
+    overflow-y: auto;
+    padding-right: 10px;
+    border-bottom: 1px rgba(170, 170, 170, 0.20) solid;
+}
 .checkbox-container {
     width: 100%;
-    /* Make sure the container takes full width */
+   
     padding-top: 0px;
     padding-bottom: 12px;
     border-bottom: 1px rgba(170, 170, 170, 0.20) solid;
     display: flex;
     align-items: center;
-    /* Center items vertically */
+   
     gap: 10px;
 
     .checkbox-wrapper {
@@ -290,7 +328,7 @@
 
     .checkbox-text {
         flex: 1;
-        /* Make text take the remaining space */
+      
         color: #8E8E8E;
         font-size: 14px;
         font-family: 'Avenir Next LT Pro';
@@ -306,7 +344,7 @@
 .container {
     width: 1071px;
     left: 322px;
-    top: 238px;
+    top: 258px;
     position: absolute;
     margin: 0.3%;
 
@@ -544,6 +582,7 @@
         width: 100%;
         justify-content: center;
         padding-right: 80px;
+        
 
         >img {
             height: 9px;
@@ -569,7 +608,13 @@
         }
 
         .active {
-            background-color: rgba(170, 170, 170, 0.2);
+            background-color: #6DC0F9;
+            color:#FAFAFA;
+           /* font-size: 14;
+            font-family: 'Avenir Next LT Pro';
+            font-weight: '600';
+            line-height: 16;*/
+            word-wrap: 'break-word'
         }
     }
 
