@@ -136,6 +136,7 @@
 
 .dashboard .overlap {
   height: 855px;
+  min-height: 855px;
   /* left: 920px; */
   position: relative; 
   /* top: 307px; */
@@ -151,6 +152,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  min-height: 855px;
   height: auto;
   left: 13px;
   overflow: hidden;

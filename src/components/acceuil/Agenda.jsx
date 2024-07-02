@@ -1,23 +1,66 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { DatingDayInMonth } from "../dashboard/DatingDayInMonth";
 import { DatingDayOutOf } from "../dashboard/DatingDayOutOf";
 import { DatingWeekLabel } from "../dashboard/DatingWeekLabel";
-import { HeaderPro } from "../dashboard/HeaderPro";
 import { ArrowCircleLeft1 } from "../../icons/ArrowCircleLeft1";
 import { ArrowCircleRight1 } from "../../icons/ArrowCircleRight1";
 import { ChevronDown } from "../../icons/ChevronDown";
-import { PlusCircle2 } from "../../icons/PlusCircle2";
-import Navbar from "../navbar/Navbar";
-import maki_doctor from '../../assets/icons/maki_doctor-15.svg';
-import fluent_patient from '../../assets/icons/fluent_patient-32-regular.svg';
-import fluent_people from '../../assets/icons/fluent_people-community-20-regular.svg';
 import cabinet from '../../assets/icons/cabinet_icon.svg';
 import domicile from '../../assets/icons/domicile_icon.svg';
 import video from '../../assets/icons/video_icon.svg';
+import { getProchainRdv } from "../../action/Rdv";
 //import "./style.css";
-import Dashboard from "./Dashboard";
+
 
 function Agenda () {
+  const [prochain, setProchain] = useState([]);
+  const user = useSelector((state) => state.global.user);
+
+  useEffect(() => {
+    if(user){
+      getProchainRdv(setProchain)
+    }
+    console.log(prochain);
+  }, []);
+
+  const formatDate = (day, start) => {
+    const daysOfWeek = {
+      MONDAY: 'Lun',
+      TUESDAY: 'Mar',
+      WEDNESDAY: 'Mer',
+      THURSDAY: 'Jeu',
+      FRIDAY: 'Ven',
+      SATURDAY: 'Sam',
+      SUNDAY: 'Dim'
+    };
+
+    const startDate = new Date(start);
+    const options = { weekday: 'short', day: '2-digit', month: 'long', year: 'numeric' };
+    return startDate.toLocaleDateString('fr-FR', options);
+  };
+
+  const formatTime = (start, end) => {
+    const startTime = new Date(start);
+    const endTime = new Date(end);
+    const options = { hour: '2-digit', minute: '2-digit' };
+    return `${startTime.toLocaleTimeString('fr-FR', options)} - ${endTime.toLocaleTimeString('fr-FR', options)}`;
+  };
+  const calculateAge = (birthDate) => {
+    const today = new Date();
+    const birthDateObj = new Date(birthDate);
+    let age = today.getFullYear() - birthDateObj.getFullYear();
+    const monthDifference = today.getMonth() - birthDateObj.getMonth();
+
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && today.getDate() < birthDateObj.getDate())
+    ) {
+      age--;
+    }
+
+    return age;
+  };
   return (
 
     <div className="overlap">
@@ -265,11 +308,85 @@ function Agenda () {
           </div>
         </div>
       </div>
+      
       <div className="frame-15">
-      {/* <div className="box">
-        <div className="rectangle" />
-      </div> */}
-      <div className="scroll-container">
+      {prochain.length > 0 ? (
+        <div className="scroll-container">
+        {prochain.map((rdv, index) => (
+          <div key={index} className="RVS">
+              <div className="frame">
+                <div className="div">
+                  <div className="frame-2">
+                    <div className="text-wrapper">{formatDate(rdv.day, rdv.start)}</div>
+                  </div>
+                  <div className="frame-2">
+                    <div className="text-wrapper">{formatTime(rdv.start, rdv.end)}</div>
+                  </div>
+                </div>
+              </div>
+              <div className="frame-71">
+                {rdv.modeConsultation.mode==="CABINET"&&(<img className="img" alt="Frame" src={cabinet} />)}
+                {rdv.modeConsultation.mode==="DOMICILE"&&(<img className="img" alt="Frame" src={domicile} />)}
+                {rdv.modeConsultation.mode==="VIDEO"&&(<img className="img" alt="Frame" src={video} />)}
+                <div className="frame-77">
+                  <div className="frame-71">
+                    <div className="text-wrapper-2">{rdv.patient.prenom_pat} {rdv.patient.nom_pat}</div>
+                    <div className="text-wrapper-3"> {rdv.patient.civilite_pat === "Mr"?"Homme":"Femme"} - {calculateAge(rdv.patient.dateNaissance)} ans</div>
+                  </div>
+                  <div className="text-wrapper-4">{rdv.motifConsultation.motif==="CONSULTATION"?"1ère Consultation":
+                   rdv.motifConsultation.motif==="URGENCE"?"Urgence":"Consultation de suivi"}</div>
+                </div>
+              </div>
+          </div>
+        ))}
+        
+        {/* <div className="RVS">
+            <div className="frame">
+              <div className="div">
+                <div className="frame-2">
+                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
+                </div>
+                <div className="frame-2">
+                  <div className="text-wrapper">09:30 - 10:00</div>
+                </div>
+              </div>
+            </div>
+            <div className="frame-71">
+              <img className="img" alt="Frame" src={domicile} />
+              <div className="frame-77">
+                <div className="frame-71">
+                  <div className="text-wrapper-2">Mohammed Derras  </div>
+                  <div className="text-wrapper-3">  Homme - 40 ans</div>
+                </div>
+                <div className="text-wrapper-4">Consultation de suivi</div>
+              </div>
+            </div>
+        </div>
+        <div className="RVS">
+            <div className="frame">
+              <div className="div">
+                <div className="frame-2">
+                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
+                </div>
+                <div className="frame-2">
+                  <div className="text-wrapper">09:30 - 10:00</div>
+                </div>
+              </div>
+            </div>
+            <div className="frame-71">
+              <img className="img" alt="Frame" src={video} />
+              <div className="frame-77">
+                <div className="frame-71">
+                  <div className="text-wrapper-2">Salah Amrani  </div>
+                  <div className="text-wrapper-3">  Homme - 33 ans</div>
+                </div>
+                <div className="text-wrapper-4">Urgence</div>
+              </div>
+            </div>
+            
+            
+            
+        </div>
         <div className="RVS">
             <div className="frame">
               <div className="div">
@@ -335,86 +452,20 @@ function Agenda () {
                 <div className="text-wrapper-4">Urgence</div>
               </div>
             </div>
-            
-            
-            
-        </div>
-        <div className="RVS">
-            <div className="frame">
-              <div className="div">
-                <div className="frame-2">
-                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
-                </div>
-                <div className="frame-2">
-                  <div className="text-wrapper">09:00 - 09:30</div>
-                </div>
-              </div>
-            </div>
-            <div className="frame-71">
-              <img className="img" alt="Frame" src={cabinet} />
-              <div className="frame-77">
-                <div className="frame-71">
-                  <div className="text-wrapper-2">Fati Zah ARES  </div>
-                  <div className="text-wrapper-3">  Femme - 30 ans</div>
-                </div>
-                <div className="text-wrapper-4">1ère Consultation</div>
-              </div>
-            </div>
-        </div>
-        <div className="RVS">
-            <div className="frame">
-              <div className="div">
-                <div className="frame-2">
-                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
-                </div>
-                <div className="frame-2">
-                  <div className="text-wrapper">09:30 - 10:00</div>
-                </div>
-              </div>
-            </div>
-            <div className="frame-71">
-              <img className="img" alt="Frame" src={domicile} />
-              <div className="frame-77">
-                <div className="frame-71">
-                  <div className="text-wrapper-2">Mohammed Derras  </div>
-                  <div className="text-wrapper-3">  Homme - 40 ans</div>
-                </div>
-                <div className="text-wrapper-4">Consultation de suivi</div>
-              </div>
-            </div>
-        </div>
-        <div className="RVS">
-            <div className="frame">
-              <div className="div">
-                <div className="frame-2">
-                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
-                </div>
-                <div className="frame-2">
-                  <div className="text-wrapper">09:30 - 10:00</div>
-                </div>
-              </div>
-            </div>
-            <div className="frame-71">
-              <img className="img" alt="Frame" src={video} />
-              <div className="frame-77">
-                <div className="frame-71">
-                  <div className="text-wrapper-2">Salah Amrani  </div>
-                  <div className="text-wrapper-3">  Homme - 33 ans</div>
-                </div>
-                <div className="text-wrapper-4">Urgence</div>
-              </div>
-            </div>
-            
-            
-            
-        </div>
+        </div> */}
+        
       </div>
      
-        {/* <img className="frame-16" alt="Frame" src="https://c.animaapp.com/NnydzBh0/img/frame.svg" />
-        <div className="frame-17">
-          <p className="vous-n-avez-pas">Vous n&#39;avez pas encore de rendez-vous prévu</p>
-        </div> */}
+    ):(
+        <>
+          <img className="frame-16" alt="Frame" src="https://c.animaapp.com/NnydzBh0/img/frame.svg" />
+          <div className="frame-17">
+            <p className="vous-n-avez-pas">Vous n&#39;avez pas encore de rendez-vous prévu</p>
+          </div>
+        </> 
+       )}
       </div>
+      
     </div>
     {/* <div className="dropdown">
       <div className="frame-18">

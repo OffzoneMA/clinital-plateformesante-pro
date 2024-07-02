@@ -3,12 +3,12 @@ import CONSTANTS from '../../../constant/constant';
 import { ORIGIN, TOKEN, USER_ID } from '../../../services/api'
 import apiRdv from '../apiRdv/apiRdv';
 import { toast } from 'react-toastify';
-import { getStatisticsRdv } from '../../../action/Rdv';
 const RDV_URL = ORIGIN + '/api/rdv/patient'
 const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/patient'
 const SCHEDULS_URL = ORIGIN + '/api/med'
 const MOVE_URL = ORIGIN + '/api/rdv'
 const STATISTICS_URL = ORIGIN + '/api/rdv/med'
+const PROCHAIN_RDV_URL = ORIGIN + '/api/rdv/rdvs/prochain'
 const AUTHORIZATION = { headers: { Authorization: `Bearer ${TOKEN}` } }
 
 class RdvService {
@@ -107,15 +107,23 @@ async getAgenda(docid,week){
     return await axios.get(apiRdv.getagenda(docid,week));
 }
 
-async getStatisticsRdv(userid){
-    const URL = STATISTICS_URL + `/${userid}`;
+async getStatisticsRdv(){
     try {
-        const response = await axios.get(URL,AUTHORIZATION);
+        const response = await axios.get(STATISTICS_URL,AUTHORIZATION);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+async getProchainRdv(){
+    try {
+        const response = await axios.get(PROCHAIN_RDV_URL,AUTHORIZATION);
         return response;
     } catch (error) {
         throw error;
     }
 }
 }
+
 
 export default new RdvService();

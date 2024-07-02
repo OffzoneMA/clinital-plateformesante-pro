@@ -60,7 +60,7 @@ function App() {
             <Route exact path="/cabinet//*" element={<Cabinet />} />
             
             <Route exact path="/profil/:id" element={<Profil />} />
-            <Route exact path="/acceuil//*" element={<Acceuil />} />
+           
             {console.log(isValidToken)}
             {isValidToken &&
               <>

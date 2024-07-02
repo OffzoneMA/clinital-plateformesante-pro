@@ -89,12 +89,20 @@ export const moveRdv = async (rdvId, date, state) => {
 }
 
   //partie acceuil
-  export const getStatisticsRdv = async (state, userid) => {
+  export const getStatisticsRdv = async (state) => {
     try {
-        const res = await RdvService.getStatisticsRdv(userid)
+        const res = await RdvService.getStatisticsRdv()
         state(res.data)
     } catch (error) {
         toast.error(error.message)
     }
+}
+export const getProchainRdv = async (state) => {
+  try {
+      const res = await RdvService.getProchainRdv()
+      state(res.data)
+  } catch (error) {
+      toast.error(error.message)
+  }
 }
 
