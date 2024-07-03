@@ -66,7 +66,7 @@ class medNetworksService {
     }
 
     async  getMedbyNameOrSpecAndCity(search,ville) {
-        return await axiosInstance.get(ApimedNetwork.getMedbySpecOrName(search,ville));
+        return await axiosInstance.get(ApimedNetwork.getMedbyNameOrSpecAndCity(search,ville));
     }
 
 }

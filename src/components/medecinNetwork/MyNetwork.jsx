@@ -95,7 +95,7 @@ const fetchAllMedecins = async (pageNumber) => {
     
     useEffect(() => {
         fetchFollowers();
-    }, [page,selectedSpecs, selectedCities,searchTerm, searchTermCities]);
+    }, [page,selectedSpecs, selectedCities]);
 
     const fetchFollowers = async () => {
         setLoading(true);
@@ -112,20 +112,27 @@ const fetchAllMedecins = async (pageNumber) => {
         setLoading(true);
         try {
             let response;
-              console.log("Selected cities:", selectedCities);
+              console.log("Selected cities:", selectedCities.nom_med);
               console.log("Selected specs:", selectedSpecs);
-            if (selectedCities.length > 0  && selectedSpecs.length > 0  ) {
-                response = await MedNetworksService.getMedbyNameOrSpecAndCity ( selectedSpecs,selectedCities);
-                
-
-            } else if (selectedCities.length > 0) {
+            if (selectedCities.length > 0 && selectedSpecs.length > 0) {
+               
+                response = await MedNetworksService.getMedbyNameOrSpecAndCity (selectedSpecs,selectedCities);
+           
+            }
+             else if (searchNameTerm && selectedCities.length > 0) {
+                response = await MedNetworksService.getMedbyNameOrSpecAndCity (searchNameTerm,selectedCities);
+            }
+            else if (selectedCities.length > 0) {
                 response = await MedNetworksService.getMedbyCity(selectedCities);
-            } else if (selectedSpecs.length > 0) {
+            }
+            else if (selectedSpecs.length > 0) {
                 response = await MedNetworksService.getMedbySpec(selectedSpecs);
             }
             else if (searchNameTerm) {
-            response = await MedNetworksService.getMedbySpec(searchNameTerm);
-        } 
+                response = await MedNetworksService.getMedbySpec(searchNameTerm);
+                
+            }
+           
             else {
                 response = await MedNetworksService.getAllMedNetworks();
             }
@@ -237,7 +244,8 @@ useEffect(() => {
             return [...prevSelectedSpecs, libelle];
         }
     });
-    setSelectAll(false); // Désactiver la sélection 
+     setSelectAll(false); // Désactiver la sélection 
+     
 };
 
  const handleSelectAllChange = () => {
