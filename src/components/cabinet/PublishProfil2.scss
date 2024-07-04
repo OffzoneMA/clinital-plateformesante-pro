@@ -1,0 +1,356 @@
+@import "../../styles/style.scss";
+
+.publishProfilP {
+  .bg {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .result-container {
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 94px;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: -210px;
+  }
+  .containerP {
+    padding: 40px 20px 50px;
+    max-width: 800px;
+    margin: auto;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-left: 128px;
+    position: relative;
+    left: 200px;
+    right: 200px;
+    border-radius: 15px;
+    border: 1.6px solid #c989dd;
+    top: 180px;
+    gap: 40px;
+  }
+  .containerP .divP {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0px 20px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .containerP .div-2P {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+  }
+  
+  .containerP .titreP {
+    color: #303030;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .containerP .text-wrapperP {
+    color: #303030;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .containerP .div-3P {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 17px;
+    position: relative;
+  }
+  
+  .containerP .ellipseP {
+    height: 99px;
+    position: relative;
+    width: 99px;
+  }
+  
+  .containerP .div-4P {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+  
+  .containerP .text-wrapper-2P {
+    color: rgba(48, 48, 48, 1);
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .containerP .text-wrapper-3P {
+    color:  rgba(48, 48, 48, 1);
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .containerP .lineP {
+    margin-top: -10px;
+    align-self: stretch;
+    height: 1px;
+    object-fit: cover;
+    position: relative;
+    width: 760px;
+    border:none;
+   border-top: 3px solid #AAAAAA66;
+
+  }
+  
+  .containerP .div-5P {
+    margin-top: -10px;
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+  }
+  
+  .containerP .imgP {
+    height: 225.32px;
+    position: relative;
+    width: 253.8px;
+  }
+  
+  .containerP .div-6P {
+    margin-top:10px;
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+  }
+  .containerP .flexcontainerP {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+  }
+  .containerP .textP{
+    margin-top:-20px;
+    align-self: stretch;
+    color: #303030;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 25.2px;
+    position: relative;
+    text-align: center;
+  }
+  .containerP .spanP {
+    font-weight: 600;
+  }
+  .containerP .text-wrapper-4P {
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 16px;
+    line-height: 22.4px;
+  }
+ 
+  .containerP .buttonP {
+    margin-top: -10px;
+    align-items: flex-start;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+    width: 340px;
+  }
+  
+  .containerP .button-2P {
+    align-items: center;
+    align-self: stretch;
+    background-color: #6dc0f9;
+    border-radius: 8px;
+    display: flex;
+    gap: 14px;
+    height: 46px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 14px 24px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .containerP .plus-circleP {
+    height: 14px !important;
+    margin-bottom: -3px !important;
+    margin-top: -3px !important;
+    position: relative !important;
+    width: 14px !important;
+  }
+  
+  .containerP .titre-2P {
+    color: rgba(255, 255, 255, 1);
+    font-family:"Avenir Next LT Pro", Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.14px;
+    line-height:  129.99999523162842%;
+    margin-top: -2px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  .containerS {
+    align-items: center;
+    background-color: #fafafa;
+    border: 1.6px solid #c989dd;
+    border-radius: 15px;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 40px 0px;
+    max-width: 800px;
+    position: relative;
+    height: auto;
+    margin-left: 128px;
+    left: 200px;
+    right: 200px;
+    top: 180px;
+    height: 560px;
+  }
+  .containerS .text-wrapperS {
+    color: #303030;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1.6px;
+    position: relative;
+    text-align: center;
+    width: fit-content;
+  }
+  .containerS .text-wrapperS br {
+    margin-bottom: 6px; /* Ajustez cette valeur selon vos besoins */
+    display: block; /* Nécessaire pour que la marge soit appliquée */
+    content: ""; /* Nécessaire pour que la marge soit appliquée */
+  }
+  .containerS .checkS {
+    top: -20px;
+    height: 96px;
+    position: relative;
+    width: 96px;
+  }
+
+  .containerS .groupS {
+    height: 260px;
+    left: 252px;
+    top: 260px;
+    position: absolute;
+    width: 296px;
+  }
+
+  .containerS .overlap-groupS {
+    height: 270px;
+    top: -10px;
+    position: relative;
+  }
+
+  .containerS .funnyS {
+    height: 249px;
+    left: 53px;
+    top: 0px;
+    position: absolute;
+    width: 183px;
+  }
+
+  .containerS .buttonS {
+    margin-top: -10px;
+    left: 0 !important ;
+    top: 228px;
+    position: absolute !important;
+    width: 296px !important;
+  }
+
+  .containerS .button-2S {
+    align-items: center;
+    align-self: stretch;
+    background-color: #6dc0f9;
+    border-radius: 8px;
+    display: flex;
+    gap: 14px;
+    height: 46px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 14px 24px;
+    position: relative;
+    width: 100%;
+  }
+
+  .containerS .titre-2S {
+    color: rgba(255, 255, 255, 1);
+    font-family: "Avenir Next LT Pro", Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -1%;
+    line-height: 18.2px;
+    margin-top: -2px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+}
