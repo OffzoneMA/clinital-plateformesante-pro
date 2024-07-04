@@ -158,7 +158,8 @@ function Navbar() {
                     </svg>
                   </div>
                   <h4>Mon équipe</h4>
-                </div>
+              </div>
+                <Link to="/mynetwork">
                 <div className="item">
                   <div className="item-img">
                     <svg width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -182,7 +183,7 @@ function Navbar() {
                     </svg>
                   </div>
                   <h4>Mon Réseau</h4>
-                </div>
+                </div></Link>
                 <div className="item">
                   <div className="item-img">
                     <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
