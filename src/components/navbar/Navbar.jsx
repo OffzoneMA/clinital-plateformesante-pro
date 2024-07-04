@@ -4,7 +4,7 @@ import { Log } from "../../App";
 import './Navbar.scss'
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "../../utils/redux/GlobalSlice";
-
+import { useTranslation } from "react-i18next";
 function Navbar() {
   const [subMenu, setSubMenu] = useState(false);
   const [subMenuLang, setSubMenuLang] = useState(false);
@@ -16,6 +16,13 @@ function Navbar() {
     localStorage.removeItem("user");
     window.location = "/login";
     // window.location.reload();
+    
+  };
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang)
+    console.log("Changer la langue vers :", lang);
+    localStorage.setItem("language", lang);
+    setSubMenuLang(!subMenuLang);
   };
   return (
     <div className="navbar">
@@ -105,6 +112,21 @@ function Navbar() {
              
                 <div className="moncompte" onClick={() => changeLanguage("fr")}>
                 Français 
+                </div>
+              </div>
+          
+            <hr />
+            <div className="item">
+            
+                <div className="moncompte" onClick={() => changeLanguage("en")}>
+                English 
+                </div>
+              </div>
+              <hr />
+            <div className="item">
+            
+                <div className="moncompte" onClick={() => changeLanguage("ar")}>
+                العربية 
                 </div>
               </div>
               <div className={`sub-menu ${subMenu ? "" : "closed"}`}>
