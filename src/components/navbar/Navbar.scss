@@ -43,7 +43,7 @@
         min-width: 35px;
         transition: all 200ms ease;
   
-        &:not(.large-btn) {
+        &:not(.large-btn):not(.second-large-btn) {
           padding: 6px;
   
           img {
@@ -61,13 +61,23 @@
   
       .large-btn {
         height: 43px;
+
         &:hover {
           color: white;
           background: linear-gradient(90deg, #6dc0f9 -21.6%, #c989dd 122.57%);
         }
       }
+
+      .second-large-btn {
+        height: 43px;
+        background-color: transparent;
+        color: $white;
+        font-size: 14px;
+        border: 1px solid $white;
+      }
   
       .user {
+        cursor: pointer;
         display: flex;
         align-items: center;
         gap: 6px;
@@ -130,9 +140,8 @@
               max-height: 20px;
             }
           }
-  
-          h4,
-          .moncompte {
+
+          h4 {
             margin: 0;
             font-size: 14px;
             font-weight: 600;

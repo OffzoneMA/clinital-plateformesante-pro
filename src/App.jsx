@@ -13,6 +13,7 @@ import Document from "./pages/document/Document";
 import Connexion from "./pages/connection/Connexion";
 import MonCompte from "./pages/monCompte/MonCompte";
 import Agenda from "./pages/agenda/Agenda";
+import Acceuil from "./pages/acceuil/Acceuil";
 import RdvPopup from "./components/RdvPopup";
 
 // import AgendaWorkDays_ from "./components/result/AgendaWorkDays_";
@@ -66,6 +67,7 @@ function App() {
               <>
                 <Route exact path="/contact" element={<Contact />} />
                 <Route exact path="/agenda//*" element={<Agenda />} />
+                <Route exact path="/acceuil//*" element={<Acceuil />} />
                 <Route exact path="/document" element={<Document />} />
                 <Route exact path="/monCompte" element={<MonCompte />} />
                 <Route exact path="/rdv/:id" element={<RdvPage />} />

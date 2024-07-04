@@ -11,6 +11,8 @@ const MOVE_URL = ORIGIN + '/api/rdv'
 const FROM_CRENO_URL = ORIGIN + '/api/medecinSchedule/fromCreno';
 const GET_MEDECIN_URL = ORIGIN + '/api/med/medById';
 const GET_CABINET_URL = ORIGIN + '/api/cabinet/cabinetById';//1
+const STATISTICS_URL = ORIGIN + '/api/rdv/med'
+const PROCHAIN_RDV_URL = ORIGIN + '/api/rdv/rdvs/prochain'
 const AUTHORIZATION = { headers: { Authorization: `Bearer ${TOKEN}` } }
 
 class RdvService {
@@ -154,6 +156,24 @@ async deleteRdv(id) {
       console.error('Une erreur est survenue lors de la suppression du rendez-vous :', error.message);
     }
   }
+
+async getStatisticsRdv(){
+    try {
+        const response = await axios.get(STATISTICS_URL,AUTHORIZATION);
+        return response;
+    } catch (error) {
+        throw error;
+    }
 }
+async getProchainRdv(){
+    try {
+        const response = await axios.get(PROCHAIN_RDV_URL,AUTHORIZATION);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+}
+
 
 export default new RdvService();
