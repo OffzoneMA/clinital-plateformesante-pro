@@ -106,3 +106,12 @@ export const getProchainRdv = async (state) => {
   }
 }
 
+export const fetchData = async (state) => {
+  try {
+      const res = await RdvService.fetchData()
+      state(res.data)
+  } catch (error) {
+      toast.error(error.message)
+  }
+}
+

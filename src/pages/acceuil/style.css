@@ -1058,13 +1058,17 @@
 
 .dashboard .frame-34 {
   align-items: flex-start;
+
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 1%;
   height: 480px;
   left: 46px;
   position: absolute;
   top: 720px;
   width: 66%;
+  overflow: hidden;
 }
 
 .dashboard .frame-35 {
@@ -1080,7 +1084,8 @@
   height: 480px;
   padding: 20px;
   position: relative;
-  width: 283px;
+  min-width: 250px;
+  overflow-y: auto;
 }
 
 .dashboard .frame-36 {
@@ -1091,7 +1096,10 @@
   justify-content: space-between;
   position: relative;
   width: 100%;
+  height: 20px;
 }
+
+
 
 .dashboard .frame-37 {
   align-items: center;
@@ -1116,17 +1124,29 @@
   position: relative;
   white-space: nowrap;
   width: fit-content;
+  border-radius: 39px;
+  background: var(--blue, #6DC0F9);
+  display: flex;
+  height: 22px;
+  padding: 12px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
 }
 
 .dashboard .frame-38 {
   align-items: center;
-  display: inline-flex;
-  flex: 1;
+  display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: 24px;
-  padding: 110px 0px;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  width: 100%;
+  
+  
 }
 
 .dashboard .vector-11 {

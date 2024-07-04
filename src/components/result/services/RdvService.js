@@ -5,6 +5,7 @@ import apiRdv from '../apiRdv/apiRdv';
 import { toast } from 'react-toastify';
 const RDV_URL = ORIGIN + '/api/rdv/patient'
 const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/patient'
+const GET_RDVMED_URL = ORIGIN + '/api/rdv/rdvs/medecin'
 const SCHEDULS_URL = ORIGIN + '/api/med'
 const MOVE_URL = ORIGIN + '/api/rdv'
 const STATISTICS_URL = ORIGIN + '/api/rdv/med'
@@ -123,7 +124,28 @@ async getProchainRdv(){
         throw error;
     }
 }
+/*async fetchData () {
+    const URL = GET_RDVMED_URL;
+    try {
+      const response = await axios.get(URL,AUTHORIZATION);
+      return response.data[0]; // Adjust this if the data structure changes
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  };
+  fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/rdv/rdvs/medecin');
+      return response.data; // Assuming response.data is an array of appointments
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error
+    }
+  };*/
+  
 }
+
 
 
 export default new RdvService();
