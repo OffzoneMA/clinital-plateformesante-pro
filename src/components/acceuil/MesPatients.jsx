@@ -31,7 +31,6 @@ function MesPatients () {
       try {
         const response = await axios.get(URL,AUTHORIZATION);
         setPatients(response.data); // Assuming response.data is an array of appointments
-
         console.log(response.data)
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -59,16 +58,16 @@ function MesPatients () {
         
       </div>
       <div className="frame-38">
-        {/*<img className="vector-11" alt="Vector" src="https://c.animaapp.com/NnydzBh0/img/vector-21.svg" />*/}
-        {/*<p className="vous-n-avez-pas-2">Lmlawi xd</p>*/}
-        {patients.map((rdv, index) => (
+        
+        {patients.length>0 ? patients.map((rdv, index) => (
           <Card
             key={index}
             name={`${rdv?.nom_pat} ${rdv?.prenom_pat}`}
             birthDate={rdv?.dateNaissance}
             address={rdv?.adresse_pat}
           />
-        ))}
+        )): <div className="empty-pat"><img className="vector-11" alt="Vector" src="https://c.animaapp.com/NnydzBh0/img/vector-21.svg" /> 
+            <p className="vous-n-avez-pas-2">Vous n'avez pas encore de Patients.</p></div>}
         
  
  

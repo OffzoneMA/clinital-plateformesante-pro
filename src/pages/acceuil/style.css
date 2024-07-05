@@ -1148,6 +1148,14 @@
   
   
 }
+.dashboard .frame-38 .empty-pat{
+  display: flex;
+padding: 110px 0px;
+flex-direction: column;
+align-items: center;
+gap: 24px;
+flex: 1 0 0;
+}
 
 .dashboard .vector-11 {
   height: 42px;
