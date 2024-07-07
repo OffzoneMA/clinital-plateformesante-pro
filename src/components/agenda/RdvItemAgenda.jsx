@@ -28,7 +28,7 @@ function RdvItemAgenda({ rdv, rdvType }) {
       <>
 
           {console.log("rdvs************: ", rdv)}
-          <div className={`RDV ${classRdv}`}>
+          <div className={`RDV ${classRdv}`} style={{ width: '145px' }}>
               <div className={`rectangle ${rdv.modeConsultation.mode.toLowerCase()}`} />
               <div className="frame">
                   <div className="text-wrapper">{rdv.start.slice(11, 16)}</div>
