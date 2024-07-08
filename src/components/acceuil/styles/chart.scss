@@ -1,0 +1,28 @@
+.dropdown-2 {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.month-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+
+.month-item {
+  flex: 1 0 21%; /* Adapte la taille des mois en fonction de l'espace disponible */
+  text-align: center;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.month-item:hover {
+  background-color: #f0f0f0;
+}
