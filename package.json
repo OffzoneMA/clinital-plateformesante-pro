@@ -23,7 +23,7 @@
     "node-sass": "^9.0.0",
     "pspdfkit": "^2023.4.5",
     "react": "^18.3.1",
-    "react-bootstrap": "^2.10.2",
+    "react-bootstrap": "^2.10.4",
     "react-calendar": "^4.6.0",
     "react-date-object": "^2.1.7",
     "react-date-range": "^2.0.1",
