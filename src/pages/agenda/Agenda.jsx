@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {getAllMedRdv, getAllRdv, getAllRdvByTooMonth} from "../../action/Rdv";
+import {getAllMedRdv} from "../../action/Rdv";
 import Calendar from "../../components/agenda/Calendar";
 import MyRdvs from "../../components/agenda/MyRdvs";
 import MiniFooter from "../../components/footer/MiniFooter";

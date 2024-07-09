@@ -21,6 +21,15 @@ export const getAllMedRdv = async (state) => {
     }
 }
 
+export const getAllRdvByTooMonth = async (state, month) => {
+    try {
+        const res = await RdvService.getAllRdvByTooMonth(month)
+        state([...res.data])
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
 export const getRdvById = async (id, state, loading, error) => {
     // loading(true)
     try {

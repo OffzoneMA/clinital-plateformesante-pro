@@ -30,8 +30,7 @@ const RDV_STATE = {
     CONJE: 'CONJE',
     TERMINE: 'TERMINE',
     ANNULE: 'ANNULE',
-    ANNULE_DOC: 'ANNULE_DOC'
-
+    ANNULE_DOC: 'ANNULE_DOC',
 }
 const CONSTANTS = {
     TIME: TIME,

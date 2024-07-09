@@ -1,0 +1,408 @@
+@import "../../styles/style.scss";
+
+.cabinetadd {
+
+  .bg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .result-container {
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 94px;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: -210px;
+  }
+  .container {
+    padding: 40px 40px 100px 40px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 404px;
+    margin-left: 128px;
+    position: absolute;
+    left: 0;
+    border-radius: 15px;
+    border: 1.6px solid;
+    top: 280px;
+    border-color: #c989dd;
+  }
+  .container h1 {
+    position: absolute;
+    top: 40px;
+    margin: 0;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.6px;
+    text-align: left;
+  }
+  .innerContainer {
+    width: 1102px;
+    height: 258px;
+    gap: 54px;
+    margin-left: 0px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .childDiv {
+    width: 524px;
+    height: 258px;
+    padding: 26px 24px;
+    gap: 26px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #B1DDFC; // Change the background color on hover
+    }
+  }
+  .childDiv:nth-of-type(2):hover {
+    background-color: #EED8F3; // Change the background color on hover for the second childDiv
+  } 
+  .innerChildDiv {
+    width: 476px;
+    height: 134px;
+    gap: 30px;
+    border-radius: 15px;
+    position: relative;  
+  }
+  .textZone {
+    width: 274px;
+    height: 118px;
+    gap: 0px;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  
+  }
+  .imageRight {
+    position: absolute;
+    top: 0;
+    width: 148px;
+    height: 134px;
+    gap: 0px;
+  }
+  .button1 {
+    width: 476px;
+    height: 40px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #6dc0f9;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+  .button2 {
+    width: 476px;
+    height: 40px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #c989dd;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+  .containerAdd {
+    padding: 40px 40px 100px 40px;
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 534px;
+    margin-left: 128px;
+    position: absolute;
+    left: 0;
+    border-radius: 15px;
+    border: 1.6px solid;
+    top: 280px;
+    border-color: #c989dd;
+  }
+  .containerAdd h1 {
+    position: absolute;
+    top: 40px;
+    margin: 0;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.6px;
+    text-align: left;
+  }
+  .innerContainerAdd {
+    width: 1102px;
+    height: 388px;
+    gap: 54px;
+    margin-left: 0px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .firstInnerDiv {
+    width: 632px;
+    height: 418px;
+    gap: 22px;
+  }
+
+  .secondInnerDiv {
+    width: 470px;
+    height: 418px;
+    gap: 22px;
+    position: relative;
+    border-radius: 10px;    
+  }
+  .imageRightAdd {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    gap: 0px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      label {
+        font-family: $ave-demi;
+        font-size: 14px;
+        margin: 0 0 6px 0;
+        padding-left: 14px;
+      }
+
+      input {
+        height: 44px;
+        border: 2px solid rgba(170, 170, 170, 0.2);
+        border-radius: 8px;
+        padding: 10px 24px;
+        font-family: $ave-regular;
+        outline: none;
+
+        &::placeholder {
+          color: #aaaaaa;
+          font-size: 14px;
+          line-height: 17px;
+        }
+      }
+      .done-email {
+        position: absolute;
+        top: 40px;
+        left: 10px;
+      }
+      .done-tel {
+        position: absolute;
+        top: 124px;
+        left: 10px;
+      }
+      > button {
+        background-color: #56b7fb;
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        height: 44px;
+        border: none;
+        opacity: 0.9;
+        transition: all 600ms ease;
+        margin-top: 30px;
+        &:hover {
+          background: #32a2ef;
+        }
+      }
+      a {
+        font-style: normal;
+        font-family: $ave-bold;
+        font-size: 14px;
+        line-height: 17px;
+        display: flex;
+        justify-content: end;
+        margin-top: 20px;
+        color: #6dc0f9;
+      }
+    }
+  }
+  .input1 {
+    width: 377px;
+    gap: 4px;
+  }
+
+  .input2 {
+    width: 233px;
+    gap: 8px;
+  }
+  .form-container {
+    display: flex;
+    flex-direction: column;
+
+    .inputRow {
+      display: flex;
+      gap: 20px;
+    }
+
+    .inputRow > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .inputRow label {
+      margin-bottom: 6px;
+    }
+  }
+  .button3 {
+    width: 233px;
+    height: 46px; 
+    padding: 14px 24px;
+    border-radius: 8px;
+    background-color: #6dc0f9;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 20px;
+    border:0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .result {
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    width: 377px;
+    border-radius: 4px;
+    filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+    position: absolute;
+    top: 70px;
+    left: 0;
+    max-height: 6 * 45px;
+    overflow: auto;
+    transition: all 200ms ease;
+
+    span {
+      width: 100%;
+      line-height: 45px;
+      font-size: 16px;
+      color: $black;
+      padding-left: 16px;
+      position: relative;
+      cursor: pointer;
+      transition: all 200ms ease;
+
+      &:hover {
+        background-color: rgba($black, 0.05);
+      }
+
+      &:after {
+        content: "";
+        width: 100%;
+        left: 0;
+        position: absolute;
+        border-bottom: 1px solid #eaeaea;
+      }
+    }
+
+    .loading {
+      cursor: default;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+    
+  .containerRejoindre {
+    padding: 40px 40px 0px 40px;
+    width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 534px;
+    margin-left: 128px;
+    position: absolute;
+    left: 200px;
+    right: 200px;
+    border-radius: 15px;
+    border: 1.6px solid;
+    top: 280px;
+    border-color: #c989dd;
+  } 
+  .containerRejoindre h1 {
+    position: absolute;
+    top: 40px;
+    left: 200px;
+    right: 200px;
+    margin: 0;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.6px;
+    text-align: center;
+  }
+  .containerRejoindre h2 {
+    position: absolute;
+    top: 250px;
+    margin: 0;
+    left: 100px;
+    right: 100px;
+    font-family: Montserrat ;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25.6px;
+    text-align: center;
+  }
+  .bottomimg{
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

@@ -34,9 +34,9 @@ class RdvService {
             toast.error('it requires a valid ID.');
             return;
         }
-    
+
         const endpoint = apiRdv.showByid(id);
-    
+
         return new Promise((resolve, reject) => {
             axios.get(endpoint)
                 .then(response => {
@@ -53,8 +53,8 @@ class RdvService {
                 });
         });
     }
-    
-   
+
+
     async cancelRdv(id) {
         const URL = RDV_URL + '/cancelRdv' + `/${id}`;
         try {
@@ -75,13 +75,13 @@ class RdvService {
         }
     }
 
-/**
- * Asynchronously adds an RDV.
- * 
- * @param {Object} rdv - The RDV data to be added.
- * @returns {Promise<Object>} A promise that resolves to the response of the add operation.
- * @throws {Error} Throws an error if the request fails.
- */
+    /**
+     * Asynchronously adds an RDV.
+     *
+     * @param {Object} rdv - The RDV data to be added.
+     * @returns {Promise<Object>} A promise that resolves to the response of the add operation.
+     * @throws {Error} Throws an error if the request fails.
+     */
 
 
 
@@ -95,12 +95,12 @@ class RdvService {
         }
     }
 //========================
-addRdv(rdv) {
-    return axios.post(apiRdv.addrdv(),JSON.stringify(rdv));
+    addRdv(rdv) {
+        return axios.post(apiRdv.addrdv(),JSON.stringify(rdv));
     }
-async getAgenda(docid,week){
-    return await axios.get(apiRdv.getagenda(docid,week));
-}
+    async getAgenda(docid,week){
+        return await axios.get(apiRdv.getagenda(docid,week));
+    }
 }
 
 export default new RdvService();
