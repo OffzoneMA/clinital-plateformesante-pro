@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Map from "react-map-gl";
-
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./AddCabinet.scss";
 import MenuCabinet from "../../components/menuCabinet/MenuCabinet";
 import { useSelector } from "react-redux";
 import Mark from "mark.js";
 import { useTranslation } from "react-i18next";
-import CabinetServices from "./Services/CabinetServices";
+import CabinetService from "./Services/CabinetServices";
+import { useNavigate } from "react-router-dom";
 
 function AddCabinet() {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -16,7 +16,7 @@ function AddCabinet() {
   const [hidden, setHidden] = useState(false);
   const { villes, specialite } = useSelector((state) => state.global);
   const [formValid, setFormValid] = useState(false);
-  const [Loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [cabinet, setCabinet] = useState({
     nom: "",
     adresse: "",
@@ -33,23 +33,24 @@ function AddCabinet() {
   });
   const citySearchContainer = useRef();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const toggleSeach = (e) => {
     const { name, value } = e.target;
-    setSearch((x) => {
-      return { ...x, [name]: value };
-    });
+    setSearch((x) => ({ ...x, [name]: value }));
   };
+
   const toggleSeachOnClick = (name, libelle) => {
-    setSearch((y) => {
-      return { ...y, [name]: libelle, villeName: "" };
-    });
+    setSearch((y) => ({ ...y, [name]: libelle, villeName: "" }));
   };
+
   const handleSeach = (array, container) => {
     const context = container.current;
     const instance = new Mark(context);
     if (array && villes) instance.unmark(array);
-    if (array && villes && !Loading) instance.mark(array);
+    if (array && villes && !loading) instance.mark(array);
   };
+
   const filterSearch = (array, search, param) => {
     const x = array && array.toLowerCase();
     const newArray = search?.filter((item) =>
@@ -59,41 +60,54 @@ function AddCabinet() {
         .replace(/\p{Diacritic}/gu, "")
         .includes(x)
     );
-    const y = !array ? [] : newArray;
-    return y;
+    return !array ? [] : newArray;
   };
 
   const addCabinet = async () => {
+    setLoading(true);
     try {
       const DataCabinet = JSON.stringify(cabinet);
-      CabinetServices.addCabinet(DataCabinet)
-        .then((response) => {
-          if (response.status === 200) {
-            toast.success("goood");
-          }
-        })
-        .catch((error) => {
-          toast.error(error.message);
-          setLoading(false);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+      const response = await CabinetService.addCabinet(DataCabinet);
+      if (response.status === 200) {
+        const responses = await CabinetService.updateDemandeStateByUserId(2);
+        const storedUserJSON = localStorage.getItem('user');
+        const storedUser = JSON.parse(storedUserJSON);
+        storedUser.state = 2; // Mettez ici la nouvelle valeur de state
+        
+        const updatedUserJSON = JSON.stringify(storedUser);
+
+        localStorage.setItem('user', updatedUserJSON);
+        navigate("/cabinet/mydocuments");     
+        toast.success("cabinet est ajouter avec succes");
+      } else {
+        toast.error("Failed to add cabinet. Please try again.");
+      }
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
+
   const validateForm = () => {
-    const { nom, phoneNumber, adresse, id_ville } = cabinet;
-    return nom !== "" && phoneNumber !== "" && adresse !== "" && id_ville !== "";
+    const { nom, phoneNumber, adresse, code_post, id_ville } = cabinet;
+    return (
+      nom !== "" &&
+      phoneNumber !== "" &&
+      adresse !== "" &&
+      id_ville !== "" &&
+      code_post !== ""
+    );
   };
+
   useEffect(() => {
     setFormValid(validateForm());
   }, [cabinet]);
+
   useEffect(() => {
     handleSeach(search.city, citySearchContainer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, villes]);
+
   return (
     <div
       className="cabinetadd"
@@ -102,7 +116,7 @@ function AddCabinet() {
       }}
     >
       <div className="result-container">
-        <MenuCabinet  state="0" />
+        <MenuCabinet state="0" />
       </div>
 
       {!isRegistered && !isAdded && (
@@ -115,7 +129,7 @@ function AddCabinet() {
           >
             {t("myCabinet")}
           </h1>
-          <div className="innerContainer ">
+          <div className="innerContainer">
             <div className="childDiv">
               <div className="innerChildDiv">
                 <p className="textZone">{t("optimizeCollaboration")}</p>
@@ -166,22 +180,19 @@ function AddCabinet() {
             {" "}
             {t("joinMyPractice")}
           </h1>
-          <div className="innerContainerAdd ">
+          <div className="innerContainerAdd">
             <div className="firstInnerDiv">
               <div className="content">
-                <form action="">
+                <form>
                   <div>
-                    <label htmlFor=""> {t("cabinetName")}</label>
+                    <label htmlFor="">{t("cabinetName")}</label>
                     <input
                       type="text"
                       id="email"
                       placeholder={t("enterCabinetName")}
-                      onChange={(e) => {
-                        setCabinet({
-                          ...cabinet,
-                          nom: e.target.value,
-                        });
-                      }}
+                      onChange={(e) =>
+                        setCabinet({ ...cabinet, nom: e.target.value })
+                      }
                     />
                   </div>
                   <div>
@@ -190,12 +201,9 @@ function AddCabinet() {
                       type="text"
                       id="email"
                       placeholder={t("cabinetPhoneNumber")}
-                      onChange={(e) => {
-                        setCabinet({
-                          ...cabinet,
-                          phoneNumber: e.target.value,
-                        });
-                      }}
+                      onChange={(e) =>
+                        setCabinet({ ...cabinet, phoneNumber: e.target.value })
+                      }
                     />
                   </div>
                   <div>
@@ -204,12 +212,9 @@ function AddCabinet() {
                       type="text"
                       id="email"
                       placeholder={t("enterAddress")}
-                      onChange={(e) => {
-                        setCabinet({
-                          ...cabinet,
-                          adresse: e.target.value,
-                        });
-                      }}
+                      onChange={(e) =>
+                        setCabinet({ ...cabinet, adresse: e.target.value })
+                      }
                     />
                   </div>
                   <div className="form-container">
@@ -249,7 +254,7 @@ function AddCabinet() {
                           }}
                           ref={citySearchContainer}
                         >
-                          {Loading ? (
+                          {loading ? (
                             <span className="loading">{t("loading")}</span>
                           ) : (
                             filterSearch(search.city, villes, "nom_ville")?.map(
@@ -279,21 +284,24 @@ function AddCabinet() {
                         </div>
                       </div>
                       <div>
-                        <label htmlFor="telCabinet">{t("postalCode")}</label>
+                        <label htmlFor="code_post" className="addressLabel">
+                          {t("postalCode")}
+                        </label>
                         <input
                           type="text"
-                          id="telCabinet"
+                          id="code_post"
                           placeholder={t("enterPostalCode")}
                           className="input2"
-                          onChange={(e) => {
+                          onChange={(e) =>
                             setCabinet({
                               ...cabinet,
-                              adresse: e.target.value,
-                            });
-                          }}
+                              code_post: e.target.value,
+                            })
+                          }
                         />
                         <button
                           className="button3"
+                          type="button"
                           onClick={addCabinet}
                           disabled={!formValid}
                           style={{
@@ -329,6 +337,7 @@ function AddCabinet() {
                 </form>
               </div>
             </div>
+
             <div className="secondInnerDiv">
               <div className="imageRightAdd">
                 <Map
@@ -345,6 +354,7 @@ function AddCabinet() {
           </div>
         </div>
       )}
+
       {!isRegistered && isAdded && (
         <div className="containerRejoindre">
           <h1> {t("joinMyCabinet")}</h1>
