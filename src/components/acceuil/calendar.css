@@ -1,0 +1,74 @@
+
+.calendar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .weekdays, .days {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .week {
+    display: flex;
+    width: 100%;
+  }
+  
+  .day, .weekday {
+    width: 14.28%; /* 100% divisé par 7 jours */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .out-of-month {
+    color: #ccc; /* Couleur pour les jours désactivés */
+  }
+  
+  .in-month {
+    color: #000; /* Couleur pour les jours actifs */
+  }
+  
+  /* .today {
+    color: #6dc0f9;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    
+  } */
+
+  .today {
+    color: #6dc0f9;
+    position: relative;
+    border: 1px solid #6dc0f9;
+    border-radius: 50%;
+    /* width: 40px; */
+  }
+  .day {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .highlight-circle {
+    position: absolute;
+    bottom: 5px; /* Ajustez cette valeur pour placer le cercle en bas du nombre */
+    width: 5px;
+    height: 5px;
+    background-color: #6dc0f9; /* Couleur du cercle */
+    border-radius: 50%;
+  }
+  

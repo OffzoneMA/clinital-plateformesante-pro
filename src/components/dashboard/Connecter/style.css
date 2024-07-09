@@ -1,0 +1,37 @@
+.connecter {
+  height: 23px;
+  position: relative;
+  width: 112px;
+}
+
+.connecter .text-wrapper-4 {
+  font-size: 14px;
+  height: 17px;
+  left: 27px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 3px;
+}
+
+.connecter .person-circle-2 {
+  height: 23px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 23px;
+}
+
+.connecter .hover {
+  color: #9e58ff;
+  font-family: "Avenir Next LT Pro-Demi", Helvetica;
+  font-weight: 400;
+}
+
+.connecter .default {
+  color: #ffffff;
+  font-family: "Montserrat", Helvetica;
+  font-style: italic;
+  font-weight: 100;
+}
