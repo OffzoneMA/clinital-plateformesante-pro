@@ -323,7 +323,7 @@ export const ContentExceptionnel = () => {
                     </div>
                   </div>
                 ))}
-                <div className="group-2a">
+                <div className="group-2ae">
                   <div className="labele">{t("REASON_APPOINTMENT")}</div>
                   <div
                     className={

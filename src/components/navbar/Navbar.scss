@@ -15,7 +15,6 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      width: 100%;
       max-width: 1440px;
       margin: auto;
       position: relative;
@@ -271,4 +270,65 @@
         }
       }
     }
+      // Media Queries for Responsive Design
+  @media (max-width: 1024px) {
+    nav {
+      padding: 0 30px;
+    }
+  
+    ul {
+      gap: 20px;
+  
+      button {
+        font-size: 12px;
+        padding: 10px 20px;
+      }
+  
+      .large-btn {
+        height: 40px;
+      }
+    }
   }
+  
+  @media (max-width: 768px) {
+    nav {
+     
+      padding: 0 20px;
+    }
+  
+    ul {
+     
+      gap: 10px;
+  
+      button {
+        font-size: 10px;
+        padding: 8px 18px;
+      }
+  
+      .large-btn {
+        height: 35px;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    nav {
+      padding: 0 10px;
+    }
+  
+    ul {
+      gap: 5px;
+  
+      button {
+        font-size: 8px;
+        padding: 5px 10px;
+      }
+  
+      .large-btn {
+        height: 30px;
+      }
+    }
+  }
+  
+  }
+  
