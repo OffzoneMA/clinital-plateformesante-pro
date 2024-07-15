@@ -1,94 +1,101 @@
 import React from "react";
 import "./SettingMenu.scss";
 import { MenuList } from "./components/MenuList";
+import { useTranslation } from 'react-i18next';
 
-export const SettingMenu = () => {
+export const SettingMenu = ({ activeMenu }) => {
+  const { t, i18n } = useTranslation();
+
   return (
-    <div className="setting-menu">
+    <div className="setting-menu" dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}
+    style={{
+      [ i18n.language === 'ar'  ? "right" : "left"]:
+      "0 px",
+      padding: i18n.language === 'ar' ? "10px 30px 0px 0px" : "10px 0px 0px 30px",
+    }}>
       <div className="div-3">
         <div className="main">
           <img
             className="icon-instance-node"
-            alt="Stethoscope"
+            alt={t('PRACTITIONERS')}
             src="https://c.animaapp.com/hExK9oUF/img/stethoscope.svg"
           />
-          <div className="text-wrapper-7">Praticiens</div>
+          <div className="text-wrapper-7">{t('PRACTITIONERS')}</div>
         </div>
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Modifier mon mot de passe"
+          menuActive={activeMenu === 'CHANGE_PASSWORD'}
+          textMenu={t('CHANGE_PASSWORD')}
         />
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Mon cabinet"
+          menuActive={activeMenu === 'MY_PRACTICE'}
+          textMenu={t('MY_PRACTICE')}
         />
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Mon équipe"
+          menuActive={activeMenu === 'MY_TEAM'}
+          textMenu={t('MY_TEAM')}
         />
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Gérer les accès"
+          menuActive={activeMenu === 'MANAGE_ACCESS'}
+          textMenu={t('MANAGE_ACCESS')}
         />
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Mes factures"
+          menuActive={activeMenu === 'MY_BILLS'}
+          textMenu={t('MY_BILLS')}
         />
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Support technique"
+          menuActive={activeMenu === 'TECH_SUPPORT'}
+          textMenu={t('TECH_SUPPORT')}
         />
       </div>
       <div className="div-3">
         <div className="main">
-        <img
+          <img
             src="../../icons/userEdit1.svg"
-            alt="se connecter"
-        className="icon-instance-node "
+            alt={t('ASSISTANTS_SECRETARIES')}
+            className="icon-instance-node"
           />
-          <div className="text-wrapper-7">Assistant(e)s / Secrétaires</div>
+          <div className="text-wrapper-7">{t('ASSISTANTS_SECRETARIES')}</div>
         </div>
         <MenuList
           className="menu-list-instance"
           menuActive={false}
-          textMenu="Gérer mon Profil"
+          textMenu={t('MANAGE_PROFILE')}
         />
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Modifier mon mot de passe"
+          menuActive={activeMenu === 'MANAGE_PROFILE'}
+          textMenu={t('CHANGE_PASSWORD')}
         />
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Vérifier mes accès"
+          menuActive={activeMenu === 'VERIFY_ACCESS'}
+          textMenu={t('VERIFY_ACCESS')}
         />
       </div>
       <div className="div-3">
         <div className="main">
           <img
             src="../../icons/calentar1.svg"
-            alt="se connecter"
-        className="icon-instance-node "
+            alt={t('AGENDA')}
+            className="icon-instance-node"
           />
-         
-          <div className="text-wrapper-7">Agenda</div>
+          <div className="text-wrapper-7">{t('AGENDA')}</div>
         </div>
         <MenuList
           className="menu-list-instance"
-          menuActive={true}
-          textMenu="Paramètres"
+          menuActive={activeMenu === 'SETTINGS'}
+          textMenu={t('SETTINGS')}
         />
         <MenuList
           className="menu-list-instance"
-          menuActive={false}
-          textMenu="Événement exceptionnel"
+          menuActive={activeMenu === 'EXCEPTIONAL_EVENT'}
+          textMenu={t('EXCEPTIONAL_EVENT')}
         />
       </div>
     </div>

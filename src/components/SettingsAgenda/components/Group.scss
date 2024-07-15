@@ -7,11 +7,10 @@
     width: 1011px;
   
     .text-wrapper-4k {
-      color: var(--black);
+      color: #303030;
       font-family: "Montserrat", Helvetica;
       font-size: 22px;
       font-weight: 600;
-      left: 0;
       letter-spacing: 0;
       line-height: normal;
       position: absolute;
@@ -20,7 +19,6 @@
   
     .button-instancek {
       display: inline-flex !important;
-      left: 810px !important;
       position: absolute !important;
       top: 0 !important;
       width: unset !important;
@@ -28,7 +26,6 @@
   
     .line-2k {
       height: 1px;
-      left: 0;
       object-fit: cover;
       position: absolute;
       top: 59px;
@@ -57,6 +54,7 @@
       padding: 14px 24px;
       position: relative;
       width: 100%;
+      cursor: pointer;
   
       .titrek {
         color: #ffffff;

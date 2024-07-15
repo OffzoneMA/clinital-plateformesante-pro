@@ -1,10 +1,10 @@
 import React from "react";
-import "./SettingsAgenda.scss";
+import "./ÉvénementExceptionnel.scss";
 import Navbar from "../../components/navbar/Navbar";
 import { SettingMenu } from "../../components/SettingsAgenda/SettingMenu";
-import { Content } from "../../components/SettingsAgenda/Content";
 import { useTranslation } from "react-i18next";
-function SettingsAgenda() {
+import { ContentExceptionnel } from "../../components/SettingsAgenda/ContentExceptionnel";
+function ÉvénementExceptionnel() {
   const { t , i18n} = useTranslation();
   return (
     <div className="settings" dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
@@ -20,11 +20,11 @@ function SettingsAgenda() {
             <div className="mon-agenda">{t('SETTINGS')}</div>
           </div>
         </div>
-        <SettingMenu activeMenu="SETTINGS" />
-        <Content/>
+        <SettingMenu activeMenu="EXCEPTIONAL_EVENT" />
+        <ContentExceptionnel/>
       </div>
     </div>
     </div>
   );
 };
-export default SettingsAgenda;
+export default ÉvénementExceptionnel;

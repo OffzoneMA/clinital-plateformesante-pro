@@ -1,3 +1,4 @@
+@import "react-datepicker/dist/react-datepicker.css";
 .contentc {
   background-color: #ffffff;
   border: 1px solid;
@@ -358,10 +359,13 @@
 
   .group-2a {
     align-self: stretch;
-    height: 157px;
+    height: 207px;
     margin-right: -8px;
     position: relative;
     width: 100%;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
   }
 
 
@@ -390,7 +394,7 @@
     line-height: normal;
     position: relative;
     top: 12px;
-    width: 124px;
+    width: fit-content;
   }
 
   .overlap-3 {
@@ -419,7 +423,7 @@
     line-height: normal;
     position: absolute;
     top: 12px;
-    width: 146px;
+    width: fit-content;
   }
 
   .rectangle-4e {
@@ -462,6 +466,21 @@
     left: 0;
   }
   .overlap-4.checked {
+    background-color: #6dc0f91a;
+    border: 1px solid #6dc0f966;
+  }
+  .overlap-5 {
+    background-color: #ffffff;
+    border: 1px solid #AAAAAA33;
+    border-radius: 6px;
+    background-size: 100% 100%;
+    height: 40px;
+    width: 315px;
+    position: absolute;
+    top: 165px;
+    left: 0;
+  }
+  .overlap-5.checked {
     background-color: #6dc0f91a;
     border: 1px solid #6dc0f966;
   }
@@ -557,6 +576,23 @@
     width: 100%;
     padding: 20px;
   }
+  .frame-7ee {
+    align-items: center;
+    align-self: stretch;
+    background-color: #ffffff;
+
+      border: 1px solid #6DC0F966;
+    border-radius: 10px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 12px;
+    padding: 60px 30px;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+  }
+
 
   .ellipsee {
     height: 128.2px;
@@ -690,6 +726,20 @@
     padding: 14px;
     position: relative;
   }
+  .div-wrapperee {
+    align-items: center;
+    border: 1px solid;
+    border-color: #aaaaaa33;
+    border-radius: 8px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px;
+    position: relative;
+    width: 121.5px;
+    height: 38px;
+  }
 
   .titre-15c {
     color: #303030;
@@ -725,6 +775,20 @@
     justify-content: center;
     padding: 14px;
     position: relative;
+  }
+  .frame-12ee {
+    align-items: center;
+    border: 1px solid;
+    border-color: #aaaaaa33;
+    border-radius: 8px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    justify-content: center;
+    padding: 14px;
+    position: relative;
+    width: 121.5px;
+    height: 38px;
   }
 
   .titre-17c {
@@ -814,7 +878,7 @@
     padding: 14px 16px !important;
   }
 }
-.framee .dropdown {
+.framee .dropdownn {
   align-items: flex-start;
   background-color: #ffffff;
   border: 1px solid #aaaaaa33;
@@ -827,73 +891,12 @@
   padding: 2px 0px;
   position: absolute;
   top: 504px;
-  width: 65px;
+  width: 121.5px;
   max-height: 204px; /* Set a max height to enable scrolling */
   overflow-y: auto;
   overflow-x: hidden;
 }
-
-.framee .rectangle-2drop {
-  background-color: #d9d9d999;
-  border-radius: 20px;
-  height: 40px;
-  left: 56px;
-  position: absolute;
-  top: 10px;
-  width: 4px;
-}
-.framee .div-wrapper-2drop {
-  align-items: center;
-  align-self: stretch;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-color: #eaeaea;
-  display: flex;
-  flex: 0 0 auto;
-  gap: 10px;
-  justify-content: center;
-  padding: 9px 10px;
-  position: relative;
-  width: 100%;
-}
-.framee .text-wrapper-5drop {
-  color: #303030;
-  flex: 1;
-  font-family: "Avenir Next LT Pro-Regular", Helvetica;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-top: -1px;
-  position: relative;
-}
-.framee .div-wrapper-3drop {
-  align-items: center;
-  align-self: stretch;
-  background-color: #6dc0f91a;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-color: #eaeaea;
-  display: flex;
-  flex: 0 0 auto;
-  gap: 14px;
-  justify-content: center;
-  padding: 9px 10px;
-  position: relative;
-  width: 100%;
-}
-.framee .div-wrapper-4drop {
-  align-items: center;
-  align-self: stretch;
-  display: flex;
-  flex: 0 0 auto;
-  gap: 10px;
-  justify-content: center;
-  padding: 9px 10px;
-  position: relative;
-  width: 100%;
-}
-.framee .dropdown2 {
+.framee .dropdownn2 {
   align-items: flex-start;
   background-color: #ffffff;
   border: 1px solid;
@@ -907,86 +910,10 @@
   padding: 2px 0px;
   position: absolute;
   top: 504px;
-  width: 65px;
+  width: 121.5px;
   max-height: 204px; /* Set a max height to enable scrolling */
   overflow-y: auto;
   overflow-x: hidden;
-}
-.framee .dropdown3 {
-  align-items: flex-start;
-  background-color: #ffffff;
-  border: 1px solid;
-  border-color: #aaaaaa33;
-  border-radius: 8px;
-  box-shadow: 0px 2.77px 2.21px #00000005, 0px 6.65px 5.32px #00000007,
-    0px 12.52px 10.02px #00000009, 0px 22.34px 17.87px #0000000b,
-    0px 41.78px 33.42px #0000000d, 0px 100px 80px #00000012;
-  display: flex;
-  flex-direction: column;
-  padding: 2px 0px;
-  position: absolute;
-  top: 502px;
-  width: 100px;
-  max-height: 204px; /* Set a max height to enable scrolling */
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.framee .rectangle-2drop3 {
-  background-color: #d9d9d999;
-  border-radius: 20px;
-  height: 40px;
-  left: 91px;
-  position: absolute;
-  top: 10px;
-  width: 4px;
-}
-.framee .dropdown3::-webkit-scrollbar {
-  width: 6px; /* Adjust the width of the scrollbar */
-  background-color: #d9d9d999; /* Background color of the scrollbar track */
-  border-radius: 20px; /* Rounded corners for the scrollbar track */
-}
-
-.framee .dropdown3::-webkit-scrollbar-thumb {
-  background-color: #a9a9a9; /* Background color of the scrollbar thumb */
-  border-radius: 20px; /* Rounded corners for the scrollbar thumb */
-}
-
-/* Optional: Change the background color of the scrollbar track on hover */
-.framee .dropdown3::-webkit-scrollbar-track {
-  background-color: #d9d9d999; /* Background color of the scrollbar track */
-  border-radius: 20px; /* Rounded corners for the scrollbar track */
-}
-.framee .dropdown2::-webkit-scrollbar {
-  width: 6px; /* Adjust the width of the scrollbar */
-  background-color: #d9d9d999; /* Background color of the scrollbar track */
-  border-radius: 20px; /* Rounded corners for the scrollbar track */
-}
-
-.framee .dropdown2::-webkit-scrollbar-thumb {
-  background-color: #a9a9a9; /* Background color of the scrollbar thumb */
-  border-radius: 20px; /* Rounded corners for the scrollbar thumb */
-}
-
-/* Optional: Change the background color of the scrollbar track on hover */
-.framee .dropdown2::-webkit-scrollbar-track {
-  background-color: #d9d9d999; /* Background color of the scrollbar track */
-  border-radius: 20px; /* Rounded corners for the scrollbar track */
-}
-.framee .dropdown::-webkit-scrollbar {
-  width: 6px; /* Adjust the width of the scrollbar */
-  background-color: #d9d9d999; /* Background color of the scrollbar track */
-  border-radius: 20px; /* Rounded corners for the scrollbar track */
-}
-
-.framee .dropdown::-webkit-scrollbar-thumb {
-  background-color: #a9a9a9; /* Background color of the scrollbar thumb */
-  border-radius: 20px; /* Rounded corners for the scrollbar thumb */
-}
-
-/* Optional: Change the background color of the scrollbar track on hover */
-.framee .dropdown::-webkit-scrollbar-track {
-  background-color: #d9d9d999; /* Background color of the scrollbar track */
-  border-radius: 20px; /* Rounded corners for the scrollbar track */
 }
 
 .framee .dropdown4 {
@@ -1119,7 +1046,38 @@ top:165px;
   top: 80px;
   width: 6px;
 }
+.framee .dropdownn2::-webkit-scrollbar {
+  width: 6px; /* Adjust the width of the scrollbar */
+  background-color: #d9d9d999; /* Background color of the scrollbar track */
+  border-radius: 20px; /* Rounded corners for the scrollbar track */
+}
 
+.framee .dropdownn2::-webkit-scrollbar-thumb {
+  background-color: #a9a9a9; /* Background color of the scrollbar thumb */
+  border-radius: 20px; /* Rounded corners for the scrollbar thumb */
+}
+
+/* Optional: Change the background color of the scrollbar track on hover */
+.framee .dropdownn2::-webkit-scrollbar-track {
+  background-color: #d9d9d999; /* Background color of the scrollbar track */
+  border-radius: 20px; /* Rounded corners for the scrollbar track */
+}
+.framee .dropdownn::-webkit-scrollbar {
+  width: 6px; /* Adjust the width of the scrollbar */
+  background-color: #d9d9d999; /* Background color of the scrollbar track */
+  border-radius: 20px; /* Rounded corners for the scrollbar track */
+}
+
+.framee .dropdownn::-webkit-scrollbar-thumb {
+  background-color: #a9a9a9; /* Background color of the scrollbar thumb */
+  border-radius: 20px; /* Rounded corners for the scrollbar thumb */
+}
+
+/* Optional: Change the background color of the scrollbar track on hover */
+.framee .dropdownn::-webkit-scrollbar-track {
+  background-color: #d9d9d999; /* Background color of the scrollbar track */
+  border-radius: 20px; /* Rounded corners for the scrollbar track */
+}
 .buttonnn {
   align-items: flex-start;
   display: flex;
@@ -1417,3 +1375,167 @@ top:165px;
   white-space: nowrap;
   width: fit-content;
 }
+
+/* Styles personnalisés pour le DatePicker */
+.react-datepicker {
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+flex-direction: column;
+overflow: hidden;
+  border: none;
+}
+
+.react-datepicker__header {
+  align-items: center;
+  background-color: #ffffff; /* Couleur de fond de l'en-tête */
+align-self: stretch;
+
+justify-content: space-between;
+padding: 10px;
+position: relative;
+width: 100%;
+  border: none;
+}
+
+.react-datepicker__day-names {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+}
+
+.react-datepicker__day-name {
+  color: #303030; /* Couleur des noms de jour */
+
+}
+
+.react-datepicker__day {
+  color: #303030; /* Couleur du texte des jours */
+}
+
+
+.react-datepicker__current-month {
+  color: #303030; /* Couleur du mois affiché actuellement */
+  font-family: "Avenir Next LT Pro-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  margin-top: -3px;
+}
+
+.react-datepicker__navigation {
+  background-color: #ffffff; /* Couleur de fond des boutons de navigation */
+}
+
+.react-datepicker__navigation--previous {
+  border-right-color: #ffffff; /* Couleur de la bordure droite du bouton précédent */
+}
+
+.react-datepicker__navigation--next {
+  border-left-color: #ffffff; /* Couleur de la bordure gauche du bouton suivant */
+}
+
+.react-datepicker__time-container {
+  border: 1px solid #aaaaaa; /* Bordure du conteneur de l'heure */
+}
+
+.react-datepicker__time {
+  background-color: #ffffff; /* Couleur de fond du sélecteur d'heure */
+}
+
+.react-datepicker__time-list {
+  background-color: #ffffff; /* Couleur de fond de la liste déroulante d'heure */
+}
+
+.react-datepicker__time-list-item {
+  color: #303030; /* Couleur du texte des éléments de la liste d'heure */
+}
+
+.react-datepicker__today-button {
+  background-color: #6dc0f9; /* Couleur de fond du bouton "Today" */
+  color: #ffffff; /* Couleur du texte du bouton "Today" */
+  border-radius: 124.11px;
+  height: 27.23px;
+  width: 27.23px;
+}
+.react-datepicker__day--outside-month {
+ color: #4946466c; /* Background color for days outside the current month */
+
+}
+.button-wrapperrose{
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  gap:10px;
+padding: 10px 0px;
+position: relative;
+width: 100%;
+}
+.buttonrose{
+align-items: flex-start;
+display: flex;
+flex: 1;
+flex-direction: column;
+flex-grow: 1;
+position: relative;
+}
+.titre-wrapperrose{
+  align-items: center;
+  align-self: stretch; 
+  background-color: #c989dd21;
+  border-radius: 8px;
+  display: flex;
+  flex: 0 0 auto;
+  gap:14px;
+  justify-content: center;
+  overflow: hidden;
+  padding:8px 24px;
+  position: relative;
+width:100%;
+height: 32px;
+}
+.titrerose{
+  font-family: "Avenir Next LT Pro-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.12px; 
+  color: #c989dd;
+  line-height: 15.6px;
+  padding-top: 15px;
+  margin-top: -2px;
+  white-space:nowrap;
+  position: relative;
+width: fit-content;
+}
+.react-datepicker__day--in-range {
+  background: #C5EBFCB2;
+
+}
+
+.react-datepicker__day--selected {
+  background-color: #6dc0f9; /* Couleur de fond du jour sélectionné */
+  color: #ffffff; /* Couleur du texte du jour sélectionné */
+  border-radius: 124.11px;
+  height: 27.23px;
+  width: 27.23px;
+
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #6dc0f9; /* Couleur de fond du jour sélectionné via le clavier */
+  color: #ffffff; /* Couleur du texte du jour sélectionné via le clavier */
+  border-radius: 124.11px;
+  height: 27.23px;
+  width: 27.23px;
+
+}
+
