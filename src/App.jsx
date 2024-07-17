@@ -14,6 +14,7 @@ import Connexion from "./pages/connection/Connexion";
 import MonCompte from "./pages/monCompte/MonCompte";
 import Agenda from "./pages/agenda/Agenda";
 import Acceuil from "./pages/acceuil/Acceuil";
+import Allpatients from "./pages/acceuil/Allpatients";
 import RdvPopup from "./components/RdvPopup";
 // import AgendaWorkDays_ from "./components/result/AgendaWorkDays_";
 import RdvDejaPrise from "./components/RdvDejaPrise";
@@ -61,7 +62,7 @@ function App() {
             
             <Route exact path="/profil/:id" element={<Profil />} />
            
-            {console.log(isValidToken)}
+            {/*console.log(isValidToken)*/}
             {isValidToken &&
               <>
                 <Route exact path="/contact" element={<Contact />} />
@@ -72,6 +73,7 @@ function App() {
                 <Route exact path="/rdv/:id" element={<RdvPage />} />
                 <Route exact path="/rdv-popup" element={<RdvPopup />} />
                 <Route exact path="/rdvdejapris" element={<RdvDejaPrise />} />
+                <Route exact path="/allpatients" element={<Allpatients />} />
               </>
             }
             

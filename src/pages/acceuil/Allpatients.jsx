@@ -1,30 +1,15 @@
-import React from "react";import { Link, useNavigate } from "react-router-dom";
-
-import { DatingDayInMonth } from "../dashboard/DatingDayInMonth";
-import { DatingDayOutOf } from "../dashboard/DatingDayOutOf";
-import { DatingWeekLabel } from "../dashboard/DatingWeekLabel";
-import { HeaderPro } from "../dashboard/HeaderPro";
-import { ArrowCircleLeft1 } from "../../icons/ArrowCircleLeft1";
-import { ArrowCircleRight1 } from "../../icons/ArrowCircleRight1";
-import { ChevronDown } from "../../icons/ChevronDown";
-import { PlusCircle2 } from "../../icons/PlusCircle2";
-import Navbar from "../navbar/Navbar";
-import maki_doctor from '../../assets/icons/maki_doctor-15.svg';
-import fluent_patient from '../../assets/icons/fluent_patient-32-regular.svg';
-import fluent_people from '../../assets/icons/fluent_people-community-20-regular.svg';
-import calendar from '../../assets/icons/calendar-outline.svg';
-//import "./style.css";
-import Dashboard from "./Dashboard";
-import Card from '../acceuil/card';
+import React from 'react'
 import { useEffect, useState } from 'react';
-//import { fetchData } from "../../action/Rdv";
-//import RdvService, { fetchData } from "../../components/result/services/RdvService"
+
 import { ORIGIN, TOKEN, USER_ID } from '../../services/api'
 const AUTHORIZATION = { headers: { Authorization: `Bearer ${TOKEN}` } }
 const URL="http://localhost:8080/api/med/getallpatients"
 import axios from "axios";
 
-function MesPatients () {
+import Navbar from "../../components/navbar/Navbar";
+import "./patientcard.css"
+import Card from '../../components/acceuil/card';
+const Allpatients = () => {
 
   const [patients, setPatients] = useState([]);
   useEffect(() => {
@@ -43,25 +28,29 @@ function MesPatients () {
   }, []);
 
 
-
-
-
   return (
-
-    <div className="frame-35">
+    <div className="dashboard" >
+      <div className="div-2">
+            <div className="container">
+                <div className="heading">
+                    <div className="mon-agenda"></div>
+                </div>
+                </div>
+                
+                <Navbar />
+                <div className="container">
+                <div className="frame-35">
       <div className="frame-36">
        
           <div className="text-wrapper-16">Mes Patients</div>
           <div className="frame-37">
-          <Link className="text-wrapper-22" to="/allpatients">Voir plus</Link>
-
           </div>
        
         
       </div>
       <div className="frame-38">
         
-        {patients.length>0 ? patients.slice(0,3).map((rdv, index) => (
+        {patients.length>0 ? patients.map((rdv, index) => (
           <Card
             key={index}
             name={`${rdv?.nom_pat} ${rdv?.prenom_pat}`}
@@ -76,8 +65,21 @@ function MesPatients () {
 
       </div>
     </div>
+            </div>
+            {/* overlap */}
+      </div>
+        
+      
+    </div>
     
-  );
-};
+      
 
-export default MesPatients;
+
+
+
+        
+    
+  )
+}
+
+export default Allpatients

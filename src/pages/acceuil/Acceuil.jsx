@@ -51,7 +51,7 @@ function Acceuil () {
 
         
       </div>
-    <div className="mini-footer">
+      <div className="mini-footer">
           <div className="overlap-group-2">
             <div className="frame-6">
               <div className="text-wrapper-5">Conditions Générales d&#39;Utilisation</div>

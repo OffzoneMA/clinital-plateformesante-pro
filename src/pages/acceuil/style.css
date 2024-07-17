@@ -1069,6 +1069,7 @@
   top: 720px;
   width: 66%;
   overflow: hidden;
+  
 }
 
 .dashboard .frame-35 {
@@ -1084,8 +1085,9 @@
   height: 480px;
   padding: 20px;
   position: relative;
-  min-width: 250px;
+  min-width: 300px;
   overflow-y: auto;
+  
 }
 
 .dashboard .frame-36 {
