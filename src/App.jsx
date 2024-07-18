@@ -23,6 +23,7 @@ import ErrorBoundary from "./components/errors/ErrorBoundery";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
+import Myteam from "./pages/MyTeam";
 //import Acceuil2 from "./pages/acceuil/Acceuil2";
 
 export const Log = React.createContext();
@@ -67,6 +68,7 @@ function App() {
                 <Route exact path="/contact" element={<Contact />} />
                 <Route exact path="/agenda//*" element={<Agenda />} />
                 <Route exact path="/acceuil//*" element={<Acceuil />} />
+                <Route exact path="/myteam" element={<Myteam />} />
                 <Route exact path="/document" element={<Document />} />
                 <Route exact path="/monCompte" element={<MonCompte />} />
                 <Route exact path="/rdv/:id" element={<RdvPage />} />
