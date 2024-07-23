@@ -4,51 +4,57 @@ import phone from '../assets/icons/phone.svg';
 import { useLocation } from 'react-router-dom';
 
 import '../components/acceuil/monequipe.css';
-function Myteam () {
-  const location = useLocation();
-  const { equipe } = location.state || { equipe: { medecins: [], secretaires: [], assistants: [] } };
-
+function Myteam ({ equipe, type }) {
+  // const location = useLocation();
+  // const { equipe } = location.state || { equipe: { medecins: [], secretaires: [], assistants: [] } };
+  const defaultEquipe = { medecins: [], secretaires: [], assistants: [] };
+  const { medecins, secretaires, assistants } = equipe || defaultEquipe;
+console.log("type : "+type);
   return (
 
 
-  
-    <div className="frame-39">
-      <div className="frame-36">
+  <>
+   {/* <div className="frame-39"> */}
+      {/* <div className="frame-36">
         <div className="text-wrapper-16">Mon équipe</div>
         <div className="frame-9">
           <div className="text-wrapper-8">Voir plus</div>
         </div>
-      </div>
-      {equipe.medecins.map((medecin) => (
-        <div className="card" key={medecin.id}>
-          <div className="frame">
-            <div className="div-wrapper">
-              <div className="text-wrapperr">{`${medecin.prenom_med} ${medecin.nom_med}`}</div>
-            </div>
-            <div className="div">
-              <div className="frame-2">
-                <div className="text-wrapper-2">Médical</div>
-                <div className="frame-3">
-                  <div className="text-wrapper-3">Docteur</div>
+      </div> */}
+      <div className="container">
+        {type==="prat" && (
+           medecins.map((medecin) => (
+            <div className="card" key={medecin.id}>
+              <div className="frame">
+                <div className="div-wrapper">
+                  <div className="text-wrapperr">{`${medecin.prenom_med} ${medecin.nom_med}`}</div>
+                </div>
+                <div className="div">
+                  <div className="frame-2">
+                    <div className="text-wrapper-2">Médical</div>
+                    <div className="frame-3">
+                      <div className="text-wrapper-3">Docteur</div>
+                    </div>
+                  </div>
+                  <div className="text-wrapper-4">Service : {medecin.specialite.libelle}</div>
+                  <div className="frame-4">
+                    <div className="address">
+                      <img className="icon-instance-node" alt="Frame" src={phone} />
+                      <div className="text-wrapper-5">{medecin.contact_urgence_med}</div>
+                    </div>
+                    <div className="address-2">
+                      <img className="icon-instance-node" alt="Frame" src={mail02} />
+                      <div className="text-wrapper-5">regoug@gmail.com</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="text-wrapper-4">Service : {medecin.specialite.libelle}</div>
-              <div className="frame-4">
-                <div className="address">
-                  <img className="icon-instance-node" alt="Frame" src={phone} />
-                  <div className="text-wrapper-5">{medecin.contact_urgence_med}</div>
-                </div>
-                <div className="address-2">
-                  <img className="icon-instance-node" alt="Frame" src={mail02} />
-                  <div className="text-wrapper-5">regoug@gmail.com</div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      ))}
-
-      {equipe.secretaires.map((secretaire) => (
+          ))
+        )}
+     
+     {type==="sec" && (
+      secretaires.map((secretaire) => (
         <div className="card" key={secretaire.id}>
           <div className="frame2">
             <div className="div-wrapper2">
@@ -75,8 +81,40 @@ function Myteam () {
             </div>
           </div>
         </div>
-      ))}
+      ))
+     )}
       
+      {type==="ass" && (
+      assistants.map((assistant) => (
+        <div className="card" key={assistant.id}>
+          <div className="frame2">
+            <div className="div-wrapper2">
+              <div className="text-wrapper2">{`${assistant.prenom} ${assistant.nom}`}</div>
+            </div>
+            <div className="div">
+              <div className="frame-2">
+                <div className="text-wrapper-2">Administrative</div>
+                <div className="frame-32">
+                  <div className="text-wrapper-3">Assistant</div>
+                </div>
+              </div>
+              <div className="text-wrapper-4">Adresse : {assistant.adresse}</div>
+              <div className="frame-4">
+                <div className="address">
+                  <img className="icon-instance-node" alt="Frame" src={phone} />
+                  <div className="text-wrapper-5">{assistant.user.telephone}</div>
+                </div>
+                <div className="address-2">
+                  <img className="icon-instance-node" alt="Frame" src={mail02} />
+                  <div className="text-wrapper-5">{assistant.user.email}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+     )}
+      </div>
 
       {/* <div className="frame-38">
         <img className="help-2" alt="Help" src="https://c.animaapp.com/NnydzBh0/img/help-2.svg" />
@@ -88,7 +126,8 @@ function Myteam () {
           </div>
         </div>
       </div> */}
-    </div>
+    {/* </div> */}
+    </>
   
   );
 };

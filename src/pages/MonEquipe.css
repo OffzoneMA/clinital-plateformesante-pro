@@ -1,0 +1,594 @@
+.mon-quipe-my-team {
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.mon-quipe-my-team .div {
+    background-color: #fafafa;
+    height: 971px;
+    overflow: hidden;
+    position: relative;
+    width: 1440px;
+}
+
+.mon-quipe-my-team .overlap {
+    height: 828px;
+    left: 0;
+    position: absolute;
+    /* top: 73px; */
+    width: 1440px;
+}
+
+.mon-quipe-my-team .overlap-group {
+    height: 828px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+}
+
+.mon-quipe-my-team .container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    padding: 8px 30px;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+}
+
+.mon-quipe-my-team .heading {
+    align-items: flex-start;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #aaaaaa4c;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    padding: 16px 0px;
+    position: relative;
+    width: 1363px;
+}
+
+.mon-quipe-my-team .mon-agenda {
+    color: #303030;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.mon-quipe-my-team .vector {
+    height: 510px;
+    left: 307px;
+    position: absolute;
+    /* top: 75px; */
+    width: 1px;
+}
+
+.mon-quipe-my-team .framee {
+    align-items: center;
+    display: flex;
+    left: 322px;
+    position: absolute;
+    top: 99px;
+    width: 1071px;
+}
+.mon-quipe-my-team .frame {
+    align-items: center;
+    display: flex;
+    /* left: 322px; */
+    /* position: absolute; */
+    /* top: 99px; */
+    width: 300px;
+    height: 200px;
+}
+.mon-quipe-my-team .setting-menu {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    padding: 10px 0px 0px 30px;
+    position: absolute;
+    top: 99px;
+    width: 292px;
+}
+
+.mon-quipe-my-team .main-wrapper {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+}
+.mon-quipe-my-team .main-wrapper:hover {
+    background-color: #f0f0f0; /* Change la couleur de fond en gris clair lors du survol */
+    cursor: pointer; /* Change le curseur en pointeur */
+}
+
+.mon-quipe-my-team .main {
+    align-items: center;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #aaaaaa33;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    padding: 20px 0px;
+    position: relative;
+    width: 262px;
+}
+
+.mon-quipe-my-team .icon-instance-node {
+    height: 18px;
+    position: relative;
+    width: 18px;
+}
+
+.mon-quipe-my-team .text-wrapper {
+    color: #6dc0f9;
+    flex: 1;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.14px;
+    line-height: normal;
+    position: relative;
+}
+
+.mon-quipe-my-team .text-wrapper-2 {
+    color: #303030;
+    flex: 1;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.14px;
+    line-height: normal;
+    position: relative;
+}
+
+/* .mon-quipe-my-team .frame-2 {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 40px;
+    left: 720px;
+    position: absolute;
+    top: 206px;
+} */
+.mon-quipe-my-team .frame-22 {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 40px;
+    left: 350px;
+    position: absolute;
+    top: 150px;
+}
+
+.mon-quipe-my-team .help {
+    height: 122px;
+    position: relative;
+    width: 114px;
+}
+
+/* .mon-quipe-my-team .frame-3 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+} */
+
+.mon-quipe-my-team .vous-n-avez-aucun {
+    color: #303030;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 22.4px;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    width: 274px;
+}
+
+.mon-quipe-my-team .button {
+    align-items: flex-start;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+    width: 274px;
+}
+
+.mon-quipe-my-team .button-2 {
+    align-items: center;
+    align-self: stretch;
+    background-color: #6dc0f9;
+    border-radius: 8px;
+    display: flex;
+    gap: 14px;
+    height: 46px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 14px 24px;
+    position: relative;
+    width: 100%;
+}
+
+.mon-quipe-my-team .plus-circle {
+    height: 24px !important;
+    margin-bottom: -3px !important;
+    margin-top: -3px !important;
+    position: relative !important;
+    width: 24px !important;
+}
+
+.mon-quipe-my-team .titre {
+    color: var(--white);
+    font-family: var(--base-medium-font-family);
+    font-size: var(--base-medium-font-size);
+    font-style: var(--base-medium-font-style);
+    font-weight: var(--base-medium-font-weight);
+    letter-spacing: var(--base-medium-letter-spacing);
+    line-height: var(--base-medium-line-height);
+    margin-top: -2px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.mon-quipe-my-team .header-PRO {
+    align-items: center;
+    background: linear-gradient(180deg, rgba(201, 137, 221, 0.9) 0%, rgba(132.53, 202.15, 249.97, 0.9) 100%);
+    display: flex;
+    height: 73px;
+    justify-content: space-between;
+    left: 0;
+    padding: 15px 48px;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+}
+
+.mon-quipe-my-team .img {
+    height: 32px;
+    position: relative;
+    width: 120px;
+}
+
+.mon-quipe-my-team .frame-4 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 22px;
+    position: relative;
+}
+
+.mon-quipe-my-team .frame-5 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 18px;
+    position: relative;
+}
+
+.mon-quipe-my-team .btn {
+    all: unset;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #ffffff;
+    border-radius: 50px;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    justify-content: center;
+    padding: 12px 23px;
+    position: relative;
+}
+
+.mon-quipe-my-team .text-wrapper-3 {
+    color: #C989DD;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    height: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: 155px;
+}
+
+.mon-quipe-my-team .btn-2 {
+    align-items: center;
+    border: 1px solid;
+    border-color: #ffffff;
+    border-radius: 50px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 6px;
+    justify-content: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.mon-quipe-my-team .param-tres-d-agenda {
+    color: #ffffff;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.14px;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.mon-quipe-my-team .line {
+    height: 32px;
+    position: relative;
+    width: 1px;
+}
+
+.mon-quipe-my-team .frame-6 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 23px;
+    position: relative;
+}
+
+.mon-quipe-my-team .frame-7 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+}
+
+.mon-quipe-my-team .bytesize-home-wrapper {
+    background-color: #ffffff;
+    border-radius: 14.04px;
+    height: 28.08px;
+    position: relative;
+    width: 28.08px;
+}
+
+.mon-quipe-my-team .bytesize-home {
+    height: 17px;
+    left: 6px;
+    position: absolute;
+    top: 5px;
+    width: 17px;
+}
+
+.mon-quipe-my-team .text-wrapper-4 {
+    /* color: #ffffff;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 10px;
+    font-weight: 400; */
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.mon-quipe-my-team .agenda-instance {
+    height: 28.08px !important;
+    position: relative !important;
+    width: 28.09px !important;
+}
+
+.mon-quipe-my-team .frame-8 {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 23px;
+    position: relative;
+}
+
+.mon-quipe-my-team .group {
+    height: 42.51px;
+    position: relative;
+    width: 61px;
+}
+
+.mon-quipe-my-team .overlap-group-2 {
+    height: 28px;
+    left: 14px;
+    position: absolute;
+    top: 0;
+    width: 30px;
+}
+
+.mon-quipe-my-team .notif-instance {
+    height: 28px !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 28px !important;
+}
+
+.mon-quipe-my-team .ellipse {
+    background-color: #E85555;
+    border-radius: 4.41px;
+    height: 9px;
+    left: 21px;
+    position: absolute;
+    top: 1px;
+    width: 9px;
+}
+
+/* .mon-quipe-my-team .text-wrapper-5 {
+    color: #ffffff;
+    font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    font-size: 10px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 31px;
+    white-space: nowrap;
+} */
+
+.mon-quipe-my-team .group-2 {
+    height: 42.65px;
+    margin-right: -2px;
+    position: relative;
+    width: 29px;
+}
+
+.mon-quipe-my-team .vector-2 {
+    height: 5px;
+    left: 11px;
+    position: absolute;
+    top: 0;
+    width: 5px;
+}
+
+.mon-quipe-my-team .vector-3 {
+    height: 5px;
+    left: 19px;
+    position: absolute;
+    top: 0;
+    width: 5px;
+}
+
+.mon-quipe-my-team .vector-4 {
+    height: 5px;
+    left: 19px;
+    position: absolute;
+    top: 9px;
+    width: 5px;
+}
+
+.mon-quipe-my-team .vector-5 {
+    height: 5px;
+    left: 2px;
+    position: absolute;
+    top: 0;
+    width: 5px;
+}
+
+.mon-quipe-my-team .vector-6 {
+    height: 5px;
+    left: 2px;
+    position: absolute;
+    top: 9px;
+    width: 5px;
+}
+
+.mon-quipe-my-team .vector-7 {
+    height: 5px;
+    left: 11px;
+    position: absolute;
+    top: 9px;
+    width: 5px;
+}
+
+.mon-quipe-my-team .vector-8 {
+    height: 5px;
+    left: 2px;
+    position: absolute;
+    top: 17px;
+    width: 5px;
+}
+
+.mon-quipe-my-team .vector-9 {
+    height: 5px;
+    left: 11px;
+    position: absolute;
+    top: 18px;
+    width: 5px;
+}
+
+.mon-quipe-my-team .vector-10 {
+    height: 5px;
+    left: 19px;
+    position: absolute;
+    top: 17px;
+    width: 5px;
+}
+
+.mon-quipe-my-team .mini-footer {
+    height: 23px;
+    left: 0;
+    position: absolute;
+    top: 948px;
+    width: 1442px;
+}
+
+.mon-quipe-my-team .overlap-2 {
+    background-color: #ffffff;
+    height: 23px;
+    position: relative;
+    width: 1440px;
+}
+
+.mon-quipe-my-team .frame-9 {
+    align-items: flex-start;
+    display: inline-flex;
+    gap: 5px;
+    left: 819px;
+    position: absolute;
+    top: 6px;
+}
+
+.mon-quipe-my-team .text-wrapper-6 {
+    color: #000000;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+}
+
+.mon-quipe-my-team .text-wrapper-7 {
+    color: #000000;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.mon-quipe-my-team .p {
+    color: #AAAAAA;
+    font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    font-size: 10px;
+    font-weight: 400;
+    height: 12px;
+    left: 49px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 6px;
+    white-space: nowrap;
+}
