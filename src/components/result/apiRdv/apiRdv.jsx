@@ -19,6 +19,8 @@ export default{
 // const RDV_URL = ORIGIN + '/api/rdv/patient'
 // const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/patient'
 // const SCHEDULS_URL = ORIGIN + '/api/med'
-// const MOVE_URL = ORIGIN + '/api/rdv'
+    // const MOVE_URL = ORIGIN + '/api/rdv'
+    
+    
     
 }

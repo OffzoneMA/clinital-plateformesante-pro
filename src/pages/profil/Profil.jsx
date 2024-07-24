@@ -21,6 +21,8 @@ import { toast } from "react-toastify";
 import AgendaWorkDays_ from "../../components/result/AgendaWorkDays_";
 import { useTranslation } from "react-i18next";
 import MedNetworksService from "../../components/medecinNetwork/services/medNetworkService";
+import PatientRdv from "../../components/result/priseRdv/PatientRdv";
+import MedFollower from "../../components/medecinNetwork/MedFollower";
 
 
 const Profil = () => {
@@ -232,7 +234,8 @@ const [isInNetwork, setIsInNetwork] = useState(false);
           <p className="specialite">{profilInfo.specialite && t(profilInfo.specialite.libelle)} </p>
   <div className="buttons-container">
       <div className="button-rdv">
-        <Link to={`prise-rdv/?id=${id}`}>
+    
+        <Link to={`rdv-mypatient/?id=${id}`}>
           <div className="button-rdv-text">
             Prendre rendez-vous pour un Patient
           </div>
@@ -325,7 +328,9 @@ const [isInNetwork, setIsInNetwork] = useState(false);
       <MiniFooter />
 
        <Routes>
-        <Route path="/prise-rdv/" element={<PriseRdv />} />
+          <Route path="/prise-rdv/" element={<PriseRdv />} />
+          <Route path="/rdv-mypatient/" element={<PatientRdv />} />
+          
     </Routes>
 
 

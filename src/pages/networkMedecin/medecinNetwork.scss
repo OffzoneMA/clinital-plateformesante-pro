@@ -224,7 +224,8 @@
     margin-bottom: 6%;
 
     .input-field {
-        flex: 1;
+        flex: 1 1 0;
+        height: 26;
         opacity: 0.40;
         color: #8A8F95;
         font-size: 14px;
@@ -234,6 +235,9 @@
         border: none;
         outline: none;
         background: transparent;
+         padding: '0 8px'; 
+      box-sizing: 'border-box';
+      line-height: '36px'; // Ligne ajustée pour centrage vertical
 
         &::placeholder {
             color: #8A8F95;
