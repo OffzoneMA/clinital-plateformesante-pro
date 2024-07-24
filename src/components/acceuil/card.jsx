@@ -1,8 +1,9 @@
 import React from 'react';
 import './Card.css'; // Import the CSS file
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 
-const Card = ({ name, birthDate, address }) => {
+const Card = ({ name, birthDate, address,patientId  }) => {
   const calculateAge = (birthDate) => {
     const today = new Date();
     const birthDateObj = new Date(birthDate);
@@ -21,9 +22,9 @@ const Card = ({ name, birthDate, address }) => {
             <div className="card-title">{name}</div>
             <div className="cardinfo1">
                 <div className="card-info">{birthDate ? `${birthDate.split('T')[0] } - ${age}`+` - ans`: 'Date de nassaise Introuvable'} </div>
-                <div className="card-info">{address ? address : 'Adress introuvable'}</div>
-                <button className="card-button">Consulter le dossier</button>
-            </div>
+                <div className="card-info adress"> <img  src='./icons/marker-pin-01 copy.svg' alt=''/> {address ? address : 'Adress introuvable'}</div>
+                <Link to={`/patientfile/${patientId}`} className="card-button">Consulter le dossier</Link>
+              </div>
 
 
         </div>

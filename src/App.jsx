@@ -24,6 +24,7 @@ import ErrorBoundary from "./components/errors/ErrorBoundery";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
+import PatientFile from "./pages/acceuil/PatientFile";
 //import Acceuil2 from "./pages/acceuil/Acceuil2";
 
 export const Log = React.createContext();
@@ -74,6 +75,7 @@ function App() {
                 <Route exact path="/rdv-popup" element={<RdvPopup />} />
                 <Route exact path="/rdvdejapris" element={<RdvDejaPrise />} />
                 <Route exact path="/allpatients" element={<Allpatients />} />
+                <Route exact path="/patientfile/:patientId" element={<PatientFile />} />
               </>
             }
             

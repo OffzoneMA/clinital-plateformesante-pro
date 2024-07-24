@@ -1,0 +1,90 @@
+.antecedant{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    flex-direction: column;
+    width: 100%;
+}
+.cont{
+    max-width: 100%;
+}
+.cont h3{
+    color: var(--Black, #303030);
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 140%; /* 19.6px */
+letter-spacing: -0.14px;
+}
+.cont p{
+    overflow: hidden;
+color: #303030;
+text-overflow: ellipsis;
+font-family: "Avenir Next LT Pro";
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 136%; /* 19.04px */
+letter-spacing: -0.14px;
+word-wrap: break-word;
+
+max-width: 100%;
+border-radius: 8px;
+border: 1.4px solid rgba(170, 170, 170, 0.20);
+
+background: #FFF;
+padding: 14px 35px 14px 18px;
+
+align-items: flex-start;
+}
+.btnne{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    gap: 5px;
+    margin-top: auto; 
+    /* Pushes the button container to the bottom of the flex container */
+
+}
+.annuler{
+    color: #E85555;
+    display: flex;
+    height: 46px;
+    padding: 14px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    align-self: stretch;
+/* Base/Medium */
+font-family: "Avenir Next LT Pro";
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 130%; /* 18.2px */
+letter-spacing: -0.14px;
+border-radius: 8px;
+background-color: transparent;
+border: none;
+}
+.save{
+    color: var(--White, #FFF);
+
+/* Base/Medium */
+font-family: "Avenir Next LT Pro";
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 130%; /* 18.2px */
+letter-spacing: -0.14px;
+display: flex;
+height: 46px;
+padding: 14px 24px;
+justify-content: center;
+align-items: center;
+gap: 12px;
+align-self: stretch;
+border-radius: 8px;
+background: #6DC0F9;
+border: none;
+}

@@ -1,0 +1,119 @@
+.card {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+
+  }
+  
+  .date-time {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 6px;
+    background: var(--Neutral-100, #F2F4F7);
+    width: fit-content;
+padding: 8px 12px;
+align-items: center;
+gap: 14px;
+
+}
+  
+  .date-time .date {
+    color: #303030;
+
+    font-family: "Avenir Next LT Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.13px;
+  }
+  
+  .date-time .time {
+    color: #303030;
+
+    font-family: "Avenir Next LT Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.13px;
+  }
+  
+  .doctor-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    align-self: stretch;
+  
+  }
+  .n-s{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+  }
+
+  .avatar img {
+    padding: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--Purple-2, #BB6BD9);
+
+
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 1 0 0;
+  }
+  
+  .info .name {
+    color: var(--black, #303030);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .info .specialty {
+    color: var(--Gray-400, #6C727B);
+
+    font-family: "Avenir Next LT Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.13px;
+  }
+  
+  .info .consultation {
+    color: var(--Gray-400, #6C727B);
+    font-family: "Avenir Next LT Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.13px;
+  }
+
+
+  .bg-consultation {
+    background: var(--Purple-2, #BB6BD9);
+  }
+  
+  .bg-domicile {
+    background: #6DC0F9;
+  }
+  
+  .bg-online {
+    background: #FCB769;
+  }
