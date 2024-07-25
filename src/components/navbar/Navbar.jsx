@@ -4,6 +4,7 @@ import { Log } from "../../App";
 import './Navbar.scss'
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "../../utils/redux/GlobalSlice";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [subMenu, setSubMenu] = useState(false);
