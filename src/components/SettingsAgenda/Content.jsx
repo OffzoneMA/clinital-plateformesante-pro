@@ -3,6 +3,7 @@ import "./Content.scss";
 import { Group } from "./components/Group";
 import Model from "../Models/Model";
 import { useTranslation } from "react-i18next";
+import ScheduleServices from "./Services/ScheduleServices";
 
 export const Content = () => {
   const { t, i18n } = useTranslation();
@@ -25,11 +26,15 @@ export const Content = () => {
   const [checkbox7Checked, setCheckbox7Checked] = useState(false);
   const [checkbox8Checked, setCheckbox8Checked] = useState(false);
   const [select, setSelect] = useState(false);
+  const [schedules, setSchedules] = useState([]);
+  const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleDayClick = (index) => {
     setSelectedDay(index);
   };
-  const [selectedDoctor, setSelectedDoctor] = useState("");
+
 
   const addTimeSlot = () => {
     setTimeSlots([...timeSlots, { startTime: "", endTime: "", duration: "" }]);
@@ -70,6 +75,81 @@ export const Content = () => {
     }
   }, [showCreneau]);
 
+  useEffect(() => {
+    const fetchSchedules = async () => {
+      try {
+        const response = await ScheduleServices.GetSchedulesByConectedMed();
+        setSchedules(response.data);
+      } catch (error) {
+        console.error("Error fetching schedules", error);
+      }
+    };
+    fetchSchedules();
+  }, []);
+
+  const renderScheduleRows = () => {
+    return schedules.map((schedule) => {
+      const startTime = new Date(schedule.availabilityStart).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const endTime = new Date(schedule.availabilityEnd).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const duration = schedule.period;
+      const category = schedule.isnewpatient ? t("New Patient") : t("Follow-up");
+      const mode = schedule.modeconsultation.map((m) => m.mode).join(", ");
+      const day = t(schedule.day);
+
+      return (
+        <tr key={schedule.id}>
+          <td>{day}</td>
+          <td>{startTime}</td>
+          <td>{endTime}</td>
+          <td>{duration}</td>
+          <td>{category}</td>
+          <td>{schedule.motifConsultation.map((motif) => motif.motif).join(", ") || t("All")}</td>
+          <td>{mode}</td>
+          <td>
+            <img className="icond" src="/icons/iconsupp.svg" alt="" />
+            <img className="icond" src="/icons/iconedit.svg" alt="" />
+          </td>
+        </tr>
+      );
+    });
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    setError(null);
+  
+    const requestBody = {
+      day: "TUESDAY",
+      availabilityStart: `${new Date().toISOString().split('T')[0]}T${timeSlots[0]?.startTime}`,  // Example: adjust as necessary
+      availabilityEnd: `${new Date().toISOString().split('T')[0]}T${timeSlots[0]?.endTime}`,  
+      modeconsultation: [], // Adjust this based on your application's logic
+      motifconsultation: [], // Adjust this based on your application's logic
+      period:"MIN20",
+      medecin_id: 1, // Adjust this based on your application's logic
+      cabinet_id: 1, // Adjust this based on your application's logic
+      isnewpatient: checkbox1Checked, // Adjust this based on your application's logic
+
+    };
+  
+    try {
+      const response = await ScheduleServices.createSchedule(JSON.stringify(requestBody));
+  
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        setError(errorMessage);
+      } else {
+        // Handle successful response
+        const data = await response.json();
+        console.log(data);
+        setShowCreneau(false);
+        
+      }
+    } catch (err) {
+      setError('An unexpected error occurred.');
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div
       className="contentc"
@@ -79,42 +159,98 @@ export const Content = () => {
       }}
     >
       <Group onClick={() => setShowCreneau(true)} />
-      <div className="frame-3l">
-        <table className="agenda-tablel">
-          <thead>
-            <tr
-              style={{
-                textAlign: i18n.language === "ar" ? "right" : "left",
-              }}
-            >
-              <th>{t("DAY")}</th>
-              <th>{t("START")}</th>
-              <th>{t("END")}</th>
-              <th>{t("DURATION")}</th>
-              <th>{t("CATEGORY")}</th>
-              <th>{t("REASON")}</th>
-              <th>{t("MODE_PLACE")}</th>
-            </tr>
-          </thead>
-          <tbody>{/* Rows would be dynamically generated here */}</tbody>
-        </table>
-      </div>
-      <div className="framel">
-        <img
-          className="imgl"
-          alt="Frame"
-          src="https://c.animaapp.com/BGaboWTw/img/frame.svg"
-        />
-        <div className="frame-2l">
-          <p className="vous-n-avez-aucunel">{t("NO_SLOTS_AVAILABLE")}</p>
-          <div className="button-wrapperl">
-            <div className="button-2l" onClick={() => setShowCreneau(true)}>
-              <img src="../../icons/circleplus.svg" className="plus-circlel" />
-              <div className="titre-2l">{t("ADD_SLOT")}</div>
+      {schedules.length === 0 ? (
+        <>
+          <div className="frame-3l">
+            <table className="agenda-tablel">
+              <thead>
+                <tr style={{ textAlign: i18n.language === "ar" ? "right" : "left" }}>
+                  <th>{t("DAY")}</th>
+                  <th>{t("START")}</th>
+                  <th>{t("END")}</th>
+                  <th>{t("DURATION")}</th>
+                  <th>{t("CATEGORY")}</th>
+                  <th>{t("REASON")}</th>
+                  <th>{t("MODE_PLACE")}</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div className="framel">
+            <img className="imgl" alt="Frame" src="https://c.animaapp.com/BGaboWTw/img/frame.svg" />
+            <div className="frame-2l">
+              <p className="vous-n-avez-aucunel">{t("NO_SLOTS_AVAILABLE")}</p>
+              <div className="button-wrapperl">
+                <div className="button-2l" onClick={() => setShowCreneau(true)}>
+                  <img src="../../icons/circleplus.svg" className="plus-circlel" alt="Add" />
+                  <div className="titre-2l">{t("ADD_SLOT")}</div>
+                </div>
+              </div>
             </div>
           </div>
+        </>
+      ) : (
+        <div className="frame-3l">
+          <table className="agenda-tablel">
+            <thead>
+              <tr style={{ textAlign: i18n.language === "ar" ? "right" : "left" }}>
+                <th>{t("DAY")}</th>
+                <th>{t("START")}</th>
+                <th>{t("END")}</th>
+                <th>{t("DURATION")}</th>
+                <th>{t("CATEGORY")}</th>
+                <th>{t("REASON")}</th>
+                <th>{t("MODE_PLACE")}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {renderScheduleRows()}
+            </tbody>
+          </table>
         </div>
-      </div>
+      )}
+      <div className="button-paginationn">
+<div className="framen">
+<img
+                src="../../icons/flech-black-left.svg"
+                alt="send"
+                  className="icon-instance-noden"
+             
+              /> 
+</div>
+<div className="pagination-numbern">
+<div className="text-wrappern">1</div>
+</div>
+<div className="div-wrappern">
+<div className="divn">2</div>
+</div>
+<div className="div-wrappern">
+<div className="divn">3</div>
+</div>
+<div className="div-wrappern">
+<div className="divn">4</div>
+</div>
+<div className="div-wrappern">
+<div className="divn">5</div>
+</div>
+<div className="element-wrappern">
+<div className="elementn">...</div>
+</div>
+<div className="div-wrappern">
+<div className="text-wrapper-2n">10</div>
+</div>
+<div className="framen">
+<img
+                src="../../icons/flech-blackpy.svg"
+                alt="send"
+                  className="icon-instance-noden"
+             
+              /> 
+</div>
+</div>
       <Model show={showCreneau} setShow={setShowCreneau}>
         <div className="framee">
           <div className="frame-2e">
@@ -525,7 +661,7 @@ export const Content = () => {
                   <div className="titrec button-2s">{t("CANCEL")}</div>
                 </div>
               </div>
-              <div className="buttonnn default  blue shadow-false button-3s">
+              <div className="buttonnn default  blue shadow-false button-3s" onClick={handleSubmit}>
                 <div className="divn button-4s">
                 {i18n.language === "ar" ? (
             <>
@@ -606,9 +742,12 @@ export const Content = () => {
             >
               {[
              
+                `5 ${t("MINUTES")}`,
+                `10 ${t("MINUTES")}`,
                 `15 ${t("MINUTES")}`,
+                `20 ${t("MINUTES")}`,
+                `25 ${t("MINUTES")}`,
                 `30 ${t("MINUTES")}`,
-                `45 ${t("MINUTES")}`,
                 `${t("60_MINUTES")}`,
                 `${t("1H15_MINUTES")}`,
                 `${t("1H30_MINUTES")}`,

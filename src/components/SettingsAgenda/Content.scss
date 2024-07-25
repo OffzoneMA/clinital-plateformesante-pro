@@ -31,27 +31,41 @@
   }
   .agenda-tablel {
     width: 100%;
-    border-collapse: collapse;
+    border: none;
     margin-bottom: 20px;
     tr {
       height: 60px;
     }
-
+    table {
+      
+      border-collapse: collapse; /* Assure qu'il n'y a pas d'espaces entre les cellules */
+    }
     th,
     td {
-      border: 1px solid #ddd;
+      border: none !important;
       padding: 8px;
-      font-family: Montserrat;
+      font-family: "Avenir Next LT Pro-Regular", Helvetica;
       font-size: 14px;
-      font-weight: 600;
-      line-height: 15.6px;
-      letter-spacing: 0.03em;
+      font-weight: 400;
+      line-height: 18.2px;
+      letter-spacing: 0.14px;
+      color: #303030;
     }
 
     th {
       background-color: #f2f2f2;
       color: #303030;
       font-weight: bold;
+     
+    }
+ 
+    
+    .agenda-tablel tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    .agenda-tablel tbody tr:hover {
+      background-color: #f1f1f1;
     }
   }
   .framel {
@@ -67,7 +81,10 @@
     position: relative;
     width: 160px;
   }
-
+.icond{
+  flex: auto;
+  margin-left: 5px;
+}
   .frame-2l {
     align-items: center;
     display: inline-flex;
@@ -1417,3 +1434,113 @@ top:165px;
   white-space: nowrap;
   width: fit-content;
 }
+
+.button-paginationn {
+  align-items: center;
+  display: inline-flex;
+  gap: 16px;
+  position: absolute;
+  top: 665px;;
+  }
+  .button-paginationn .framen {
+  align-items: flex-start;
+  border: 1px solid;
+  border-color: #aaaaaa4c;
+  border-radius: 100px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 10px;
+  padding: 7px;
+  position: relative;
+  }
+  .button-paginationn .icon-instance-noden {
+  height: 21px !important;
+  position: relative !important;
+  width: 21px !important;
+  }
+  .button-paginationn .pagination-numbern {
+  align-items: center;
+  background-color: #6dc0f9;
+  border-radius: 100px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  padding: 12px 7px;
+  position: relative;
+  }
+  .button-paginationn .text-wrappern {
+  color: #ffffff;
+  font-family: "Avenir Next LT Pro-Demi", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 16px;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: 20px;
+  }
+  .button-paginationn .div-wrappern {
+  align-items: center;
+  border: 1px solid;
+  border-color: #aaaaaa4c;
+  border-radius: 100px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 10px;
+  height: 34px;
+  justify-content: center;
+  padding: 11px 7px;
+  position: relative;
+  }
+  .button-paginationn .divn {
+  color: #303030;
+  font-family: "Avenir Next LT Pro-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 16px;
+  position: relative;
+  text-align: center;
+  width: 20px;
+  }
+  .button-paginationn .element-wrappern {
+  align-items: flex-start;
+  border: 1px solid;
+  border-color: #aaaaaa4c;
+  border-radius: 100px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 10px;
+  height: 34px;
+  padding: 11px 7px;
+  position: relative;
+  }
+  .button-paginationn .elementn {
+  color: #303030;
+  font-family: "Avenir Next LT Pro-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 16px;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: 20px;
+  }
+  .button-paginationn .text-wrapper-2n {
+  color: #303030;
+  font-family: "Avenir Next LT Pro-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.56px;
+  line-height: 16px;
+  position: relative;
+  text-align: center;
+  width: 20px;
+  }
+  
