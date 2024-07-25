@@ -2,9 +2,11 @@ import React from "react";
 import "./PublishProfil1.scss";
 import MenuCabinet from "../menuCabinet/MenuCabinet";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 function PublishProfil1() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const isArabic = localStorage.getItem("language") === "ar";
   return (
     <div className="publishProfil">
@@ -39,7 +41,7 @@ function PublishProfil1() {
             {t('veuillez_parametrer_votre_agenda')}
           </p>
           <div className="button">
-            <div className="button-2">
+            <div className="button-2"  onClick={()=>navigate("/SettingsAgenda")}>
             <img className="plus-circle" alt="plus-circle" src="../../icons/plus-circle.svg" />
               <div className="titre-2"> {t('ajouter_un_creneau')}</div>
             </div>
