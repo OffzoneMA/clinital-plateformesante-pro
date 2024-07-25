@@ -1,0 +1,34 @@
+.btn {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 50px;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 13px 23px;
+  position: relative;
+}
+
+.btn .vous-tes {
+  color: var(--lightp);
+  font-family: "Montserrat", Helvetica;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 100;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: fit-content;
+}
+
+.btn:hover {
+  background: linear-gradient(180deg, rgb(109, 192, 249) 0%, rgb(201, 137, 221) 100%);
+}
+
+.btn:hover .vous-tes {
+  color: #ffffff;
+  font-family: "Avenir Next LT Pro-Demi", Helvetica;
+  font-weight: 400;
+}

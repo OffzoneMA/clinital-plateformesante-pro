@@ -86,7 +86,7 @@ function Login({ comp, setStep, setIsConnected }) {
                 } else if (data.state === 5) {
                   window.location = "/cabinet/mydocuments";
                 } else if (data.state > 5) {
-                  window.location = "/agenda";
+                  window.location = "/acceuil";
                 }
               } else {
                 setStep(3);

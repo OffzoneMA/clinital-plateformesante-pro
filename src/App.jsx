@@ -13,6 +13,7 @@ import Document from "./pages/document/Document";
 import Connexion from "./pages/connection/Connexion";
 import MonCompte from "./pages/monCompte/MonCompte";
 import Agenda from "./pages/agenda/Agenda";
+import Acceuil from "./pages/acceuil/Acceuil";
 import RdvPopup from "./components/RdvPopup";
 // import AgendaWorkDays_ from "./components/result/AgendaWorkDays_";
 import RdvDejaPrise from "./components/RdvDejaPrise";
@@ -24,6 +25,9 @@ import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
 import SettingsAgenda from "./pages/SettingsAgenda/SettingsAgenda";
 import ÉvénementExceptionnel from "./pages/Événementexceptionnel/ÉvénementExceptionnel";
+
+//import Acceuil2 from "./pages/acceuil/Acceuil2";
+
 export const Log = React.createContext();
 
 function App() {
@@ -59,12 +63,15 @@ function App() {
             <Route exact path="/ÉvénementExceptionnel/*" element={<ÉvénementExceptionnel />} />
             <Route exact path="/result//*" element={<Result />} />
             <Route exact path="/cabinet//*" element={<Cabinet />} />
+            
             <Route exact path="/profil/:id" element={<Profil />} />
+           
             {console.log(isValidToken)}
             {isValidToken &&
               <>
                 <Route exact path="/contact" element={<Contact />} />
                 <Route exact path="/agenda//*" element={<Agenda />} />
+                <Route exact path="/acceuil//*" element={<Acceuil />} />
                 <Route exact path="/document" element={<Document />} />
                 <Route exact path="/monCompte" element={<MonCompte />} />
                 <Route exact path="/rdv/:id" element={<RdvPage />} />
