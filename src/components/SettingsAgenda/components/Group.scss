@@ -1,0 +1,79 @@
+/* Group styles */
+.groupk {
+    height: 60px;
+    left: 32px;
+    position: absolute;
+    top: 20px;
+    width: 1011px;
+  
+    .text-wrapper-4k {
+      color: #303030;
+      font-family: "Montserrat", Helvetica;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: normal;
+      position: absolute;
+      top: 10px;
+    }
+  
+    .button-instancek {
+      display: inline-flex !important;
+      position: absolute !important;
+      top: 0 !important;
+      width: unset !important;
+    }
+  
+    .line-2k {
+      height: 1px;
+      object-fit: cover;
+      position: absolute;
+      top: 59px;
+      width: 1009px;
+    }
+  }
+  
+  /* Button styles */
+  .buttonk {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 340px;
+  
+    .divk {
+      align-items: center;
+      align-self: stretch;
+      background-color: #6dc0f9;
+      border-radius: 8px;
+      display: flex;
+      gap: 12px;
+      height: 46px;
+      justify-content: center;
+      overflow: hidden;
+      padding: 14px 24px;
+      position: relative;
+      width: 100%;
+      cursor: pointer;
+  
+      .titrek {
+        color: #ffffff;
+        font-family: Avenir Next LT Pro, Helvetica;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing:-0.14px;
+        line-height: 18.2px;
+        position: relative;
+        white-space: nowrap;
+        width: fit-content;
+      }
+  
+      .arrow-rightk {
+        height: 18px !important;
+        position: relative !important;
+        width: 18px !important;
+      }
+    }
+  }
+  

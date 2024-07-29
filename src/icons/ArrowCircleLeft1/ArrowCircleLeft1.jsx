@@ -5,7 +5,7 @@ Please share your feedback here: https://form.asana.com/?k=uvp-HPgd3_hyoXRBw1IcN
 
 import React from "react";
 
-export const ArrowCircleLeft1 = ({ className }) => {
+export const ArrowCircleLeft1 = ({ className, onClick }) => {
   return (
     <svg
       className={`arrow-circle-left-1 ${className}`}
@@ -14,6 +14,7 @@ export const ArrowCircleLeft1 = ({ className }) => {
       viewBox="0 0 32 32"
       width="32"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={onClick}
     >
       <path
         className="path"

@@ -24,6 +24,9 @@ import ErrorBoundary from "./components/errors/ErrorBoundery";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
+import SettingsAgenda from "./pages/SettingsAgenda/SettingsAgenda";
+import ÉvénementExceptionnel from "./pages/Événementexceptionnel/ÉvénementExceptionnel";
+
 import MedecinNetwork from "./pages/networkMedecin/MedecinNetwork";
 import MedFollower from "./components/medecinNetwork/MedFollower"
 
@@ -58,6 +61,8 @@ function App() {
           
             <Route index path="/" element={<HomePage />} />
             <Route exact path="/login/*" element={<Connexion />} />
+            <Route exact path="/SettingsAgenda/*" element={<SettingsAgenda />} />
+            <Route exact path="/ÉvénementExceptionnel/*" element={<ÉvénementExceptionnel />} />
             <Route exact path="/result//*" element={<Result />} />
             <Route exact path="/cabinet//*" element={<Cabinet />} />
      

@@ -167,7 +167,7 @@
   display: flex;
   flex: 0 0 auto;
   gap: 10px;
-  padding: 24px 28px 20px;
+  padding: 24px 20px 20px;
   position: relative;
   width: 100%;
 }
@@ -179,29 +179,30 @@
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0;
-  line-height: normal;
-  margin-top: -1px;
+  /* line-height: normal;
+  margin-top: -1px; */
   position: relative;
 }
 
 .dashboard .frame-9 {
   align-items: center;
-  background-color: var(--blue-1);
+  background-color: rgba(109, 192, 249, 1);
   border-radius: 39px;
   display: inline-flex;
-  flex: 0 0 auto;
   gap: 10px;
   justify-content: center;
-  padding: 7px 12px;
+  padding: 6px 10px;
   position: relative;
 }
 
+
+
 .dashboard .text-wrapper-8 {
-  color: var(--purplewhite);
+  color: rgba(255, 255, 255, 1);
   font-family: "Avenir Next LT Pro-Demi", Helvetica;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
-  letter-spacing: -0.12px;
+  letter-spacing: -0.14px;
   line-height: normal;
   margin-top: -1px;
   position: relative;
@@ -226,7 +227,7 @@
   display: flex;
   flex: 0 0 auto;
   justify-content: space-between;
-  padding: 10px 20px 0px;
+  padding: 10px 10px 0px;
   position: relative;
   width: 100%;
 }
@@ -421,7 +422,7 @@
   left: 0;
   padding: 0px 5px 0px 12px;
   position: absolute;
-  top: 107px;
+  top: 45px;
   width: 156px;
 }
 

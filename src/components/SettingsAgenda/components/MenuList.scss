@@ -1,0 +1,33 @@
+.menu-list {
+    align-items: flex-start;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #aaaaaa33;
+    display: flex;
+    gap: 10px;
+    padding: 12px 0px 2px 28px;
+    position: relative;
+    width: 262px;
+  
+    .changer-mon-mot-de {
+      flex: 1;
+      font-size: 14px;
+
+      letter-spacing: -0.14px;
+      line-height: normal;
+      margin-top: -1px;
+      position: relative;
+    }
+  
+    &.menu-active-false {
+        font-weight: 400;
+      color: #8e8e8e;
+      font-family: "Avenir Next LT Pro-Regular", Helvetica;
+    }
+  
+    &.menu-active-true {
+        font-weight: 600;
+      color: #6dc0f9;
+      font-family: "Avenir Next LT Pro-Demi", Helvetica;
+    }
+  }

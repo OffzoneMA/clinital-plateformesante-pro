@@ -182,8 +182,8 @@ function AddCabinet() {
           </h1>
           <div className="innerContainerAdd">
             <div className="firstInnerDiv">
-              <div className="content">
-                <form>
+              <div className="content1">
+                <form >
                   <div>
                     <label htmlFor="">{t("cabinetName")}</label>
                     <input

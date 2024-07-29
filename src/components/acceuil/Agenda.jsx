@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { DatingDayInMonth } from "../dashboard/DatingDayInMonth";
 import { DatingDayOutOf } from "../dashboard/DatingDayOutOf";
@@ -9,12 +10,15 @@ import { ChevronDown } from "../../icons/ChevronDown";
 import cabinet from '../../assets/icons/cabinet_icon.svg';
 import domicile from '../../assets/icons/domicile_icon.svg';
 import video from '../../assets/icons/video_icon.svg';
+import chevrondown from '../../assets/icons/chevron_down.svg';
 import { getProchainRdv } from "../../action/Rdv";
+import Calendar from "./Calendar";
 //import "./style.css";
 
 
 function Agenda () {
   const [prochain, setProchain] = useState([]);
+  const [dropdown, setDropdown]= useState(false);
   const user = useSelector((state) => state.global.user);
 
   useEffect(() => {
@@ -23,6 +27,10 @@ function Agenda () {
     }
     console.log(prochain);
   }, []);
+  const months = [
+    "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
+    "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+  ];
 
   const formatDate = (day, start) => {
     const daysOfWeek = {
@@ -67,22 +75,26 @@ function Agenda () {
     <div className="frame-7">
       <div className="frame-8">
         <div className="text-wrapper-7">Prochain Rendez-vous</div>
+        <Link to="/agenda">
         <div className="frame-9">
           <div className="text-wrapper-8">Voir Agenda</div>
         </div>
+        </Link>
+        
       </div>
       <div className="calendar-april">
-        <div className="frame-10">
+        {/* <div className="frame-10">
           <div className="frame-11">
             <div className="text-wrapper-9">Avril 2023</div>
-            <ChevronDown className="chevron-down" />
+            <img className="img chevron-down" alt="Frame" src={chevrondown} onClick={() => setDropdown((x) => !x)}/> 
           </div>
           <div className="frame-12">
             <ArrowCircleLeft1 className="icon-instance-node" />
             <ArrowCircleRight1 className="icon-instance-node" />
           </div>
-        </div>
-        <div className="frame-13">
+        </div> */}
+        <Calendar prochRdv={prochain}/>
+        {/* <div className="frame-13">
           <div className="frame-14">
             <DatingWeekLabel className="dating-week-label-instance" divClassName="dating-week-label-2" text="L" />
             <DatingWeekLabel className="dating-week-label-instance" divClassName="dating-week-label-2" text="M" />
@@ -306,7 +318,7 @@ function Agenda () {
               text="6"
             />
           </div>
-        </div>
+        </div> */}
       </div>
       
       <div className="frame-15">
@@ -339,120 +351,7 @@ function Agenda () {
               </div>
           </div>
         ))}
-        
-        {/* <div className="RVS">
-            <div className="frame">
-              <div className="div">
-                <div className="frame-2">
-                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
-                </div>
-                <div className="frame-2">
-                  <div className="text-wrapper">09:30 - 10:00</div>
-                </div>
-              </div>
-            </div>
-            <div className="frame-71">
-              <img className="img" alt="Frame" src={domicile} />
-              <div className="frame-77">
-                <div className="frame-71">
-                  <div className="text-wrapper-2">Mohammed Derras  </div>
-                  <div className="text-wrapper-3">  Homme - 40 ans</div>
-                </div>
-                <div className="text-wrapper-4">Consultation de suivi</div>
-              </div>
-            </div>
-        </div>
-        <div className="RVS">
-            <div className="frame">
-              <div className="div">
-                <div className="frame-2">
-                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
-                </div>
-                <div className="frame-2">
-                  <div className="text-wrapper">09:30 - 10:00</div>
-                </div>
-              </div>
-            </div>
-            <div className="frame-71">
-              <img className="img" alt="Frame" src={video} />
-              <div className="frame-77">
-                <div className="frame-71">
-                  <div className="text-wrapper-2">Salah Amrani  </div>
-                  <div className="text-wrapper-3">  Homme - 33 ans</div>
-                </div>
-                <div className="text-wrapper-4">Urgence</div>
-              </div>
-            </div>
-            
-            
-            
-        </div>
-        <div className="RVS">
-            <div className="frame">
-              <div className="div">
-                <div className="frame-2">
-                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
-                </div>
-                <div className="frame-2">
-                  <div className="text-wrapper">09:00 - 09:30</div>
-                </div>
-              </div>
-            </div>
-            <div className="frame-71">
-              <img className="img" alt="Frame" src={cabinet} />
-              <div className="frame-77">
-                <div className="frame-71">
-                  <div className="text-wrapper-2">Fati Zah ARES  </div>
-                  <div className="text-wrapper-3">  Femme - 30 ans</div>
-                </div>
-                <div className="text-wrapper-4">1ère Consultation</div>
-              </div>
-            </div>
-        </div>
-        <div className="RVS">
-            <div className="frame">
-              <div className="div">
-                <div className="frame-2">
-                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
-                </div>
-                <div className="frame-2">
-                  <div className="text-wrapper">09:30 - 10:00</div>
-                </div>
-              </div>
-            </div>
-            <div className="frame-71">
-              <img className="img" alt="Frame" src={domicile} />
-              <div className="frame-77">
-                <div className="frame-71">
-                  <div className="text-wrapper-2">Mohammed Derras  </div>
-                  <div className="text-wrapper-3">  Homme - 40 ans</div>
-                </div>
-                <div className="text-wrapper-4">Consultation de suivi</div>
-              </div>
-            </div>
-        </div>
-        <div className="RVS">
-            <div className="frame">
-              <div className="div">
-                <div className="frame-2">
-                  <div className="text-wrapper">Sam, 14 Avril 2023</div>
-                </div>
-                <div className="frame-2">
-                  <div className="text-wrapper">09:30 - 10:00</div>
-                </div>
-              </div>
-            </div>
-            <div className="frame-71">
-              <img className="img" alt="Frame" src={video} />
-              <div className="frame-77">
-                <div className="frame-71">
-                  <div className="text-wrapper-2">Salah Amrani  </div>
-                  <div className="text-wrapper-3">  Homme - 33 ans</div>
-                </div>
-                <div className="text-wrapper-4">Urgence</div>
-              </div>
-            </div>
-        </div> */}
+      
         
       </div>
      
@@ -465,35 +364,23 @@ function Agenda () {
         </> 
        )}
       </div>
-      
     </div>
-    {/* <div className="dropdown">
-      <div className="frame-18">
-        <div className="frame-19">
-          <div className="frame-20">
-            <div className="text-wrapper-10">Avril</div>
+    
+    {/* {dropdown && (
+      <div className="dropdown">
+        <div className="frame-18">
+          <div className="frame-19">
+          <div className="scroll-container" style={{ height: '200px' }}>
+            {months.map((month, index) => (
+              <div className={`frame-20`} key={index}>
+                <div className={`text-wrapper-10`}>{month}</div>
+              </div>
+            ))}
           </div>
-          <div className="frame-20">
-            <div className="text-wrapper-11">Mai</div>
           </div>
-          <div className="frame-21">
-            <div className="text-wrapper-12">Juin</div>
-          </div>
-          <div className="frame-20">
-            <div className="text-wrapper-11">Juillet</div>
-          </div>
-          <div className="frame-20">
-            <div className="text-wrapper-11">Août</div>
-          </div>
-          <div className="frame-20">
-            <div className="text-wrapper-11">Septembre</div>
-          </div>
-        </div>
-        <div className="rectangle-wrapper">
-          <div className="rectangle" />
         </div>
       </div>
-    </div> */}
+)} */}
   </div>
   );
 };

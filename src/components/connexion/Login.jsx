@@ -86,7 +86,7 @@ function Login({ comp, setStep, setIsConnected }) {
                 } else if (data.state === 5) {
                   window.location = "/cabinet/mydocuments";
                 } else if (data.state > 5) {
-                  window.location = "/agenda";
+                  window.location = "/acceuil";
                 }
               } else {
                 setStep(3);
@@ -263,7 +263,7 @@ function Login({ comp, setStep, setIsConnected }) {
 
             <div className="subForm">
               <h2>Nouveau sur Clinital ?</h2>
-              <Link to="inscription">S’inscrire sur Clinital</Link>
+              <Link to="demande">S’inscrire sur Clinital</Link>
             </div>
           </div>
 

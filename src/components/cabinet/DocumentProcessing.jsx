@@ -52,7 +52,7 @@ function DocumentProcessing() {
           <span>{t("inProgress")}</span>
         </div>
 
-        <div className="sous-container2">
+        <div className="sous-containerq">
           <div className="title">
             <img
               src="../../icons/info-circle.svg"
