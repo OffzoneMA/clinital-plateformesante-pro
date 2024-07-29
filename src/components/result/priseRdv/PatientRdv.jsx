@@ -3,11 +3,13 @@ import { useParams,useNavigate } from "react-router-dom";
 import RdvPatientService from "../services/RdvPatientService";
 import "./patientmed.scss";
 import Mark from 'mark.js';
+import { useTranslation } from "react-i18next";
 
 //PRISE DE RDV D'UN MEDECIN POUR SON PATIENT 
 function PatientRdv() {
   const queryParams = new URLSearchParams(location.search);
-    const id = queryParams.get("id");
+  const id = queryParams.get("id");
+  const { t } = useTranslation();
 
     //const [medDetails, setMedDetails] = useState(null);
     const [medPatients, setMedPatients] = useState([]);
@@ -33,7 +35,219 @@ function PatientRdv() {
 
         fetchMedDetails();
    }, []);
-  
+  /* const medPatients = [
+  {
+    nom_pat: "Dupont",
+    prenom_pat: "Marie",
+    dateNaissance: "1990-02-14",
+    adresse_pat: "12 Rue de Rivoli",
+    ville: { nom_ville: "Paris" },
+  },
+  {
+    nom_pat: "Martin",
+    prenom_pat: "Jean",
+    dateNaissance: "1985-06-21",
+    adresse_pat: "3 Avenue Victor Hugo",
+    ville: { nom_ville: "Lyon" },
+  },
+  {
+    nom_pat: "Bernard",
+    prenom_pat: "Lucie",
+    dateNaissance: "1992-11-05",
+    adresse_pat: "25 Boulevard Saint-Michel",
+    ville: { nom_ville: "Bordeaux" },
+  },
+  {
+    nom_pat: "Thomas",
+    prenom_pat: "Paul",
+    dateNaissance: "1988-03-12",
+    adresse_pat: "18 Rue du Faubourg",
+    ville: { nom_ville: "Marseille" },
+  },
+  {
+    nom_pat: "Petit",
+    prenom_pat: "Sophie",
+    dateNaissance: "1995-07-30",
+    adresse_pat: "5 Place de la République",
+    ville: { nom_ville: "Lille" },
+  },
+  {
+    nom_pat: "Robert",
+    prenom_pat: "Antoine",
+    dateNaissance: "1975-12-02",
+    adresse_pat: "10 Quai de la Bourse",
+    ville: { nom_ville: "Nantes" },
+  },
+  {
+    nom_pat: "Richard",
+    prenom_pat: "Claire",
+    dateNaissance: "2000-05-18",
+    adresse_pat: "22 Rue de la Paix",
+    ville: { nom_ville: "Strasbourg" },
+  },
+  {
+    nom_pat: "Durand",
+    prenom_pat: "Louis",
+    dateNaissance: "1993-08-09",
+    adresse_pat: "8 Chemin de la Forêt",
+    ville: { nom_ville: "Toulouse" },
+  },
+  {
+    nom_pat: "Leroy",
+    prenom_pat: "Emma",
+    dateNaissance: "1989-01-25",
+    adresse_pat: "14 Avenue de la Liberté",
+    ville: { nom_ville: "Nice" },
+  },
+  {
+    nom_pat: "Moreau",
+    prenom_pat: "Gabriel",
+    dateNaissance: "1996-09-17",
+    adresse_pat: "7 Rue de la République",
+    ville: { nom_ville: "Montpellier" },
+  },
+  {
+    nom_pat: "Simon",
+    prenom_pat: "Chloé",
+    dateNaissance: "1982-04-04",
+    adresse_pat: "9 Allée des Lilas",
+    ville: { nom_ville: "Rennes" },
+  },
+  {
+    nom_pat: "Laurent",
+    prenom_pat: "Mathieu",
+    dateNaissance: "1978-10-16",
+    adresse_pat: "17 Rue de l'Église",
+    ville: { nom_ville: "Reims" },
+  },
+  {
+    nom_pat: "Lefevre",
+    prenom_pat: "Isabelle",
+    dateNaissance: "1991-06-03",
+    adresse_pat: "2 Rue de la Gare",
+    ville: { nom_ville: "Toulon" },
+  },
+  {
+    nom_pat: "Michel",
+    prenom_pat: "Jules",
+    dateNaissance: "1986-08-29",
+    adresse_pat: "21 Rue des Fleurs",
+    ville: { nom_ville: "Saint-Étienne" },
+  },
+  {
+    nom_pat: "Garcia",
+    prenom_pat: "Laura",
+    dateNaissance: "1998-11-11",
+    adresse_pat: "19 Avenue des Champs-Élysées",
+    ville: { nom_ville: "Le Havre" },
+  },
+  {
+    nom_pat: "David",
+    prenom_pat: "Nicolas",
+    dateNaissance: "1979-03-07",
+    adresse_pat: "23 Boulevard de la Liberté",
+    ville: { nom_ville: "Grenoble" },
+  },
+  {
+    nom_pat: "Bertrand",
+    prenom_pat: "Alice",
+    dateNaissance: "1994-07-25",
+    adresse_pat: "13 Rue des Tilleuls",
+    ville: { nom_ville: "Dijon" },
+  },
+  {
+    nom_pat: "Roux",
+    prenom_pat: "Émilie",
+    dateNaissance: "1983-12-14",
+    adresse_pat: "16 Rue des Écoles",
+    ville: { nom_ville: "Angers" },
+  },
+  {
+    nom_pat: "Vincent",
+    prenom_pat: "Lucas",
+    dateNaissance: "1999-02-22",
+    adresse_pat: "4 Allée des Roses",
+    ville: { nom_ville: "Nîmes" },
+  },
+  {
+    nom_pat: "Fournier",
+    prenom_pat: "Hélène",
+    dateNaissance: "1987-09-30",
+    adresse_pat: "11 Rue des Maréchaux",
+    ville: { nom_ville: "Villeurbanne" },
+  },
+  {
+    nom_pat: "Girard",
+    prenom_pat: "Patrick",
+    dateNaissance: "1980-07-18",
+    adresse_pat: "15 Avenue du Général de Gaulle",
+    ville: { nom_ville: "Aix-en-Provence" },
+  },
+  {
+    nom_pat: "Lemaire",
+    prenom_pat: "Sandrine",
+    dateNaissance: "1997-01-08",
+    adresse_pat: "6 Rue des Oliviers",
+    ville: { nom_ville: "Metz" },
+  },
+  {
+    nom_pat: "Renaud",
+    prenom_pat: "Cédric",
+    dateNaissance: "1976-05-23",
+    adresse_pat: "20 Rue du Moulin",
+    ville: { nom_ville: "Besançon" },
+  },
+  {
+    nom_pat: "Dumas",
+    prenom_pat: "Florence",
+    dateNaissance: "1990-10-10",
+    adresse_pat: "30 Rue du Château",
+    ville: { nom_ville: "Orléans" },
+  },
+  {
+    nom_pat: "Gauthier",
+    prenom_pat: "Sylvain",
+    dateNaissance: "1984-11-28",
+    adresse_pat: "27 Boulevard des Capucines",
+    ville: { nom_ville: "Caen" },
+  },
+  {
+    nom_pat: "Perrin",
+    prenom_pat: "Nathalie",
+    dateNaissance: "1992-03-16",
+    adresse_pat: "32 Rue des Amandiers",
+    ville: { nom_ville: "Clermont-Ferrand" },
+  },
+  {
+    nom_pat: "Marchand",
+    prenom_pat: "Éric",
+    dateNaissance: "1981-06-25",
+    adresse_pat: "24 Avenue de la République",
+    ville: { nom_ville: "Tours" },
+  },
+  {
+    nom_pat: "Aubry",
+    prenom_pat: "Léa",
+    dateNaissance: "1995-12-19",
+    adresse_pat: "35 Rue du Soleil",
+    ville: { nom_ville: "Nancy" },
+  },
+  {
+    nom_pat: "Poirier",
+    prenom_pat: "Thomas",
+    dateNaissance: "1983-02-02",
+    adresse_pat: "31 Rue des Platanes",
+    ville: { nom_ville: "Mulhouse" },
+  },
+  {
+    nom_pat: "Leblanc",
+    prenom_pat: "Valérie",
+    dateNaissance: "1977-09-09",
+    adresse_pat: "38 Rue de la Liberté",
+    ville: { nom_ville: "Rouen" },
+  },
+];*/
+
  const formatDate = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -170,7 +384,7 @@ function PatientRdv() {
                         wordWrap: 'break-word'
                       }}
                     >
-                      Prendre rendez-vous pour un Patient
+                      {t("MakeanappointmentforaPatient")}
                     </div>
                   </div>
                 
@@ -253,7 +467,7 @@ function PatientRdv() {
                 display: 'inline-flex',
                 flexDirection: 'column', // Ajoutez cette ligne pour gérer la disposition verticale
                 overflowY: 'auto',
-                maxHeight: '200px' 
+                maxHeight: '470px' 
               }}
             >
               {medPatientsFilter.map((patient, index) => (
@@ -373,7 +587,7 @@ function PatientRdv() {
               wordWrap: 'break-word'
             }}
           >
-            Prendre rendez-vous pour un Patient
+            {t("MakeanappointmentforaPatient")}
           </div>
           <div className="doctor-details">
             <div
@@ -403,7 +617,7 @@ function PatientRdv() {
                   wordWrap: 'break-word'
                 }}
               >
-                Vous n'avez pas encore de Patients
+               {t("Youdonthaveanypatientsyet")}
               </div>
             </div>
           </div>

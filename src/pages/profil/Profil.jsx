@@ -237,20 +237,20 @@ const [isInNetwork, setIsInNetwork] = useState(false);
     
         <Link to={`rdv-mypatient/?id=${id}`}>
           <div className="button-rdv-text">
-            Prendre rendez-vous pour un Patient
+            {t("MakeanappointmentforaPatient")}
           </div>
         </Link>
       </div>
      {isInNetwork ? (
                 <div className="button-remove" onClick={handleRemoveNetwork}>
                     <div className="button-remove-text">
-                        Retirer de mon réseau
+                       {t("Removefrommynetwork")}
                     </div>
                 </div>
             ) : (
                 <div className="button-add" onClick={handleAddNetwork}>
                     <div className="button-add-text">
-                        Ajouter à mon réseau
+                        {t("Addtomynetwork")}
                     </div>
                 </div>
             )}

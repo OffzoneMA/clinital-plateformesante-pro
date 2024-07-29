@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import MedNetworksService from "../medecinNetwork/services/medNetworkService";
-
+import { useTranslation } from "react-i18next";
 
 function MedFollower() {
   const queryParams = new URLSearchParams(location.search);
@@ -10,8 +10,9 @@ function MedFollower() {
     const [medDetails, setMedDetails] = useState(null);
     const [isOpen, setIsOpen] = useState(true); // État pour contrôler l'ouverture/fermeture du popup
     const navigate = useNavigate(); 
-  const photoUrlBase = `/images/profile_photomed/`;
+    const photoUrlBase = `/images/profile_photomed/`;
     const [isConfirmOpen, setIsConfirmOpen] = useState(false); // État pour contrôler l'ouverture/fermeture du popup de confirmation
+    const { t } = useTranslation();
 
    useEffect(() => {
         const fetchMedDetails = async () => {
@@ -76,10 +77,10 @@ function MedFollower() {
           <div className="contentconfirm">
             <div className="confirmation-popup">
               <div className="confirmation-content">
-                <h2>Souhaitez-vous réellement supprimer ce praticien de votre réseau ?</h2>
+                <h2>{t("removethispractitionerfromyournetwork") }</h2>
                 <div className="button-containerconf">
-                  <button onClick={handleCloseConfirm} className="cancel-button">Fermer</button>
-                  <button onClick={handleDeleteMed} className="delete-button">Supprimer</button>
+                  <button onClick={handleCloseConfirm} className="cancel-button">{t("Close")}</button>
+                  <button onClick={handleDeleteMed} className="delete-button">{t("Delete")}</button>
                 </div>
               </div>
             </div>
@@ -99,15 +100,15 @@ function MedFollower() {
        
                 </div>
                 <div className="doctor-info">
-                  <div className="doctor-name">Dr {medDetails.nom_med} {medDetails.prenom_med}</div>
-                  <div className="doctor-specialty">Médecin {medDetails.specialite.libelle}</div>
+                  <div className="doctor-name">{t("dr")} {medDetails.nom_med} {medDetails.prenom_med}</div>
+                  <div className="doctor-specialty">{t("medecin")} {t(medDetails.specialite.libelle)}</div>
                   <div className="contactmed">
                     
                     {medDetails.cabinet.map((cabinet, index) => (
                       <>
                         <div className="doctor-address" key={index}>
                           <img className="address-icon" src="/images/network/marker-pin-01.svg" alt="marker" />
-                          {cabinet.adresse} , {medDetails.ville.nom_ville}
+                          {cabinet.adresse} , {t(medDetails.ville.nom_ville)}
                         </div>
                         <div className="doctor-phone">
                           <img className="address-icon" src="/images/network/phone.svg" alt="phone" />
@@ -125,11 +126,11 @@ function MedFollower() {
               <div className="button-container">
                 <div className="button-retirer" onClick={handleOpenConfirm}>
                   <img className="icon-retirer" src="/images/network/delete-32-regular.svg" alt="Retirer" />
-                  <div className="text-retirer">Retirer</div>
+                  <div className="text-retirer">{t("Remove")}</div>
                 </div>
                  <div className="button-profil">
                     <a href={`/profil/${medDetails.id}`}>
-                      <div className="text-profil">Voir le profil</div>
+                      <div className="text-profil">{t("Seetheprofile")}</div>
                     </a>
                   </div>
 

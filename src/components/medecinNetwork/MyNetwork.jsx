@@ -17,6 +17,7 @@ import { refreshMedicins } from "../../utils/redux/GlobalSlice";
 import PaginationNetwork from "./PaginationNetwork";
 import MiniFooter from "../../components/footer/MiniFooter";
 import { bottom } from "@popperjs/core";
+import { useTranslation } from "react-i18next";
 function myNetwork() {
 
     const [isOtherSpecChecked, setisOtherSpecChecked] = useState(false) //les conditions génerales
@@ -59,7 +60,7 @@ function myNetwork() {
 
     const [selectedFilters, setSelectedFilters] = useState([]); 
 
-
+    const { t } = useTranslation();
 
 //---------------------Charger les followers--------------------------------
 
@@ -150,7 +151,7 @@ const fetchAllMedecins = async (pageNumber) => {
                     setTotalPages(estimatedTotalPages);
                     
                 } else {
-                    toast.info("Aucun médecin trouvé.");
+                   // toast.info("Aucun médecin trouvé.");
                     setFilteredContacts([]);
                       setTotalPages(1); 
                 }
@@ -346,7 +347,7 @@ useEffect(() => {
         <div className="mynetwork">
            <div className="network-container-title">
                     <div className="network-header">
-                        <div className="network-title">Mon Réseau</div>
+                        <div className="network-title">{t("MyNetwork")}</div>
                     </div>
                 </div>
         <div className="network-container">
@@ -355,7 +356,7 @@ useEffect(() => {
             <div className="menu-container">
                     <div className="menu-section">
                         <div className="menu-item">
-                            <div className="menu-text">Spécialistés</div>
+                            <div className="menu-text">{t("Specialties") }</div>
                     </div>
                 {contacts.length > 0 && (
                         <>
@@ -364,7 +365,7 @@ useEffect(() => {
                             type="text"
                             id="spec"
                             className="input-field"
-                            placeholder="Rechercher une spécialiste"
+                            placeholder={t("Searchforaspecialty")}
                             value={searchTerm}
                             onChange={handleSearchChange}
                         />
@@ -387,7 +388,7 @@ useEffect(() => {
                                 />
                                 <label htmlFor="tout" className="checkbox-label"></label>
                             </div>
-                            <div className="checkbox-text">Tout</div>
+                            <div className="checkbox-text">{t("All")}</div>
                         </div>
                     {filteredSpecs.map((specialite) => (
                         <div className="checkbox-container" key={specialite.id_spec}>
@@ -403,7 +404,7 @@ useEffect(() => {
                                 />
                                 <label htmlFor={`spec_${specialite.id_spec}`}  className="checkbox-label"></label>
                             </div>
-                            <div className="checkbox-text">{specialite.libelle}</div>
+                            <div className="checkbox-text">{t(specialite.libelle)}</div>
                         </div>
                     ))} 
                         
@@ -416,7 +417,7 @@ useEffect(() => {
                 
                 <div className="menu-section">
                      <div className="menu-item">
-                         <div className="menu-text">Villes</div>
+                         <div className="menu-text">{t("Cities")}</div>
                     </div>
                 {contacts.length > 0 && ( 
                     <>     
@@ -424,7 +425,7 @@ useEffect(() => {
                         <input
                             type="text"
                             className="input-field"
-                            placeholder="Rechercher une ville"
+                            placeholder={t("Searchforacity")}
                             value={searchTermCities}
                             onChange={handleSearchCitiesChange}
                         />
@@ -448,7 +449,7 @@ useEffect(() => {
                         />
                         <label htmlFor="tout_city" className="checkbox-label"></label>
                     </div>
-                    <div className="checkbox-text">Tout</div>
+                    <div className="checkbox-text">{t("All")}</div>
                     </div>
                 {filteredCities.map((city) => (
                     <div className="checkbox-container" key={city.id_ville}>
@@ -464,7 +465,7 @@ useEffect(() => {
                             />
                             <label htmlFor={`city_${city.id_ville}`} className="checkbox-label"></label>
                         </div>
-                        <div className="checkbox-text">{city.nom_ville}</div>
+                        <div className="checkbox-text">{t(city.nom_ville)}</div>
                     </div>
                 ))}
                                     
@@ -489,13 +490,13 @@ useEffect(() => {
                             //name="spec"
                             value={searchNameTerm}
                             onChange={handleNameSearchChange}
-                            placeholder="Rechercher un praticien sur Clinital"
+                            placeholder={t("SearchforapractitioneronClinital")}
                             />
                         
                         </div>
 
                         <button onClick={handleNameSearchSubmit}>
-                                Rechercher
+                                {t("search")}
                         <img src="../../icons/flech-white.svg" alt="" /> </button>
                     </form>
                 </div>
@@ -520,9 +521,9 @@ useEffect(() => {
                                  <img className="icon-img" src="/images/network/Gastroentérologue.png" alt="Gastroentérologue" />
                             </div>
                              <div className="text-container">
-                               <div className="name">Dr {truncateText(`${contact.nom_med} ${contact.prenom_med}`, 12)}</div>
+                               <div className="name">{t("Dr")} {truncateText(`${contact.nom_med} ${contact.prenom_med}`, 12)}</div>
 
-                                    <div className="specialty">{contact.specialite.libelle}</div>
+                                    <div className="specialty">{t(contact.specialite.libelle)}</div>
                                 </div>
                      
                          </Link>
@@ -533,7 +534,7 @@ useEffect(() => {
                         ) : (
                            
                         <div className="contact-details">
-                             <div className="contact-message">Aucun médecin trouvé avec ce filtre.</div>
+                                            <div className="contact-message">{t("Nodoctorfoundwiththisfilter")}</div>
                         </div>
                                     
                               )}
@@ -558,14 +559,14 @@ useEffect(() => {
                                 <img src="/images/network/Group7859.svg" alt="Contact" />
                             </div>
                             <div className="contact-details">
-                                <div className="contact-message">Vous n'avez pas encore de contacts.</div>
+                                <div className="contact-message">{t("Youdonthaveanycontactsyet")}</div>
                             <Link to="/">
                                 <div className="add-contact-button">
                                     <div className="button-content">
                                         <div className="button-icon">
                                             <img src="/images/network/plus-circle.svg" alt="Plus Circle Icon" />
                                         </div>
-                                        <div className="button-text">Ajouter des contacts</div>
+                                        <div className="button-text">{t("Addcontacts")}</div>
                                     </div>
                               </div>
                             </Link>

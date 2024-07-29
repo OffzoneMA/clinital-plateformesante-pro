@@ -97,7 +97,7 @@
             width: 262px;
             padding-top: 14px;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(170, 170, 170, 0.20);
+            //border-bottom: 1px solid rgba(170, 170, 170, 0.20);
             display: inline-flex;
             justify-content: flex-start;
             align-items: center;
@@ -213,7 +213,7 @@
 }
 .input-container {
     width: 100%;
-    padding: 9px 18px;
+    padding: 9px 8px;
     background: white;
     border-radius: 8px;
     border: 1.40px rgba(170, 170, 170, 0.20) solid;
@@ -226,18 +226,18 @@
     .input-field {
         flex: 1 1 0;
         height: 26;
-        opacity: 0.40;
+        opacity: 0.70;
         color: #8A8F95;
         font-size: 14px;
         font-family: 'Avenir Next LT Pro';
         font-weight: 400;
-        line-height: 18.20px;
+        line-height: 22.20px;
         border: none;
         outline: none;
         background: transparent;
-         padding: '0 8px'; 
-      box-sizing: 'border-box';
-      line-height: '36px'; // Ligne ajustée pour centrage vertical
+        padding: '0 8px'; 
+        box-sizing: 'border-box';
+       line-height: '36px'; // Ligne ajustée pour centrage vertical
 
         &::placeholder {
             color: #8A8F95;
@@ -268,7 +268,7 @@
     border-bottom: 1px rgba(170, 170, 170, 0.20) solid;
 }
 .scrollable-section-ville {
-    max-height: 165px;
+    max-height: 185px;
     width: 270px;
     overflow-y: auto;
     padding-right: 10px;
@@ -277,7 +277,7 @@
 .checkbox-container {
     width: 100%;
    
-    padding-top: 0px;
+    padding-top: 5px;
     padding-bottom: 12px;
     border-bottom: 1px rgba(170, 170, 170, 0.20) solid;
     display: flex;
