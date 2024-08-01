@@ -22,6 +22,15 @@ class RdvService {
         }
     }
 
+    async getAllMedecinRdv() {
+        try {
+            const res = await axios.get(GET_RDV_URL, AUTHORIZATION);
+            return res.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async getAllRdvByTooMonth(month) {
         const URL_1 = RDV_URL + '/rdvbymonth' + `/${USER_ID}` + `/${month - 1}`;
         const URL_2 = RDV_URL + '/rdvbymonth' + `/${USER_ID}` + `/${month}`;

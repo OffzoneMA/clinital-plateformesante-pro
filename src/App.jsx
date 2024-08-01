@@ -70,7 +70,7 @@ function App() {
             {isValidToken &&
               <>
                 <Route exact path="/contact" element={<Contact />} />
-                <Route exact path="/agenda//*" element={<Agenda />} />
+                <Route exact path="/agenda" element={<Agenda />} />
                 <Route exact path="/acceuil//*" element={<Acceuil />} />
                 <Route exact path="/document" element={<Document />} />
                 <Route exact path="/monCompte" element={<MonCompte />} />

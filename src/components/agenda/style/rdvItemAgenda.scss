@@ -1,0 +1,87 @@
+.RDV {
+  align-items: center;
+  border: 0.5px solid rgba(170, 170, 170, 0.50);
+  border-radius: 6px;
+  display: flex;
+  gap: 4px;
+  height: 22px;
+  padding: 2px 6px;
+  position: relative;
+  width: 156px;
+  //flex-shrink: 1;
+
+}
+
+.RDV .rectangle {
+  border-radius: 50px;
+  height: 5px;
+  position: relative;
+  width: 5px;
+}
+
+.rectangle.cabinet {
+  background-color: #C989DD;
+}
+
+.rectangle.video {
+  background-color: #FCB769;
+}
+
+.rectangle.domicile {
+  background-color: #6DC0F9;
+}
+
+.RDV .frame {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 1px;
+  position: relative;
+}
+
+.RDV .text-wrapper {
+  color: var(--black);
+  font-family: "Montserrat-SemiBold", Helvetica;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  width: 26px;
+
+}
+
+.RDV .fr-d-ric-guimond {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--black);
+  display: -webkit-box;
+  flex: 1;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-size: 10px;
+  font-weight: 500;
+  height: 12px;
+  letter-spacing: -0.1px;
+  line-height: normal;
+  margin-top: -1px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.RDV .svg {
+  height: 16px;
+  position: relative;
+  width: 16px;
+}
+
+.RDV.past-rdv {
+  opacity: 0.5;
+}
+
+.RDV.annulee-rdv {
+  text-decoration: line-through;
+}
