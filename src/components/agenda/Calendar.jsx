@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import MonthCalendar from "./MonthCalendar";
 import RdvItemAgenda from "./RdvItemAgenda";
 import CONSTANTS from "../../constant/constant";
-import "../../pages/agenda/agenda.scss";
+import "../../pages/agenda/agendaPage.scss";
 
 function Calendar({ rdvs, setAgendaIsChanging }) {
   const daysMain = useRef();
@@ -181,7 +181,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
   };
 
   return (
-    <div className="agenda-content">
+    <div className="agenda-content1">
       <div className="nav">
         {option !== "month" ?
             (<>
@@ -387,11 +387,11 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
         </div>
       </div>
 
-      <div className="calendar">
-        <div className="calendar-wrapper">
+      <div className="calendar1">
+        <div className="calendar1-wrapper">
           <div
-              className={`calendar-wrapper-header ${
-                  option === "month" ? "calendar-wrapper-header-month" : ""
+              className={`calendar1-wrapper-header ${
+                  option === "month" ? "calendar1-wrapper-header-month" : ""
               }`}
               style={option !== "month" ? { marginLeft: "88px" } : {}}
           >
@@ -409,7 +409,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
                               {week.map((day, index_) => (
                                   <div
                                       className={`day ${
-                                          new Date().toString() === day.toString() ? "today" : ""
+                                          new Date().toString() === day.toString() ? "today1" : ""
                                       }`}
                                       key={index_}
                                   >
@@ -436,7 +436,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
           </div>
 
           {option !== "month" && (
-              <div className="calendar-wrapper-content" >
+              <div className="calendar1-wrapper-content" >
                 <div className="row w-100 ">
                   <div className="container p-0 d-flex">
                     <div className="col-1 p-0" style={{marginLeft:"20px"}}>
@@ -449,7 +449,7 @@ function Calendar({ rdvs, setAgendaIsChanging }) {
                       </div>
                     </div>
                     <div className="col-11 p-0 flex" style={{marginLeft:"-20px"}}>
-                      <div className="calendar-wrapper-content-main" ref={daysMain} >
+                      <div className="calendar1-wrapper-content-main" ref={daysMain} >
                         {renderOption().map((week, index) => (
                             <div
                                 key={index}

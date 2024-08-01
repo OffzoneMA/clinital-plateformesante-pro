@@ -5,7 +5,7 @@ import MyRdvs from "../../components/agenda/MyRdvs";
 import MiniFooter from "../../components/footer/MiniFooter";
 import Navbar from "../../components/navbar/Navbar";
 import CONSTANTS from "../../constant/constant";
-import "./agenda.scss";
+import "./agendaPage.scss";
 
 function Agenda() {
     const [agendaIsChanging, setAgendaIsChanging] = useState();

@@ -4,7 +4,7 @@ import { ORIGIN, TOKEN, USER_ID } from '../../../services/api'
 import apiRdv from '../apiRdv/apiRdv';
 import { toast } from 'react-toastify';
 const RDV_URL = ORIGIN + '/api/rdv/patient'
-const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/patient'
+const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/medecin'
 const SCHEDULS_URL = ORIGIN + '/api/med'
 const MOVE_URL = ORIGIN + '/api/rdv'
 const STATISTICS_URL = ORIGIN + '/api/rdv/med'

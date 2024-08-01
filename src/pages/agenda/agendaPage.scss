@@ -286,7 +286,7 @@
       }
     }
 
-    .agenda-content {
+    .agenda-content1 {
       height: 100%;
       width: calc(100% - 380px);
 
@@ -459,7 +459,7 @@
         }
       }
 
-      .calendar {
+      .calendar1 {
         width: 100%;
         //overflow-x: scroll;
         overflow-y: scroll;
@@ -539,7 +539,7 @@
                   border-left: none;
                 }
               }
-              .today {
+              .today1 {
                 color: $black;
               }
             }
@@ -904,7 +904,7 @@
           text-transform: capitalize;
           margin-bottom: 12px;
         }
-        .today {
+        .today1 {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -973,7 +973,7 @@
   width: 100%;
 }
 
-.agenda-content {
+.agenda-content1 {
   .normal-rdv {
     background-color: $light-purple;
     .item-patient {
