@@ -41,7 +41,7 @@ function PublishProfil1() {
             {t('veuillez_parametrer_votre_agenda')}
           </p>
           <div className="button">
-            <div className="button-2"  onClick={()=>navigate("/SettingsAgenda")}>
+            <div className="button-2"  onClick={()=>navigate("/cabinet/modelSettingsAgenda")}>
             <img className="plus-circle" alt="plus-circle" src="../../icons/plus-circle.svg" />
               <div className="titre-2"> {t('ajouter_un_creneau')}</div>
             </div>

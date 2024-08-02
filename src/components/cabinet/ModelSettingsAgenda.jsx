@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import "./Content.scss";
-import { Group } from "./components/Group";
+import MenuCabinet from "../menuCabinet/MenuCabinet";
 import Model from "../Models/Model";
 import { useTranslation } from "react-i18next";
-import ScheduleServices from "./Services/ScheduleServices";
+import "./ModelSettingsAgenda.scss";
+import { useNavigate } from "react-router-dom";
 
-export const Content = () => {
+export const ModelSettingsAgenda = () => {
+  const navigate = useNavigate();
+  const isArabic = localStorage.getItem("language") === "ar";
   const { t, i18n } = useTranslation();
-  const [showCreneau, setShowCreneau] = useState(false);
+  const [showCreneau, setShowCreneau] = useState(true);
   const [ind, setInd] = useState(0);
   const [showDropdown, setShowDropdown] = useState({ show: false, index: 0 });
   const [showDropdown2, setShowDropdown2] = useState({ show: false, index: 0 });
   const [showDropdown3, setShowDropdown3] = useState({ show: false, index: 0 });
-  const [showDropdown4, setShowDropdown4] = useState(false);
+
   const [timeSlots, setTimeSlots] = useState([
     { startTime: "", endTime: "", duration: "" },
   ]);
-
   const [selectedDays, setSelectedDays] = useState([]);
   const [checkbox1Checked, setCheckbox1Checked] = useState(false);
   const [checkbox2Checked, setCheckbox2Checked] = useState(false);
@@ -27,11 +28,6 @@ export const Content = () => {
   const [checkbox7Checked, setCheckbox7Checked] = useState(false);
   const [checkbox8Checked, setCheckbox8Checked] = useState(false);
   const [durationDaySelected, setDurationDaySelected] = useState([]);
-  const [select, setSelect] = useState(false);
-  const [schedules, setSchedules] = useState([]);
-  const [selectedDoctor, setSelectedDoctor] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const handleDayClick = (day) => {
 
@@ -58,13 +54,8 @@ export const Content = () => {
     setTimeSlots([...timeSlots, { startTime: "", endTime: "", duration: "" }]);
   };
 
-  const calculateTop = (index) => (select ? 514 : 448) + index * 55;
+  const calculateTop = (index) => 514 + index * 55;
 
-  const handleDoctorSelect = (doctor) => {
-    setSelectedDoctor(doctor);
-    setShowDropdown4(false);
-    setSelect(true);
-  };
   const handleStartTimeSelect = (time, index) => {
     const newTimeSlots = [...timeSlots];
     newTimeSlots[index].startTime = time;
@@ -83,8 +74,9 @@ export const Content = () => {
     setTimeSlots(newTimeSlots);
     setShowDropdown3({ show: false, index: 0 });
     setDurationDaySelected(
-      selectedDays 
-   );
+       selectedDays 
+    );
+
   };
 
   useEffect(() => {
@@ -92,211 +84,24 @@ export const Content = () => {
       setShowDropdown({ show: false, index: 0 });
       setShowDropdown2({ show: false, index: 0 });
       setShowDropdown3({ show: false, index: 0 });
-      setShowDropdown4(false);
     }
   }, [showCreneau]);
 
-  useEffect(() => {
-    const fetchSchedules = async () => {
-      try {
-        const response = await ScheduleServices.GetSchedulesByConectedMed();
-        setSchedules(response.data);
-      } catch (error) {
-        console.error("Error fetching schedules", error);
-      }
-    };
-    fetchSchedules();
-  }, []);
-
-  const renderScheduleRows = () => {
-    return schedules.map((schedule) => {
-      const startTime = new Date(schedule.availabilityStart).toLocaleTimeString(
-        [],
-        { hour: "2-digit", minute: "2-digit" }
-      );
-      const endTime = new Date(schedule.availabilityEnd).toLocaleTimeString(
-        [],
-        { hour: "2-digit", minute: "2-digit" }
-      );
-      const duration = schedule.period;
-      const category = schedule.isnewpatient
-        ? t("New Patient")
-        : t("Follow-up");
-      const mode = schedule.modeconsultation.map((m) => m.mode).join(", ");
-      const day = t(schedule.day);
-
-      return (
-        <tr key={schedule.id}>
-          <td>{day}</td>
-          <td>{startTime}</td>
-          <td>{endTime}</td>
-          <td>{duration}</td>
-          <td>{category}</td>
-          <td>
-            {schedule.motifConsultation
-              .map((motif) => motif.motif)
-              .join(", ") || t("All")}
-          </td>
-          <td>{mode}</td>
-          <td>
-            <img className="icond" src="/icons/iconsupp.svg" alt="" />
-            <img className="icond" src="/icons/iconedit.svg" alt="" />
-          </td>
-        </tr>
-      );
-    });
-  };
-
-  const handleSubmit = async () => {
-    setLoading(true);
-    setError(null);
-
-    const requestBody = {
-      day: "TUESDAY",
-      availabilityStart: `${new Date().toISOString().split("T")[0]}T${
-        timeSlots[0]?.startTime
-      }`, // Example: adjust as necessary
-      availabilityEnd: `${new Date().toISOString().split("T")[0]}T${
-        timeSlots[0]?.endTime
-      }`,
-      modeconsultation: [], // Adjust this based on your application's logic
-      motifconsultation: [], // Adjust this based on your application's logic
-      period: "MIN20",
-      medecin_id: 1, // Adjust this based on your application's logic
-      cabinet_id: 1, // Adjust this based on your application's logic
-      isnewpatient: checkbox1Checked, // Adjust this based on your application's logic
-    };
-
-    try {
-      const response = await ScheduleServices.createSchedule(
-        JSON.stringify(requestBody)
-      );
-
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        setError(errorMessage);
-      } else {
-        // Handle successful response
-        const data = await response.json();
-        console.log(data);
-        setShowCreneau(false);
-      }
-    } catch (err) {
-      setError("An unexpected error occurred.");
-    } finally {
-      setLoading(false);
-    }
-  };
   return (
     <div
-      className="contentc"
+      className="publishProfill"
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
       style={{
-        [i18n.language === "ar" ? "right" : "left"]: "322px",
+        direction: isArabic ? "rtl" : "ltr",
       }}
     >
-      <Group onClick={() => setShowCreneau(true)} />
-      {schedules.length === 0 ? (
-        <>
-          <div className="frame-3l">
-            <table className="agenda-tablel">
-              <thead>
-                <tr
-                  style={{
-                    textAlign: i18n.language === "ar" ? "right" : "left",
-                  }}
-                >
-                  <th>{t("DAY")}</th>
-                  <th>{t("START")}</th>
-                  <th>{t("END")}</th>
-                  <th>{t("DURATION")}</th>
-                  <th>{t("CATEGORY")}</th>
-                  <th>{t("REASON")}</th>
-                  <th>{t("MODE_PLACE")}</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <div className="framel">
-            <img
-              className="imgl"
-              alt="Frame"
-              src="https://c.animaapp.com/BGaboWTw/img/frame.svg"
-            />
-            <div className="frame-2l">
-              <p className="vous-n-avez-aucunel">{t("NO_SLOTS_AVAILABLE")}</p>
-              <div className="button-wrapperl">
-                <div className="button-2l" onClick={() => setShowCreneau(true)}>
-                  <img
-                    src="../../icons/circleplus.svg"
-                    className="plus-circlel"
-                    alt="Add"
-                  />
-                  <div className="titre-2l">{t("ADD_SLOT")}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="frame-3l">
-          <table className="agenda-tablel">
-            <thead>
-              <tr
-                style={{ textAlign: i18n.language === "ar" ? "right" : "left" }}
-              >
-                <th>{t("DAY")}</th>
-                <th>{t("START")}</th>
-                <th>{t("END")}</th>
-                <th>{t("DURATION")}</th>
-                <th>{t("CATEGORY")}</th>
-                <th>{t("REASON")}</th>
-                <th>{t("MODE_PLACE")}</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>{renderScheduleRows()}</tbody>
-          </table>
-        </div>
-      )}
-      <div className="button-paginationn">
-        <div className="framen">
-          <img
-            src="../../icons/flech-black-left.svg"
-            alt="send"
-            className="icon-instance-noden"
-          />
-        </div>
-        <div className="pagination-numbern">
-          <div className="text-wrappern">1</div>
-        </div>
-        <div className="div-wrappern">
-          <div className="divn">2</div>
-        </div>
-        <div className="div-wrappern">
-          <div className="divn">3</div>
-        </div>
-        <div className="div-wrappern">
-          <div className="divn">4</div>
-        </div>
-        <div className="div-wrappern">
-          <div className="divn">5</div>
-        </div>
-        <div className="element-wrappern">
-          <div className="elementn">...</div>
-        </div>
-        <div className="div-wrappern">
-          <div className="text-wrapper-2n">10</div>
-        </div>
-        <div className="framen">
-          <img
-            src="../../icons/flech-blackpy.svg"
-            alt="send"
-            className="icon-instance-noden"
-          />
-        </div>
+      <div
+        className="result-container"
+        style={{
+          direction: isArabic ? "rtl" : "ltr",
+        }}
+      >
+        <MenuCabinet state="4" />
       </div>
       <Model show={showCreneau} setShow={setShowCreneau}>
         <div className="framee">
@@ -305,7 +110,7 @@ export const Content = () => {
               className="icon-instance-node x-close-1 "
               src="/icons/closes.svg"
               alt=""
-              onClick={() => setShowCreneau(false)}
+              onClick={() => navigate("/cabinet/ConfigureCalendar")}
             />
           </div>
           <div className="text-wrappere">{t("APPOINTMENT_SLOT")}</div>
@@ -314,23 +119,12 @@ export const Content = () => {
               <div className="frame-5e">
                 <div className="forme">
                   <div className="labele">{t("PRACTITIONERS")}</div>
-                  <div
-                    className="frame-6e"
-                    onClick={() => setShowDropdown4(!showDropdown4)}
-                  >
+                  <div className="frame-6e">
                     <div className="inputw input-instancee">
                       <input
                         className="placeholderr"
-                        placeholder={t("CHOOSE_DOCTOR")}
+                        placeholder="Dr Mohamed Bouy"
                         type="text"
-                        value={selectedDoctor}
-                      />
-                      <img
-                        src="../icons/select.svg" // Remplacez cette source par celle de votre icône de recherche
-                        alt="Search Icon"
-                        style={{
-                          cursor: "pointer",
-                        }}
                       />
                     </div>
                   </div>
@@ -562,69 +356,58 @@ export const Content = () => {
                 </div>
               </div>
               <div className="frame-5e">
-                {select && (
-                  <div className="frame-7e">
-                    <div className="divd">
-                      <div className="groupd">
-                        <img
-                          className="cardiologued"
-                          alt="Cardiologue"
-                          src="../../images/group.png"
-                        />
-                      </div>
-                      <div className="descd">
-                        <div className="naamed">
-                          <div className="text-wrapperd">Dr Mohamed Bouy</div>
-                          <div className="text-wrapper-2d">
-                            Médecin généraliste
-                          </div>
+                <div className="frame-7e">
+                  <div className="divd">
+                    <div className="groupd">
+                      <img
+                        className="cardiologued"
+                        alt="Cardiologue"
+                        src="../../images/group.png"
+                      />
+                    </div>
+                    <div className="descd">
+                      <div className="naamed">
+                        <div className="text-wrapperd">Dr Mohamed Bouy</div>
+                        <div className="text-wrapper-2d">
+                          Médecin généraliste
                         </div>
-                        <div className="div-2d">
-                          <div className="addressd">
+                      </div>
+                      <div className="div-2d">
+                        <div className="addressd">
+                          <img
+                            className="icon-instance-noded"
+                            alt="Ellipse"
+                            src="../../icons/location.svg"
+                          />
+                          <p className="pd">
+                            33 Rue Najib Mahfoud, Casablanca 20000
+                          </p>
+                        </div>
+                        <div className="div-3d">
+                          <div className="address-2d">
                             <img
-                              className="icon-instance-noded"
+                              className="icon-instance-nodedd"
                               alt="Ellipse"
-                              src="../../icons/location.svg"
+                              src="../../icons/phone.svg"
                             />
-                            <p className="pd">
-                              33 Rue Najib Mahfoud, Casablanca 20000
-                            </p>
+                            <div className="text-wrapper-3d">0547829111</div>
                           </div>
-                          <div className="div-3d">
-                            <div className="address-2d">
-                              <img
-                                className="icon-instance-nodedd"
-                                alt="Ellipse"
-                                src="../../icons/phone.svg"
-                              />
-                              <div className="text-wrapper-3d">0547829111</div>
-                            </div>
-                            <div className="address-2d">
-                              <img
-                                className="icon-instance-nodedd"
-                                alt="Ellipse"
-                                src="../../icons/mail.svg"
-                              />
-                              <div className="text-wrapper-3d">
-                                Démos@clinital.io
-                              </div>
+                          <div className="address-2d">
+                            <img
+                              className="icon-instance-nodedd"
+                              alt="Ellipse"
+                              src="../../icons/mail.svg"
+                            />
+                            <div className="text-wrapper-3d">
+                              Démos@clinital.io
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                )}
-                {!select && (
-                  <div className="frame-7e">
-                    <img
-                      className="ellipsee"
-                      alt="Ellipse"
-                      src="https://c.animaapp.com/nRbSI0ip/img/ellipse-7.svg"
-                    />
-                    <div className="text-wrapper-2e">{t("DOCTOR")}</div>
-                  </div>
-                )}
+                </div>
+
                 <div className="frame-8e">
                   <div className="titre-13c">{t("SCHEDULE")}</div>
                   <div className="frame-9e">
@@ -635,7 +418,7 @@ export const Content = () => {
                           className={`titre-wrapperc  ${selectedDays.includes(day) ? "selectedd" : ""} ${durationDaySelected.includes(day) ? "selected-date" : ""}`} 
                           onClick={() => handleDayClick(day)}
                         >
-                       <div
+                          <div
                             className={`titre-14c ${selectedDays.includes(day) ? "selectedd" : ""}  ${durationDaySelected.includes(day) ? "selected-date" : ""}`}
                           >
                             {["L", "M", "M", "J", "V", "S", "D"][day]}
@@ -712,16 +495,13 @@ export const Content = () => {
             <div className="frame-2e">
               <div
                 className="buttonnn inverted default  shadow-false button-instances"
-                onClick={() => setShowCreneau(false)}
+                onClick={() => navigate("/cabinet/ConfigureCalendar")}
               >
                 <div className="divn design-component-instance-node">
                   <div className="titrec button-2s">{t("CANCEL")}</div>
                 </div>
               </div>
-              <div
-                className="buttonnn default  blue shadow-false button-3s"
-                onClick={handleSubmit}
-              >
+              <div className="buttonnn default  blue shadow-false button-3s">
                 <div className="divn button-4s">
                   {i18n.language === "ar" ? (
                     <>
@@ -833,45 +613,6 @@ export const Content = () => {
                   <div className="text-wrapper-5drop">{duration}</div>
                 </div>
               ))}
-            </div>
-          )}
-          {showDropdown4 && (
-            <div
-              className="dropdown4"
-              style={{
-                [i18n.language === "ar" ? "right" : "left"]: "30px",
-              }}
-            >
-              <div className="framem">
-                <div className="inputd">
-                  <div className="placeholderd">{t("SEARCH_DOCTOR")}</div>
-                  <svg
-                    className="search-mdd"
-                    fill="none"
-                    height="21"
-                    viewBox="0 0 21 21"
-                    width="21"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      className="path"
-                      d="M18.375 18.375L14.5687 14.5687M16.625 9.625C16.625 13.491 13.491 16.625 9.625 16.625C5.75901 16.625 2.625 13.491 2.625 9.625C2.625 5.75901 5.75901 2.625 9.625 2.625C13.491 2.625 16.625 5.75901 16.625 9.625Z"
-                      stroke="#A9ACB0"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="div-wrapperd">
-                <div
-                  className="text-wrapperd"
-                  onClick={() => handleDoctorSelect("Dr Mohamed Bouy")}
-                >
-                  Dr. Mohamed Bouy
-                </div>
-              </div>
             </div>
           )}
         </div>

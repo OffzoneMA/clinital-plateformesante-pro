@@ -172,6 +172,7 @@
   "VERIFY_ACCESS": "Verify my access",
   "AGENDA": "Agenda",
   "SETTINGS": "Settings",
+  "SignIn": "Sign In",
   "EXCEPTIONAL_EVENT": "Exceptional event",
   "MINUTES": "mins",
   "60_MINUTES": "1h.00 mins",
@@ -185,5 +186,7 @@
    "other": "Other",
     "period": "Period",
      "FROM": "From",
-  "TOO": "to"
+  "TOO": "to",
+  "take_medical_appointment": "Take a Medical Appointment",
+   "take_appointment": "Take an Appointment"
 }
