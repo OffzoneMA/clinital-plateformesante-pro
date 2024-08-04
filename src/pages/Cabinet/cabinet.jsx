@@ -11,6 +11,7 @@ import PaymentOptions from "../../components/cabinet/PaymentOptions";
 import PaymentProcessing from "../../components/cabinet/PaymentProcessing";
 import PublishProfil1 from "../../components/cabinet/PublishProfil1";
 import PublishProfil2 from "../../components/cabinet/PublishProfil2";
+import { ModelSettingsAgenda } from "../../components/cabinet/ModelSettingsAgenda";
 // Function to get stored user
 const getStoredUser = () => {
   const storedUserJSON = localStorage.getItem("user");
@@ -115,6 +116,13 @@ function Cabinet() {
         path="/publishProfil"
            element={
             <ProtectedRoute component={PublishProfil2} allowedStates={[5]} />
+          }  
+        />
+          <Route 
+        exact 
+        path="/modelSettingsAgenda"
+           element={
+            <ProtectedRoute component={ModelSettingsAgenda} allowedStates={[5]} />
           }  
         />
       </Routes>

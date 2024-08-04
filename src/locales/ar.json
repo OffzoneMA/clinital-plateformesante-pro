@@ -185,5 +185,8 @@
     "other": "آخر",
      "period": "فترة",
       "FROM": "من",
-  "TOO": "إلى"
+  "TOO": "إلى",
+  "SignIn": "تسجيل الدخول",
+  "take_medical_appointment": "تحديد موعد طبي",
+  "take_appointment": "تحديد موعد"
 }
