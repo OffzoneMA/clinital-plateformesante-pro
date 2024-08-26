@@ -23,9 +23,13 @@ import ErrorBoundary from "./components/errors/ErrorBoundery";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
+
 import Myteam from "./pages/MyTeam";
 import MonEquipe from "./pages/MonEquipe";
 import CardPage from "./pages/acceuil/CardPage";
+
+import SettingsAgenda from "./pages/SettingsAgenda/SettingsAgenda";
+import ÉvénementExceptionnel from "./pages/Événementexceptionnel/ÉvénementExceptionnel";
 
 //import Acceuil2 from "./pages/acceuil/Acceuil2";
 
@@ -60,6 +64,8 @@ function App() {
           
             <Route index path="/" element={<HomePage />} />
             <Route exact path="/login/*" element={<Connexion />} />
+            <Route exact path="/SettingsAgenda/*" element={<SettingsAgenda />} />
+            <Route exact path="/ÉvénementExceptionnel/*" element={<ÉvénementExceptionnel />} />
             <Route exact path="/result//*" element={<Result />} />
             <Route exact path="/cabinet//*" element={<Cabinet />} />
             <Route exact path="/cardpage" element={<CardPage />} />
@@ -69,7 +75,7 @@ function App() {
             {isValidToken &&
               <>
                 <Route exact path="/contact" element={<Contact />} />
-                <Route exact path="/agenda//*" element={<Agenda />} />
+                <Route exact path="/agenda" element={<Agenda />} />
                 <Route exact path="/acceuil//*" element={<Acceuil />} />
                 <Route exact path="/myteam" element={<MonEquipe />} />
                 <Route exact path="/document" element={<Document />} />

@@ -2,7 +2,6 @@
 
 .cabinetadd {
 
-
   .bg {
     height: 100%;
     width: 100%;
@@ -52,6 +51,7 @@
     border: 1.6px solid;
     top: 280px;
     border-color: #c989dd;
+    background-color: #fafafa;
   }
   .container h1 {
     position: absolute;
@@ -79,14 +79,20 @@
     gap: 26px;
     border-radius: 12px;
     background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #B1DDFC; // Change the background color on hover
+    }
   }
+  .childDiv:nth-of-type(2):hover {
+    background-color: #EED8F3; // Change the background color on hover for the second childDiv
+  } 
   .innerChildDiv {
     width: 476px;
     height: 134px;
     gap: 30px;
     border-radius: 15px;
-    background-color: #ffffff;
-    position: relative;
+    position: relative;  
   }
   .textZone {
     width: 274px;
@@ -149,6 +155,7 @@
     border: 1.6px solid;
     top: 280px;
     border-color: #c989dd;
+    background-color: #fafafa;
   }
   .containerAdd h1 {
     position: absolute;
@@ -369,6 +376,7 @@
     border: 1.6px solid;
     top: 280px;
     border-color: #c989dd;
+    background-color: #fafafa;
   } 
   .containerRejoindre h1 {
     position: absolute;

@@ -43,7 +43,7 @@
         min-width: 35px;
         transition: all 200ms ease;
   
-        &:not(.large-btn):not(.second-large-btn) {
+        &:not(.large-btn) {
           padding: 6px;
   
           img {
@@ -57,27 +57,22 @@
             background: $purple;
           }
         }
+        
       }
+  
   
       .large-btn {
         height: 43px;
-
+     
+      }
+      .lar{
         &:hover {
           color: white;
           background: linear-gradient(90deg, #6dc0f9 -21.6%, #c989dd 122.57%);
         }
       }
-
-      .second-large-btn {
-        height: 43px;
-        background-color: transparent;
-        color: $white;
-        font-size: 14px;
-        border: 1px solid $white;
-      }
   
       .user {
-        cursor: pointer;
         display: flex;
         align-items: center;
         gap: 6px;
@@ -117,6 +112,7 @@
         right: 15px;
         top: 65px;
         padding: 20px;
+        margin-right: -10px;
         z-index: 999;
         transition: all 200ms ease;
         filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
@@ -139,8 +135,9 @@
               max-height: 20px;
             }
           }
-
-          h4 {
+  
+          h4,
+          .moncompte {
             margin: 0;
             font-size: 14px;
             font-weight: 600;
@@ -151,8 +148,203 @@
           color: #f48888;
         }
   
+        .item:first-child > h4,
+        .moncompte {
+          color: $blue;
+        }
+        .sub-menu1 {
+          cursor: default;
+          position: absolute;
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 245px;
+          border-radius: 10px;
+          right: 120px;
+          top: 65px;
+          padding: 20px;
+          z-index: 999;
+          transition: all 200ms ease;
+          filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+    
+          .item {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+  
+    
+            h4,
+            .moncompte {
+              margin: 0;
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }}
+        hr {
+          height: 0;
+          left: -20px;
+          border: none;
+          opacity: 0.2;
+          position: relative;
+          width: calc(100% + 40px);
+          border-bottom: 1px solid $grey;
+        }
+  
+        &::after {
+          content: "";
+          height: 30px;
+          width: 30px;
+          background-color: white;
+          border-radius: 4px;
+          position: absolute;
+          top: -2px;
+          right: 26px;
+          transform: rotate(45deg);
+        }
+      }
+      .sub-menuu {
+        cursor: default;
+        position: absolute;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 245px;
+        border-radius: 10px;
+        top: 65px;
+        padding: 20px;
+        margin-right: -10px;
+        z-index: 999;
+        transition: all 200ms ease;
+        filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+  
+        .item {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+  
+          .item-img {
+            width: 35px;
+            height: 35px;
+            background-color: #f8f8f8;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              max-height: 20px;
+            }
+          }
+  
+          h4,
+          .moncompte {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+          }
+        }
+  
+        .disconnect h4 {
+          color: #f48888;
+        }
+  
+        .item:first-child > h4,
+        .moncompte {
+          color: $blue;
+        }
+        .sub-menu1 {
+          cursor: default;
+          position: absolute;
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 245px;
+          border-radius: 10px;
+          right: 120px;
+          top: 65px;
+          padding: 20px;
+          z-index: 999;
+          transition: all 200ms ease;
+          filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+    
+          .item {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+  
+    
+            h4,
+            .moncompte {
+              margin: 0;
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }}
+        hr {
+          height: 0;
+          left: -20px;
+          border: none;
+          opacity: 0.2;
+          position: relative;
+          width: calc(100% + 40px);
+          border-bottom: 1px solid $grey;
+        }
+  
+        &::after {
+          content: "";
+          height: 30px;
+          width: 30px;
+          background-color: white;
+          border-radius: 4px;
+          position: absolute;
+          top: -2px;
+          right: 26px;
+          transform: rotate(45deg);
+        }
+      }
+      .sub-menu1 {
+        cursor: default;
+        position: absolute;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 155px;
+        border-radius: 10px;
+        top: 65px;
+        padding: 20px;
+        z-index: 999;
+        transition: all 200ms ease;
+        filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+  
+        .item {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
 
-
+  
+          h4,
+          .moncompte {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+          }
+        }
+  
+        .disconnect h4 {
+          color: #f48888;
+        }
+  
+        .item:first-child > h4,
+        .moncompte {
+          color: $blue;
+        }
   
         hr {
           height: 0;
@@ -186,4 +378,5 @@
         }
       }
     }
+
   }

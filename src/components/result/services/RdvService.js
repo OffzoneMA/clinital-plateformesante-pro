@@ -4,7 +4,7 @@ import { ORIGIN, TOKEN, USER_ID } from '../../../services/api'
 import apiRdv from '../apiRdv/apiRdv';
 import { toast } from 'react-toastify';
 const RDV_URL = ORIGIN + '/api/rdv/patient'
-const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/patient'
+const GET_RDV_URL = ORIGIN + '/api/rdv/rdvs/medecin'
 const SCHEDULS_URL = ORIGIN + '/api/med'
 const MOVE_URL = ORIGIN + '/api/rdv'
 const STATISTICS_URL = ORIGIN + '/api/rdv/med'
@@ -17,6 +17,15 @@ class RdvService {
         try {
             const response = await axios.get(URL, AUTHORIZATION);
             return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getAllMedecinRdv() {
+        try {
+            const res = await axios.get(GET_RDV_URL, AUTHORIZATION);
+            return res.data;
         } catch (error) {
             throw error;
         }

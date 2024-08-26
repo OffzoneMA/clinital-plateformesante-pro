@@ -11,6 +11,16 @@ export const getAllRdv = async (state) => {
     }
 }
 
+export const getAllMedRdv = async (state) => {
+    try {
+        const data = await RdvService.getAllMedecinRdv();
+        console.log("*************", data);
+        state(data);
+    } catch (error) {
+        toast.error("error: "+ error.message);
+    }
+}
+
 export const getAllRdvByTooMonth = async (state, month) => {
     try {
         const res = await RdvService.getAllRdvByTooMonth(month)
