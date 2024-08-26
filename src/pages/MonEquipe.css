@@ -171,7 +171,8 @@
     gap: 40px;
     left: 350px;
     position: absolute;
-    top: 150px;
+    top: 80px;
+    width: 70%;
 }
 
 .mon-quipe-my-team .help {

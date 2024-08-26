@@ -1,0 +1,149 @@
+/* src/components/Card.css */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch; 
+    width: 100%;
+    height: fit-content;
+    }
+  
+  .card-into{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      align-self: stretch;
+      border-radius: 10px;
+      border: 1px solid #6dc0f9b2;
+      background: #FFF;
+      }
+      .card-intoP{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+        border-radius: 10px;
+        border: 1px solid #c989dd14;
+        background: #FFF;
+        }
+    
+      .card-info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+  .card-title {
+    display: flex;
+  padding: 12px 12px 10px 12px;
+  align-items: center;
+  align-self: stretch;
+    color: #6dc0f9 !important;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    background: #6dc0f914;
+    }
+    .card-titleP {
+      display: flex;
+    padding: 12px 12px 10px 12px;
+    align-items: center;
+    align-self: stretch;
+      color: #c989dd !important;
+      font-family: Montserrat;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      background: #c989dd14;
+      }
+  .cardinfo1 {
+  
+  display: flex;
+  padding: 0px 12px 12px 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  align-self: stretch;
+    }
+  
+    .card-info {
+  
+  
+      color: #6C727B;
+      font-family: "Avenir Next LT Pro";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    .card-info.medical {
+      font-weight: bold; /* Rend le texte en gras */
+    }
+    .card-info.email {
+      margin-left: 30px;
+    }
+    
+    
+    .card-button {
+      background-color: #6dc0f9;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      display: flex;
+      padding: 6px 10px;
+      justify-content: center;
+      align-items: center;
+      color: #FFF;
+  
+      text-align: center;
+  
+  font-family: "Avenir Next LT Pro";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left: 130%;
+    }
+    
+    .card-button:hover {
+      background-color: #349ce2;
+    }
+
+    .card-buttonP {
+      background-color: #c989dd;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      display: flex;
+      padding: 6px 10px;
+      justify-content: center;
+      align-items: center;
+      color: #FFF;
+  
+      text-align: center;
+  
+  font-family: "Avenir Next LT Pro";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left: 90%;
+    }
+    
+    .card-buttonP:hover {
+      background-color: #b749d8;
+    }
+    

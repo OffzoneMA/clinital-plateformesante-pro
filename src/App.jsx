@@ -25,6 +25,7 @@ import { setLoginToggle } from "./utils/redux/GlobalSlice";
 import Cabinet from "./pages/Cabinet/cabinet";
 import Myteam from "./pages/MyTeam";
 import MonEquipe from "./pages/MonEquipe";
+import CardPage from "./pages/acceuil/CardPage";
 
 //import Acceuil2 from "./pages/acceuil/Acceuil2";
 
@@ -61,7 +62,7 @@ function App() {
             <Route exact path="/login/*" element={<Connexion />} />
             <Route exact path="/result//*" element={<Result />} />
             <Route exact path="/cabinet//*" element={<Cabinet />} />
-            
+            <Route exact path="/cardpage" element={<CardPage />} />
             <Route exact path="/profil/:id" element={<Profil />} />
            
             {console.log(isValidToken)}
