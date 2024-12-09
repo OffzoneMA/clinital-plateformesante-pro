@@ -64,17 +64,36 @@ function SearchBarDoc({ setRandomX, comp }) {
 
   // Filter citys
   const filterSearch = (array, search, param) => {
-    const x = array && array.toLowerCase();
-    const newArray = search?.filter((item) =>
-      item[param]
+    // Vérifie si search est un tableau
+    if (!Array.isArray(search)) {
+        return [];
+    }
+
+    // Normalise et met en minuscule l'array, s'il est défini
+    const normalizedArray = array
         ?.toLowerCase()
-        .normalize("NFD")
-        .replace(/\p{Diacritic}/gu, "")
-        .includes(x)
-    );
-    const y = !array ? [] : newArray;
-    return y;
-  };
+        ?.normalize("NFD")
+        ?.replace(/\p{Diacritic}/gu, "");
+
+    const newArray = search.filter((item) => {
+        // Vérifie si l'élément item[param] est une chaîne
+        if (typeof item[param] !== 'string') {
+            return false;
+        }
+
+        // Normalise et met en minuscule l'élément à comparer
+        const normalizedItem = item[param]
+            ?.toLowerCase()
+            ?.normalize("NFD")
+            ?.replace(/\p{Diacritic}/gu, "");
+        
+        // Vérifie si l'élément contient la chaîne de recherche normalisée
+        return normalizedItem.includes(normalizedArray);
+    });
+
+    return !array ? [] : newArray;
+};
+
   // Mark citys
   const handleSeach = (array, container) => {
     const context = container.current;
