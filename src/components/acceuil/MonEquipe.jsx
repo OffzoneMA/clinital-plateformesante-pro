@@ -2,7 +2,7 @@ import React,  { useState, useEffect } from "react";
 import mail02 from "../../assets/icons/mail-02.svg";
 import phone from '../../assets/icons/phone.svg';
 import {PlusCircle2} from '../../icons/PlusCircle2/PlusCircle2'
-import { getEquipe } from "../../action/praticien";
+import { getEquipe } from "../../action/Praticien";
 import { Link } from "react-router-dom"; 
 
 import './monequipe.css';
