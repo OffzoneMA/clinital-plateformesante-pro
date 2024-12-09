@@ -43,7 +43,7 @@ const CardPage = ({ equipe, type }) => {
   const handleSearch = () => {
     setCurrentPage(1);
     const filterBySearchTerm = (list) => {
-      return list.filter(item => item.nom && item.nom.toLowerCase().startsWith(searchTerm.toLowerCase()));
+      return list?.filter(item => item.nom && item.nom.toLowerCase().startsWith(searchTerm.toLowerCase()));
     };
 
     const getFilteredData = () => {

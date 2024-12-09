@@ -29,7 +29,7 @@ const CardPage = ({ equipe, type }) => {
   };
 
   const filterBySearchTerm = (list) => {
-    return list.filter(item => item.nom && item.nom.toLowerCase().startsWith(searchTerm.toLowerCase()));
+    return list?.filter(item => item.nom && item.nom.toLowerCase().startsWith(searchTerm.toLowerCase()));
   };
 
   const filteredMedecins = filterBySearchTerm(medecins);

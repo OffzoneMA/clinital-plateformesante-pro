@@ -64,7 +64,7 @@ function Agenda() {
         }));
     };*/
 
-    const filtredRdvs = [...rdvs].filter((rdv) => {
+    const filtredRdvs = [...rdvs]?.filter((rdv) => {
       const today = new Date().getTime();
       const rdvStart = new Date(rdv.start).getTime();
 

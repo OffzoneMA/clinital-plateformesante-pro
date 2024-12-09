@@ -236,7 +236,7 @@ function RdvPopup() {
                         {files.map((file, index) => {
                           return (
                             <div key={index} className="file-item">
-                              <div className="delete-rdv-icon" onClick={() => setFiles(files.filter( (file,idx) => idx !== index ))}>
+                              <div className="delete-rdv-icon" onClick={() => setFiles(files?.filter( (file,idx) => idx !== index ))}>
                                 <img src="../../icons/close.svg" alt="" />
                               </div>
                               <img

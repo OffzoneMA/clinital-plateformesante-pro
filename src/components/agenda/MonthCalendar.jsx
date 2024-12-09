@@ -35,7 +35,7 @@ function MonthCalendar({ rdvs, onChangeMonth, rdvType, currentDate }) {
 
 
   const renderRdvsForDay = (day) => {
-    const dayRdvs = rdvs.filter((rdv) => {
+    const dayRdvs = rdvs?.filter((rdv) => {
       const rdvDate = new Date(rdv.start);
       return rdvDate.getDate() === day.getDate() &&
           rdvDate.getMonth() === day.getMonth() &&

@@ -30,7 +30,7 @@ function AddDocuments() {
   const handleFileDelete = (id, index) => {
     setFileNames((prevNames) => ({
       ...prevNames,
-      [id]: prevNames[id].filter((_, i) => i !== index),
+      [id]: prevNames[id]?.filter((_, i) => i !== index),
     }));
   };
   const handleSubmit = () => {

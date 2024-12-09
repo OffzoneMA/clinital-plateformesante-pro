@@ -41,7 +41,7 @@ export const ModelSettingsAgenda = () => {
         setSelectedDays((prevSelectedDays) => 
           [...prevSelectedDays, day]
         );
-        return prevDurationDays.filter(durationDay => durationDay !== day);
+        return prevDurationDays?.filter(durationDay => durationDay !== day);
       } else {
        
         return prevDurationDays;

@@ -16,7 +16,7 @@ const Calendar = ({prochRdv}) => {
 
   useEffect(() => {
     // Extraire les jours des rendez-vous pour le mois actuellement affiché
-    const filteredRdv = prochRdv.filter(rdv => {
+    const filteredRdv = prochRdv?.filter(rdv => {
       const rdvDate = new Date(rdv.start);
       return rdvDate.getMonth() === currentDate.getMonth() && rdvDate.getFullYear() === currentDate.getFullYear();
     });
