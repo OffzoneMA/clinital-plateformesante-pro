@@ -37,6 +37,13 @@ const isPlugins = process.env.NODE_ENV !== 'production' ? isDevPlugin : isProdPl
 const DEVELOPMENT = process.env.NODE_ENV === "development";
 const PRODUCTION = process.env.NODE_ENV === "production";
 
+const env = Object.keys(process.env)
+  .filter(key => key.startsWith('REACT_APP_') || key === 'NODE_ENV' || key === 'BASE_URL')
+  .reduce((env, key) => {
+    env[`process.env.${key}`] = JSON.stringify(process.env[key]);
+    return env;
+  }, {});
+
 module.exports = {
   mode,
   entry: './src/index.jsx',
@@ -124,12 +131,13 @@ module.exports = {
       chunkFilename: 'assets/css/[name].[contenthash:8].chunk.css',
     }),
     isDevelopment && new ReactRefreshWebpackPlugin(),
-    isProduction &&new webpack.DefinePlugin({
+    new webpack.DefinePlugin(env),
+    /*isProduction && new webpack.DefinePlugin({
       'process.env.NODE_ENV' : JSON.stringify('production')
   }),
   isDevelopment &&new webpack.DefinePlugin({
     'process.env.NODE_ENV' : JSON.stringify('development')
-})
+})*/
   ].filter(Boolean),
   optimization: {
     minimize: isProduction,
