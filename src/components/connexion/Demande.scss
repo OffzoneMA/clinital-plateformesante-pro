@@ -1,6 +1,28 @@
 @import '../../styles/style.scss';
 .inscription {
 
+  .addForm {
+    .input-check-box1 {
+      .input-doth {
+        border-color: #6DC0F9;
+      }
+    }
+  }
+
+  .btns {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    div {
+      flex: 1;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
     .result {
       position: absolute;
       display: flex;
