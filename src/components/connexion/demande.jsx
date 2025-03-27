@@ -25,6 +25,11 @@ function Demande() {
     emailError: false,
     prenomError: false,
     nomError: false,
+    civiliteError: false,
+    villeError: false,
+    specError: false,
+    inpeError: false,
+    acceptedError: false,
   });
   const { t, i18n } = useTranslation();
   const [search, setSearch] = useState({
@@ -40,7 +45,7 @@ function Demande() {
     inpe: "",
     ville: "",
     validation: "ENCOURS",
-    civilite_med: "Mme",
+    civilite_med: "",
   });
   const [specData, setSpecData] = useState({
     libelle: "",
@@ -143,20 +148,30 @@ function Demande() {
       emailError: !validateEmail(formData.mail),
       prenomError: formData.prenom_med.trim() === "",
       nomError: formData.nom_med.trim() === "",
+      civiliteError: formData.civilite_med.trim() === "",
+      villeError: formData.ville.trim() === "",
+      specError: formData.specialite.trim() === "",
+      inpeError: formData.inpe.trim() === "",
+      acceptedError: !isAccepted,
     });
 
     if (
       !validatePhone(formData.phonenumber) ||
       !validateEmail(formData.mail) ||
       formData.prenom_med.trim() === "" ||
-      formData.nom_med.trim() === ""
+      formData.nom_med.trim() === "" ||
+      formData.civilite_med.trim() === "" ||
+      formData.ville.trim() === "" ||
+      formData.specialite.trim() === "" ||
+      formData.inpe.trim() === "" ||
+      !isAccepted
     ) {
       setLoading(false);
       return;
     }
 
     if (!isAccepted) {
-      toast.error(t("acceptTerms"));
+      // toast.error(t("acceptTerms"));
       setLoading(false);
       return;
     }
@@ -244,9 +259,10 @@ function Demande() {
                         setFormData({ ...formData, civilite_med: "Mme" });
                         setCityInputFocused(false);
                         setSpecInputFocused(false);
+                        setErrors({...errors, civiliteError: false});
                       }}
                     />
-                    <div className="input-doth"></div>
+                    <div className={`input-doth ${errors.civiliteError ? "error" : ""}`}></div>
                     <span> {t("femme")}</span>
                   </label>
                   <label
@@ -264,6 +280,7 @@ function Demande() {
                         setFormData({ ...formData, civilite_med: "Mr" });
                         setCityInputFocused(false);
                         setSpecInputFocused(false);
+                        setErrors({...errors, civiliteError: false});
                       }}
                     />
                     <input
@@ -271,7 +288,7 @@ function Demande() {
                       name="Civilité"
                       value={formData.civilite_med}
                     />
-                    <div className="input-doth"></div>
+                    <div className={`input-doth ${errors.civiliteError ? "error" : ""}`}></div>
                     <span>{t("homme")}</span>
                   </label>
                 </div>
@@ -292,16 +309,11 @@ function Demande() {
                     type="text"
                     name=""
                     placeholder={t("placeholderPrenom")}
+                    className={errors.prenomError ? "error" : ""}
                     onChange={(e) => {
                       setFormData({
                         ...formData,
                         prenom_med: e.target.value,
-                      });
-                      setErrors({
-                        phoneError: !validatePhone(formData.phonenumber),
-                        emailError: !validateEmail(formData.mail),
-                        prenomError: formData.prenom_med.trim() === "",
-                        nomError: formData.nom_med.trim() === "",
                       });
                     }}
                     onFocus={() => {
@@ -309,12 +321,12 @@ function Demande() {
                       setSpecInputFocused(false);
                     }}
                   />
-                  {errors.prenomError && (
+                  {/* {errors.prenomError && (
                     <span className="err">
                       <br />
                       {t("requiredFirstName")}
                     </span>
-                  )}
+                  )} */}
                 </div>
                 <div>
                   <label htmlFor="">{t("lastName")}</label>
@@ -322,16 +334,11 @@ function Demande() {
                     type="text"
                     name=""
                     placeholder={t("placeholderNom")}
+                    className={errors.nomError ? "error" : ""}
                     onChange={(e) => {
                       setFormData({
                         ...formData,
                         nom_med: e.target.value,
-                      });
-                      setErrors({
-                        phoneError: !validatePhone(formData.phonenumber),
-                        emailError: !validateEmail(formData.mail),
-                        prenomError: formData.prenom_med.trim() === "",
-                        nomError: formData.nom_med.trim() === "",
                       });
                     }}
                     onFocus={() => {
@@ -339,12 +346,12 @@ function Demande() {
                       setSpecInputFocused(false);
                     }}
                   />
-                  {errors.nomError && (
+                  {/* {errors.nomError && (
                     <span className="err">
                       <br />
                       {t("requiredLastName")}
                     </span>
-                  )}
+                  )} */}
                 </div>
               </div>
               <div className="adresse">
@@ -353,18 +360,14 @@ function Demande() {
                   type="tele"
                   id="telephone"
                   placeholder={t("placeholderPhoneNumber")}
+                  className={errors.phoneError ? "error" : ""}
                   value={formData.phonenumber}
                   onChange={(e) => {
                     setFormData({
                       ...formData,
                       phonenumber: e.target.value,
                     });
-                    setErrors({
-                      phoneError: !validatePhone(formData.phonenumber),
-                      emailError: !validateEmail(formData.mail),
-                      prenomError: formData.prenom_med.trim() === "",
-                      nomError: formData.nom_med.trim() === "",
-                    });
+                    // setErrors({...errors, phoneError: !validatePhone(formData.phonenumber)});
                   }}
                   onFocus={() => {
                     setCityInputFocused(false);
@@ -372,28 +375,23 @@ function Demande() {
                   }}
                 />
               </div>
-              {errors.phoneError && (
+              {/* {errors.phoneError && (
                 <span className="err"> {t("invalidPhoneNumber")}</span>
-              )}
-
+              )} */}
               <div className="adresse">
                 <label htmlFor="email">{t("emailAddress")}</label>
                 <input
                   type="text"
                   id="email"
                   placeholder={t("placeholderEmail")}
+                  className={errors.emailError ? "error": ""}
                   value={formData.mail}
                   onChange={(e) => {
                     setFormData({
                       ...formData,
                       mail: e.target.value,
                     });
-                    setErrors({
-                      phoneError: !validatePhone(formData.phonenumber),
-                      emailError: !validateEmail(formData.mail),
-                      prenomError: formData.prenom_med.trim() === "",
-                      nomError: formData.nom_med.trim() === "",
-                    });
+                    // setErrors({...errors, emailError: !validateEmail(formData.mail)});
                   }}
                   onFocus={() => {
                     setCityInputFocused(false);
@@ -401,74 +399,68 @@ function Demande() {
                   }}
                 />
               </div>
-              {errors.emailError && (
+              {/* {errors.emailError && (
                 <span className="err"> {t("invalidEmail")}</span>
-              )}
-
+              )} */}
               <div>
                 <label htmlFor="ville">{t("city")}</label>
-                <input
-                  type="text"
-                  name="city"
-                  placeholder={t("chooseCity")}
-                  value={formData.ville}
-                  onChange={(e) => {
-                    toggleSeach(e);
-                  }}
-                  readOnly
-                  onClick={() => {
-                    setCityInputFocused(true);
-                    setSpecInputFocused(false);
-                    setSearch({
-                      ...search,
-                      city: " ",
-                    });
-                  }} // Set focus state when input is focused
-                  style={{
-                    paddingRight: "30px",
-                  }}
-                />
-                <img
-                  src="../icons/select.svg" // Remplacez cette source par celle de votre icône de recherche
-                  alt="Search Icon"
-                  style={{
-                    position: "absolute",
-                    top: "68%",
-                    right:
-                      localStorage.getItem("language") === "ar"
-                        ? "460px"
-                        : "10px",
-                    transform: "translateY(-50%)",
-                    cursor: "pointer",
-                  }}
-                />
-
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder={t("chooseCity")}
+                    className={errors.villeError ? "error" : ""}
+                    value={formData.ville}
+                    onChange={(e) => {
+                      toggleSeach(e);
+                    }}
+                    readOnly
+                    onClick={() => {
+                      setCityInputFocused(!cityInputFocused);
+                      setSpecInputFocused(false);
+                      setSearch({
+                        ...search,
+                        city: " ",
+                      });
+                    }} // Set focus state when input is focused
+                    style={{
+                      paddingRight: "30px",
+                    }}
+                  />
+                  <img
+                    src="../icons/select.svg" // Remplacez cette source par celle de votre icône de recherche
+                    alt="Search Icon"
+                    style={{
+                      position: "absolute",
+                      top: "68%",
+                      right:
+                        localStorage.getItem("language") === "ar"
+                          ? "460px"
+                          : "10px",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                    }}
+                  />
                 {cityInputFocused && (
                   <div className="result" ref={citySearchContainer}>
-                    <input
-                      type="text"
-                      name="city"
-                      placeholder={t("searchCity")}
-                      onChange={(e) => {
-                        toggleSeach(e);
-                      }}
-                      style={{
-                        marginTop: "10px",
-                        paddingRight: "30px",
-                        marginBottom: "5px",
-                      }}
-                    />
-                    <img
-                      src="../icons/search-md.svg" // Remplacez cette source par celle de votre icône de recherche
-                      alt="Search Icon"
-                      style={{
-                        position: "absolute",
-                        top: "9%",
-                        right: "10px",
-
-                        cursor: "pointer",
-                      }}
-                    />
+                    <div className="search-container">
+                      <input
+                        type="text"
+                        name="city"
+                        className="search-result"
+                        placeholder={t("searchCity")}
+                        onChange={(e) => {
+                          toggleSeach(e);
+                        }}
+                        style={{
+                          paddingRight: "30px",
+                        }}
+                      />
+                      <img
+                        src="../icons/search-md.svg" // Remplacez cette source par celle de votre icône de recherche
+                        alt="Search Icon"
+                        className="search-icon-result"
+                      />
+                    </div>
                     {loading ? (
                       <span className="loading">{t("loading")}</span>
                     ) : (
@@ -485,6 +477,7 @@ function Demande() {
                                 ...formData,
                                 ville: x.nom_ville,
                               });
+                              setErrors({...errors, villeError: false});
                             }}
                             style={{
                               direction:
@@ -507,12 +500,13 @@ function Demande() {
                   type="text"
                   name="spec"
                   placeholder={t("chooseSpeciality")}
+                  className={errors.specError ? "error" : ""}
                   value={formData.specialite}
                   readOnly // Ajout de l'attribut readOnly
                   onClick={(e) => {
                     toggleSeach(e);
                     setCityInputFocused(false);
-                    setSpecInputFocused(true);
+                    setSpecInputFocused(!specInputFocused);
                     setSearch({
                       ...search,
                       spec: " ",
@@ -521,7 +515,6 @@ function Demande() {
                   }}
                   style={{
                     paddingRight: "30px",
-                    borderBottom: "1px solid #eaeaea",
                   }}
                 />
                 <img
@@ -538,35 +531,29 @@ function Demande() {
                     cursor: "pointer",
                   }}
                 />
-
                 {specInputFocused && (
                   <div className="result" ref={specSearchContainer}>
-                    <input
-                      type="text"
-                      name="spec"
-                      placeholder={t("searchSpeciality")}
-                      onChange={(e) => {
-                        toggleSeach(e);
-                      }}
-                      style={{
-                        marginTop: "10px",
-                        paddingRight: "30px",
-                        marginBottom: "5px",
-                      }}
-                    />
-                    <img
-                      src="../icons/search-md.svg" // Remplacez cette source par celle de votre icône de recherche
-                      alt="Search Icon"
-                      style={{
-                        position: "absolute",
-                        top: "14%",
-                        right: "10px",
-                        transform: "translateY(-50%)",
-                        cursor: "pointer",
-                      }}
-                    />
+                    <div className="search-container">
+                      <input
+                        type="text"
+                        name="spec"
+                        className="search-result"
+                        placeholder={t("searchSpeciality")}
+                        onChange={(e) => {
+                          toggleSeach(e);
+                        }}
+                        style={{
+                          paddingRight: "30px",
+                        }}
+                      />
+                      <img
+                        src="../icons/search-md.svg" // Remplacez cette source par celle de votre icône de recherche
+                        alt="Search Icon"
+                        className="search-icon-result"
+                      />
+                    </div>
                     {showInput ? (
-                      <span>
+                      <div className="add-spec-container">
                         <input
                           type="text"
                           placeholder={t("enterNewSpeciality")}
@@ -578,21 +565,9 @@ function Demande() {
                             });
                             toggleSeach(e);
                           }}
-                          style={{
-                            marginTop: "10px",
-                            width: "400px",
-                            marginBottom: "10px",
-                            marginLeft: "-15px",
-                          }}
                         />
-                        {"   "}
                         <u
                           style={{
-                            fontSize: "17px",
-                            fontWeight: 600,
-                            lineHeight: "45px",
-                            textAlign: "left",
-                            color: "#6DC0F9",
                             [localStorage.getItem("language") === "ar"
                               ? "marginRight"
                               : "marginLeft"]:
@@ -611,17 +586,16 @@ function Demande() {
                             console.log("lib", specData.libelle);
                             addSpecialite();
                           }}
+                          className={specData?.libelle?.trim() === '' ? "disabled" : ""}
                         >
-                          {"  "}
                           {t("add")}
                         </u>
-                      </span>
+                      </div>
                     ) : (
                       <span
                         style={{
-                          fontSize: "17px",
                           fontWeight: 600,
-                          lineHeight: "45px",
+                          lineHeight: "53px",
                           textAlign:
                             localStorage.getItem("language") === "ar"
                               ? "right"
@@ -629,8 +603,11 @@ function Demande() {
                           color: "#6DC0F9",
                         }}
                         onClick={() => setShowInput(true)}
+                        className="add-speciality"
                       >
-                        <strong>+</strong>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M7.99967 3.33325V12.6666M3.33301 7.99992H12.6663" stroke="#6DC0F9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                         <u> {t("addSpecialityPlaceholder")}</u>
                       </span>
                     )}
@@ -651,6 +628,7 @@ function Demande() {
                                 ...formData,
                                 specialite: x.libelle,
                               });
+                              setErrors({...errors, specError: false});
                             }}
                             style={{
                               direction:
@@ -673,6 +651,8 @@ function Demande() {
                   type="text"
                   id="inpe"
                   placeholder={t("placeholderINPENumber")}
+                  className={errors.inpeError ? "error" : ""}
+                  value={formData.inpe}
                   onFocus={() => {
                     setCityInputFocused(false);
                     setSpecInputFocused(false);
@@ -682,6 +662,7 @@ function Demande() {
                       ...formData,
                       inpe: e.target.value,
                     });
+                    // setErrors({...errors, inpeError: formData.inpe.trim() === ""});
                   }}
                 />
               </div>
@@ -704,7 +685,15 @@ function Demande() {
                 <input
                   type="checkbox"
                   id="terms"
-                  onChange={() => setIsAccepted(true)}
+                  checked={isAccepted}
+                  className={errors.acceptedError ? "error" : ""}
+                  onChange={() => {
+                    setIsAccepted(!isAccepted);
+                    if(errors.acceptedError){
+                      setErrors({...errors, acceptedError: false});
+                    }
+                    }
+                  }
                 />
                 <label
                   htmlFor="terms"

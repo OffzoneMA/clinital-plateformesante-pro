@@ -1,6 +1,15 @@
 @import "../../styles/style.scss";
 
 .cabinetadd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  max-width: 1440px;
+  padding-inline: 50px;
+  margin: auto;
+  margin-top: 45px;
+  padding-bottom: 60px;
 
   .bg {
     height: 100%;
@@ -18,20 +27,14 @@
   }
 
   .result-container {
-    min-height: 100vh;
-    max-width: 1440px;
-    margin: auto;
+    // min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-left: 50px;
-    padding-right: 50px;
     justify-content: center;
     align-items: center;
-    height: 94px;
-    width: 100vw;
-    position: absolute;
-    left: 0;
-    top: -210px;
+    height: auto;
+    padding: 20px;
+    width: 100%;
   }
   .container {
     padding: 40px 40px 100px 40px;
@@ -39,82 +42,91 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    padding-left: 50px;
-    padding-right: 50px;
+    gap: 40px;
     justify-content: center;
     align-items: center;
-    height: 404px;
-    margin-left: 128px;
-    position: absolute;
-    left: 0;
     border-radius: 15px;
-    border: 1.6px solid;
-    top: 280px;
-    border-color: #c989dd;
+    border: 1.6px solid transparent;
+    background-image: linear-gradient(#fafafa, #fafafa), 
+                      linear-gradient(90deg, rgba(133, 202, 250, 0.9) -8.54%, rgba(201, 137, 221, 0.9) 108.12%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;   
     background-color: #fafafa;
   }
   .container h1 {
-    position: absolute;
-    top: 40px;
-    margin: 0;
-    font-family: Montserrat;
+    font-family: 'Montserrat';
     font-size: 21px;
     font-weight: 700;
     line-height: 25.6px;
     text-align: left;
+    width: 100%;
+    margin: 0;
   }
   .innerContainer {
-    width: 1102px;
-    height: 258px;
+    width: 100%;
+    // height: 258px;
     gap: 54px;
-    margin-left: 0px;
-    margin-top: 100px;
+    margin: 0px;
     display: flex;
     justify-content: space-between;
   }
   .childDiv {
-    width: 524px;
-    height: 258px;
+    display: flex;
     padding: 26px 24px;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 26px;
+    flex: 1 0 0;
+    // height: 258px;
     border-radius: 12px;
     background-color: #ffffff;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+
     &:hover {
-      background-color: #B1DDFC; // Change the background color on hover
+      border: 1px solid #B1DDFC;
+      background: #DCF0FE;
+      box-shadow: 0px 20px 24px -4px rgba(58, 177, 238, 0.10), 0px 8px 8px -4px rgba(58, 177, 238, 0.04);
     }
   }
   .childDiv:nth-of-type(2):hover {
-    background-color: #EED8F3; // Change the background color on hover for the second childDiv
+    border: 1px solid #EED8F3;
+    background: #F8EFFA;
+    box-shadow: 0px 20px 24px -4px rgba(170, 16, 243, 0.10), 0px 8px 8px -4px rgba(125, 9, 180, 0.04);
   } 
   .innerChildDiv {
-    width: 476px;
+    width: 100%;
     height: 134px;
-    gap: 30px;
     border-radius: 15px;
     position: relative;  
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    align-self: stretch;
   }
   .textZone {
     width: 274px;
     height: 118px;
     gap: 0px;
-    font-family: Montserrat;
+    font-family: 'Montserrat';
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
+    flex: 1 0 0;
   
   }
   .imageRight {
-    position: absolute;
-    top: 0;
     width: 148px;
     height: 134px;
     gap: 0px;
   }
   .button1 {
-    width: 476px;
-    height: 40px;
-    padding: 8px 16px;
+    width: 100%;
+    display: flex;
+    height: 46px;
+    justify-content: center;
+    padding: 14px 24px;
+    align-items: center;
     border: none;
     border-radius: 8px;
     background-color: #6dc0f9;
@@ -122,12 +134,18 @@
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 30px;
+    letter-spacing: -0.14px;
+    font-family: $ave-demi;
   }
   .button2 {
-    width: 476px;
-    height: 40px;
-    padding: 8px 16px;
+    width: 100%;
+    display: flex;
+    height: 46px;
+    padding: 14px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    align-self: stretch;
     border: none;
     border-radius: 8px;
     background-color: #c989dd;
@@ -135,44 +153,42 @@
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 30px;
+    letter-spacing: -0.14px;
+    font-family: $ave-demi;
   }
+
+  // Add Cabinet form
   .containerAdd {
-    padding: 40px 40px 100px 40px;
-    width: 1200px;
+    padding: 40px;
+    max-width: 1200px;
     margin: auto;
     display: flex;
     flex-direction: column;
-    padding-left: 50px;
-    padding-right: 50px;
     justify-content: center;
     align-items: center;
-    height: 534px;
-    margin-left: 128px;
-    position: absolute;
-    left: 0;
+    gap: 40px;
+    // height: 534px;
     border-radius: 15px;
-    border: 1.6px solid;
-    top: 280px;
-    border-color: #c989dd;
+    border: 1.6px solid transparent;
+    background-image: linear-gradient(#fafafa, #fafafa), 
+                      linear-gradient(90deg, rgba(133, 202, 250, 0.9) -8.54%, rgba(201, 137, 221, 0.9) 108.12%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;   
     background-color: #fafafa;
   }
   .containerAdd h1 {
-    position: absolute;
-    top: 40px;
     margin: 0;
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 21px;
     font-weight: 700;
     line-height: 25.6px;
     text-align: left;
+    width: 100%;
   }
   .innerContainerAdd {
-    width: 1102px;
-    height: 388px;
+    width: 100%;
     gap: 54px;
-    margin-left: 0px;
-    margin-top: 70px;
+    margin: 0px;
     display: flex;
     justify-content: space-between;
   }
@@ -219,14 +235,38 @@
         height: 44px;
         border: 2px solid rgba(170, 170, 170, 0.2);
         border-radius: 8px;
-        padding: 10px 24px;
+        // padding: 10px 24px;
         font-family: $ave-regular;
         outline: none;
+        display: flex;
+        padding: 14px 18px;
+        align-items: center;
+        gap: 14px;
+        align-self: stretch;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 18.2px */
+        letter-spacing: -0.14px;
 
         &::placeholder {
           color: #aaaaaa;
           font-size: 14px;
-          line-height: 17px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 130%; /* 18.2px */
+          letter-spacing: -0.14px;
+        }
+
+        &:focus:not([type="checkbox"], [type="radio"], .error) {
+          border: 1px solid;
+          border-color: #53b1fd;
+          box-shadow: 0px 0px 0px 4px #007fff21;
+        }
+
+        &.error {
+          border: 1px solid #e85555cc;
+          box-shadow: 0px 0px 0px 4px #e8555521;
         }
       }
       .done-email {
@@ -295,40 +335,82 @@
       margin-bottom: 6px;
     }
   }
+
+  .btn3-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    margin-top: 20px;
+  }
   .button3 {
     width: 233px;
     height: 46px; 
+    margin: 0;
     padding: 14px 24px;
     border-radius: 8px;
     background-color: #6dc0f9;
     color: #ffffff;
     font-size: 14px;
     font-weight: 600;
-    margin-top: 20px;
+    font-family: $ave-demi;
     border:0px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 12px;
+
+    &:hover {
+      gap: 30px;
+    }
   }
 
 
   .result {
-    background-color: #f8f8f8;
+    background-color: white;
     display: flex;
     flex-direction: column;
     width: 377px;
-    border-radius: 4px;
-    filter: drop-shadow(0px 0px 31px rgba(0, 0, 0, 0.1));
+    opacity: 10;
+    border-radius: 0px 0px 14px 14px;
+    border: 1px solid rgba(170, 170, 170, 0.20);
+    background: #FFF;
+    box-shadow: 0px 100px 80px 0px rgba(0, 0, 0, 0.07), 0px 41.778px 33.422px 0px rgba(0, 0, 0, 0.05), 0px 22.336px 17.869px 0px rgba(0, 0, 0, 0.04), 0px 12.522px 10.017px 0px rgba(0, 0, 0, 0.04), 0px 6.65px 5.32px 0px rgba(0, 0, 0, 0.03), 0px 2.767px 2.214px 0px rgba(0, 0, 0, 0.02);
+    // filter: drop-shadow(0px 0px 31px rgb(255, 255, 255));
+    padding: 18px 20px 0px 20px;
+    align-items: flex-start;
     position: absolute;
-    top: 70px;
+    z-index: 2;
+    top: 73px;
     left: 0;
-    max-height: 6 * 45px;
+    max-height: calc(4*45px + 62px);
     overflow: auto;
     transition: all 200ms ease;
 
+    .search-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+    
+    .search-result {
+      width: 100%;
+    }
+    
+    .search-icon-result {
+      position: absolute;
+      right: 15px; /* Ajuste l'espacement par rapport au bord droit */
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666; /* Couleur de l'icône */
+      cursor: pointer;
+    }
+
     span {
       width: 100%;
-      line-height: 45px;
+      line-height: 53px;
       font-size: 16px;
       color: $black;
       padding-left: 16px;
@@ -336,17 +418,35 @@
       cursor: pointer;
       transition: all 200ms ease;
 
-      &:hover {
+      &.add-speciality {
+        color: #6DC0F9;
+        font-family: $ave-demi;
+        font-size: 14px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &:hover:not(.add-speciality) {
         background-color: rgba($black, 0.05);
       }
 
-      &:after {
+      &:not(:first-of-type)::after {
         content: "";
         width: 100%;
         left: 0;
         position: absolute;
-        border-bottom: 1px solid #eaeaea;
+        border-bottom: 1px solid #EAEAEA;
       }
+      // &:first-child::after{
+      //   display: none;
+      // }
+    }
+
+    mark {
+      color: #6DC0F9;
     }
 
     .loading {
@@ -357,50 +457,43 @@
     }
   }
     
+
+  //Rejoindre Cabinet 
   .containerRejoindre {
     padding: 40px 40px 0px 40px;
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     margin: auto;
     display: flex;
     flex-direction: column;
-    padding-left: 50px;
-    padding-right: 50px;
-    justify-content: center;
+    gap: 40px;
     align-items: center;
     height: 534px;
-    margin-left: 128px;
-    position: absolute;
-    left: 200px;
-    right: 200px;
     border-radius: 15px;
-    border: 1.6px solid;
-    top: 280px;
-    border-color: #c989dd;
+    border: 1.6px solid transparent;
+    background-image: linear-gradient(#fafafa, #fafafa), 
+                      linear-gradient(90deg, rgba(133, 202, 250, 0.9) -8.54%, rgba(201, 137, 221, 0.9) 108.12%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;   
     background-color: #fafafa;
+    position: relative;
   } 
   .containerRejoindre h1 {
-    position: absolute;
-    top: 40px;
-    left: 200px;
-    right: 200px;
     margin: 0;
-    font-family: Montserrat;
+    font-family: 'Montserrat';
     font-size: 21px;
     font-weight: 700;
     line-height: 25.6px;
     text-align: center;
   }
   .containerRejoindre h2 {
-    position: absolute;
-    top: 250px;
     margin: 0;
-    left: 100px;
-    right: 100px;
-    font-family: Montserrat ;
+    font-family: 'Montserrat' ;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 25.6px;
     text-align: center;
+    max-width: 625px;
   }
   .bottomimg{
     position: absolute;

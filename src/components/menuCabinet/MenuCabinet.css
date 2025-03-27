@@ -38,6 +38,7 @@
     text-align: center;
     margin-top: 110px;
     margin-left: 1px; /* Ajustez l'espacement entre le texte et l'icône selon vos besoins */
+    white-space: nowrap;
   }
   .line {
     flex: 1;

@@ -24,7 +24,7 @@
   }
 
   .linear-border {
-    height: calc(100% + 2px);
+    height: calc(100% + 4px);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -85,11 +85,24 @@
                 color: $grey;
               }
 
-              &:focus{
+              &:focus:not([type="checkbox"] , [type="radio"] , .error) {
                 border: 1px solid ;
                 border-color: #53B1FD;
                 box-shadow: 0px 0px 0px 4px #007FFF21;
               }
+
+              &.error {
+                border: 1px solid #E85555CC;
+                box-shadow: 0px 0px 0px 4px #E8555521;
+              }
+            }
+
+            input[type="password"]::-ms-reveal,
+            input[type="password"]::-ms-clear,
+            input[type="password"]::-webkit-clear-button,
+            input[type="password"]::-webkit-inner-spin-button,
+            input[type="password"]::-webkit-credentials-auto-fill-button {
+                display: none !important;
             }
     
             >img {
@@ -115,10 +128,47 @@
               font-family: $ave-regular;
             }
     
+            // input[type="checkbox"] {
+            //   height: 18px;
+            //   width: 18px;
+            // }
+
             input[type="checkbox"] {
-              height: 18px;
+              appearance: none;
               width: 18px;
-            }
+              height: 18px;
+              border: 0.1px solid #303030;
+              border-radius: 4px; 
+              outline: none;
+              padding: 0px;
+              cursor: pointer;
+              position: relative;
+              
+              &:checked {
+                  background-color: #71C2FA; 
+                  border-color: #71C2FA; 
+              }
+
+              &.error {
+                border: 1px solid #E85555CC;
+                box-shadow: 0px 0px 0px 4px #E8555521;
+              }
+  
+          }
+  
+          input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.46875L4 8.46875L11 1.46875' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+          }
           }
     
           >button {
@@ -439,7 +489,8 @@
 
     .invalid {
       input {
-        border-color: $red !important;
+        border: 1px solid #E85555CC;
+        box-shadow: 0px 0px 0px 4px #E8555521;
       }
 
       >p {
@@ -495,6 +546,87 @@
 
     &::after {
       transform: rotate(-45deg);
+    }
+  }
+
+  &.forget-passw {
+
+    .reinitialize {
+      h1 {
+        margin-bottom: 16px;
+      }
+    }
+    p:where(.title) {
+      max-width: 464px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .reinitiase-p {
+      max-width: 350px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .une-question {
+      margin-top: 20px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover{
+        .question{
+          color: #6DC0F9;
+        }
+      }
+
+      .ou {
+        color: rgba(170, 170, 170, 0.50);
+        font-family: $ave-regular;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      .question {
+        color: var(--Grey, #AAA);
+        font-family: $ave-regular;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration-line: underline;
+      }
+    }
+
+    .reinitialise-btn {
+      margin-top: 26px;
+      margin-bottom: 6px;
+    }
+  }
+
+  &.forget-passw-success {
+    .container {
+      h1 {
+        margin-bottom: 34px;
+      }
+      img {
+        position: relative;
+        transform: translate(0, 0);
+        left: 0;
+
+        &:last-child {
+          bottom: -31px;
+          transform: translateY(26px);
+        }
+      }
+      h1 {
+        margin-top: 60px;
+      }
     }
   }
 }

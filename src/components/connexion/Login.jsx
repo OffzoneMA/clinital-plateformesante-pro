@@ -7,6 +7,7 @@ import ConnexionService from "./services/ConnexionService";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../utils/redux/GlobalSlice";
 import SecondLoginForm from "./SecondLoginForm";
+import { validateEmail } from "./rules/validation";
 
 function Login({ comp, setStep, setIsConnected }) {
   const cnx = useRef();
@@ -22,6 +23,12 @@ function Login({ comp, setStep, setIsConnected }) {
     email: "",
     password: "",
   });
+
+  const [errors , setErrors] = useState({
+    emailError: false,
+    passwordError: false
+  });
+
   const navigator = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.global.user);
@@ -42,6 +49,15 @@ function Login({ comp, setStep, setIsConnected }) {
   // LogIn
   const connexion = async (e) => {
     e.preventDefault();
+
+    setErrors({
+      emailError: userCredentials?.email === "" || !validateEmail(userCredentials?.email),
+      passwordError: userCredentials?.password === ""
+    })
+
+    if(userCredentials?.email === "" || !validateEmail(userCredentials?.email) || userCredentials?.password === "") {
+      return;
+    }
 
     // Inputs validity check
     if (!toggleError()) return false;
@@ -66,6 +82,8 @@ function Login({ comp, setStep, setIsConnected }) {
               type: response.data.type,
               state: response.data.state,
             };
+
+            // Store user data
 
             if (
               data.role === "ROLE_MEDECIN" ||
@@ -199,6 +217,7 @@ function Login({ comp, setStep, setIsConnected }) {
                 name="email"
                 id="email"
                 placeholder="Saisir votre adresse e-mail"
+                className={errors.emailError ? "error" : ""}
                 required
                 onFocus={() => cnx.current.classList.remove("invalid")}
                 onChange={(e) => {
@@ -216,6 +235,7 @@ function Login({ comp, setStep, setIsConnected }) {
                 name="password"
                 autoComplete="on"
                 placeholder="Saisir votre mot de passe"
+                className={(errors.passwordError || error) ? "error" : ""}
                 required
                 minLength="8"
                 onFocus={() => cnx.current.classList.remove("invalid")}

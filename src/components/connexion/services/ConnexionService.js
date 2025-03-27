@@ -20,17 +20,27 @@ export default {
 
   async ForgotPasswordPro(data) {
     return await axiosInstance.post(
-        Connexionapi.forgotpasswordPro(),
-        JSON.stringify(data)
+      Connexionapi.forgotpasswordPro(),
+      JSON.stringify(data)
     );
   },
 
   async createrequest(data) {
-    return await axiosInstance.post(
-      Connexionapi.createrequest(),
-      JSON.stringify(data)
-    );
-  },
+    try {
+
+      const response = await axiosInstance.post(
+        Connexionapi.createrequest(),
+        JSON.stringify(data)
+      );
+
+      console.log("Response:", response);
+      return response;
+    } catch (error) {
+      console.error("Request failed:", error.response ? error.response.data : error.message);
+      throw error;
+    }
+  }
+  ,
   async addSpecialite(data) {
     return await axiosInstance.post(
       Connexionapi.addSpecialite(),

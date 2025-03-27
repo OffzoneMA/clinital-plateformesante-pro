@@ -70,12 +70,7 @@ function AddDocumentsUser() {
             <li>{t("maxFileSize")}</li>
           </ul>
         </p>
-        <h2
-          style={{
-            [localStorage.getItem("language") === "ar" ? "right" : "left"]:
-              "50px",
-          }}
-        >
+        <h2>
           {t("documents")}
         </h2>
         <form className="form">
@@ -86,7 +81,7 @@ function AddDocumentsUser() {
               id: "cin",
             },
           ].map(({ label, id }) => (
-            <div>
+            <div className="form-group-container" key={id}>
               <div className="form-group" key={id}>
                 <label className="form-label" htmlFor={id}>
                   {label}
@@ -112,41 +107,43 @@ function AddDocumentsUser() {
                   </span>
                 </label>
               </div>
-              <div className="form-group">
-                <label className="form-label" htmlFor={id}></label>
-                <div className="file">
-                  {fileNames[id] &&
-                    fileNames[id].map((fileName, index) => (
-                      <label
-                        className={getFileLabelClass(fileNames[id].length)}
-                        key={index}
-                      >
-                        <img
-                          src="../../icons/Icon.svg"
-                          alt="se connecter"
-                          style={{
-                            marginLeft: "10px",
-                            marginBottom: "2px",
-                            marginRight: "10px",
-                          }}
-                        />{" "}
-                        {fileName}
-                        <img
-                          src="../../icons/Del.svg"
-                          alt="delete file"
-                          className="delete-icon"
-                          onClick={() => handleFileDelete(id, index)}
-                          style={{
-                            marginBottom: "2px",
-                            [localStorage.getItem("language") === "ar"
-                              ? "marginLeft"
-                              : "marginRight"]: "10px",
-                          }}
-                        />
-                      </label>
-                    ))}
+              {fileNames[id] && fileNames[id]?.length > 0 && (
+                <div className="form-group">
+                  <label className="form-label" htmlFor={id}></label>
+                  <div className="file">
+                    {fileNames[id] &&
+                      fileNames[id].map((fileName, index) => (
+                        <label
+                          className={getFileLabelClass(fileNames[id].length)}
+                          key={index}
+                        >
+                          <img
+                            src="../../icons/Icon.svg"
+                            alt="se connecter"
+                            style={{
+                              marginLeft: "10px",
+                              marginBottom: "2px",
+                              marginRight: "10px",
+                            }}
+                          />{" "}
+                          {fileName}
+                          <img
+                            src="../../icons/Del.svg"
+                            alt="delete file"
+                            className="delete-icon"
+                            onClick={() => handleFileDelete(id, index)}
+                            style={{
+                              marginBottom: "2px",
+                              [localStorage.getItem("language") === "ar"
+                                ? "marginLeft"
+                                : "marginRight"]: "10px",
+                            }}
+                          />
+                        </label>
+                      ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </form>

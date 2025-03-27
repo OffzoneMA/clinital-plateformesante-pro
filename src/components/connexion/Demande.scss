@@ -1,10 +1,16 @@
 @import '../../styles/style.scss';
+
 .inscription {
 
   .addForm {
-    .input-check-box1 {
+    label {
       .input-doth {
         border-color: #6DC0F9;
+
+        &.error {
+          border-color: #E85555CC;
+          box-shadow: 0px 0px 0px 4px #E8555521;
+        }
       }
     }
   }
@@ -12,7 +18,7 @@
   .btns {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 20px;
 
     div {
       flex: 1;
@@ -23,44 +29,114 @@
     }
   }
 
-    .result {
-      position: absolute;
+  .result {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    right: 0;
+    margin: 0;
+    max-height: calc(5*53px + 62px);
+    overflow-y: auto;
+    z-index: 2;
+    top: calc(100% + 1px);
+    transition: all 200ms ease;
+    flex-direction: column;
+    padding: 18px 20px 0px 20px;
+    align-items: flex-start;
+    opacity: 10;
+    border-radius: 0px 0px 14px 14px;
+    border: 1px solid rgba(170, 170, 170, 0.20);
+    background: #FFF;
+    box-shadow: 0px 100px 80px 0px rgba(0, 0, 0, 0.07), 0px 41.778px 33.422px 0px rgba(0, 0, 0, 0.05), 0px 22.336px 17.869px 0px rgba(0, 0, 0, 0.04), 0px 12.522px 10.017px 0px rgba(0, 0, 0, 0.04), 0px 6.65px 5.32px 0px rgba(0, 0, 0, 0.03), 0px 2.767px 2.214px 0px rgba(0, 0, 0, 0.02);
+    filter: drop-shadow(0px 0px 31px rgb(255, 255, 255));
+
+    .search-container {
+      position: relative;
+      width: 100%;
       display: flex;
-      background-color: #ffffff;
-      width:100%;
-      right: 0;
-      max-height: 5* 45px;
-      overflow-y: auto;
-      z-index: 2;
-      border-radius: 4px;
-      top: 60px;
-      transition: all 200ms ease;
-      flex-direction: column;
-      opacity: 10;
-      z-index: 1000;
-      filter: drop-shadow(0px 0px 31px rgb(255, 255, 255));
-      
-      span {
-        width: 100%;
-          line-height: 45px;
-          font-size: 16px;
-          color: $black;
-          padding-left: 16px;
-          position: relative;
-          cursor: pointer;
-          transition: all 200ms ease;
-  
-        &:hover {
-          background-color: rgba($black, 0.05);
-        }
-        &:after {
-          content: "";
-          width: 100%;
-          left: 0;
-          position: absolute;
-          border-bottom: 1px solid #eaeaea;
-        }
-      }   
+      align-items: center;
+      margin: 0;
+    }
     
+    .search-result {
+      width: 100%;
+    }
+    
+    .search-icon-result {
+      position: absolute;
+      right: 15px; /* Ajuste l'espacement par rapport au bord droit */
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666; /* Couleur de l'icône */
+      cursor: pointer;
+    }
+    
+    .add-spec-container {
+      display: flex;
+      padding: 18px 0px;
+      align-items: center;
+      gap: 10px;
+      align-self: stretch;
+      border-bottom: 1px solid #EAEAEA;
+
+      input {
+        flex: 1;
+      }
+
+      u {
+        color: var(--blue, #6DC0F9);
+        font-family: $ave-demi;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+
+        &.disabled {
+          opacity: 0.4;
+          pointer-events: none;
+        }
+      }
+    }
+
+    span {
+      width: 100%;
+      line-height: 53px;
+      font-size: 16px;
+      color: $black;
+      padding-left: 16px;
+      position: relative;
+      cursor: pointer;
+      transition: all 200ms ease;
+
+      &.add-speciality {
+        color: #6DC0F9;
+        font-family: $ave-demi;
+        font-size: 14px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &:hover:not(.add-speciality) {
+        background-color: rgba($black, 0.05);
+      }
+
+      &:not(:first-of-type)::after {
+        content: "";
+        width: 100%;
+        left: 0;
+        position: absolute;
+        border-bottom: 1px solid #EAEAEA;
+      }
+      // &:first-child::after{
+      //   display: none;
+      // }
+    }
+
+    mark {
+      color: #6DC0F9;
+    }
+
   }
 }

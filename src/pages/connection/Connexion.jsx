@@ -24,7 +24,6 @@ function Connexion() {
         <Route exact path="/demande" element={<Demande />} />
         <Route exact path="/successf" element={<SuccessForgotPwd />} />
       </Routes>
-
       <Footer />
     </div>
   );

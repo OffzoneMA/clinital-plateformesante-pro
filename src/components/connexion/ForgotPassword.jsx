@@ -17,30 +17,82 @@ function ForgotPassword() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
- const handleResetPassword = (e) => {
+  const validateDateNaissance = (formattedDate) => {
+    // Vérifier que le format est "dd/mm/yyyy"
+    const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/;
+    if (!regex.test(formattedDate)) {
+      return false;
+    }
+
+    // Vérifier que la date est valide (par exemple, pas le 31 février)
+    const [day, month, year] = formattedDate.split("/").map(Number);
+    const date = new Date(`${year}-${month}-${day}`);
+    return (
+      date.getFullYear() === year &&
+      date.getMonth() + 1 === month &&
+      date.getDate() === day
+    );
+  };
+
+  const formatInputDate = (value) => {
+    // Retirer tout caractère qui n'est pas un chiffre ou '/'
+    const cleanedValue = value.replace(/[^0-9/]/g, "");
+
+    // Vérifier que le format est conforme à dd/mm/yyyy
+    const isValidFormat = /^(\d{1,2}\/)?(\d{1,2}\/)?(\d{1,4})?$/.test(cleanedValue);
+
+    if (!isValidFormat) {
+      setBirthdateError(t("Enteryourdateofbirth"));
+      setFormData({
+        ...data,
+        birthdate: ""
+      });
+    } else {
+      resetFieldError('birthdate');
+    }
+
+    return cleanedValue;
+  };
+
+  const parseFormattedDate = (formattedDate) => {
+    // Convertir le format jj/mm/aaaa en un objet Date
+    const [day, month, year] = formattedDate.split("/");
+    if (day && month && year) {
+      return new Date(`${year}-${month}-${day}`);
+    }
+    return null; // Retourner null si le format est invalide
+  };
+
+  const handleResetPassword = (e) => {
     e.preventDefault();
     setLoading(true);
     setErrorMessage("");
     setEmailError("");
-   setBirthdateError("");
-   
-   if (!validateFields()) {
-     
+    setBirthdateError("");
+
+    if (!validateFields()) {
+
       setLoading(false);
       setErrorMessage("Veuillez remplir tous les champs");
       return;
     }
 
     if (!validateEmail(formData.email)) {
-       setLoading(false);
-       setErrorMessage("Veuillez saisir une adresse e-mail valide");
-     
-      
+      setLoading(false);
+      setEmailError("Veuillez saisir une adresse e-mail valide");
       return;
     }
-   
-    const isoDate = new Date(formData.birthdate).toISOString();
+
+    if(!validateDateNaissance(formData.birthdate)) {
+      setLoading(false);
+      setBirthdateError("Veuillez saisir une date de naissance valide");
+      return;
+    }
+
+    const parsedDate = parseFormattedDate(formData.birthdate);
+    const isoDate = parsedDate.toISOString();
     const formattedDate = isoDate.split('T')[0];
+
     const data = {
       proEmail: formData.email,
       dateNaissance: formattedDate
@@ -50,11 +102,11 @@ function ForgotPassword() {
     try {
       ConnexionService.ForgotPasswordPro(data)
         .then(response => {
-          if (response.data.success===true) {
+          if (response.data.success === true) {
             //toast.success(response.data.message);
-            setResetSuccess(true); 
+            setResetSuccess(true);
           } else {
-           // toast.error(response.data.message);
+            // toast.error(response.data.message);
             setErrorMessage(response.data.message);
           }
         })
@@ -89,24 +141,23 @@ function ForgotPassword() {
 
   return true;
 };*/
-  
+
   const validateFields = () => {
-  if (errorMessage) {
-    setErrorMessage(""); // Réinitialisation du message d'erreur 
-    setFormData(prevState => ({
-      ...prevState,
-      email: "", 
-      birthdate: "" 
-    }));
-  }
+    if (errorMessage) {
+      setErrorMessage(""); // Réinitialisation du message d'erreur 
+      setFormData(prevState => ({
+        ...prevState,
+        email: "",
+        birthdate: ""
+      }));
+    }
 
-  if (!formData.email || !formData.birthdate) {
-    setErrorMessage("Veuillez remplir tous les champs.");
-    return false;
-  }
-
-  return true;
-};
+    if (!formData.email || !formData.birthdate) {
+      setErrorMessage("Veuillez remplir tous les champs.");
+      return false;
+    }
+    return true;
+  };
 
 
   const resetFieldError = (fieldName) => {
@@ -119,15 +170,30 @@ function ForgotPassword() {
 
   // Réinitialiser le champ apres un click
   const handleEmailFocus = () => {
-  if (errorMessage) {
-    setErrorMessage(""); 
-    setFormData(prevState => ({
-      ...prevState,
-      email: "", 
-      birthdate: "" 
-    }));
+    if (errorMessage) {
+      setEmailError("");
+      setFormData(prevState => ({
+        ...prevState,
+        email: "",
+        birthdate: ""
+      }));
+    }
+  };
+
+  const handlebirthDateChange = (e) => {
+    const { name, value } = e.target;
+    const formattedDate = formatInputDate(value);
+    const isValid = validateDateNaissance(formattedDate);
+    if (isValid) {
+      setFormData((prevState) => ({
+        ...prevState,
+        birthdate: formattedDate
+      }));
+      resetFieldError('birthdate');
+    } else {
+      setBirthdateError("Veuillez saisir une date de naissance valide");
+    }
   }
-};
 
   if (resetSuccess) {
     return <SuccessForgotPwd />;
@@ -135,15 +201,13 @@ function ForgotPassword() {
 
   return (
     <div className="register forget-passw">
-       
+
       <div className="container" style={{ marginBottom: "160px", marginTop: "70px" }}>
-       <div className="linear-border"></div>
-        
+        <div className="linear-border"></div>
+
         <h1>Mot de passe oublié ?</h1>
-        <p>Renseignez les informations ci-dessous pour récupérer un nouveau mot de passe</p>
+        <p className='title'>Renseignez les informations ci-dessous pour récupérer un nouveau mot de passe</p>
         <form className={errorMessage ? "invalid" : ""} onSubmit={handleResetPassword}>
-         
-               
           <div>
             <label htmlFor="email">Adresse e-mail Clinital</label>
             <input
@@ -153,56 +217,57 @@ function ForgotPassword() {
               placeholder="Saisir votre adresse e-mail"
               value={formData.email}
               // required
-               
+              className={emailError?.trim() !== "" ? 'error' : ""}
               onChange={(e) => {
                 setFormData({ ...formData, email: e.target.value });
                 resetFieldError('email');
               }}
 
-             onFocus={handleEmailFocus}
+              onFocus={handleEmailFocus}
             />
-            
+
           </div>
-             {errorMessage && <p invalid="error-message">{errorMessage}</p>}
+          {errorMessage && <p invalid="error-message">{errorMessage}</p>}
           <div>
             <label htmlFor="birthdate">Date de naissance</label>
             <input
-              type="date"
+              type="text"
               id="birthdate"
               name="email"
-              placeholder="Saisir votre date de naissance"
+              placeholder="JJ/MM/AAAA"
+              className={birthdateError?.trim() !== "" ? "error" : ""}
               value={formData.birthdate}
-             // required
-              onChange={(e) => {
-                setFormData({ ...formData, birthdate: e.target.value });
-                resetFieldError('birthdate');
-              }}
+              // required
+              onChange={(e) => handlebirthDateChange(e)}
               onFocus={handleEmailFocus}
             />
-          
+          </div>
+          <div className="une-question" onClick={() => navigate("/faq")}>
+            <span className="ou">Ou</span>
+            <span className="question">bien une question ? </span>
           </div>
           <button type="submit">
             {loading ? "Chargement..." : "Réinitialiser mon mot de passe"}
           </button>
         </form>
         {errorMessage && (
-        <img
-          src="../images/inv_mdp-img.png"
-          alt=""
-          style={{
-            position: "absolute",
-            width: "217.65px",
-            height: "562px",
-            top: "375px",
-            gap: "0px",
-            opacity: "0px",
-            cursor: "pointer",
-           left: errorMessage ? "15px" : "-217.65px",
-          
-          }}
-        />
-      )}
-       
+          <img
+            src="../images/inv_mdp-img.png"
+            alt=""
+            style={{
+              position: "absolute",
+              width: "217.65px",
+              height: "562px",
+              top: "375px",
+              gap: "0px",
+              opacity: "0px",
+              cursor: "pointer",
+              left: errorMessage ? "15px" : "-217.65px",
+
+            }}
+          />
+        )}
+
       </div>
       <div className="bg">
         <img src="../images/bg-fgp.png" alt="" />

@@ -10,6 +10,7 @@ function Reinitialize() {
   const [password, setPassword] = useState(""); // État pour stocker le nouveau mot de passe
   const [isSuccess, setIsSuccess] = useState(false);
    const [errorMsg, setErrorMsg] = useState("");
+   const [ passwordError , setPasswordError ] = useState("");
 
   const togglePassw = (e) => {
     const input = e.target.parentElement.querySelector("input");
@@ -26,14 +27,15 @@ const handleSubmit = async (e) => {
 
    if (password.trim() === "") {
      //toast.error("Veuillez saisir un mot de passe");
-      setErrorMsg("Veuillez saisir un mot de passe");
+      // setErrorMsg("Veuillez saisir un mot de passe");
+      setPasswordError("Veuillez saisir un mot de passe");
       return;
     }
 
     if (!validatePassword(password)) {
       //toast.error("Veuillez saisir un mot de passe de plus de 8 caractères");
       setErrorMsg("Veuillez saisir un mot de passe de plus de 8 caractères");
-      
+      setPasswordError("Veuillez saisir un mot de passe de plus de 8 caractères");
       return;
     }
 
@@ -62,11 +64,11 @@ const handleSubmit = async (e) => {
     <Navigate to="/login" />
   ) : (
     <div className="register forget-passw">
-      <div className="container">
+      <div className="container reinitialize">
         <div className="linear-border"></div>
 
         <h1>Réinitialisation de votre mot de passe</h1>
-        <p>Choisissez un nouveau mot de passe pour votre compte</p>
+        <p className="reinitiase-p">Veuillez saisir un nouveau mot de passe pour votre compte de connexion</p>
 
         <form className={errorMsg ? "invalid" : ""} onSubmit={handleSubmit}> 
           <div>
@@ -76,14 +78,14 @@ const handleSubmit = async (e) => {
                 id="password"
                 placeholder="Saisir votre nouveau mot de passe"
                 value={password}
-             
+                className={passwordError?.trim() !== "" ? 'error' : ""}
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={handlePasswordFocus}
             />
             <img src="../icons/eye-off.png" alt="" onClick={togglePassw} />
             </div>
             {errorMsg && <p invalid="error-message">{errorMsg}</p>}
-          <button type="submit">Se connecter</button> 
+          <button className="reinitialise-btn" type="submit">Se connecter</button> 
         </form>
       </div>
       <div className="bg">
